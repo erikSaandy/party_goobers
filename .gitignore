@@ -1,24 +1,28 @@
-
-# This file describes files and paths that should not be tracked by Git version control
-# https://git-scm.com/docs/gitignore
-
 # Auto-generated code editor files
 .vs/*
 .vscode/*
 *.csproj
-obj
-bin
+obj/*
 Properties/*
 code/obj/*
 code/Properties/*
 
+# Editor Projects
+code/Editor/obj/*
+code/Editor/Properties/*
+code/Editor/*.sln
+code/Editor/.vs/*
+code/Editor/.vscode/*
+
 # Auto-generated asset related files
 *.generated.*
 *.*_c
-!*.shader_c
 *.los
 *.vpk
-*launchSettings.json
-*.sln
+*.mb
+*.vmap
 
-*idea
+# Source files, not part of the project files (Backed up on Dropbox)
+**/source/*
+*.pdf
+*.pur
