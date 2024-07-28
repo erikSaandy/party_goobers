@@ -5,17 +5,18 @@
       "__guid": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a",
       "Flags": 0,
       "Name": "Camera",
-      "Rotation": "0.0784591,0,0,0.9969173",
+      "Position": "0,0,400",
+      "Rotation": "-0.5,0.5,0.5,0.5",
       "Enabled": true,
       "Components": [
         {
           "__type": "Sandbox.CameraComponent",
           "__guid": "cf3cbf96-22b6-4be4-a5d0-672a96c17f9f",
-          "BackgroundColor": "0.33333,0.46275,0.52157,1",
+          "BackgroundColor": "1,1,1,1",
           "ClearFlags": "All",
           "FieldOfView": 60,
           "IsMainCamera": true,
-          "Orthographic": false,
+          "Orthographic": true,
           "OrthographicHeight": 1204,
           "Priority": 1,
           "RenderExcludeTags": "",
@@ -70,6 +71,92 @@
           "__type": "Sandbox.Sharpen",
           "__guid": "0bffee5e-19f2-41c4-88f9-faefbcce6bf4",
           "Scale": 0.2
+        }
+      ]
+    },
+    {
+      "__guid": "d3b6c1f5-e1b1-4db0-8d86-6d10cecdb67d",
+      "Flags": 0,
+      "Name": "Network Helper",
+      "Position": "309.2853,-134.1234,-256.8865",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.NetworkHelper",
+          "__guid": "55b45dd3-bb75-490c-8f8a-05b1fcbfee21",
+          "PlayerPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/player.prefab"
+          },
+          "SpawnPoints": [],
+          "StartServer": true
+        }
+      ]
+    },
+    {
+      "__guid": "f9cbb4c3-a23c-487d-a2dc-9749bff0a0a2",
+      "Flags": 0,
+      "Name": "Face Data",
+      "Position": "262.7379,-134.4273,548.1296",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "FaceData",
+          "__guid": "d93088ef-5053-4343-bf21-4e3394f1e2d5",
+          "EyebrowTextures": [
+            "textures/faces/eyebrows01.vtex",
+            "textures/faces/eyebrows02.vtex",
+            "textures/faces/eyebrows03.vtex",
+            "textures/faces/eyebrows04.vtex",
+            "textures/faces/eyebrows05.vtex"
+          ],
+          "EyeTextures": [
+            "textures/faces/eyes01.vtex",
+            "textures/faces/eyes02.vtex",
+            "textures/faces/eyes03.vtex",
+            "textures/faces/eyes04.vtex",
+            "textures/faces/eyes05.vtex",
+            "textures/faces/eyes06.vtex"
+          ],
+          "MouthTextures": [
+            "textures/faces/mouth01.vtex",
+            "textures/faces/mouth02.vtex",
+            "textures/faces/mouth03.vtex",
+            "textures/faces/mouth04.vtex",
+            "textures/faces/mouth05.vtex",
+            "textures/faces/mouth06.vtex",
+            "textures/faces/mouth07.vtex",
+            "textures/faces/mouth08.vtex"
+          ],
+          "NoseTextures": [
+            "textures/faces/nose01.vtex",
+            "textures/faces/nose02.vtex",
+            "textures/faces/nose03.vtex",
+            "textures/faces/nose04.vtex",
+            "textures/faces/nose05.vtex",
+            "textures/faces/nose06.vtex",
+            "textures/faces/nose07.vtex"
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "ea0ea7d2-1eb4-4447-9d38-77e4fe2c355d",
+      "Flags": 0,
+      "Name": "Sun",
+      "Position": "-5.937668,-7.143127,162.1098",
+      "Rotation": "-0.4829629,0.3036032,0.3705904,0.7329631",
+      "Tags": "light_directional,light",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.DirectionalLight",
+          "__guid": "b54e3769-b3c9-44a6-b5a4-7f1eb4b1d37a",
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0.91373,0.98039,1,1",
+          "Shadows": true,
+          "SkyColor": "0,0,0,0"
         }
       ]
     }

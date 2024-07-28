@@ -1,8 +1,8 @@
 {
-  "Title": "Head-on br",
+  "Title": "Party Face",
   "Type": "game",
-  "Org": "local",
-  "Ident": "head_on_br",
+  "Org": "saandy",
+  "Ident": "party_face",
   "Schema": 1,
   "IncludeSourceFiles": false,
   "Resources": null,

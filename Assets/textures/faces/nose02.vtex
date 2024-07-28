@@ -1,0 +1,10 @@
+{
+  "Sequences": [
+    {
+      "Source": "textures/faces/nose02.png",
+      "IsLooping": true,
+      "Frames": 64
+    }
+  ],
+  "OutputTypeString": "2D"
+}
