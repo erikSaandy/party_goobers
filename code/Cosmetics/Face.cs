@@ -9,10 +9,11 @@ using System.Threading.Tasks;
 
 public class Face : Component, Component.INetworkListener
 {
-	public const float SIZE = 100;
 
 	const string FILE_PATH = "Data/";
 	const string FILE_NAME = "Me.face";
+
+	public NPC Owner { get; set; } = null;
 
 	[Property] public Eyebrows Eyebrows { get; set; }
 	[Property] public Eyes Eyes { get; set; }
@@ -25,25 +26,29 @@ public class Face : Component, Component.INetworkListener
 		Eyes.Randomize();
 		Nose.Randomize();
 		Mouth.Randomize();
-		Save();
+
+		if ( !IsProxy && Owner != null )
+		{
+			Save();
+		}
+
 	}
 
-	protected override void OnStart()
+	[Broadcast]
+	public void SetColor(Color color)
+	{
+		Eyebrows.SetColor( color );
+		Eyes.SetColor( color );
+		Nose.SetColor( color );
+		Mouth.SetColor( color );
+	}
+
+	protected override void OnAwake()
 	{
 
-		base.OnStart();
+		base.OnStart(); 
 
-		Connection owner = GameObject.Network.OwnerConnection;
-
-		GameObject.Name = $"Face - {owner.DisplayName}";
-
-		Log.Info( "spawned face for " + owner.DisplayName );
-
-		Transform.LocalPosition = 0;
-
-		if(IsProxy) { return; }
-
-		Load();
+		GameObject.Name = "Face";
 
 	}
 
@@ -89,19 +94,19 @@ public class Face : Component, Component.INetworkListener
 	{
 		if(Nose.Renderer != null)
 		{
-			Nose.Renderer.FlipHorizontal = Nose.Transform.Position.x < Transform.Position.x;
+			Nose.Renderer.FlipHorizontal = Nose.Transform.Position.y < Transform.Parent.Transform.Position.y; //Nose.Transform.Rotation.Yaw() < 0;
 		}
 
-		float sin = MathF.Sin( Time.Now * 5 );
+		float sin = MathF.Sin( Time.Now * 2 );
 		float a = sin * 20;
-		GameObject.Transform.Rotation = Rotation.FromPitch( a );
+		GameObject.Transform.Rotation = Rotation.FromYaw( a );
 
-		if ( IsProxy ) { return; }
+		//if ( IsProxy ) { return; }
 
-		if(Input.Pressed("Jump"))
-		{	
-			Randomize();
-		}
+		//if(Input.Pressed("Jump"))
+		//{	
+		//	Randomize();
+		//}
 	}
 
 }

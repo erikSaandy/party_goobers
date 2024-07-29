@@ -2,28 +2,89 @@
   "__guid": "ff1d7b56-a34a-4fe6-8059-82ba5739b46a",
   "GameObjects": [
     {
+      "__guid": "b7839f82-bb06-407f-83b7-d1d74d0a1b58",
+      "Flags": 0,
+      "Name": "NPC Buffer",
+      "Position": "-24.59171,127.0008,46.44773",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "NPCBuffer",
+          "__guid": "8c5b41ce-ec79-49f7-b83f-af54dd106869",
+          "Prefab": "scenes/npc.prefab"
+        }
+      ]
+    },
+    {
+      "__guid": "f9cbb4c3-a23c-487d-a2dc-9749bff0a0a2",
+      "Flags": 0,
+      "Name": "Face Data",
+      "Position": "262.7379,-134.4273,520.2098",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "FaceData",
+          "__guid": "d93088ef-5053-4343-bf21-4e3394f1e2d5",
+          "EyebrowTextures": [
+            "textures/faces/eyebrows01.vtex",
+            "textures/faces/eyebrows02.vtex",
+            "textures/faces/eyebrows03.vtex",
+            "textures/faces/eyebrows04.vtex",
+            "textures/faces/eyebrows05.vtex"
+          ],
+          "EyeTextures": [
+            "textures/faces/eyes01.vtex",
+            "textures/faces/eyes02.vtex",
+            "textures/faces/eyes03.vtex",
+            "textures/faces/eyes04.vtex",
+            "textures/faces/eyes05.vtex",
+            "textures/faces/eyes06.vtex"
+          ],
+          "MouthTextures": [
+            "textures/faces/mouth01.vtex",
+            "textures/faces/mouth02.vtex",
+            "textures/faces/mouth03.vtex",
+            "textures/faces/mouth04.vtex",
+            "textures/faces/mouth05.vtex",
+            "textures/faces/mouth06.vtex",
+            "textures/faces/mouth07.vtex",
+            "textures/faces/mouth08.vtex"
+          ],
+          "NoseTextures": [
+            "textures/faces/nose01.vtex",
+            "textures/faces/nose02.vtex",
+            "textures/faces/nose03.vtex",
+            "textures/faces/nose04.vtex",
+            "textures/faces/nose05.vtex",
+            "textures/faces/nose06.vtex",
+            "textures/faces/nose07.vtex"
+          ]
+        }
+      ]
+    },
+    {
       "__guid": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a",
       "Flags": 0,
       "Name": "Camera",
-      "Position": "0,0,400",
-      "Rotation": "-0.5,0.5,0.5,0.5",
+      "Position": "400,0,0",
+      "Rotation": "0,0,-1,0.0000001947072",
       "Enabled": true,
       "Components": [
         {
           "__type": "Sandbox.CameraComponent",
           "__guid": "cf3cbf96-22b6-4be4-a5d0-672a96c17f9f",
-          "BackgroundColor": "1,1,1,1",
+          "BackgroundColor": "0.55349,0.5907,1,1",
           "ClearFlags": "All",
           "FieldOfView": 60,
           "IsMainCamera": true,
           "Orthographic": true,
-          "OrthographicHeight": 1204,
+          "OrthographicHeight": 16,
           "Priority": 1,
           "RenderExcludeTags": "",
           "RenderTags": "",
           "TargetEye": "None",
           "Viewport": "0,0,1,1",
-          "ZFar": 10000,
+          "ZFar": 800,
           "ZNear": 10
         },
         {
@@ -90,79 +151,6 @@
           },
           "SpawnPoints": [],
           "StartServer": true
-        }
-      ]
-    },
-    {
-      "__guid": "f9cbb4c3-a23c-487d-a2dc-9749bff0a0a2",
-      "Flags": 0,
-      "Name": "Face Data",
-      "Position": "262.7379,-134.4273,548.1296",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "FaceData",
-          "__guid": "d93088ef-5053-4343-bf21-4e3394f1e2d5",
-          "EyebrowTextures": [
-            "textures/faces/eyebrows01.vtex",
-            "textures/faces/eyebrows02.vtex",
-            "textures/faces/eyebrows03.vtex",
-            "textures/faces/eyebrows04.vtex",
-            "textures/faces/eyebrows05.vtex"
-          ],
-          "EyeTextures": [
-            "textures/faces/eyes01.vtex",
-            "textures/faces/eyes02.vtex",
-            "textures/faces/eyes03.vtex",
-            "textures/faces/eyes04.vtex",
-            "textures/faces/eyes05.vtex",
-            "textures/faces/eyes06.vtex"
-          ],
-          "MouthTextures": [
-            "textures/faces/mouth01.vtex",
-            "textures/faces/mouth02.vtex",
-            "textures/faces/mouth03.vtex",
-            "textures/faces/mouth04.vtex",
-            "textures/faces/mouth05.vtex",
-            "textures/faces/mouth06.vtex",
-            "textures/faces/mouth07.vtex",
-            "textures/faces/mouth08.vtex"
-          ],
-          "NoseTextures": [
-            "textures/faces/nose01.vtex",
-            "textures/faces/nose02.vtex",
-            "textures/faces/nose03.vtex",
-            "textures/faces/nose04.vtex",
-            "textures/faces/nose05.vtex",
-            "textures/faces/nose06.vtex",
-            "textures/faces/nose07.vtex"
-          ]
-        }
-      ],
-      "Children": [
-        {
-          "__guid": "ce750f7b-a79d-40d2-b582-80fbe9da324c",
-          "Flags": 0,
-          "Name": "Sprite",
-          "Position": "0,0,0",
-          "Scale": "3.400001,3.400001,3.400001",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "Sandbox.SpriteRenderer",
-              "__guid": "9b0dfb6a-e01a-4b0b-99dd-852be0bbd38c",
-              "Additive": false,
-              "CastShadows": true,
-              "Color": "0.31188,0.06176,0.06176,1",
-              "DepthFeather": 0,
-              "FlipHorizontal": false,
-              "FlipVertical": false,
-              "FogStrength": 1,
-              "Opaque": true,
-              "Size": "10,10",
-              "Texture": "materials/particles/shapes/sphere1.jpg"
-            }
-          ]
         }
       ]
     },

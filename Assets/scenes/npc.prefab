@@ -1,0 +1,198 @@
+{
+  "RootObject": {
+    "__guid": "7e4da760-5759-4095-9556-43a5192c7a5c",
+    "Flags": 0,
+    "Name": "npc",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "Components": [
+      {
+        "__type": "Sandbox.SkinnedModelRenderer",
+        "__guid": "5dd7bfea-ae37-490f-845a-e0d63462dc36",
+        "BodyGroups": 18446744073709551615,
+        "CreateBoneObjects": false,
+        "Model": "models/player/player.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1",
+        "UseAnimGraph": true
+      },
+      {
+        "__type": "NPC",
+        "__guid": "0d6c462e-b63d-455c-a160-02611be098ad",
+        "Face": {
+          "_type": "component",
+          "component_id": "d3ae7431-fe74-428f-82ac-4020a59081a9",
+          "go": "876ad418-ece7-4933-bb51-4ccc5046fc0b",
+          "component_type": "Face"
+        },
+        "Renderer": {
+          "_type": "component",
+          "component_id": "5dd7bfea-ae37-490f-845a-e0d63462dc36",
+          "go": "7e4da760-5759-4095-9556-43a5192c7a5c",
+          "component_type": "SkinnedModelRenderer"
+        }
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "876ad418-ece7-4933-bb51-4ccc5046fc0b",
+        "Flags": 0,
+        "Name": "face",
+        "Position": "1.5,0.0000006641467,6",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "Components": [
+          {
+            "__type": "Face",
+            "__guid": "d3ae7431-fe74-428f-82ac-4020a59081a9",
+            "Eyebrows": {
+              "_type": "component",
+              "component_id": "f88868b1-d215-47cc-a04b-0758db973d3f",
+              "go": "38a04f1d-c46f-48d5-8e49-496a19c8b262",
+              "component_type": "Eyebrows"
+            },
+            "Eyes": {
+              "_type": "component",
+              "component_id": "0b2190da-9261-4a3b-b471-f7e32357d39c",
+              "go": "10399835-7804-42c0-a594-2619eb96e480",
+              "component_type": "Eyes"
+            },
+            "Mouth": {
+              "_type": "component",
+              "component_id": "21c5693e-b46e-40a9-8a37-3bfd6b62a6c7",
+              "go": "10585b9f-4efe-4c0b-8c0c-9ee0d302f586",
+              "component_type": "Mouth"
+            },
+            "Nose": {
+              "_type": "component",
+              "component_id": "5bcc1eb8-3a74-4576-b990-d3ca2153fc4e",
+              "go": "c22e8751-3ed3-40ad-b5d0-16432c62f06a",
+              "component_type": "Nose"
+            }
+          }
+        ],
+        "Children": [
+          {
+            "__guid": "38a04f1d-c46f-48d5-8e49-496a19c8b262",
+            "Flags": 0,
+            "Name": "Eyebrows",
+            "Position": "0,0,0",
+            "Enabled": true,
+            "NetworkMode": 1,
+            "Components": [
+              {
+                "__type": "Sandbox.SpriteRenderer",
+                "__guid": "ce93c2c1-63d7-46c8-bb78-6dd526532663",
+                "Additive": false,
+                "CastShadows": false,
+                "Color": "1,1,1,1",
+                "DepthFeather": 0,
+                "FlipHorizontal": false,
+                "FlipVertical": false,
+                "FogStrength": 1,
+                "Opaque": true,
+                "Size": "1,1",
+                "Texture": "textures/faces/eyebrows01.jpg"
+              },
+              {
+                "__type": "Eyebrows",
+                "__guid": "f88868b1-d215-47cc-a04b-0758db973d3f"
+              }
+            ]
+          },
+          {
+            "__guid": "10399835-7804-42c0-a594-2619eb96e480",
+            "Flags": 0,
+            "Name": "Eyes",
+            "Position": "0,0,0",
+            "Enabled": true,
+            "NetworkMode": 1,
+            "Components": [
+              {
+                "__type": "Sandbox.SpriteRenderer",
+                "__guid": "c51c9126-0cd1-4ef1-8535-4d44cf4c0c4c",
+                "Additive": false,
+                "CastShadows": false,
+                "Color": "1,1,1,1",
+                "DepthFeather": 0,
+                "FlipHorizontal": false,
+                "FlipVertical": false,
+                "FogStrength": 1,
+                "Opaque": true,
+                "Size": "1,1",
+                "Texture": "textures/faces/eyebrows01.jpg"
+              },
+              {
+                "__type": "Eyes",
+                "__guid": "0b2190da-9261-4a3b-b471-f7e32357d39c"
+              }
+            ]
+          },
+          {
+            "__guid": "c22e8751-3ed3-40ad-b5d0-16432c62f06a",
+            "Flags": 0,
+            "Name": "Nose",
+            "Position": "0,0,0",
+            "Enabled": true,
+            "NetworkMode": 1,
+            "Components": [
+              {
+                "__type": "Sandbox.SpriteRenderer",
+                "__guid": "89ff5301-5915-4a90-910c-a00bdeef2925",
+                "Additive": false,
+                "CastShadows": false,
+                "Color": "1,1,1,1",
+                "DepthFeather": 0,
+                "FlipHorizontal": false,
+                "FlipVertical": false,
+                "FogStrength": 1,
+                "Opaque": true,
+                "Size": "1,1",
+                "Texture": "textures/faces/eyebrows01.jpg"
+              },
+              {
+                "__type": "Nose",
+                "__guid": "5bcc1eb8-3a74-4576-b990-d3ca2153fc4e"
+              }
+            ]
+          },
+          {
+            "__guid": "10585b9f-4efe-4c0b-8c0c-9ee0d302f586",
+            "Flags": 0,
+            "Name": "Mouth",
+            "Position": "0,0,0",
+            "Enabled": true,
+            "NetworkMode": 1,
+            "Components": [
+              {
+                "__type": "Sandbox.SpriteRenderer",
+                "__guid": "6457fc49-e5e2-4f09-8fae-e54231b31acd",
+                "Additive": false,
+                "CastShadows": false,
+                "Color": "1,1,1,1",
+                "DepthFeather": 0,
+                "FlipHorizontal": false,
+                "FlipVertical": false,
+                "FogStrength": 1,
+                "Opaque": true,
+                "Size": "1,1",
+                "Texture": "textures/faces/eyebrows01.jpg"
+              },
+              {
+                "__type": "Mouth",
+                "__guid": "21c5693e-b46e-40a9-8a37-3bfd6b62a6c7"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

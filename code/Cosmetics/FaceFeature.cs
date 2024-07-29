@@ -48,10 +48,7 @@ public abstract class FaceFeature : Component
 		GameObject.Parent = Owner.GameObject;
 		GameObject.Transform.LocalPosition = 0;
 		Renderer = GameObject.Components.GetOrCreate<SpriteRenderer>();
-		Renderer.Size = Face.SIZE;
 		Renderer.Opaque = true;
-
-		UpdatePosition();
 
 		if (IsProxy) { return; }
 
@@ -64,17 +61,23 @@ public abstract class FaceFeature : Component
 
 		Renderer.Texture = WantedTexture;
 
-		UpdatePosition();
-
-		Owner.Transform.Parent.Transform.Position = new Vector3( Game.Random.Float( -400, 400 ), Game.Random.Float( -400, 400 ) );
+		//Owner.Transform.Parent.Transform.Position = new Vector3( Game.Random.Float( -0, 0 ), Game.Random.Float( -0, 00 ) );
 
 	}
 
-	private void UpdatePosition()
+	protected override void OnUpdate()
 	{
-		Transform.LocalPosition =
-		(Vector3)(BaseOffset + Data.Offset) * Face.SIZE // 2D offset
-		+ (Vector3.Up * ZDepth * Face.SIZE); // Z offset
+		// Apply offsets relative to camera.
+		Vector3 off = (BaseOffset + Data.Offset);
+		Rotation rot = Scene.Camera.Transform.Rotation;
+		Transform.LocalPosition = rot.Up * off.y + rot.Left * off.x + rot.Backward * ZDepth;
+		
+	}
+
+	[Broadcast]
+	public void SetColor(Color color)
+	{
+		Renderer.Color = color;
 	}
 
 	public void Randomize()
