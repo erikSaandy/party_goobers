@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
+[Serializable]
 public class Mouth : FaceFeature
 {
 	[JsonIgnore] public override List<Texture> TextureCollection => FaceData.Instance.MouthTextures;

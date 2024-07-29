@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+
+[Serializable]
 public class Eyes : FaceFeature
 {
 	[JsonIgnore] public override List<Texture> TextureCollection => FaceData.Instance.EyeTextures;

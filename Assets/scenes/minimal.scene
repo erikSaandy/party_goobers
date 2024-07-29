@@ -138,6 +138,32 @@
             "textures/faces/nose07.vtex"
           ]
         }
+      ],
+      "Children": [
+        {
+          "__guid": "ce750f7b-a79d-40d2-b582-80fbe9da324c",
+          "Flags": 0,
+          "Name": "Sprite",
+          "Position": "0,0,0",
+          "Scale": "3.400001,3.400001,3.400001",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.SpriteRenderer",
+              "__guid": "9b0dfb6a-e01a-4b0b-99dd-852be0bbd38c",
+              "Additive": false,
+              "CastShadows": true,
+              "Color": "0.31188,0.06176,0.06176,1",
+              "DepthFeather": 0,
+              "FlipHorizontal": false,
+              "FlipVertical": false,
+              "FogStrength": 1,
+              "Opaque": true,
+              "Size": "10,10",
+              "Texture": "materials/particles/shapes/sphere1.jpg"
+            }
+          ]
+        }
       ]
     },
     {

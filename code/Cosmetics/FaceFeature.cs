@@ -9,19 +9,24 @@ public abstract class FaceFeature : Component
 	[JsonIgnore] public Face Owner { get; private set; }
 
 	[JsonIgnore] public abstract Vector2 BaseOffset { get; }
-	[JsonInclude] public Vector2 Offset { get; set; }
 
-	[Sync][JsonInclude] public int ID { get; private set; }
+	public FaceFeatureData Data { get; set; } 
 
 	[Broadcast]
-	public virtual void SetTextureID(int value)
+	public void SetTextureID(int value)
 	{
-		this.ID = value % TextureCollection.Count;
+		Data.ID = value % TextureCollection.Count;
 		UpdateRenderer();
 	}
 
+	public void SetFeatureData(FaceFeatureData data)
+	{
+		this.Data.Offset = data.Offset;
+		SetTextureID(data.ID);
+	}
+
  	[JsonIgnore] public abstract List<Texture> TextureCollection { get; }
-	[JsonIgnore] public Texture WantedTexture => TextureCollection[ID];
+	[JsonIgnore] public Texture WantedTexture => TextureCollection[Data.ID];
 
 	[JsonIgnore] public bool IsSpawned { get; private set; } = false;
 
@@ -37,51 +42,65 @@ public abstract class FaceFeature : Component
 
 		Owner = Components.GetInParentOrSelf<Face>();
 
-		if(IsProxy) { return; }
+		Data = new();
+
+		GameObject.Name = GetType().Name;
+		GameObject.Parent = Owner.GameObject;
+		GameObject.Transform.LocalPosition = 0;
+		Renderer = GameObject.Components.GetOrCreate<SpriteRenderer>();
+		Renderer.Size = Face.SIZE;
+		Renderer.Opaque = true;
+
+		UpdatePosition();
+
+		if (IsProxy) { return; }
 
 		SetTextureID( TextureCollection.GetRandomId() );
-		this.Offset = 0;
+		Data.Offset = 0;
 	}
 
-	[Broadcast]
-	public void UpdateRenderer()
+	private void UpdateRenderer()
 	{
-		if(IsSpawned)
-		{
-			Renderer.Texture = WantedTexture;
-		}
-		else
-		{
-			GameObject.Name = GetType().Name;
-			GameObject.Parent = Owner.GameObject;
-			GameObject.Transform.LocalPosition = 0;
-			Renderer = GameObject.Components.GetOrCreate<SpriteRenderer>();
-			Renderer.Texture = WantedTexture;
-			Renderer.Size = Face.SIZE;
-			Renderer.Opaque = true;
 
-			IsSpawned = true;
-		}
+		Renderer.Texture = WantedTexture;
 
-		Renderer.GameObject.Transform.LocalPosition =
-			(Vector3)(BaseOffset + Offset) * Face.SIZE // 2D offset
-			+ (Vector3.Up * ZDepth * Face.SIZE); // Z offset
+		UpdatePosition();
 
 		Owner.Transform.Parent.Transform.Position = new Vector3( Game.Random.Float( -400, 400 ), Game.Random.Float( -400, 400 ) );
 
+	}
+
+	private void UpdatePosition()
+	{
+		Transform.LocalPosition =
+		(Vector3)(BaseOffset + Data.Offset) * Face.SIZE // 2D offset
+		+ (Vector3.Up * ZDepth * Face.SIZE); // Z offset
 	}
 
 	public void Randomize()
 	{
 		if(IsProxy) { return; }
 
-		Offset = GetRandomOffset();
+		Data.Offset = GetRandomOffset();
 		SetTextureID( TextureCollection.GetRandomId() );
 	}
 
 	public virtual Vector2 GetRandomOffset()
 	{
 		return new Vector2( Game.Random.Float( -0.2f, 0.2f ), Game.Random.Float( -0.2f, 0.2f ) ) * 0.1f;
+	}
+
+	public class FaceFeatureData
+	{
+		[Property] public Vector2 Offset { get; set; }
+		[Property] public int ID { get; set; }
+
+		public FaceFeatureData()
+		{
+			Offset = 0;
+			ID = 0;
+		}
+
 	}
 
 }
