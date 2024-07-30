@@ -49,6 +49,7 @@ public class Face : Component, Component.INetworkListener
 		base.OnStart(); 
 
 		GameObject.Name = "Face";
+		GameObject.Transform.Scale = 9;
 
 	}
 

@@ -2,14 +2,14 @@
   "RootObject": {
     "__guid": "7e4da760-5759-4095-9556-43a5192c7a5c",
     "Flags": 0,
-    "Name": "NPC",
-    "Scale": "10,10,10",
+    "Name": "npc",
     "Enabled": true,
     "NetworkMode": 1,
     "Components": [
       {
         "__type": "Sandbox.SkinnedModelRenderer",
         "__guid": "5dd7bfea-ae37-490f-845a-e0d63462dc36",
+        "AnimationGraph": "models/player/npc.vanmgrph",
         "BodyGroups": 18446744073709551615,
         "CreateBoneObjects": false,
         "Model": "models/player/player.vmdl",
@@ -23,8 +23,7 @@
         "__guid": "876ad418-ece7-4933-bb51-4ccc5046fc0b",
         "Flags": 0,
         "Name": "face",
-        "Position": "-59.36533,-19.50977,0.2",
-        "Scale": "0.1,0.1,0.1",
+        "Scale": "9,9,9",
         "Enabled": true,
         "NetworkMode": 1,
         "Components": [
@@ -62,7 +61,6 @@
             "__guid": "38a04f1d-c46f-48d5-8e49-496a19c8b262",
             "Flags": 0,
             "Name": "Eyebrows",
-            "Position": "0,0,0",
             "Enabled": true,
             "NetworkMode": 1,
             "Components": [
@@ -90,7 +88,6 @@
             "__guid": "10399835-7804-42c0-a594-2619eb96e480",
             "Flags": 0,
             "Name": "Eyes",
-            "Position": "0,0,0",
             "Enabled": true,
             "NetworkMode": 1,
             "Components": [
@@ -118,7 +115,6 @@
             "__guid": "c22e8751-3ed3-40ad-b5d0-16432c62f06a",
             "Flags": 0,
             "Name": "Nose",
-            "Position": "0,0,0",
             "Enabled": true,
             "NetworkMode": 1,
             "Components": [
@@ -146,7 +142,6 @@
             "__guid": "10585b9f-4efe-4c0b-8c0c-9ee0d302f586",
             "Flags": 0,
             "Name": "Mouth",
-            "Position": "0,0,0",
             "Enabled": true,
             "NetworkMode": 1,
             "Components": [
@@ -172,7 +167,8 @@
           }
         ]
       }
-    ]
+    ],
+    "__variables": []
   },
   "ShowInMenu": false,
   "MenuPath": null,

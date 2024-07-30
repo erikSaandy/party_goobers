@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 public class NPCBuffer : SingletonComponent<NPCBuffer>
 {
 
-	public const int NPC_COUNT = 50; // TODO: Tie to max player count.
+	public const int NPC_COUNT = 150; // TODO: Tie to max player count.
 
 	[Property] public PrefabFile Prefab { get; private set; }
 
@@ -38,11 +38,11 @@ public class NPCBuffer : SingletonComponent<NPCBuffer>
 			NPCs.Add( npc.Id );
 			FreeNPCs.Push( npc.Id );
 
-			int step = 3;
-			int count = 7;
+			int step = 27;
+			int count = 15;
 			float start = ((count * 0.5f) * -step) + ( (i / count % 2) == 0 ? step*0.5f : 0 );
 			float posX = start + (i % count) * step;
-			float posY = -(int)(i / count) * step;
+			float posY = ( -(int)(i / count) * step ) + 256;
 
 			npc.Transform.Position = new Vector3( -posY, posX, posY );
 

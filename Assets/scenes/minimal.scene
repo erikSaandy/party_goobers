@@ -75,10 +75,10 @@
           "__guid": "cf3cbf96-22b6-4be4-a5d0-672a96c17f9f",
           "BackgroundColor": "0.55349,0.5907,1,1",
           "ClearFlags": "All",
-          "FieldOfView": 60,
+          "FieldOfView": 90,
           "IsMainCamera": true,
-          "Orthographic": true,
-          "OrthographicHeight": 16,
+          "Orthographic": false,
+          "OrthographicHeight": 400,
           "Priority": 1,
           "RenderExcludeTags": "",
           "RenderTags": "",
@@ -171,6 +171,24 @@
           "LightColor": "0.91373,0.98039,1,1",
           "Shadows": true,
           "SkyColor": "0,0,0,0"
+        }
+      ]
+    },
+    {
+      "__guid": "ffd7b717-0457-4f8f-9352-4ed4f2c849b7",
+      "Flags": 0,
+      "Name": "Cube",
+      "Position": "-64.37904,0,-166.9533",
+      "Scale": "18.37367,14.71844,1.000001",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "0421e390-8cf8-4c32-b893-5305210b4218",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/dev/box.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
         }
       ]
     }
