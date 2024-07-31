@@ -14,8 +14,12 @@
 						remaps = 
 						[
 							{
-								from = "lambert1.vmat"
+								from = "m_npc.vmat"
 								to = "materials/dev/primary_white_emissive.vmat"
+							},
+							{
+								from = "m_clothes.vmat"
+								to = "materials/dev/reflectivity_80b.vmat"
 							},
 						]
 						use_global_default = false
@@ -100,6 +104,75 @@
 						take = 0
 						reverse = false
 					},
+					{
+						_class = "AnimFile"
+						name = "scale_head"
+						activity_name = "scale_head"
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						disable_interpolation = false
+						enable_scale = true
+						source_filename = "models/player/player@scale_head.fbx"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "wave"
+						activity_name = "wave"
+						activity_weight = 1
+						weight_list_name = "arm_r_mask"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						disable_interpolation = false
+						enable_scale = false
+						source_filename = "models/player/player@wave_hand.fbx"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "cheer"
+						activity_name = "cheer"
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						disable_interpolation = false
+						enable_scale = false
+						source_filename = "models/player/player@cheer.fbx"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
 				]
 				default_root_bone_name = ""
 			},
@@ -163,6 +236,164 @@
 						mirror_z = false
 						flip_bone_forward = false
 						swap_left_and_right_bones = false
+					},
+				]
+			},
+			{
+				_class = "PhysicsShapeList"
+				children = 
+				[
+					{
+						_class = "PhysicsShapeBox"
+						parent_bone = "QuickRigCharacter_Head"
+						surface_prop = "default"
+						collision_tags = "npc"
+						origin = [ -0.857361, 0.195124, 0.01769 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						dimensions = [ 5.200727, 2.253887, 2.772105 ]
+					},
+					{
+						_class = "PhysicsShapeBox"
+						parent_bone = "QuickRigCharacter_RightForeArm"
+						surface_prop = "default"
+						collision_tags = "npc"
+						origin = [ -0.844712, -0.013009, -0.012202 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						dimensions = [ 1.792185, 0.627095, 0.490651 ]
+					},
+					{
+						_class = "PhysicsShapeBox"
+						parent_bone = "QuickRigCharacter_RightArm"
+						surface_prop = "default"
+						collision_tags = "npc"
+						origin = [ -0.413361, 0.074429, -0.081348 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						dimensions = [ 1.768437, 0.801972, 0.628942 ]
+					},
+					{
+						_class = "PhysicsShapeBox"
+						parent_bone = "QuickRigCharacter_LeftForeArm"
+						surface_prop = "default"
+						collision_tags = "npc"
+						origin = [ 0.85916, -0.013009, -0.012202 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						dimensions = [ 1.876324, 0.627095, 0.490651 ]
+					},
+					{
+						_class = "PhysicsShapeBox"
+						parent_bone = "QuickRigCharacter_LeftArm"
+						surface_prop = "default"
+						collision_tags = "npc"
+						origin = [ 0.45072, -0.089502, -0.012202 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						dimensions = [ 1.864109, 0.746432, 0.490651 ]
+					},
+					{
+						_class = "PhysicsShapeBox"
+						parent_bone = "QuickRigCharacter_RightLeg"
+						surface_prop = "default"
+						collision_tags = "npc"
+						origin = [ -0.862301, -0.096528, -0.044451 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						dimensions = [ 1.679067, 0.732381, 0.709743 ]
+					},
+					{
+						_class = "PhysicsShapeBox"
+						parent_bone = "QuickRigCharacter_LeftLeg"
+						surface_prop = "default"
+						collision_tags = "npc"
+						origin = [ 0.679934, -0.096528, 0.02787 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						dimensions = [ 1.788428, 0.732381, 0.71562 ]
+					},
+					{
+						_class = "PhysicsShapeBox"
+						parent_bone = "QuickRigCharacter_LeftUpLeg"
+						surface_prop = "default"
+						collision_tags = "npc"
+						origin = [ 0.679934, 0.091526, 0.02787 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						dimensions = [ 1.788428, 0.838202, 0.71562 ]
+					},
+					{
+						_class = "PhysicsShapeBox"
+						parent_bone = "QuickRigCharacter_RightUpLeg"
+						surface_prop = "default"
+						collision_tags = "npc"
+						origin = [ -0.82217, -0.054497, -0.02773 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						dimensions = [ 1.5322, 0.788196, 0.668843 ]
+					},
+					{
+						_class = "PhysicsShapeBox"
+						parent_bone = "QuickRigCharacter_Spine2"
+						surface_prop = "default"
+						collision_tags = "npc"
+						origin = [ -0.077789, -0.038994, 0.011098 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						dimensions = [ 2.000244, 1.384634, 1.402483 ]
+					},
+				]
+			},
+			{
+				_class = "WeightListList"
+				children = 
+				[
+					{
+						_class = "WeightList"
+						name = "head_mask"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "QuickRigCharacter_Head"
+								weight = 1.0
+							},
+							{
+								bone = "QuickRigCharacter_Neck"
+								weight = 0.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
+					{
+						_class = "WeightList"
+						name = "arm_r_mask"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "QuickRigCharacter_Head"
+								weight = 0.0
+							},
+							{
+								bone = "QuickRigCharacter_LeftArm"
+								weight = 0.0
+							},
+							{
+								bone = "QuickRigCharacter_LeftShoulder"
+								weight = 0.0
+							},
+							{
+								bone = "QuickRigCharacter_Neck"
+								weight = 0.0
+							},
+							{
+								bone = "QuickRigCharacter_RightArm"
+								weight = 1.0
+							},
+							{
+								bone = "QuickRigCharacter_RightShoulder"
+								weight = 0.5
+							},
+							{
+								bone = "QuickRigCharacter_Spine2"
+								weight = 0.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
 					},
 				]
 			},

@@ -1,0 +1,21 @@
+{
+  "publish": {
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "map01",
+      "Type": "map",
+      "Org": "local",
+      "Ident": "map01",
+      "Schema": 0,
+      "IncludeSourceFiles": false,
+      "Resources": null,
+      "PackageReferences": [],
+      "EditorReferences": [
+        "saandy.glass02_hs#17240"
+      ],
+      "Metadata": {
+        "SingleAssetSource": "maps/map01.vmap"
+      }
+    }
+  }
+}

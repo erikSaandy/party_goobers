@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 public class Eyes : FaceFeature
 {
 	[JsonIgnore] public override List<Texture> TextureCollection => FaceData.Instance.EyeTextures;
-	[JsonIgnore] public override float ZDepth => 0.2f;
+	[JsonIgnore] public override float ZDepth => 0.01f;
 	[JsonIgnore] public override Vector2 BaseOffset => new Vector2( 0f, 0.2f );
 
 	public Eyes() : base( ) { }

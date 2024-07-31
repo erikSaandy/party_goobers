@@ -5,8 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public class NPC : Component
+public class NPC : Component, IInteractable
 {
+
+	private enum AnimationBehaviour
+	{
+		Default,
+		Wave,
+		Cheer
+	}
+
 	public Player Owner { get; set; } = null;
 
 	[Property] public SkinnedModelRenderer Renderer { get; set; }
@@ -19,22 +27,46 @@ public class NPC : Component
 
 	private Transform? ForwardReference => Renderer.GetAttachment( "forward_reference" );
 
+	public bool IsInteractableBy( Player player ) => true;
+
+	public void OnMouseEnter( Guid playerId )
+	{
+		Renderer.Set( "b_big_head", true );
+	}
+
+	public void OnMouseExit( Guid playerId )
+	{
+		Renderer.Set( "b_big_head", false );
+	}
+
+	public void OnInteract( Guid playerId )
+	{
+		Log.Info( "Interacted with " + GameObject.Name );
+		Renderer.Set( "e_behaviour", (int)AnimationBehaviour.Wave );
+	}
+
 	public NPC() { }
 
 	protected override void OnStart()
 	{
-		base.OnStart();
-
-		Color = Color.Random;
-		Color = Color.Desaturate( 0.1f );
-		Color = Color.Darken( 0.6f );
-		Face.SetColor( Color );
-		Renderer.Tint = Color;
+		base.OnStart();	
 
 		LookAt = Scene.Camera.GameObject;
 
 		Renderer.Set( "b_walking", true );
 
+
+		if(IsProxy) { return; }
+
+		SetColor( ColorX.MiiColors.GetRandom() );
+
+	}
+
+	[Broadcast]
+	public void SetColor( Color color )
+	{
+		Face.SetColor( color );
+		Renderer.Tint = color;
 	}
 
 	public void GetPosessedBy(Player owner)
@@ -42,6 +74,7 @@ public class NPC : Component
 		this.Owner = owner;
 		Network.AssignOwnership( owner.Network.OwnerConnection );
 
+		Log.Info($"{owner.Network.OwnerConnection.DisplayName} posessed npc");
 		GameObject.Name = $"NPC ({owner.Network.OwnerConnection.DisplayName})";
 
 		Face.Load();
@@ -51,11 +84,13 @@ public class NPC : Component
 	protected override void OnUpdate()
 	{
 		if(LookAt != null) {
-			LookAtPosition( LookAt.Transform.Position );	
+			LookAtPosition( Scene.Camera.Transform.Position );	
 		}
 
 		Vector3 fwd = ForwardReference?.Forward ?? 0;
-		Face.Transform.Position = ( ForwardReference?.Position ?? 0 ) + (fwd.Normal * 14f);
+		Vector3 scale =  ( ForwardReference?.Scale ?? 1 );
+		Face.Transform.Position = (ForwardReference?.Position ?? 0) + (fwd.Normal * 14f * scale);
+		Face.Transform.Scale = 11 * scale;
 
 	}
 
@@ -66,5 +101,4 @@ public class NPC : Component
 		Renderer.SetLookDirection( "aim_head", dir );
 
 	}
-
 }

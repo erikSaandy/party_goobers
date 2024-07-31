@@ -11,7 +11,7 @@
         {
           "__type": "NPCBuffer",
           "__guid": "8c5b41ce-ec79-49f7-b83f-af54dd106869",
-          "Prefab": "scenes/npc.prefab"
+          "Prefab": "prefabs/npc.prefab"
         }
       ]
     },
@@ -66,8 +66,8 @@
       "__guid": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a",
       "Flags": 0,
       "Name": "Camera",
-      "Position": "400,0,0",
-      "Rotation": "0,0,-1,0.0000001947072",
+      "Position": "541.4996,-250,313",
+      "Rotation": "-0.1830127,0.1830127,0.6830127,0.6830127",
       "Enabled": true,
       "Components": [
         {
@@ -84,7 +84,7 @@
           "RenderTags": "",
           "TargetEye": "None",
           "Viewport": "0,0,1,1",
-          "ZFar": 800,
+          "ZFar": 2048,
           "ZNear": 10
         },
         {
@@ -158,10 +158,9 @@
       "__guid": "ea0ea7d2-1eb4-4447-9d38-77e4fe2c355d",
       "Flags": 0,
       "Name": "Sun",
-      "Position": "-5.937668,-7.143127,162.1098",
-      "Rotation": "-0.4829629,0.3036032,0.3705904,0.7329631",
+      "Position": "-5.937668,-7.143127,1226.279",
+      "Rotation": "-0.2007647,0.5339678,0.7385854,0.3592546",
       "Tags": "light_directional,light",
-      "Enabled": true,
       "Components": [
         {
           "__type": "Sandbox.DirectionalLight",
@@ -175,22 +174,41 @@
       ]
     },
     {
-      "__guid": "ffd7b717-0457-4f8f-9352-4ed4f2c849b7",
+      "__guid": "52df42e0-2de4-4c3f-b0ba-9671f49e4a63",
       "Flags": 0,
-      "Name": "Cube",
-      "Position": "-64.37904,0,-166.9533",
-      "Scale": "18.37367,14.71844,1.000001",
+      "Name": "Sun (1)",
+      "Position": "541.4996,-250,313",
+      "Rotation": "-0.1830127,0.1830127,0.6830127,0.6830127",
+      "Tags": "light_directional,light",
+      "Components": [
+        {
+          "__type": "Sandbox.DirectionalLight",
+          "__guid": "902a0329-a955-49d4-923a-e0f10b4b6fbc",
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0.91373,0.98039,1,1",
+          "Shadows": true,
+          "SkyColor": "0,0,0,0"
+        }
+      ]
+    },
+    {
+      "__guid": "0b381df2-4f1d-46ae-9733-8d0b2b806aac",
+      "Flags": 0,
+      "Name": "Object",
       "Enabled": true,
       "Components": [
         {
-          "__type": "Sandbox.ModelRenderer",
-          "__guid": "0421e390-8cf8-4c32-b893-5305210b4218",
-          "BodyGroups": 18446744073709551615,
-          "Model": "models/dev/box.vmdl",
-          "RenderType": "On",
-          "Tint": "1,1,1,1"
+          "__type": "Sandbox.MapInstance",
+          "__guid": "2eafb764-defa-47f2-99cc-c6e0803ed75b",
+          "__version": 1,
+          "EnableCollision": true,
+          "MapName": "maps/map01.vmap",
+          "NoOrigin": false,
+          "UseMapFromLaunch": false
         }
-      ]
+      ],
+      "Children": []
     }
   ],
   "SceneProperties": {

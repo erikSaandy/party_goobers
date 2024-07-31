@@ -37,6 +37,7 @@ public class Face : Component, Component.INetworkListener
 	[Broadcast]
 	public void SetColor(Color color)
 	{
+		color = color * 2;
 		Eyebrows.SetColor( color );
 		Eyes.SetColor( color );
 		Nose.SetColor( color );

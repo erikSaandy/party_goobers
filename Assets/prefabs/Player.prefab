@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "__guid": "8c956853-3dc5-42ef-805f-1f5e8e55ce63",
+    "__guid": "cbbfcc15-bf66-4507-b14d-0cb8c45ebb90",
     "Flags": 0,
     "Name": "player",
     "Enabled": true,
@@ -8,18 +8,8 @@
     "Components": [
       {
         "__type": "Player",
-        "__guid": "903e5a7b-e67d-4e91-85c1-5955e17977fa",
-        "Name": ""
-      },
-      {
-        "__type": "Sandbox.SkinnedModelRenderer",
-        "__guid": "020cdb3d-a9b4-4296-9750-73c86052b90d",
-        "BodyGroups": 18446744073709551615,
-        "CreateBoneObjects": false,
-        "Model": "models/player/player.vmdl",
-        "RenderType": "Off",
-        "Tint": "1,1,1,1",
-        "UseAnimGraph": true
+        "__guid": "b864fe8c-c607-442e-8273-88ee1b484ac7",
+        "NPCGuid": "00000000-0000-0000-0000-000000000000"
       }
     ],
     "Children": [],

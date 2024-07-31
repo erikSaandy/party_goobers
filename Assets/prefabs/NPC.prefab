@@ -7,6 +7,22 @@
     "NetworkMode": 1,
     "Components": [
       {
+        "__type": "NPC",
+        "__guid": "47d72ee3-4c35-4fa9-b9a5-2c8db6b9f11e",
+        "Face": {
+          "_type": "component",
+          "component_id": "d3ae7431-fe74-428f-82ac-4020a59081a9",
+          "go": "876ad418-ece7-4933-bb51-4ccc5046fc0b",
+          "component_type": "Face"
+        },
+        "Renderer": {
+          "_type": "component",
+          "component_id": "5dd7bfea-ae37-490f-845a-e0d63462dc36",
+          "go": "7e4da760-5759-4095-9556-43a5192c7a5c",
+          "component_type": "SkinnedModelRenderer"
+        }
+      },
+      {
         "__type": "Sandbox.SkinnedModelRenderer",
         "__guid": "5dd7bfea-ae37-490f-845a-e0d63462dc36",
         "AnimationGraph": "models/player/npc.vanmgrph",
@@ -16,6 +32,20 @@
         "RenderType": "On",
         "Tint": "1,1,1,1",
         "UseAnimGraph": true
+      },
+      {
+        "__type": "Sandbox.ModelPhysics",
+        "__guid": "b7642419-c98d-45d8-a904-67a5b7477064",
+        "Locking": {},
+        "Model": "models/player/player.vmdl",
+        "MotionEnabled": false,
+        "Renderer": {
+          "_type": "component",
+          "component_id": "5dd7bfea-ae37-490f-845a-e0d63462dc36",
+          "go": "7e4da760-5759-4095-9556-43a5192c7a5c",
+          "component_type": "SkinnedModelRenderer"
+        },
+        "RigidbodyFlags": 0
       }
     ],
     "Children": [
