@@ -1,6 +1,7 @@
 ﻿using Sandbox;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -55,11 +56,41 @@ public class NPC : Component, IInteractable
 
 		Renderer.Set( "b_walking", true );
 
+		// TODO: This should not be done from within NPC.
+		Spawn();
 
-		if(IsProxy) { return; }
 
+		if (IsProxy) { return; }
+
+		// TODO: Color needs to be networked.
 		SetColor( ColorX.MiiColors.GetRandom() );
 
+	}
+
+	private void Spawn()
+	{
+		GameObject.Transform.Position = FindSpawnLocation().Position;
+	}
+
+	Transform FindSpawnLocation()
+	{
+
+		//
+		// If we have any SpawnPoint components in the scene, then use those
+		//
+		var spawnPoints = Scene.GetAllComponents<SpawnPoint>().ToArray();
+		if ( spawnPoints.Length > 0 )
+		{
+			SpawnPoint sp = Random.Shared.FromArray( spawnPoints );
+			Transform t = sp.Transform.World;
+			sp.Destroy();
+			return t;
+		}
+
+		//
+		// Failing that, spawn where we are
+		//
+		return Transform.World;
 	}
 
 	[Broadcast]
@@ -101,4 +132,5 @@ public class NPC : Component, IInteractable
 		Renderer.SetLookDirection( "aim_head", dir );
 
 	}
+
 }

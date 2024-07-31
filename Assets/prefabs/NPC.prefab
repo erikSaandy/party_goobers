@@ -46,6 +46,16 @@
           "component_type": "SkinnedModelRenderer"
         },
         "RigidbodyFlags": 0
+      },
+      {
+        "__type": "NPCFootsteps",
+        "__guid": "e3cdbc2c-7a21-45a8-8096-960e1f728c0b",
+        "Owner": {
+          "_type": "component",
+          "component_id": "5dd7bfea-ae37-490f-845a-e0d63462dc36",
+          "go": "7e4da760-5759-4095-9556-43a5192c7a5c",
+          "component_type": "SkinnedModelRenderer"
+        }
       }
     ],
     "Children": [

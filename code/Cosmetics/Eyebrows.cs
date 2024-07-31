@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 public class Eyebrows : FaceFeature
 {
 	[JsonIgnore] public override List<Texture> TextureCollection => FaceData.Instance.EyebrowTextures;
-	[JsonIgnore] public override float ZDepth => .015f;
+	[JsonIgnore] public override float ZDepth => -.05f;
 	[JsonIgnore] public override Vector2 BaseOffset => new Vector2( 0f, 0.5f );
 
 	public Eyebrows( ) : base() { }

@@ -1,0 +1,56 @@
+@using System;
+@using Sandbox;
+@using Sandbox.UI;
+@attribute [StyleSheet]
+@inherits Panel
+
+<root class="container">
+
+
+	<div class="cursor visible" @ref="CursorPanel" />
+
+</root>
+
+@code
+{
+	//	<div class="cursor @(Visible ? "visible" : "")" @ref="CursorPanel" />
+	public Player Owner { get; set; }
+
+	public static bool Visible { get; private set; } = true;
+
+	public Panel CursorPanel { get; set; }
+
+	public static Vector2 CursorPosition { get; private set; }
+
+	public Cursor() {
+		CursorPanel = new Panel();
+		Visible = true;
+	}
+
+	public override void Tick()
+	{
+		base.Tick();
+
+		if(Visible)
+		{
+			CursorPanel.Style.Left = Length.Fraction(Mouse.Position.x / Screen.Width);
+			CursorPanel.Style.Top = Length.Fraction(Mouse.Position.y / Screen.Height);
+		}
+
+	}
+
+	public static void Show()
+	{
+		Visible = true;
+	}
+
+	public static void Hide()
+	{
+		Visible = false;
+	}
+
+	protected override int BuildHash()
+	{
+		return System.HashCode.Combine((Visible ? CursorPosition : 0), Visible);
+	}
+}

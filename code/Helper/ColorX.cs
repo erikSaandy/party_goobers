@@ -11,7 +11,7 @@ using static System.Net.Mime.MediaTypeNames;
 public static class ColorX
 {
 
-	public static Color[] MiiColors { get; set; } = new Color[100]
+	public static Color[] MiiColors { get; set; } = new Color[99]
 	{
 
 			ColorX.FromHex("631D09"),ColorX.FromHex("8C3124"),ColorX.FromHex("6C3F2C"),ColorX.FromHex("905641"),ColorX.FromHex("B61D06"),
@@ -42,7 +42,7 @@ public static class ColorX
 			ColorX.FromHex("D69D65"),ColorX.FromHex("F9A075"),ColorX.FromHex("FEB562"),ColorX.FromHex("FFC589"),ColorX.FromHex("E8CFB0"),
 
 			ColorX.FromHex("000000"),ColorX.FromHex("302929"),ColorX.FromHex("414141"),ColorX.FromHex("6B6F73"),ColorX.FromHex("796F67"),
-			ColorX.FromHex("767981"),ColorX.FromHex("9B9B9B"),ColorX.FromHex("BEBEBE"),ColorX.FromHex("DFD8CC"),ColorX.FromHex("FFFFFF"),
+			ColorX.FromHex("767981"),ColorX.FromHex("9B9B9B"),ColorX.FromHex("BEBEBE"),ColorX.FromHex("DFD8CC"),/*ColorX.FromHex("FFFFFF"),*/
 
 	};
 

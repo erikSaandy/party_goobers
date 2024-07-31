@@ -63,10 +63,28 @@
       ]
     },
     {
+      "__guid": "0b381df2-4f1d-46ae-9733-8d0b2b806aac",
+      "Flags": 0,
+      "Name": "Map Instnace",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.MapInstance",
+          "__guid": "2eafb764-defa-47f2-99cc-c6e0803ed75b",
+          "__version": 1,
+          "EnableCollision": true,
+          "MapName": "maps/map01.vmap",
+          "NoOrigin": false,
+          "UseMapFromLaunch": false
+        }
+      ],
+      "Children": []
+    },
+    {
       "__guid": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a",
       "Flags": 0,
       "Name": "Camera",
-      "Position": "541.4996,-250,313",
+      "Position": "541.5001,-528.0392,509.2222",
       "Rotation": "-0.1830127,0.1830127,0.6830127,0.6830127",
       "Enabled": true,
       "Components": [
@@ -75,7 +93,7 @@
           "__guid": "cf3cbf96-22b6-4be4-a5d0-672a96c17f9f",
           "BackgroundColor": "0.55349,0.5907,1,1",
           "ClearFlags": "All",
-          "FieldOfView": 90,
+          "FieldOfView": 45,
           "IsMainCamera": true,
           "Orthographic": false,
           "OrthographicHeight": 400,
@@ -191,24 +209,6 @@
           "SkyColor": "0,0,0,0"
         }
       ]
-    },
-    {
-      "__guid": "0b381df2-4f1d-46ae-9733-8d0b2b806aac",
-      "Flags": 0,
-      "Name": "Object",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.MapInstance",
-          "__guid": "2eafb764-defa-47f2-99cc-c6e0803ed75b",
-          "__version": 1,
-          "EnableCollision": true,
-          "MapName": "maps/map01.vmap",
-          "NoOrigin": false,
-          "UseMapFromLaunch": false
-        }
-      ],
-      "Children": []
     }
   ],
   "SceneProperties": {

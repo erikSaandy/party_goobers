@@ -15,11 +15,11 @@
 						[
 							{
 								from = "m_npc.vmat"
-								to = "materials/dev/primary_white_emissive.vmat"
+								to = "models/player/material/npc_skin.vmat"
 							},
 							{
 								from = "m_clothes.vmat"
-								to = "materials/dev/reflectivity_80b.vmat"
+								to = "models/player/material/npc_clothes.vmat"
 							},
 						]
 						use_global_default = false
@@ -84,6 +84,31 @@
 					{
 						_class = "AnimFile"
 						name = "walking"
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_FOOTSTEP"
+								event_frame = 9
+								event_keys = 
+								{
+									Attachment = "left_foot"
+									Foot = "0"
+									Volume = 1.0
+								}
+							},
+							{
+								_class = "AnimEvent"
+								event_class = "AE_FOOTSTEP"
+								event_frame = 25
+								event_keys = 
+								{
+									Attachment = "right_foot"
+									Foot = "1"
+									Volume = 1.0
+								}
+							},
+						]
 						activity_name = "Walk"
 						activity_weight = 1
 						weight_list_name = ""
@@ -207,6 +232,37 @@
 							]
 						}
 					},
+					{
+						_class = "Feet"
+						children = 
+						[
+							{
+								_class = "Foot"
+								name = "left_foot"
+								anklebone = "QuickRigCharacter_LeftFoot"
+								toebone = "QuickRigCharacter_LeftToeBase"
+								balloffset = [ 0.097958, -0.056409, 0.021891 ]
+								heeloffset = [ 0.028084, 0.294074, 0.175161 ]
+								autolevel = true
+								traceheight = 10.0
+								traceradius = 4.0
+							},
+							{
+								_class = "Foot"
+								name = "right_foot"
+								anklebone = "QuickRigCharacter_RightFoot"
+								toebone = "QuickRigCharacter_RightToeBase"
+								balloffset = [ -0.041235, 0.049171, 0.10898 ]
+								heeloffset = [ 0.008708, -0.332762, -0.026437 ]
+								autolevel = true
+								traceheight = 10.0
+								traceradius = 4.0
+							},
+						]
+						locktolerance = 0.6
+						heighttolerance = 2.0
+						sanitizetrajectories = true
+					},
 				]
 			},
 			{
@@ -217,6 +273,24 @@
 						_class = "Attachment"
 						name = "forward_reference"
 						parent_bone = "QuickRigCharacter_Head"
+						relative_origin = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ 0.0, 90.0, 90.0 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "left_foot"
+						parent_bone = "QuickRigCharacter_LeftFoot"
+						relative_origin = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ 0.0, 90.0, 90.0 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "right_foot"
+						parent_bone = "QuickRigCharacter_RightFoot"
 						relative_origin = [ 0.0, 0.0, 0.0 ]
 						relative_angles = [ 0.0, 90.0, 90.0 ]
 						weight = 1.0

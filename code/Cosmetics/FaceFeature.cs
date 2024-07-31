@@ -70,7 +70,10 @@ public abstract class FaceFeature : Component
 		// Apply offsets relative to camera.
 		Vector3 off = (BaseOffset + Data.Offset);
 		Rotation rot = Scene.Camera.Transform.Rotation;
-		Transform.LocalPosition = rot.Up * off.y + rot.Left * off.x + rot.Backward * ZDepth;
+		Transform.LocalPosition = 
+			rot.Up * off.y 
+			+ rot.Left * off.x + 
+			rot.Forward * ZDepth;
 		
 	}
 

@@ -41,8 +41,6 @@ public class Player : Component
 
 		if ( IsProxy ) { return; }
 
-		Mouse.Visible = true;
-
 		if ( TraceLook( out SceneTraceResult trace, out IInteractable hit ) )
 		{
 			if ( Input.Pressed( "Attack1" ) )
@@ -64,7 +62,8 @@ public class Player : Component
 			}
 
 		}
-		else if(PreviousHit != null)
+		
+		if( PreviousHit != null && PreviousHit != hit)
 		{
 			Log.Info( "Mouse exited interactable!" );
 			PreviousHit.OnMouseExit( this.Id );

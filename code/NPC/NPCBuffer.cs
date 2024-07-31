@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 public class NPCBuffer : SingletonComponent<NPCBuffer>
 {
 
-	public const int NPC_COUNT = 150; // TODO: Tie to max player count.
+	public const int NPC_COUNT = 50; // TODO: Tie to max player count.
 
 	[Property] public PrefabFile Prefab { get; private set; }
 

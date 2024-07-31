@@ -1,0 +1,27 @@
+@using Sandbox;
+@using Sandbox.UI;
+
+@inherits PanelComponent
+
+<root>
+	<Cursor Owner="@Owner"/>
+</root>
+
+@code
+{
+
+	[Property] public Player Owner { get; set; }
+
+	protected override void OnUpdate()
+	{
+		base.OnUpdate();
+
+		if(Owner == null) { return; }
+
+	}
+
+	protected override int BuildHash() 
+	{
+		return System.HashCode.Combine(Time.Now);
+	}
+}
