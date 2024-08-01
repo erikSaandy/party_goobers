@@ -16,9 +16,31 @@ public class NPC : Component, IInteractable
 		Cheer
 	}
 
-	public Player Owner { get; set; } = null;
+	[Sync][Property] private Guid PlayerId { get; set; } = default;
+	public Player Owner => PlayerId == default ? null : Scene.Directory.FindByGuid(PlayerId).Components.Get<Player>();
+
+	[Broadcast]
+	public void SetOwner(Guid playerId)
+	{
+		if(IsProxy) { return; }
+
+		this.PlayerId = playerId;
+	}
+
+	[Broadcast]
+	public void ClearOwner()
+	{
+		if ( IsProxy ) { return; }
+
+		this.PlayerId = default;
+	}
 
 	[Property] public SkinnedModelRenderer Renderer { get; set; }
+	[Property] public ModelPhysics Physics { get; set; }
+
+	[Property] public CharacterController Controller { get; set; }
+	[Property] public Vector3? WantedPosition { get; set; }
+	[Property] public float DistanceToWantedPosition => (WantedPosition.Value -Transform.Position).Length;
 
 	[Property] public Face Face { get; set; }
 
@@ -56,41 +78,99 @@ public class NPC : Component, IInteractable
 
 		Renderer.Set( "b_walking", true );
 
-		// TODO: This should not be done from within NPC.
-		Spawn();
+		PartyFacesManager.Instance.OnRoundEnter += OnRoundEnter;
+		PartyFacesManager.Instance.OnRoundExit += OnRoundExit;
 
 
 		if (IsProxy) { return; }
 
-		// TODO: Color needs to be networked.
-		SetColor( ColorX.MiiColors.GetRandom() );
+		SetRandomColor();
 
 	}
 
-	private void Spawn()
+	public void OnRoundEnter()
 	{
-		GameObject.Transform.Position = FindSpawnLocation().Position;
+		if ( IsProxy ) { return; }
+
+		if( FindSpawnLocation(out Transform t))
+		{
+			Spawn( t.Position );
+		}
+
 	}
 
-	Transform FindSpawnLocation()
+	public void OnRoundExit()
+	{
+		if(IsProxy) { return; }
+
+
+
+	}
+
+	[Broadcast]
+	public void Randomize()
+	{
+		if(IsProxy) { return; }
+		SetRandomColor();
+	}
+
+	[Broadcast]
+	private void Spawn( Vector3 position )
+	{
+		GameObject.Transform.Position = position;
+		Renderer.Enabled = true;
+	}
+
+	private bool FindSpawnLocation(out Transform transform)
 	{
 
-		//
 		// If we have any SpawnPoint components in the scene, then use those
-		//
 		var spawnPoints = Scene.GetAllComponents<SpawnPoint>().ToArray();
 		if ( spawnPoints.Length > 0 )
 		{
 			SpawnPoint sp = Random.Shared.FromArray( spawnPoints );
-			Transform t = sp.Transform.World;
+			transform = sp.Transform.World;
 			sp.Destroy();
-			return t;
+			return true;
 		}
 
-		//
 		// Failing that, spawn where we are
-		//
-		return Transform.World;
+		transform = Transform.World;
+		return false;
+	}
+
+	[Button("ToggleVisible")]
+	public void ToggleVisible()
+	{
+		if(Renderer.Enabled)
+		{
+			Hide();
+		}
+		else
+		{
+			Show();
+		}
+	}
+
+	[Broadcast]
+	public void Hide()
+	{
+		Renderer.Enabled = false;
+		Physics.Enabled = false;
+		Face.Hide();
+	}
+
+	[Broadcast]
+	public void Show()
+	{
+		Renderer.Enabled = true;
+		Physics.Enabled = true;
+		Face.Show();
+	}
+
+	public void SetRandomColor()
+	{
+		SetColor( ColorX.MiiColors.GetRandom() );
 	}
 
 	[Broadcast]
@@ -98,18 +178,6 @@ public class NPC : Component, IInteractable
 	{
 		Face.SetColor( color );
 		Renderer.Tint = color;
-	}
-
-	public void GetPosessedBy(Player owner)
-	{
-		this.Owner = owner;
-		Network.AssignOwnership( owner.Network.OwnerConnection );
-
-		Log.Info($"{owner.Network.OwnerConnection.DisplayName} posessed npc");
-		GameObject.Name = $"NPC ({owner.Network.OwnerConnection.DisplayName})";
-
-		Face.Load();
-
 	}
 
 	protected override void OnUpdate()
@@ -123,6 +191,51 @@ public class NPC : Component, IInteractable
 		Face.Transform.Position = (ForwardReference?.Position ?? 0) + (fwd.Normal * 14f * scale);
 		Face.Transform.Scale = 11 * scale;
 
+		Controller?.Move();
+
+	}
+
+	protected override void OnFixedUpdate()
+	{
+		base.OnFixedUpdate();
+
+		if(IsProxy) { return; }
+
+		if ( Controller.IsOnGround )
+		{
+			Controller.ApplyFriction( 2f );
+		}
+
+		if ( WantedPosition != null && DistanceToWantedPosition > 32f )
+		{
+
+			Vector3 wantedDir = (WantedPosition.Value - Transform.Position).Normal;
+			Gizmo.Draw.Color = Color.Red;
+			Gizmo.Draw.Line( Transform.Position, Transform.Position + wantedDir * 60 );
+			float angle = Transform.Rotation.Yaw();
+			Transform.Rotation = Rotation.Lerp( Rotation.FromYaw( angle ), Vector3.VectorAngle( wantedDir ).WithPitch( 0 ).WithRoll( 0 ), Time.Delta * 2 );
+			Controller.Accelerate( Transform.Rotation.Forward * 70 );
+
+			if ( !Controller.IsOnGround )
+			{
+				Controller.Velocity += Scene.PhysicsWorld.Gravity * Time.Delta;
+			}
+
+		}
+		
+		if ( !Controller.IsOnGround )
+		{
+			Controller.Velocity += Scene.PhysicsWorld.Gravity * Time.Delta;
+		}
+
+
+		Controller.Move();
+	}
+
+	[Broadcast]
+	public void SetWantedPosition(Vector3 wantedPosition)
+	{
+		this.WantedPosition = wantedPosition;
 	}
 
 	private void LookAtPosition( Vector3 pos )

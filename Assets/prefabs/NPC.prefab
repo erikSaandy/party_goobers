@@ -9,18 +9,33 @@
       {
         "__type": "NPC",
         "__guid": "47d72ee3-4c35-4fa9-b9a5-2c8db6b9f11e",
+        "Controller": {
+          "_type": "component",
+          "component_id": "bcd337c0-d231-4c9b-8604-d117a6e100cb",
+          "go": "7e4da760-5759-4095-9556-43a5192c7a5c",
+          "component_type": "CharacterController"
+        },
+        "DistanceToWantedPosition": 0,
         "Face": {
           "_type": "component",
           "component_id": "d3ae7431-fe74-428f-82ac-4020a59081a9",
           "go": "876ad418-ece7-4933-bb51-4ccc5046fc0b",
           "component_type": "Face"
         },
+        "Physics": {
+          "_type": "component",
+          "component_id": "b7642419-c98d-45d8-a904-67a5b7477064",
+          "go": "7e4da760-5759-4095-9556-43a5192c7a5c",
+          "component_type": "ModelPhysics"
+        },
+        "PlayerId": "00000000-0000-0000-0000-000000000000",
         "Renderer": {
           "_type": "component",
           "component_id": "5dd7bfea-ae37-490f-845a-e0d63462dc36",
           "go": "7e4da760-5759-4095-9556-43a5192c7a5c",
           "component_type": "SkinnedModelRenderer"
-        }
+        },
+        "WantedPosition": "0,0,0"
       },
       {
         "__type": "Sandbox.SkinnedModelRenderer",
@@ -56,6 +71,27 @@
           "go": "7e4da760-5759-4095-9556-43a5192c7a5c",
           "component_type": "SkinnedModelRenderer"
         }
+      },
+      {
+        "__type": "Sandbox.CharacterController",
+        "__guid": "bcd337c0-d231-4c9b-8604-d117a6e100cb",
+        "Acceleration": 10,
+        "Bounciness": 0.3,
+        "GroundAngle": 45,
+        "Height": 64,
+        "IgnoreLayers": "",
+        "Radius": 16,
+        "StepHeight": 18,
+        "UseCollisionRules": false
+      },
+      {
+        "__type": "Sandbox.CapsuleCollider",
+        "__guid": "ee083046-b2bf-4d21-8629-2077086b27f6",
+        "End": "0,0,55.64987",
+        "IsTrigger": true,
+        "Radius": 10,
+        "Start": "0,0,8.395042",
+        "Static": false
       }
     ],
     "Children": [

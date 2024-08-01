@@ -1,0 +1,146 @@
+{
+  "RootObject": {
+    "__guid": "c7bb348a-bce8-4e8e-a5b7-d2c5e08a5362",
+    "Flags": 0,
+    "Name": "mall01",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "LevelDataComponent",
+        "__guid": "ecc0f0d4-14ac-4c9d-aa06-12a22c994a26",
+        "CameraReference": {
+          "_type": "component",
+          "component_id": "d919a3c4-4ebc-42fc-9152-987674bc3cf5",
+          "go": "85f03d86-5e0c-4228-8757-5138207b0221",
+          "component_type": "CameraComponent"
+        },
+        "MapInstance": {
+          "_type": "component",
+          "component_id": "f5d5ba52-6380-4a5e-8fc4-5bac61fddc81",
+          "go": "99211ecc-93f7-4bbc-8995-6acf0bdd9231",
+          "component_type": "MapInstance"
+        },
+        "NodePath": {
+          "_type": "component",
+          "component_id": "2b4b0da5-0029-40d9-9395-e1e36e571464",
+          "go": "eca296b1-a807-4c08-9d41-823c7109e809",
+          "component_type": "NodePathComponent"
+        }
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "eca296b1-a807-4c08-9d41-823c7109e809",
+        "Flags": 0,
+        "Name": "Node Path",
+        "Position": "-192,-160,0",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "NodePathComponent",
+            "__guid": "2b4b0da5-0029-40d9-9395-e1e36e571464",
+            "MoveType": "Loop",
+            "TargetPointsEnabled": true,
+            "Targets": [
+              {},
+              {
+                "Position": "1.600111,142.2,0"
+              },
+              {
+                "Position": "-2.9,135.0001,64"
+              },
+              {
+                "Position": "3.19999,111.4,0"
+              },
+              {
+                "Position": "119.6999,0,0"
+              },
+              {
+                "Position": "135.3,-0.8999976,0"
+              },
+              {
+                "Position": "135.4,0,0"
+              },
+              {
+                "Position": "0,-129.6999,0"
+              },
+              {
+                "Position": "-5.1,-125.8999,-64"
+              },
+              {
+                "Position": "-3.900004,-82.79999,0"
+              },
+              {
+                "Position": "0,-95.89996,0"
+              },
+              {
+                "Position": "-94.49987,-3.499999,0"
+              },
+              {
+                "Position": "-98.90012,0.3999977,0"
+              },
+              {
+                "Position": "-95.09985,0,0"
+              },
+              {
+                "Position": "-86.39999,0,0"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "__guid": "99211ecc-93f7-4bbc-8995-6acf0bdd9231",
+        "Flags": 0,
+        "Name": "Map Instance",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.MapInstance",
+            "__guid": "f5d5ba52-6380-4a5e-8fc4-5bac61fddc81",
+            "__version": 1,
+            "EnableCollision": true,
+            "MapName": "maps/map01.vmap",
+            "NoOrigin": false,
+            "UseMapFromLaunch": false
+          }
+        ],
+        "Children": []
+      },
+      {
+        "__guid": "85f03d86-5e0c-4228-8757-5138207b0221",
+        "Flags": 0,
+        "Name": "Camera",
+        "Position": "0.001340095,-1626.324,675.8458",
+        "Rotation": "-0.1257253,0.1257253,0.69584,0.69584",
+        "Scale": "-1.058358,1,1",
+        "Components": [
+          {
+            "__type": "Sandbox.CameraComponent",
+            "__guid": "d919a3c4-4ebc-42fc-9152-987674bc3cf5",
+            "BackgroundColor": "0.33333,0.46275,0.52157,1",
+            "ClearFlags": "All",
+            "FieldOfView": 21.78,
+            "IsMainCamera": false,
+            "Orthographic": false,
+            "OrthographicHeight": 1204,
+            "Priority": 1,
+            "RenderExcludeTags": "",
+            "RenderTags": "",
+            "TargetEye": "None",
+            "Viewport": "0,0,1,1",
+            "ZFar": 10000,
+            "ZNear": 10
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

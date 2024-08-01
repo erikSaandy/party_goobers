@@ -41,8 +41,8 @@ public static class ColorX
 			ColorX.FromHex("432212"),ColorX.FromHex("803E12"),ColorX.FromHex("AF5219"),ColorX.FromHex("E85B04"),ColorX.FromHex("FF9805"),
 			ColorX.FromHex("D69D65"),ColorX.FromHex("F9A075"),ColorX.FromHex("FEB562"),ColorX.FromHex("FFC589"),ColorX.FromHex("E8CFB0"),
 
-			ColorX.FromHex("000000"),ColorX.FromHex("302929"),ColorX.FromHex("414141"),ColorX.FromHex("6B6F73"),ColorX.FromHex("796F67"),
-			ColorX.FromHex("767981"),ColorX.FromHex("9B9B9B"),ColorX.FromHex("BEBEBE"),ColorX.FromHex("DFD8CC"),/*ColorX.FromHex("FFFFFF"),*/
+			/*ColorX.FromHex("000000")*/ColorX.FromHex("302929"),ColorX.FromHex("414141"),ColorX.FromHex("6B6F73"),ColorX.FromHex("796F67"),
+			ColorX.FromHex("767981"),ColorX.FromHex("9B9B9B"),ColorX.FromHex("BEBEBE"),ColorX.FromHex("DFD8CC"),ColorX.FromHex("FFFFFF"),
 
 	};
 

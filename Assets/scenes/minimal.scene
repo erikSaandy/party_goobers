@@ -2,16 +2,49 @@
   "__guid": "ff1d7b56-a34a-4fe6-8059-82ba5739b46a",
   "GameObjects": [
     {
+      "__guid": "fc2d98ed-64ef-487e-92a6-69517a8ba18c",
+      "Flags": 0,
+      "Name": "GameManager",
+      "Position": "1434.675,-1101.596,695.3961",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 2,
+      "OwnerTransfer": 0,
+      "Components": [
+        {
+          "__type": "PartyFacesManager",
+          "__guid": "30038af4-437e-4428-bd6a-112faed31ae7"
+        }
+      ]
+    },
+    {
       "__guid": "b7839f82-bb06-407f-83b7-d1d74d0a1b58",
       "Flags": 0,
       "Name": "NPC Buffer",
       "Position": "-24.59171,127.0008,46.44773",
       "Enabled": true,
+      "NetworkMode": 1,
       "Components": [
         {
           "__type": "NPCBuffer",
           "__guid": "8c5b41ce-ec79-49f7-b83f-af54dd106869",
           "Prefab": "prefabs/npc.prefab"
+        }
+      ]
+    },
+    {
+      "__guid": "0ce79441-1e99-4cfb-905d-381dae4e01c5",
+      "Flags": 0,
+      "Name": "LevelHandler",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "Components": [
+        {
+          "__type": "LevelHandler",
+          "__guid": "51bdbcaf-87b0-4571-b6eb-559b224332c1",
+          "LevelPrefabs": [
+            "prefabs/levels/mall01.prefab"
+          ]
         }
       ]
     },
@@ -63,28 +96,10 @@
       ]
     },
     {
-      "__guid": "0b381df2-4f1d-46ae-9733-8d0b2b806aac",
-      "Flags": 0,
-      "Name": "Map Instnace",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.MapInstance",
-          "__guid": "2eafb764-defa-47f2-99cc-c6e0803ed75b",
-          "__version": 1,
-          "EnableCollision": true,
-          "MapName": "maps/map01.vmap",
-          "NoOrigin": false,
-          "UseMapFromLaunch": false
-        }
-      ],
-      "Children": []
-    },
-    {
       "__guid": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a",
       "Flags": 0,
       "Name": "Camera",
-      "Position": "541.5001,-528.0392,509.2222",
+      "Position": "0.0003116217,-672.5332,499.1384",
       "Rotation": "-0.1830127,0.1830127,0.6830127,0.6830127",
       "Enabled": true,
       "Components": [
@@ -169,44 +184,6 @@
           },
           "SpawnPoints": [],
           "StartServer": true
-        }
-      ]
-    },
-    {
-      "__guid": "ea0ea7d2-1eb4-4447-9d38-77e4fe2c355d",
-      "Flags": 0,
-      "Name": "Sun",
-      "Position": "-5.937668,-7.143127,1226.279",
-      "Rotation": "-0.2007647,0.5339678,0.7385854,0.3592546",
-      "Tags": "light_directional,light",
-      "Components": [
-        {
-          "__type": "Sandbox.DirectionalLight",
-          "__guid": "b54e3769-b3c9-44a6-b5a4-7f1eb4b1d37a",
-          "FogMode": "Enabled",
-          "FogStrength": 1,
-          "LightColor": "0.91373,0.98039,1,1",
-          "Shadows": true,
-          "SkyColor": "0,0,0,0"
-        }
-      ]
-    },
-    {
-      "__guid": "52df42e0-2de4-4c3f-b0ba-9671f49e4a63",
-      "Flags": 0,
-      "Name": "Sun (1)",
-      "Position": "541.4996,-250,313",
-      "Rotation": "-0.1830127,0.1830127,0.6830127,0.6830127",
-      "Tags": "light_directional,light",
-      "Components": [
-        {
-          "__type": "Sandbox.DirectionalLight",
-          "__guid": "902a0329-a955-49d4-923a-e0f10b4b6fbc",
-          "FogMode": "Enabled",
-          "FogStrength": 1,
-          "LightColor": "0.91373,0.98039,1,1",
-          "Shadows": true,
-          "SkyColor": "0,0,0,0"
         }
       ]
     }

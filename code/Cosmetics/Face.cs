@@ -44,6 +44,24 @@ public class Face : Component, Component.INetworkListener
 		Mouth.SetColor( color );
 	}
 
+	[Broadcast]
+	public void Hide()
+	{
+		Eyebrows.Renderer.Enabled = false;
+		Eyes.Renderer.Enabled = false;
+		Nose.Renderer.Enabled = false;
+		Mouth.Renderer.Enabled = false;
+	}
+
+	[Broadcast]
+	public void Show()
+	{
+		Eyebrows.Renderer.Enabled = true;
+		Eyes.Renderer.Enabled = true;
+		Nose.Renderer.Enabled = true;
+		Mouth.Renderer.Enabled = true;
+	}
+
 	protected override void OnAwake()
 	{
 

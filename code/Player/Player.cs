@@ -3,13 +3,33 @@ using System;
 
 public class Player : Component
 {
-	[Sync][Property] public Guid NPCGuid { get; private set; }
-	public NPC NPC => Scene.Directory.FindByGuid( NPCGuid ).Components.Get<NPC>();
+	[Sync][Property] private Guid NPCId { get; set; } = default;
+	public NPC NPC => NPCId == default ? null : Scene.Directory.FindByGuid( NPCId ).Components.Get<NPC>();
 
 	private IInteractable PreviousHit { get; set; } = null;
 
+	public int LifeCount { get; private set; } = 3;
+	public bool IsDead { get; private set; } = false;
+
 	public Player()
 	{
+
+	}
+
+	[Broadcast]
+	public void SetNPC(Guid npcId)
+	{
+		if(IsProxy) { return; }
+
+		// Player already owns other NPC
+		if(NPC != null && NPC.Owner == this)
+		{
+			NPC.Randomize();
+			NPC.ClearOwner();
+		}
+
+
+		this.NPCId = npcId;
 
 	}
 
@@ -17,21 +37,32 @@ public class Player : Component
 	{
 		base.OnStart();
 
-		if ( IsProxy ) { return; }
+		if(IsProxy) { return; }
 
-		NPCBuffer.Instance.Free( out Guid id );
-		NPCGuid = id;
+		NPCBuffer.Instance.PossessFreeNPC( GameObject.Id );
 
-		NPC.GetPosessedBy( this );
 
+	}
+
+	[Broadcast]
+	public void Kill( string source = "" )
+	{
+		if(IsDead) { return; }
+
+		IsDead = true;
+		LifeCount = 0;
+
+		if( IsProxy ) { return; }
+
+		PartyFacesManager.Instance.OnPlayerDeath( Id, source );
 
 	}
 
 	protected override void OnDestroy()
 	{
+		Kill( "Disconnected from server" );
+
 		base.OnDestroy();
-
-
 
 	}
 
@@ -43,6 +74,12 @@ public class Player : Component
 
 		if ( TraceLook( out SceneTraceResult trace, out IInteractable hit ) )
 		{
+			if ( hit != PreviousHit )
+			{
+				Log.Info( "Mouse entered interactable!" );
+				hit.OnMouseEnter( this.Id );
+			}
+
 			if ( Input.Pressed( "Attack1" ) )
 			{
 				Log.Info( "Clicked on interactable!" );
@@ -54,12 +91,6 @@ public class Player : Component
 				hit.OnMouseHover( this.Id );
 			}
 
-
-			if(hit != PreviousHit)
-			{
-				Log.Info( "Mouse entered interactable!" );
-				hit.OnMouseEnter( this.Id );
-			}
 
 		}
 		

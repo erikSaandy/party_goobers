@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,53 +12,60 @@ public class NPCBuffer : SingletonComponent<NPCBuffer>
 
 	[Property] public PrefabFile Prefab { get; private set; }
 
-	public static List<Guid> NPCs { get; private set; }
-	public static Stack<Guid> FreeNPCs { get; private set; }
+	// HOST ONLY
+	public static List<NPC> NPCs { get; private set; }
 
 	protected override void OnStart()
 	{
 		base.OnAwake();
 
+		if(IsProxy) { return; }
+
 		SpawnBuffer();
 
 	}
 
+	[Authority]
 	private void SpawnBuffer()
 	{
+		if(IsProxy) { return; }
+
 		NPCs = new();
-		FreeNPCs = new();
 
 		for(int i = 0; i < NPC_COUNT; i++ )
 		{
 			GameObject npc = SceneUtility.GetPrefabScene( Prefab ).Clone();
 			npc.BreakFromPrefab();
 
-			NPC c = npc.Components.Get<NPC>();
-
 			npc.NetworkSpawn();
-			NPCs.Add( npc.Id );
-			FreeNPCs.Push( npc.Id );
 
-			int step = 27;
-			int count = 15;
-			float start = ((count * 0.5f) * -step) + ( (i / count % 2) == 0 ? step*0.5f : 0 );
-			float posX = start + (i % count) * step;
-			float posY = ( -(int)(i / count) * step ) + 256;
-
-			npc.Transform.Position = new Vector3( -posY, posX, posY );
+			NPC c = npc.Components.Get<NPC>();
+			c.Hide();
+			NPCs.Add( c );
 
 		}
 
 	}
 
-	public bool Free(out Guid id)
+	[Authority]
+	public void PossessFreeNPC( Guid playerId )
 	{
-		if ( FreeNPCs.TryPop( out id ) ) 
-		{
-			return true;
-		}
+		if(IsProxy) { return; }
 
-		return false;
+		IEnumerable<NPC> FreeNPCs = NPCs.Where( x => x.Owner == null );
+		NPC npc = FreeNPCs.GetRandom();
+		npc.SetOwner( playerId );
+
+		Player player = Instance.Scene.Directory.FindByGuid( playerId ).Components.Get<Player>();
+		player.SetNPC( npc.GameObject.Id );
+
+		//Network.AssignOwnership( owner.Network.OwnerConnection );
+		Log.Info( $"{player.Network.OwnerConnection.DisplayName} posessed npc" );
+		npc.GameObject.Name = $"NPC ({player.Network.OwnerConnection.DisplayName})";
+
+		// Load client face if excists on file.
+		npc.Face.Load();
+
 	}
 
 }

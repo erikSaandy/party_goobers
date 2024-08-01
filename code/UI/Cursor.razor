@@ -7,7 +7,7 @@
 <root class="container">
 
 
-	<div class="cursor visible" @ref="CursorPanel" />
+	<div class="cursor visible" style="transform: rotate(@(Tilt)deg);" @ref="CursorPanel" />
 
 </root>
 
@@ -21,6 +21,8 @@
 	public Panel CursorPanel { get; set; }
 
 	public static Vector2 CursorPosition { get; private set; }
+
+	private static float Tilt { get; set; } = 0;
 
 	public Cursor() {
 		CursorPanel = new Panel();
@@ -37,6 +39,9 @@
 			CursorPanel.Style.Top = Length.Fraction(Mouse.Position.y / Screen.Height);
 		}
 
+		Tilt = -Mouse.Velocity.x * 2;
+		Tilt = MathX.Clamp(Tilt, -20, 20);
+
 	}
 
 	public static void Show()
@@ -51,6 +56,6 @@
 
 	protected override int BuildHash()
 	{
-		return System.HashCode.Combine((Visible ? CursorPosition : 0), Visible);
+		return System.HashCode.Combine((Visible ? CursorPosition : 0), Visible, Tilt);
 	}
 }
