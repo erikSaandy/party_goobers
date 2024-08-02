@@ -1,4 +1,5 @@
-﻿using Sandbox;
+﻿using Saandy;
+using Sandbox;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -15,6 +16,11 @@ public class NPC : Component, IInteractable
 		Wave,
 		Cheer
 	}
+
+
+	const float MIN_WALKSPEED = 40f;
+	const float MAX_WALKSPEED = 70f;
+	[Property] float WalkSpeed { get; set; } = 50f;
 
 	[Sync][Property] private Guid PlayerId { get; set; } = default;
 	public Player Owner => PlayerId == default ? null : Scene.Directory.FindByGuid(PlayerId).Components.Get<Player>();
@@ -38,9 +44,11 @@ public class NPC : Component, IInteractable
 	[Property] public SkinnedModelRenderer Renderer { get; set; }
 	[Property] public ModelPhysics Physics { get; set; }
 
+	[Property] public CapsuleCollider Collider { get; set; }
+
 	[Property] public CharacterController Controller { get; set; }
-	[Property] public Vector3? WantedPosition { get; set; }
-	[Property] public float DistanceToWantedPosition => (WantedPosition.Value -Transform.Position).Length;
+	[Property] public Vector3? WantedPosition { get; private set; }
+	public float DistanceToWantedPosition => (WantedPosition.Value -Transform.Position).Length;
 
 	[Property] public Face Face { get; set; }
 
@@ -48,7 +56,8 @@ public class NPC : Component, IInteractable
 
 	[Property] GameObject LookAt { get; set; }
 
-	private Transform? ForwardReference => Renderer.GetAttachment( "forward_reference" );
+
+	public Transform? ForwardReference => Renderer.GetAttachment( "forward_reference" );
 
 	public bool IsInteractableBy( Player player ) => true;
 
@@ -76,8 +85,6 @@ public class NPC : Component, IInteractable
 
 		LookAt = Scene.Camera.GameObject;
 
-		Renderer.Set( "b_walking", true );
-
 		PartyFacesManager.Instance.OnRoundEnter += OnRoundEnter;
 		PartyFacesManager.Instance.OnRoundExit += OnRoundExit;
 
@@ -86,16 +93,16 @@ public class NPC : Component, IInteractable
 
 		SetRandomColor();
 
+		WalkSpeed = Game.Random.Float( MIN_WALKSPEED, MAX_WALKSPEED );
+		float sp = Math2d.InverseLerp( 0.75f, 1.4f, WalkSpeed );
+
+		Renderer.Set( "f_walk_speed", Math2d.Map(WalkSpeed, MIN_WALKSPEED, MAX_WALKSPEED, 0.75f, 1.4f ) );
+
 	}
 
 	public void OnRoundEnter()
 	{
 		if ( IsProxy ) { return; }
-
-		if( FindSpawnLocation(out Transform t))
-		{
-			Spawn( t.Position );
-		}
 
 	}
 
@@ -114,35 +121,10 @@ public class NPC : Component, IInteractable
 		SetRandomColor();
 	}
 
-	[Broadcast]
-	private void Spawn( Vector3 position )
-	{
-		GameObject.Transform.Position = position;
-		Renderer.Enabled = true;
-	}
-
-	private bool FindSpawnLocation(out Transform transform)
-	{
-
-		// If we have any SpawnPoint components in the scene, then use those
-		var spawnPoints = Scene.GetAllComponents<SpawnPoint>().ToArray();
-		if ( spawnPoints.Length > 0 )
-		{
-			SpawnPoint sp = Random.Shared.FromArray( spawnPoints );
-			transform = sp.Transform.World;
-			sp.Destroy();
-			return true;
-		}
-
-		// Failing that, spawn where we are
-		transform = Transform.World;
-		return false;
-	}
-
 	[Button("ToggleVisible")]
 	public void ToggleVisible()
 	{
-		if(Renderer.Enabled)
+		if(GameObject.Enabled)
 		{
 			Hide();
 		}
@@ -155,17 +137,19 @@ public class NPC : Component, IInteractable
 	[Broadcast]
 	public void Hide()
 	{
-		Renderer.Enabled = false;
-		Physics.Enabled = false;
-		Face.Hide();
+		GameObject.Enabled = false;
+		//Renderer.Enabled = false;
+		//Physics.Enabled = false;
+		//Face.Hide();
 	}
 
 	[Broadcast]
 	public void Show()
 	{
-		Renderer.Enabled = true;
-		Physics.Enabled = true;
-		Face.Show();
+		GameObject.Enabled = true;
+		//Renderer.Enabled = true;
+		//Physics.Enabled = true;
+		//Face.Show();
 	}
 
 	public void SetRandomColor()
@@ -186,12 +170,11 @@ public class NPC : Component, IInteractable
 			LookAtPosition( Scene.Camera.Transform.Position );	
 		}
 
-		Vector3 fwd = ForwardReference?.Forward ?? 0;
-		Vector3 scale =  ( ForwardReference?.Scale ?? 1 );
-		Face.Transform.Position = (ForwardReference?.Position ?? 0) + (fwd.Normal * 14f * scale);
-		Face.Transform.Scale = 11 * scale;
-
-		Controller?.Move();
+		if(WantedPosition.HasValue)
+		{
+			Gizmo.Draw.Color = Color.White;
+			Gizmo.Draw.Line( Transform.Position, WantedPosition.Value );
+		}
 
 	}
 
@@ -203,18 +186,18 @@ public class NPC : Component, IInteractable
 
 		if ( Controller.IsOnGround )
 		{
-			Controller.ApplyFriction( 2f );
+			Controller.ApplyFriction( 3f );
 		}
 
-		if ( WantedPosition != null && DistanceToWantedPosition > 32f )
+		if ( WantedPosition != null )
 		{
 
 			Vector3 wantedDir = (WantedPosition.Value - Transform.Position).Normal;
 			Gizmo.Draw.Color = Color.Red;
-			Gizmo.Draw.Line( Transform.Position, Transform.Position + wantedDir * 60 );
+			Gizmo.Draw.Line( Transform.Position, Transform.Position + wantedDir * WalkSpeed );
 			float angle = Transform.Rotation.Yaw();
 			Transform.Rotation = Rotation.Lerp( Rotation.FromYaw( angle ), Vector3.VectorAngle( wantedDir ).WithPitch( 0 ).WithRoll( 0 ), Time.Delta * 2 );
-			Controller.Accelerate( Transform.Rotation.Forward * 70 );
+			Controller.Accelerate( Transform.Rotation.Forward * 60 );
 
 			if ( !Controller.IsOnGround )
 			{
@@ -229,13 +212,30 @@ public class NPC : Component, IInteractable
 		}
 
 
-		Controller.Move();
+		Controller?.Move();
 	}
 
 	[Broadcast]
-	public void SetWantedPosition(Vector3 wantedPosition)
+	public void MoveTowards(Vector3 wantedPosition)
 	{
+
+		Renderer.Set( "b_walking", true );
+
+		if (IsProxy) { return; }
+
 		this.WantedPosition = wantedPosition;
+
+	}
+
+	[Broadcast]
+	public void StopMoving()
+	{
+
+		Renderer.Set( "b_walking", false );
+
+		if ( IsProxy ) { return; }
+
+		this.WantedPosition = null;
 	}
 
 	private void LookAtPosition( Vector3 pos )

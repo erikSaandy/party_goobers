@@ -100,6 +100,11 @@ public class Player : Component
 			PreviousHit.OnMouseExit( this.Id );
 		}
 
+		if(Input.Pressed("Jump"))
+		{
+			FadeScreen.Visible = !FadeScreen.Visible;
+		}
+
 		PreviousHit = hit;
 
 	}

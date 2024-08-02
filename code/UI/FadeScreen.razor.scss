@@ -1,0 +1,21 @@
+﻿FadeScreen {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
+	opacity: 1;
+	margin: 0;
+	padding: 0;
+
+	> .circle {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		width: 500px;
+		height: 500px;
+		box-shadow: 0 0 0 99999px rgba(255,255,255);
+		border-radius: 50%;
+		transform: translate(-50%, -50%);
+	}
+}

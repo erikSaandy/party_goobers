@@ -3,19 +3,25 @@
     "__guid": "7e4da760-5759-4095-9556-43a5192c7a5c",
     "Flags": 0,
     "Name": "npc",
+    "Tags": "npc",
     "Enabled": true,
     "NetworkMode": 1,
     "Components": [
       {
         "__type": "NPC",
-        "__guid": "47d72ee3-4c35-4fa9-b9a5-2c8db6b9f11e",
+        "__guid": "a4fd1625-0629-4e54-8ba0-69acd0196394",
+        "Collider": {
+          "_type": "component",
+          "component_id": "ee083046-b2bf-4d21-8629-2077086b27f6",
+          "go": "7e4da760-5759-4095-9556-43a5192c7a5c",
+          "component_type": "CapsuleCollider"
+        },
         "Controller": {
           "_type": "component",
           "component_id": "bcd337c0-d231-4c9b-8604-d117a6e100cb",
           "go": "7e4da760-5759-4095-9556-43a5192c7a5c",
           "component_type": "CharacterController"
         },
-        "DistanceToWantedPosition": 0,
         "Face": {
           "_type": "component",
           "component_id": "d3ae7431-fe74-428f-82ac-4020a59081a9",
@@ -35,7 +41,7 @@
           "go": "7e4da760-5759-4095-9556-43a5192c7a5c",
           "component_type": "SkinnedModelRenderer"
         },
-        "WantedPosition": "0,0,0"
+        "WalkSpeed": 50
       },
       {
         "__type": "Sandbox.SkinnedModelRenderer",
@@ -80,7 +86,7 @@
         "GroundAngle": 45,
         "Height": 64,
         "IgnoreLayers": "",
-        "Radius": 16,
+        "Radius": 8,
         "StepHeight": 18,
         "UseCollisionRules": false
       },
@@ -89,9 +95,18 @@
         "__guid": "ee083046-b2bf-4d21-8629-2077086b27f6",
         "End": "0,0,55.64987",
         "IsTrigger": true,
-        "Radius": 10,
+        "Radius": 16,
         "Start": "0,0,8.395042",
         "Static": false
+      },
+      {
+        "__type": "Sandbox.HighlightOutline",
+        "__guid": "9b799f5a-b20b-424c-b366-f6071b9c274b",
+        "Color": "0,0,0,1",
+        "InsideColor": "0,0,0,0",
+        "InsideObscuredColor": "0,0,0,0",
+        "ObscuredColor": "0,0,0,0",
+        "Width": 0.25
       }
     ],
     "Children": [
@@ -129,6 +144,12 @@
               "component_id": "5bcc1eb8-3a74-4576-b990-d3ca2153fc4e",
               "go": "c22e8751-3ed3-40ad-b5d0-16432c62f06a",
               "component_type": "Nose"
+            },
+            "Owner": {
+              "_type": "component",
+              "component_id": "a4fd1625-0629-4e54-8ba0-69acd0196394",
+              "go": "7e4da760-5759-4095-9556-43a5192c7a5c",
+              "component_type": "NPC"
             }
           }
         ],

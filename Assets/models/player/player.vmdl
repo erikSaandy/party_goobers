@@ -304,7 +304,7 @@
 				[
 					{
 						_class = "ModelModifier_ScaleAndMirror"
-						scale = 9.0
+						scale = 11.0
 						mirror_x = false
 						mirror_y = false
 						mirror_z = false
@@ -322,18 +322,18 @@
 						parent_bone = "QuickRigCharacter_Head"
 						surface_prop = "default"
 						collision_tags = "npc"
-						origin = [ -0.857361, 0.195124, 0.01769 ]
+						origin = [ -0.857361, 0.195124, 0.009495 ]
 						angles = [ 0.0, 0.0, 0.0 ]
-						dimensions = [ 5.200727, 2.253887, 2.772105 ]
+						dimensions = [ 5.200727, 2.253887, 3.233179 ]
 					},
 					{
 						_class = "PhysicsShapeBox"
 						parent_bone = "QuickRigCharacter_RightForeArm"
 						surface_prop = "default"
 						collision_tags = "npc"
-						origin = [ -0.844712, -0.013009, -0.012202 ]
+						origin = [ -0.844712, -0.013009, 0.033187 ]
 						angles = [ 0.0, 0.0, 0.0 ]
-						dimensions = [ 1.792185, 0.627095, 0.490651 ]
+						dimensions = [ 1.792185, 0.627095, 0.581429 ]
 					},
 					{
 						_class = "PhysicsShapeBox"
@@ -403,9 +403,9 @@
 						parent_bone = "QuickRigCharacter_Spine2"
 						surface_prop = "default"
 						collision_tags = "npc"
-						origin = [ -0.077789, -0.038994, 0.011098 ]
+						origin = [ 0.124323, -0.059923, -0.040793 ]
 						angles = [ 0.0, 0.0, 0.0 ]
-						dimensions = [ 2.000244, 1.384634, 1.402483 ]
+						dimensions = [ 2.404468, 1.791152, 1.801794 ]
 					},
 				]
 			},

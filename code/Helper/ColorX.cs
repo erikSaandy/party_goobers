@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sandbox.UI;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
@@ -48,6 +49,7 @@ public static class ColorX
 
 	public static Color FromHex(string hex)
 	{
+
 		if ( hex == null )
 		{
 			return null;

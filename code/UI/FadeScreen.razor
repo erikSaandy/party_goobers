@@ -1,0 +1,58 @@
+@using System;
+@using Sandbox;
+@using Sandbox.UI;
+@attribute [StyleSheet]
+@inherits Panel
+
+<root>
+
+	<div class="circle @(Visible ? "visible" : "")" @ref="FadePanel"></div>
+	 
+</root>
+
+@code
+{
+
+	public Panel FadePanel { get; set; }
+
+	public static bool Visible { get; set; } = false;
+
+	private static float CircleFade = 1;
+
+	public FadeScreen()
+	{
+		FadePanel = new Panel();
+	}
+
+	public override void Tick()
+	{
+
+		if (Visible && CircleFade > 0f)
+		{
+			CircleFade = MathX.Lerp(CircleFade, -0.4f, Time.Delta * 2.5f);
+		}
+		else if(!Visible && CircleFade < 1f)
+		{
+			CircleFade = MathX.Lerp(CircleFade, 1.2f, Time.Delta * 2.5f);
+		}
+
+		FadePanel.Style.Width = Length.ViewMax( CircleFade * 140 );
+		FadePanel.Style.Height = Length.ViewMax( CircleFade * 140 );
+
+	}
+
+	public static void Show()
+	{
+		Visible = true;
+	}
+
+	public static void Hide()
+	{
+		Visible = false;
+	}
+
+	protected override int BuildHash()
+	{
+		return System.HashCode.Combine(CircleFade);
+	}
+}

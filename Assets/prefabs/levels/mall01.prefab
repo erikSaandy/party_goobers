@@ -20,12 +20,15 @@
           "go": "99211ecc-93f7-4bbc-8995-6acf0bdd9231",
           "component_type": "MapInstance"
         },
-        "NodePath": {
-          "_type": "component",
-          "component_id": "2b4b0da5-0029-40d9-9395-e1e36e571464",
-          "go": "eca296b1-a807-4c08-9d41-823c7109e809",
-          "component_type": "NodePathComponent"
-        }
+        "NodePaths": [
+          {
+            "_type": "component",
+            "component_id": "2b4b0da5-0029-40d9-9395-e1e36e571464",
+            "go": "eca296b1-a807-4c08-9d41-823c7109e809",
+            "component_type": "NodePathComponent"
+          }
+        ],
+        "SpawnPoints": []
       }
     ],
     "Children": [
@@ -65,10 +68,10 @@
                 "Position": "0,-129.6999,0"
               },
               {
-                "Position": "-5.1,-125.8999,-64"
+                "Position": "-4.700002,-125.8999,-64"
               },
               {
-                "Position": "-3.900004,-82.79999,0"
+                "Position": "-3.900004,-96.80002,0"
               },
               {
                 "Position": "0,-95.89996,0"
@@ -111,16 +114,17 @@
         "__guid": "85f03d86-5e0c-4228-8757-5138207b0221",
         "Flags": 0,
         "Name": "Camera",
-        "Position": "0.001340095,-1626.324,675.8458",
-        "Rotation": "-0.1257253,0.1257253,0.69584,0.69584",
+        "Position": "0.007202869,-1240.036,464.5508",
+        "Rotation": "-0.111928,0.111928,0.698192,0.698192",
         "Scale": "-1.058358,1,1",
+        "Enabled": true,
         "Components": [
           {
             "__type": "Sandbox.CameraComponent",
             "__guid": "d919a3c4-4ebc-42fc-9152-987674bc3cf5",
             "BackgroundColor": "0.33333,0.46275,0.52157,1",
             "ClearFlags": "All",
-            "FieldOfView": 21.78,
+            "FieldOfView": 30,
             "IsMainCamera": false,
             "Orthographic": false,
             "OrthographicHeight": 1204,

@@ -92,9 +92,9 @@ public class NodePathComponent : Component
 
 			GameObject g = new GameObject( true, $"node trigger {i.ToString( "00" )}" );
 			SphereCollider col = g.Components.Create<SphereCollider>();
-			col.Radius = 32;
+			col.Radius = 16;
 			col.GameObject.Parent = GameObject;
-			col.Transform.Position = GetTargetPosition( i );
+			col.Transform.Position = GetTargetPosition( i ) + Vector3.Up * col.Radius;
 			col.IsTrigger = true;
 			col.OnTriggerEnter += NPCEnteredNodeTrigger;
 
@@ -111,12 +111,19 @@ public class NodePathComponent : Component
 
 
 		int nextTargetId = GetNextTargetFromPos( npc.Transform.Position );
-		npc.SetWantedPosition( GetTargetPosition( nextTargetId ) );
 
+		if( MoveType == MoveTypes.Straight && nextTargetId == 0 )
+		{
+			npc.StopMoving();
+		}
+		else
+		{
+			npc.MoveTowards( GetTargetPosition( nextTargetId ) );
+		}
 
 	}
 
-	public Vector3 ClosestPointOnPath(Vector3 fromPos, out Vector3 nextTargetPos )
+	public Vector3 ClosestPointOnPath(Vector3 fromPos )
 	{
 
 		int target1Id = GetClosestTarget( fromPos );
@@ -131,16 +138,14 @@ public class NodePathComponent : Component
 
 		if ( dot > 0 )
 		{
-			int targetTemp = target1Id;
-			target1Id = (target1Id - 1);
-			target2Id = targetTemp;
+			target2Id = target1Id;
+			target1Id = (target2Id - 1);
 		}
 
 		Vector3 point = Math2d.ClosestPointOnLineSegment( GetTargetPosition( target1Id ), GetTargetPosition( target2Id ), fromPos );
 
 		TimeSinceUsed = 0;
 
-		nextTargetPos = GetTargetPosition( target2Id );
 		return point;
 
 	}
@@ -172,7 +177,7 @@ public class NodePathComponent : Component
 	{
 		int closest = GetClosestTarget( pos );
 
-		int next = (closest + 1) % (Targets.Count - 1);
+		int next = (closest + 1) % (Targets.Count - ( MoveType == MoveTypes.Loop ? 1 : 0 ));
 		return next;
 	}
 

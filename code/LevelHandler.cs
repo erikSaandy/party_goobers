@@ -10,7 +10,6 @@ public class LevelHandler : SingletonComponent<LevelHandler>
 	[ResourceType( "prefab" )]
 	[Property] public string[] LevelPrefabs { get; set; }
 
-
 	public void LoadRandomLevel()
 	{
 		if(IsProxy) { return; }
@@ -44,6 +43,32 @@ public class LevelHandler : SingletonComponent<LevelHandler>
 		{
 			CurrentLevelData.GameObject.Destroy();
 		}
+	}
+
+	public bool FindSpawnLocation( out Transform transform )
+	{
+		transform = Transform.World;
+
+		LevelDataComponent level = CurrentLevelData;
+		if ( level == null ) { return false; }
+
+		if( level.SpawnPoints?.Count() == 0)
+		{
+			Log.Error( "Level does not have any defined spawn points!" );
+			return false;
+		}
+
+		if ( level.SpawnPoints.Count > 0 )
+		{
+			SpawnPoint sp = Random.Shared.FromList( level.SpawnPoints );
+			transform = sp.Transform.World;
+			level.SpawnPoints.Remove( sp );
+			sp.Destroy();
+			return true;
+		}
+
+		// Failing that, spawn where we are
+		return false;
 	}
 
 }

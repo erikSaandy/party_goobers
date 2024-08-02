@@ -13,7 +13,7 @@ public class Face : Component, Component.INetworkListener
 	const string FILE_PATH = "Data/";
 	const string FILE_NAME = "Me.face";
 
-	public NPC Owner { get; set; } = null;
+	[Property] public NPC Owner { get; set; } = null;
 
 	[Property] public Eyebrows Eyebrows { get; set; }
 	[Property] public Eyes Eyes { get; set; }
@@ -112,7 +112,7 @@ public class Face : Component, Component.INetworkListener
 
 	protected override void OnUpdate()
 	{
-		if(Nose.Renderer != null)
+		if ( Nose.Renderer != null )
 		{
 			Nose.Renderer.FlipHorizontal = Nose.Transform.Position.y < Transform.Parent.Transform.Position.y; //Nose.Transform.Rotation.Yaw() < 0;
 		}
@@ -120,6 +120,11 @@ public class Face : Component, Component.INetworkListener
 		float sin = MathF.Sin( Time.Now * 2 );
 		float a = sin * 20;
 		GameObject.Transform.Rotation = Rotation.FromYaw( a );
+
+		Vector3 fwd = Owner.ForwardReference?.Forward ?? 0;
+		Vector3 scale = (Owner.ForwardReference?.Scale ?? 1);
+		Transform.Position = (Owner.ForwardReference?.Position ?? 0) + (fwd.Normal * 17f * scale);	
+		Transform.Scale = 13 * scale;
 
 		//if ( IsProxy ) { return; }
 

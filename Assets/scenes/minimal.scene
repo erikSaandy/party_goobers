@@ -28,6 +28,7 @@
         {
           "__type": "NPCBuffer",
           "__guid": "8c5b41ce-ec79-49f7-b83f-af54dd106869",
+          "NPCs": [],
           "Prefab": "prefabs/npc.prefab"
         }
       ]
@@ -157,14 +158,18 @@
           "ExposureCompensation": 0,
           "ExposureMethod": "RGB",
           "MaximumExposure": 2,
-          "MinimumExposure": 1,
+          "MinimumExposure": 0.96,
           "Mode": "Legacy",
           "Rate": 1
         },
         {
           "__type": "Sandbox.Sharpen",
           "__guid": "0bffee5e-19f2-41c4-88f9-faefbcce6bf4",
-          "Scale": 0.2
+          "Scale": 0
+        },
+        {
+          "__type": "Sandbox.Highlight",
+          "__guid": "c5e402bd-3d17-4e09-9598-9c831a154e82"
         }
       ]
     },

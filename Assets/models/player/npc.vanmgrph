@@ -43,7 +43,7 @@
 				{
 					_class = "CStateMachineAnimNode"
 					m_sName = "Random Start time"
-					m_vecPosition = [ -496.0, -32.0 ]
+					m_vecPosition = [ -720.0, -48.0 ]
 					m_nNodeID = 
 					{
 						m_id = 345444040
@@ -156,7 +156,7 @@
 							{
 								m_nodeID = 
 								{
-									m_id = 4294967295
+									m_id = 1469057987
 								}
 								m_outputID = 
 								{
@@ -358,7 +358,7 @@
 						{
 							m_nodeID = 
 							{
-								m_id = 345444040
+								m_id = 1405444041
 							}
 							m_outputID = 
 							{
@@ -411,7 +411,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Base Animation"
-					m_vecPosition = [ -672.0, -32.0 ]
+					m_vecPosition = [ -944.0, -32.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1397365581
@@ -421,6 +421,38 @@
 					m_sequenceName = "walking"
 					m_playbackSpeed = 1.0
 					m_bLoop = true
+				}
+			},
+			{
+				key = 
+				{
+					m_id = 1405444041
+				}
+				value = 
+				{
+					_class = "CSpeedScaleAnimNode"
+					m_sName = "Unnamed"
+					m_vecPosition = [ -480.0, -48.0 ]
+					m_nNodeID = 
+					{
+						m_id = 1405444041
+					}
+					m_sNote = ""
+					m_inputConnection = 
+					{
+						m_nodeID = 
+						{
+							m_id = 345444040
+						}
+						m_outputID = 
+						{
+							m_id = 4294967295
+						}
+					}
+					m_param = 
+					{
+						m_id = 1509233691
+					}
 				}
 			},
 			{
@@ -509,7 +541,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Base Animation"
-					m_vecPosition = [ -640.0, -112.0 ]
+					m_vecPosition = [ -944.0, -128.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1469057987
@@ -583,14 +615,14 @@
 				{
 					_class = "CCommentAnimNode"
 					m_sName = "Base Animation"
-					m_vecPosition = [ -768.0, -192.0 ]
+					m_vecPosition = [ -928.0, -208.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1698987188
 					}
 					m_sNote = ""
 					m_commentText = ""
-					m_size = [ 672.0, 272.0 ]
+					m_size = [ 832.0, 272.0 ]
 					m_color = [ 49, 139, 146, 255 ]
 				}
 			},
@@ -795,6 +827,20 @@
 				m_bUseMostRecentValue = false
 				m_bAutoReset = false
 				m_bDefaultValue = false
+			},
+			{
+				_class = "CFloatAnimParameter"
+				m_name = "f_walk_speed"
+				m_id = 
+				{
+					m_id = 1509233691
+				}
+				m_previewButton = "ANIMPARAM_BUTTON_NONE"
+				m_bUseMostRecentValue = false
+				m_bAutoReset = false
+				m_fDefaultValue = 1.0
+				m_fMinValue = 0.75
+				m_fMaxValue = 1.4
 			},
 		]
 	}

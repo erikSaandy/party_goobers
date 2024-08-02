@@ -1,6 +1,7 @@
 using Sandbox;
 using Sandbox.UI;
 using System;
+using System.Threading.Tasks;
 
 public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 {
@@ -42,8 +43,18 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 	{
 		base.OnStart();
 
-		LevelHandler.Instance.LoadRandomLevel();
+		Test();
 
+	}
+
+	/// <summary>
+	/// All this stuff can't happen first frame of the game, and it won't, but for testing purposes...
+	/// </summary>
+	public async void Test()
+	{
+		await Task.Delay( 50 );
+		LevelHandler.Instance.LoadRandomLevel();
+		NPCBuffer.Instance.SpawnNPCs();
 	}
 
 	[Broadcast]
