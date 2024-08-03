@@ -1,5 +1,6 @@
 using Sandbox;
 using System;
+using System.Timers;
 
 public class Player : Component
 {
@@ -72,7 +73,7 @@ public class Player : Component
 
 		if ( IsProxy ) { return; }
 
-		if ( TraceLook( out SceneTraceResult trace, out IInteractable hit ) )
+		if ( TraceLook( out IInteractable hit ) )
 		{
 			if ( hit != PreviousHit )
 			{
@@ -102,20 +103,26 @@ public class Player : Component
 
 		if(Input.Pressed("Jump"))
 		{
-			FadeScreen.Visible = !FadeScreen.Visible;
+			LevelTimer.Start( 10 );
+			if ( FadeScreen.Visible ) { FadeScreen.Hide(); }
+			else { FadeScreen.Show(); }
 		}
 
 		PreviousHit = hit;
 
 	}
 
-	private bool TraceLook( out SceneTraceResult trace, out IInteractable interactable )
+	private bool TraceLook( out IInteractable interactable )
 	{
 		interactable = null;
 
+		//Log.Info( FadeScreen.Visible + " :: " + LevelTimer.IsRunning );
+		if( FadeScreen.Visible || !LevelTimer.IsRunning ) { return false; }
+
 		//Log.Info( CursorHud.CursorPosition );
 		Ray ray = Scene.Camera.ScreenPixelToRay( Mouse.Position );
-		trace = Scene.Trace.Ray( ray, 100000 )
+
+		SceneTraceResult trace = Scene.Trace.Ray( ray, 100000 )
 			.WithoutTags("player")
 			.Run();
 

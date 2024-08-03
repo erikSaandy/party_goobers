@@ -109,6 +109,8 @@ public class NodePathComponent : Component
 		NPC npc = collider.Components.Get<NPC>();
 		if ( npc == null ) { return; }
 
+		// Don't start moving if not already moving.
+		if(!npc.WantedPosition.HasValue) { return; }
 
 		int nextTargetId = GetNextTargetFromPos( npc.Transform.Position );
 

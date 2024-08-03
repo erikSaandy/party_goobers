@@ -5,7 +5,7 @@
   "Ident": "party_face",
   "Schema": 1,
   "IncludeSourceFiles": false,
-  "Resources": null,
+  "Resources": "\ntextures/icons/cursor.png\ntextures/icons/playericon_default.png\ntextures/icons/spyglass.png",
   "PackageReferences": [],
   "EditorReferences": null,
   "Metadata": {

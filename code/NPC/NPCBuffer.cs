@@ -60,8 +60,11 @@ public class NPCBuffer : SingletonComponent<NPCBuffer>
 
 	}
 
+	/// <summary>
+	/// Place NPCs into current level.
+	/// </summary>
 	[Authority]
-	public void SpawnNPCs()
+	public void PlaceNPCs()
 	{
 
 		if(IsProxy) { return; }
@@ -72,16 +75,16 @@ public class NPCBuffer : SingletonComponent<NPCBuffer>
 			return;
 		}
 
-		int spawnCount = LevelHandler.Instance.CurrentLevelData.SpawnPoints.Count();
-		Log.Info( spawnCount );
+		IEnumerable<NPC> pool = level.Objective.GetNPCPool( NPCs, level );
 
-		for ( int i = 0; i < spawnCount; i++ ) 
+		for ( int i = 0; i < pool.Count(); i++ ) 
 		{
+			NPC npc = pool.ElementAt( i );
+
 
 			if ( LevelHandler.Instance.FindSpawnLocation( out Transform tr ) )
 			{
-				NPCs[i].Transform.Position = tr.Position;
-				NPCs[i].Transform.Rotation = tr.Rotation;
+				npc.Spawn( tr );
 			}
 			else
 			{
@@ -96,14 +99,14 @@ public class NPCBuffer : SingletonComponent<NPCBuffer>
 				Vector3 nextTargetPos = path.GetTargetPosition( nextTargetId );
 
 				Vector3 dirToNext = (nextTargetPos - pointOnPath).Normal;
-				NPCs[i].Transform.Position = pointOnPath;
+				npc.Transform.Position = pointOnPath;
 				//NPCs[i].Transform.Rotation = Rotation.FromYaw( Vector3.VectorAngle( dirToNext ).yaw );
 
 				//Log.Info( NPCs[i].GameObject.Name + ": " +	 nextTargetPos );
-				NPCs[i].MoveTowards( nextTargetPos );
+				npc.MoveTowards( nextTargetPos );
 			}
 
-			NPCs[i].Show();
+			npc.Show();
 
 		}
 

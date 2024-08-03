@@ -11,9 +11,14 @@ public sealed class LevelDataComponent : Component
 
 	[Property] public CameraComponent CameraReference { get; set; }
 	[Property] public MapInstance MapInstance { get; set; }
+
+	[Property] public LevelObjectiveHandler ObjectiveHandler { get; set; }
+	public LevelObjective Objective => ObjectiveHandler.CurrentObjective;
+
 	[Property] public NodePathComponent[] NodePaths { get; set; }
 
-	[Property] public List<SpawnPoint> SpawnPoints { get; set; }
+
+	public List<SpawnPoint> SpawnPoints { get; set; }
 
 
 	protected override void OnAwake()

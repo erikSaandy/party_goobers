@@ -28,10 +28,33 @@
             "component_type": "NodePathComponent"
           }
         ],
-        "SpawnPoints": []
+        "ObjectiveHandler": {
+          "_type": "component",
+          "component_id": "7465073c-d993-47a1-9cac-ecf8bf14d00d",
+          "go": "8c4c0f95-1da5-4826-ad20-b0e66e80c5f5",
+          "component_type": "LevelObjectiveHandler"
+        }
       }
     ],
     "Children": [
+      {
+        "__guid": "8c4c0f95-1da5-4826-ad20-b0e66e80c5f5",
+        "Flags": 0,
+        "Name": "Objective Handler",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "LevelObjectiveHandler",
+            "__guid": "7465073c-d993-47a1-9cac-ecf8bf14d00d",
+            "ObjectiveId": 0
+          },
+          {
+            "__type": "FindSpecificObjective",
+            "__guid": "fdee869d-d7cd-4d54-a02e-1e7c41295c56",
+            "TargetNPCId": "00000000-0000-0000-0000-000000000000"
+          }
+        ]
+      },
       {
         "__guid": "eca296b1-a807-4c08-9d41-823c7109e809",
         "Flags": 0,

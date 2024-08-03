@@ -2,6 +2,28 @@
   "__guid": "ff1d7b56-a34a-4fe6-8059-82ba5739b46a",
   "GameObjects": [
     {
+      "__guid": "6c816dee-d61c-475e-aa6d-e8affd8afccc",
+      "Flags": 0,
+      "Name": "LevelTimer",
+      "Position": "-68.22887,-364.3546,54.29333",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "Components": [
+        {
+          "__type": "Sandbox.ScreenPanel",
+          "__guid": "f13a86e8-5438-420c-aeb8-5319875324a6",
+          "AutoScreenScale": true,
+          "Opacity": 1,
+          "Scale": 1,
+          "ZIndex": 50
+        },
+        {
+          "__type": "LevelTimer",
+          "__guid": "9f6449fa-3b65-4357-a658-989477f1a714"
+        }
+      ]
+    },
+    {
       "__guid": "fc2d98ed-64ef-487e-92a6-69517a8ba18c",
       "Flags": 0,
       "Name": "GameManager",

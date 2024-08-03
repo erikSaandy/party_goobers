@@ -19,14 +19,15 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 
 	// Timer is always set to 10
 	// Score is added based on how fast you beat the level
-
+	// Score = (int)( 10f - timeLeft ) * 1000
 
 	// Players can find debuffs to add to opponents game.
+
 	// 2X speed next few rounds
 	// 3X speed next few rounds
 	// Obscuring cloud moving from face to face, hiding them.
 	// Inverted mouse next round
-	//
+	// Juggle can
 
 	public static IEnumerable<Player> Players => Instance.Scene.GetAllComponents<Player>();
 	public static IEnumerable<Player> PlayersAlive => Players.Where(x => !x.IsDead);
@@ -43,7 +44,12 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 	{
 		base.OnStart();
 
+		if(IsProxy) { return; }
+
 		Test();
+
+		LevelTimer.OnTimerDepleted += OnTimerDepleted;
+		LevelTimer.OnTimerStarted += OnTimerStarted;
 
 	}
 
@@ -52,9 +58,17 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 	/// </summary>
 	public async void Test()
 	{
-		await Task.Delay( 50 );
+		FadeScreen.Show();
+		await Task.Delay( 200 );
 		LevelHandler.Instance.LoadRandomLevel();
-		NPCBuffer.Instance.SpawnNPCs();
+		NPCBuffer.Instance.PlaceNPCs();
+
+
+		await Task.Delay( 500 );
+
+		FadeScreen.Hide();
+		LevelTimer.Start();
+
 	}
 
 	[Broadcast]
@@ -72,6 +86,17 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 	public void OnPlayerDeath( Guid player, string source )
 	{
 		RoundDeaths.Add( new DeathInstance( player, source ) );
+	}
+
+
+	private void OnTimerStarted()
+	{
+		Log.Warning( "TIMER STARTED" );
+	}
+
+	private void OnTimerDepleted()
+	{
+		Log.Warning("TIMER ENDED");
 	}
 
 	[Broadcast]

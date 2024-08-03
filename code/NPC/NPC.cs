@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 public class NPC : Component, IInteractable
 {
 
-	private enum AnimationBehaviour
+	public enum AnimationBehaviour
 	{
 		Default,
 		Wave,
@@ -73,8 +73,12 @@ public class NPC : Component, IInteractable
 
 	public void OnInteract( Guid playerId )
 	{
+		LevelHandler.Instance.CurrentLevelData.Objective.ClientClickedOnNPC( playerId, this );
+
 		Log.Info( "Interacted with " + GameObject.Name );
-		Renderer.Set( "e_behaviour", (int)AnimationBehaviour.Wave );
+
+		// TODO: Objective.ClientClickedOnNPC();
+
 	}
 
 	public NPC() { }
@@ -138,18 +142,12 @@ public class NPC : Component, IInteractable
 	public void Hide()
 	{
 		GameObject.Enabled = false;
-		//Renderer.Enabled = false;
-		//Physics.Enabled = false;
-		//Face.Hide();
 	}
 
 	[Broadcast]
 	public void Show()
 	{
 		GameObject.Enabled = true;
-		//Renderer.Enabled = true;
-		//Physics.Enabled = true;
-		//Face.Show();
 	}
 
 	public void SetRandomColor()
@@ -213,6 +211,21 @@ public class NPC : Component, IInteractable
 
 
 		Controller?.Move();
+	}
+
+	[Broadcast]
+	public void Spawn( Transform spawnTransform )
+	{
+
+		Renderer.Set( "e_behaviour", (int)NPC.AnimationBehaviour.Default );
+
+		Show();
+
+		if(IsProxy) { return; }
+
+		Transform.Position = spawnTransform.Position;
+		Transform.Rotation = spawnTransform.Rotation;
+
 	}
 
 	[Broadcast]

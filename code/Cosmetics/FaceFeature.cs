@@ -44,13 +44,14 @@ public abstract class FaceFeature : Component
 
 		Data = new();
 
-		GameObject.Name = GetType().Name;
-		GameObject.Parent = Owner.GameObject;
-		GameObject.Transform.LocalPosition = 0;
 		Renderer = GameObject.Components.GetOrCreate<SpriteRenderer>();
 		Renderer.Opaque = true;
 
-		if (IsProxy) { return; }
+		if ( IsProxy ) { return; }
+
+		GameObject.Name = GetType().Name;
+		GameObject.Parent = Owner.GameObject;
+		GameObject.Transform.LocalPosition = 0;
 
 		SetTextureID( TextureCollection.GetRandomId() );
 		Data.Offset = 0;

@@ -116,7 +116,6 @@
         "Name": "face",
         "Scale": "9,9,9",
         "Enabled": true,
-        "NetworkMode": 1,
         "Components": [
           {
             "__type": "Face",
