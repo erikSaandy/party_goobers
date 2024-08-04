@@ -28,6 +28,7 @@
 
 	public override void Tick()
 	{
+		base.Tick();
 
 		if (Visible && CircleFade > 0f)
 		{
@@ -59,4 +60,6 @@
 	{
 		return System.HashCode.Combine(CircleFade, Time.Now);
 	}
+
+
 }

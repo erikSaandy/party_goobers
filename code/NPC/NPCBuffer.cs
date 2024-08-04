@@ -95,7 +95,7 @@ public class NPCBuffer : SingletonComponent<NPCBuffer>
 			// Is there a valid path?
 			if ( level.GetRandomNodePath( out NodePathComponent path ) )
 			{
-				Vector3 pointOnPath = path.ClosestPointOnPath( NPCs[i].Transform.Position );
+				Vector3 pointOnPath = path.ClosestPointOnPath( npc.Transform.Position );
 				int nextTargetId = path.GetNextTargetFromPos( pointOnPath );
 				Vector3 nextTargetPos = path.GetTargetPosition( nextTargetId );
 
@@ -121,7 +121,7 @@ public class NPCBuffer : SingletonComponent<NPCBuffer>
 	{
 		foreach(NPC npc in NPCs)
 		{
-			//npc.Hide();
+			npc.Hide();
 		}
 	}
 

@@ -102,6 +102,8 @@ public abstract class LevelObjective : Component
 
 		spawnCount = int.Min( spawnCount, set.Count );
 
+		set = set.Shuffle().ToList();
+
 		//TODO: Make sure player NPCs are always chosen.
 		return set.Take( spawnCount );
 

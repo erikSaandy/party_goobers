@@ -2,6 +2,42 @@
   "__guid": "ff1d7b56-a34a-4fe6-8059-82ba5739b46a",
   "GameObjects": [
     {
+      "__guid": "91707d3a-51c5-4488-8b59-c5854debc341",
+      "Flags": 0,
+      "Name": "NPC Icon Generator",
+      "Position": "-80.00793,-671.4447,107.8731",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "NPCIconGenerator",
+          "__guid": "fc16cd9b-b114-483e-bea7-50b6addabd83",
+          "Camera": {
+            "_type": "component",
+            "component_id": "a9a80676-2c1e-47b6-a8bf-f356f0228421",
+            "go": "91707d3a-51c5-4488-8b59-c5854debc341",
+            "component_type": "CameraComponent"
+          }
+        },
+        {
+          "__type": "Sandbox.CameraComponent",
+          "__guid": "a9a80676-2c1e-47b6-a8bf-f356f0228421",
+          "BackgroundColor": "0.89467,0.91779,0.9814,1",
+          "ClearFlags": "All",
+          "FieldOfView": 60,
+          "IsMainCamera": false,
+          "Orthographic": true,
+          "OrthographicHeight": 64,
+          "Priority": 1,
+          "RenderExcludeTags": "",
+          "RenderTags": "npc",
+          "TargetEye": "None",
+          "Viewport": "0,0,1,1",
+          "ZFar": 128,
+          "ZNear": 32
+        }
+      ]
+    },
+    {
       "__guid": "fc2d98ed-64ef-487e-92a6-69517a8ba18c",
       "Flags": 0,
       "Name": "GameManager",
@@ -165,13 +201,13 @@
         {
           "__type": "Sandbox.CameraComponent",
           "__guid": "cf3cbf96-22b6-4be4-a5d0-672a96c17f9f",
-          "BackgroundColor": "0,0,0,1",
+          "BackgroundColor": "0.0662,0.07425,0.09302,1",
           "ClearFlags": "All",
           "FieldOfView": 45,
           "IsMainCamera": true,
           "Orthographic": false,
           "OrthographicHeight": 400,
-          "Priority": 1,
+          "Priority": 2,
           "RenderExcludeTags": "",
           "RenderTags": "",
           "TargetEye": "None",

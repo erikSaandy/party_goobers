@@ -46,6 +46,7 @@
         "Flags": 0,
         "Name": "HUD",
         "Enabled": true,
+        "NetworkMode": 1,
         "Components": [
           {
             "__type": "Sandbox.ScreenPanel",

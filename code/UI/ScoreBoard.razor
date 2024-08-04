@@ -10,6 +10,8 @@
 	{
 		ScoreBoardEntry e = Entries[i];
 
+		string medal = MedalEmoji(i);
+
 		string deltaPrefix = "∆ ±";
 		if (e.ScoreDelta > 0f) { deltaPrefix = "∆ +"; }
 
@@ -18,8 +20,8 @@
 		<div class="entry">
 			<div class="placing"> #@((i+1).ToString())</div>
 			<div class="steamicon" style="background-image: url( avatar:@e.SteamId ); transform: rotate(@(e.IsLocal ? ClientIconRotate : 0));" )"></div>
-			<div class="name">@(e.PlayerName)</div>
-			<div class="score">@(e.Score)</div>
+			<div class="name">@(medal + " " + e.PlayerName)</div>
+			<div class="score">@(e.Score.ToString("0,000"))</div>
 			<div class="pts">₧</div>
 			<div class="scoredelta" style="color: @(DeltaColor(e.ScoreDelta))">@(deltaPrefix + e.ScoreDelta)</div>
 			<div class="deltaicon" style="color: @(deltaPlaceColor)">@(deltaPosIcon)</div>
@@ -42,6 +44,19 @@
 	float ClientIconRotate => MathF.Sin(Time.Now * 10) * 5;
 
 	private int DisplayedEntryCount => (int)MathF.Min(Entries.Count, MAX_DISPLAYED_ENTRIES);
+
+	private string MedalEmoji(int place)
+	{
+		switch(place)
+		{
+			case 0:
+				return "🥇";
+			case 1:
+				return "🥈";
+			case 2: return "🥉";
+			default: return "";
+		}
+	}
 
 	public static int GetPositioning(Player player)
 	{
@@ -137,7 +152,6 @@
 
 			ScoreBoardEntry entryOld = OldEntries.FirstOrDefault(x => x.PlayerName == con.DisplayName);
 			int oldScore = entryOld.PlayerName == string.Empty ? 0 : entryOld.Score;
-			Log.Info(oldScore);
 
 			Entries.Add(new ScoreBoardEntry(con.DisplayName, con.SteamId, p.Score, oldScore, !p.IsProxy));
 
@@ -146,11 +160,16 @@
 		}
 
 
-		Entries = Entries.OrderBy(x => x.Score).ToList();
+		Entries = Entries.OrderBy(x => -x.Score).ToList();
 
 
 		Show();
 
+	}
+
+	protected override void OnDestroy()
+	{
+		Visible = false;
 	}
 
 	public struct ScoreBoardEntry

@@ -1,0 +1,26 @@
+﻿@using System;
+@using Sandbox;
+@using Sandbox.UI;
+@attribute [StyleSheet]
+@inherits Panel
+
+<root>
+	<Image class="texture" Texture=@NPCIconGenerator.RenderTexture/>
+</root>
+
+
+@code {
+
+	//https://gist.github.com/CarsonKompon/be43451a518293356feca8095352614f
+
+	public override void Tick()
+	{
+		base.Tick();
+	}
+
+	protected override int BuildHash()
+	{
+		return System.HashCode.Combine(Time.Now);
+	}
+
+}
