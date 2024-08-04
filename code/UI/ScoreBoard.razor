@@ -32,7 +32,7 @@
 {
 	const int MAX_DISPLAYED_ENTRIES = 10;
 
-	[Sync] public static bool Visible { get; set; } = true;
+	[Sync] public static bool Visible { get; set; } = false;
 
 	[Sync] private static List<ScoreBoardEntry> OldEntries { get; set; }
 	[Sync] public static List<ScoreBoardEntry> Entries { get; private set; }

@@ -111,8 +111,18 @@ public class NPCBuffer : SingletonComponent<NPCBuffer>
 
 		}
 
+	}
 
-
+	/// <summary>
+	/// Hide all NPCs.
+	/// </summary>
+	[Authority]
+	public void HideNPCs()
+	{
+		foreach(NPC npc in NPCs)
+		{
+			npc.Hide();
+		}
 	}
 
 }

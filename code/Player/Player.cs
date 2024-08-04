@@ -3,13 +3,32 @@ using System;
 
 public class Player : Component
 {
+	public enum PlayerLifeState
+	{
+		/// <summary>
+		/// Player is actively playing the game.
+		/// </summary>
+		Alive,
+
+		/// <summary>
+		/// Player is safe and waiting for next round.
+		/// </summary>
+		Safe,
+
+		/// <summary>
+		/// Player has lost the game.
+		/// </summary>
+		Dead
+
+	}
+
 	[Sync][Property] private Guid NPCId { get; set; } = default;
 	public NPC NPC => NPCId == default ? null : Scene.Directory.FindByGuid( NPCId ).Components.Get<NPC>();
 
 	private IInteractable PreviousHit { get; set; } = null;
 
 	public int LifeCount { get; private set; } = 3;
-	public bool IsDead { get; private set; } = false;
+	[Sync] public PlayerLifeState LifeState { get; set; }
 
 	[Sync] public int Score { get; set; } = 1254;
 
@@ -43,15 +62,16 @@ public class Player : Component
 
 		NPCBuffer.Instance.PossessFreeNPC( GameObject.Id );
 
+		LifeState = PlayerLifeState.Safe;
 
 	}
 
 	[Broadcast]
 	public void Kill( string source = "" )
 	{
-		if(IsDead) { return; }
+		if( LifeState == PlayerLifeState.Dead ) { return; }
 
-		IsDead = true;
+		LifeState = PlayerLifeState.Dead;
 		LifeCount = 0;
 
 		if( IsProxy ) { return; }
@@ -78,19 +98,19 @@ public class Player : Component
 		{
 			if ( hit != PreviousHit )
 			{
-				Log.Info( "Mouse entered interactable!" );
-				hit.OnMouseEnter( this.Id );
+				//Log.Info( "Mouse entered interactable!" );
+				hit.OnMouseEnter( GameObject.Id );
 			}
 
 			if ( Input.Pressed( "Attack1" ) )
 			{
-				Log.Info( "Clicked on interactable!" );
-				hit.OnInteract( this.Id );
+				//Log.Info( "Clicked on interactable!" );
+				hit.OnInteract( GameObject.Id );
 			}
 			else
 			{
-				Log.Info( "Hovering on interactable!" );
-				hit.OnMouseHover( this.Id );
+				//Log.Info( "Hovering on interactable!" );
+				hit.OnMouseHover( GameObject.Id );
 			}
 
 
@@ -98,8 +118,8 @@ public class Player : Component
 		
 		if( PreviousHit != null && PreviousHit != hit)
 		{
-			Log.Info( "Mouse exited interactable!" );
-			PreviousHit.OnMouseExit( this.Id );
+			//Log.Info( "Mouse exited interactable!" );
+			PreviousHit.OnMouseExit( GameObject.Id );
 		}
 
 		if(Input.Pressed("Jump"))
@@ -118,7 +138,7 @@ public class Player : Component
 		interactable = null;
 
 		//Log.Info( FadeScreen.Visible + " :: " + LevelTimer.IsRunning );
-		if( FadeScreen.Visible ) { return false; }
+		if ( FadeScreen.Visible && LifeState == PlayerLifeState.Alive ) { return false; }
 
 		//Log.Info( CursorHud.CursorPosition );
 		Ray ray = Scene.Camera.ScreenPixelToRay( Mouse.Position );

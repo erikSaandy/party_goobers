@@ -12,6 +12,7 @@ public abstract class LevelObjective : Component
 
 	protected bool AcceptSelection { get; set; } = true;
 
+	public LevelObjectiveHandler Handler => LevelHandler.Instance.CurrentLevelData.ObjectiveHandler;
 
 	/// <summary>
 	/// Does this NPC satisfy the objective?
@@ -60,6 +61,7 @@ public abstract class LevelObjective : Component
 			{
 				// ON CORRECT SELECTION
 				OnCompletedObjective( player );
+				Handler.OnPlayerCompletedObjective( player );
 			}
 			else
 			{

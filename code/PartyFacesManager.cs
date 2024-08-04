@@ -30,13 +30,17 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 	// Juggle can
 
 	public static IEnumerable<Player> Players => Instance.Scene.GetAllComponents<Player>();
-	public static IEnumerable<Player> PlayersAlive => Players.Where(x => !x.IsDead);
+	public static IEnumerable<Player> PlayersAlive => Players.Where(x => x.LifeState == Player.PlayerLifeState.Alive );
+	public static IEnumerable<Player> PlayersSafe => Players.Where( x => x.LifeState == Player.PlayerLifeState.Safe );
+
 	public static TimeSince TimeSinceRoundStart { get; private set; } = new TimeSince();
 
 	public List<DeathInstance> RoundDeaths { get; private set; } = new();
 
 	public Action OnRoundEnter { get; set; }
 	public Action OnRoundExit { get; set; }
+
+	[Sync] public static bool RoundIsOn { get; private set; } = false;
 
 	public LevelDataComponent CurrentLevelData { get; set; } = null;
 
@@ -46,30 +50,10 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 
 		if(IsProxy) { return; }
 
-		Test();
+		ExitRound();
 
 		LevelTimer.OnTimerDepleted += OnTimerDepleted;
 		LevelTimer.OnTimerStarted += OnTimerStarted;
-
-	}
-
-	/// <summary>
-	/// All this stuff can't happen first frame of the game, and it won't, but for testing purposes...
-	/// </summary>
-	public async void Test()
-	{
-		FadeScreen.Show();
-		await Task.Delay( 200 );
-		LevelHandler.Instance.LoadRandomLevel();
-		NPCBuffer.Instance.PlaceNPCs();
-
-
-		await Task.Delay( 500 );
-
-		FadeScreen.Hide();
-		LevelTimer.Start();
-
-		ScoreBoard.UpdateScoreBoard();
 
 	}
 
@@ -93,12 +77,12 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 
 	private void OnTimerStarted()
 	{
-		Log.Warning( "TIMER STARTED" );
+		Log.Info( "> TIMER STARTED" );
 	}
 
 	private void OnTimerDepleted()
 	{
-		Log.Warning("TIMER ENDED");
+		Log.Info( "> TIMER ENDED");
 	}
 
 	[Broadcast]
@@ -108,14 +92,64 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 
 		RoundDeaths?.Clear();
 
+		if ( IsProxy ) { return; }
+
+		EnterRoundAsync();
+
+	}
+
+	public async void EnterRoundAsync()
+	{
+
+		await Task.Delay( 500 );
+
+		FadeScreen.Hide();
+		LevelTimer.Start();
+
+		RoundIsOn = true;
+
 	}
 
 	[Broadcast]
 	public void ExitRound()
 	{
 		OnRoundExit?.Invoke();
+
+		if(IsProxy) { return; }
+
+		ExitRoundAsync();
+
+
 	}
 
+	public async void ExitRoundAsync()
+	{
+		LevelTimer.Stop();
+
+		await Task.Delay( 1000 );
+
+		FadeScreen.Show();
+
+		await Task.Delay( 600 );
+
+		RoundIsOn = false;
+
+		LevelHandler.Instance.UnloadCurrentLevel();
+
+		ScoreBoard.UpdateScoreBoard();
+		ScoreBoard.Show();
+
+		await Task.Delay( 500 );
+
+		LevelHandler.Instance.LoadRandomLevel();
+
+		await Task.Delay( 3500 );
+
+		ScoreBoard.Hide();
+
+		EnterRound();
+
+	}
 
 	public struct DeathInstance
 	{

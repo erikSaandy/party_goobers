@@ -21,6 +21,15 @@ public class FindSpecificObjective : LevelObjective
 
 	}
 
+	protected override void OnUpdate()
+	{
+		base.OnUpdate();
+
+		Gizmo.Draw.Color = Color.Green;
+		Gizmo.Draw.LineSphere( Scene.Directory.FindByGuid( TargetNPCId ).Transform.Position + Vector3.Up * 16, 16 );
+
+	}
+
 	protected override void ClientSelectedNPC( Guid player, NPC npc )
 	{
 

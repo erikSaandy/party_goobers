@@ -30,19 +30,26 @@ public class LevelHandler : SingletonComponent<LevelHandler>
 		levelData.CameraReference.GameObject.Destroy();
 
 		levelObject.BreakFromPrefab();
-		levelObject.NetworkSpawn();
+		//levelObject.NetworkSpawn();
 
 		CurrentLevelDataId = levelObject.Id;
+
+		NPCBuffer.Instance.PlaceNPCs();
 
 	}
 
 	[Broadcast]
 	public void UnloadCurrentLevel()
 	{
+
 		if ( CurrentLevelData != null )
 		{
 			CurrentLevelData.GameObject.Destroy();
+			CurrentLevelDataId = default;
 		}
+
+		NPCBuffer.Instance.HideNPCs();
+
 	}
 
 	public bool FindSpawnLocation( out Transform transform )

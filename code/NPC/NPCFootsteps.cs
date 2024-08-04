@@ -30,7 +30,7 @@ public class NPCFootsteps : Component
 
 	private void OnEvent( SceneModel.FootstepEvent e )
 	{
-		if ( TimeSinceLastStep < 0.2f )//|| !Owner.IsGrounded )
+		if ( TimeSinceLastStep < 0.2f || !PartyFacesManager.RoundIsOn )
 			return;
 
 		var trace = Scene.Trace
