@@ -8,7 +8,7 @@ public class LevelObjectiveHandler : Component
 	/// </summary>
 	private List<LevelObjective> Objectives { get; set; }
 
-	[Sync][Property] private int ObjectiveId { get; set; } = 0;
+	[Sync][Property] public int ObjectiveId { get; set; } = 0;
 	public LevelObjective CurrentObjective => Objectives[ObjectiveId];
 
 	[Sync][Property] public int PlayerCount { get; set; } = 0;
@@ -17,9 +17,10 @@ public class LevelObjectiveHandler : Component
 	{
 		base.OnAwake();
 
-		if(IsProxy) { return; }
-
 		Objectives = GameObject.Components.GetAll<LevelObjective>( FindMode.InSelf ).ToList();
+
+		if (IsProxy) { return; }
+
 		ObjectiveId = Objectives.GetRandomId();
 
 		PlayerCount = PartyFacesManager.PlayersAlive.Count();

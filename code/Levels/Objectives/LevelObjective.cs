@@ -46,7 +46,7 @@ public abstract class LevelObjective : Component
 
 
 		SelectedNPCs.Add( npc );
-		npc.Renderer.Set( "e_behaviour", (int)NPC.AnimationBehaviour.Wave );
+		npc.SetClientAnimationBehaviour( player, NPC.AnimationBehaviour.Wave );
 
 		ClientSelectedNPC( player, npc );
 
@@ -66,18 +66,18 @@ public abstract class LevelObjective : Component
 			else
 			{
 				// ON WRONG SELECTION
-				ResetSelection();
+				ResetSelection( player );
 			}
 
 		}
 
 	}
 
-	private void ResetSelection()
+	private void ResetSelection( Guid player )
 	{
 		foreach(NPC npc in SelectedNPCs)
 		{
-			npc.Renderer.Set( "e_behaviour", (int)NPC.AnimationBehaviour.Default );
+			npc.SetClientAnimationBehaviour( player, NPC.AnimationBehaviour.Default );
 		}
 
 		SelectedNPCs.Clear();
@@ -115,7 +115,7 @@ public abstract class LevelObjective : Component
 	{
 		foreach( NPC npc in SelectedNPCs ) {
 
-			npc.Renderer.Set( "e_behaviour", (int)NPC.AnimationBehaviour.Cheer );
+			npc.SetClientAnimationBehaviour( player, NPC.AnimationBehaviour.Cheer );
 
 		}
 	}

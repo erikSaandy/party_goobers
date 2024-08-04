@@ -77,7 +77,6 @@
 
 	protected override void OnStart()
 	{
-		UpdateScoreBoard();
 	}
 
 	protected override void OnUpdate()
@@ -85,11 +84,13 @@
 
 	}
 
+	[Broadcast]
 	public static void Show()
 	{
 		Visible = true;
 	}
 
+	[Broadcast]
 	public static void Hide()
 	{
 		Visible = false;

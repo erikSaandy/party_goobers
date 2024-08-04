@@ -54,6 +54,28 @@
       ]
     },
     {
+      "__guid": "85fb6621-3aaa-4a54-8054-ce289bd5c78b",
+      "Flags": 0,
+      "Name": "Timer",
+      "Position": "-29.2952,-443.633,192.511",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "Components": [
+        {
+          "__type": "LevelTimer",
+          "__guid": "1df6b09e-0690-4351-a399-49579f699aef"
+        },
+        {
+          "__type": "Sandbox.ScreenPanel",
+          "__guid": "904eacaf-5de3-4d69-8995-7c66af34befd",
+          "AutoScreenScale": true,
+          "Opacity": 1,
+          "Scale": 1,
+          "ZIndex": 95
+        }
+      ]
+    },
+    {
       "__guid": "b7839f82-bb06-407f-83b7-d1d74d0a1b58",
       "Flags": 0,
       "Name": "NPC Buffer",

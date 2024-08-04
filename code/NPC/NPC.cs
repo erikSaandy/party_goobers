@@ -73,11 +73,9 @@ public class NPC : Component, IInteractable
 
 	public void OnInteract( Guid playerId )
 	{
-		LevelHandler.Instance.CurrentLevelData.Objective.ClientClickedOnNPC( playerId, this );
+		LevelHandler.Instance.CurrentLevelData.ClientClickedOnNPC( playerId, this );
 
 		Log.Info( "Interacted with " + GameObject.Name );
-
-		// TODO: Objective.ClientClickedOnNPC();
 
 	}
 
@@ -101,6 +99,15 @@ public class NPC : Component, IInteractable
 		float sp = Math2d.InverseLerp( 0.75f, 1.4f, WalkSpeed );
 
 		Renderer.Set( "f_walk_speed", Math2d.Map(WalkSpeed, MIN_WALKSPEED, MAX_WALKSPEED, 0.75f, 1.4f ) );
+
+	}
+
+
+	public void SetClientAnimationBehaviour( Guid player, AnimationBehaviour behaviour )
+	{
+		if ( Scene.Directory.FindByGuid( player ).IsProxy ) { return; }
+
+		Renderer.Set( "e_behaviour", (int)behaviour );
 
 	}
 

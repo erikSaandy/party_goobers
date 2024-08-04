@@ -1,4 +1,5 @@
 using Sandbox;
+using System;
 
 public sealed class LevelDataComponent : Component
 {
@@ -42,6 +43,11 @@ public sealed class LevelDataComponent : Component
 		nodePath.TimeSinceUsed = 0;
 
 		return true;
+	}
+
+	public void ClientClickedOnNPC( Guid player, NPC npc )
+	{
+		Objective.ClientClickedOnNPC( player, npc );
 	}
 
 	protected override void OnUpdate()

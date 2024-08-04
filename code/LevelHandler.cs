@@ -38,6 +38,12 @@ public class LevelHandler : SingletonComponent<LevelHandler>
 
 	}
 
+	protected override void OnUpdate()
+	{
+		base.OnUpdate();
+
+	}
+
 	[Broadcast]
 	public void UnloadCurrentLevel()
 	{

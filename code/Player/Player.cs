@@ -122,13 +122,6 @@ public class Player : Component
 			PreviousHit.OnMouseExit( GameObject.Id );
 		}
 
-		if(Input.Pressed("Jump"))
-		{
-			//LevelTimer.Start( 10 );
-			if ( ScoreBoard.Visible ) { ScoreBoard.Hide(); }
-			else { ScoreBoard.Show(); }
-		}
-
 		PreviousHit = hit;
 
 	}
@@ -138,7 +131,7 @@ public class Player : Component
 		interactable = null;
 
 		//Log.Info( FadeScreen.Visible + " :: " + LevelTimer.IsRunning );
-		if ( FadeScreen.Visible && LifeState == PlayerLifeState.Alive ) { return false; }
+		if ( FadeScreen.Visible || LifeState == PlayerLifeState.Alive ) { return false; }
 
 		//Log.Info( CursorHud.CursorPosition );
 		Ray ray = Scene.Camera.ScreenPixelToRay( Mouse.Position );

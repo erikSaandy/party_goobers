@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 public class FindSpecificObjective : LevelObjective
 {
-
 	public override int MaxSelectedNPCs => 1;
 
-	[Sync][Property] public Guid TargetNPCId { get; private set; }
+	[Sync] public Guid TargetNPCId { get; private set; }
 
 	public override IEnumerable<NPC> GetNPCPool( List<NPC> set, LevelDataComponent level )
 	{	
@@ -24,6 +23,8 @@ public class FindSpecificObjective : LevelObjective
 	protected override void OnUpdate()
 	{
 		base.OnUpdate();
+		
+		if(IsProxy) { return; }
 
 		Gizmo.Draw.Color = Color.Green;
 		Gizmo.Draw.LineSphere( Scene.Directory.FindByGuid( TargetNPCId ).Transform.Position + Vector3.Up * 16, 16 );

@@ -121,7 +121,7 @@ public class NPCBuffer : SingletonComponent<NPCBuffer>
 	{
 		foreach(NPC npc in NPCs)
 		{
-			npc.Hide();
+			//npc.Hide();
 		}
 	}
 

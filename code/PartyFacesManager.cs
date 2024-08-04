@@ -68,6 +68,22 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 
 	}
 
+	protected override void OnUpdate()
+	{
+		base.OnUpdate();
+
+		if(IsProxy) { return; }
+
+		if ( Input.Pressed( "Jump" ) )
+		{
+			//LevelTimer.Start( 10 );
+			if ( ScoreBoard.Visible ) { ScoreBoard.Hide(); }
+			else { ScoreBoard.Show(); }
+		}
+
+
+	}
+
 	[Broadcast]
 	public void OnPlayerDeath( Guid player, string source )
 	{
