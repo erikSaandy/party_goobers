@@ -69,6 +69,7 @@ public class NPC : Component, IInteractable
 	public void OnMouseExit( Guid playerId )
 	{
 		Renderer.Set( "b_big_head", false );
+		List<int> i = new();
 	}
 
 	public void OnInteract( Guid playerId )
@@ -114,6 +115,7 @@ public class NPC : Component, IInteractable
 	public void OnRoundEnter()
 	{
 		if ( IsProxy ) { return; }
+
 	}
 
 	public void OnRoundExit()

@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 
 public class LevelObjectiveHandler : Component
 {
@@ -34,15 +35,23 @@ public class LevelObjectiveHandler : Component
 
 		if (player == null) { Log.Error( "Player that completed objective is null? fuck off." ); return; }
 
-		player.LifeState = Player.PlayerLifeState.Safe;
+		player.MarkAsSafe();
 
-		if(IsProxy) { return; }
+		float time = MathF.Max( LevelTimer.TimeNow + 1, 0 );
+
+		player.AddScore( (int)(time * 1000) );
+
+		Log.Info( player.Network.OwnerConnection.DisplayName + " completed objective.");
+
+		if (IsProxy) { return; }
 
 		//Check for full completion
 
-		int aliveCount = PartyFacesManager.PlayersAlive.Count();
+		// TODO: bandaid fix because player life state won't update in time?
+		int aliveCount = PartyFacesManager.PlayersAlive.Where( x => x != player ).Count();
 
-		if( aliveCount == 0 )
+
+		if ( aliveCount == 0 )
 		{
 			PartyFacesManager.Instance.ExitRound();
 		}

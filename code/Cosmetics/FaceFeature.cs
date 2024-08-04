@@ -63,7 +63,6 @@ public abstract class FaceFeature : Component
 		Renderer.Texture = WantedTexture;
 
 		//Owner.Transform.Parent.Transform.Position = new Vector3( Game.Random.Float( -0, 0 ), Game.Random.Float( -0, 00 ) );
-
 	}
 
 	protected override void OnUpdate()

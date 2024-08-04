@@ -10,17 +10,19 @@
 	{
 		ScoreBoardEntry e = Entries[i];
 
-		string deltaPrefix = e.ScoreDelta > 0 ? "+" : "";
-		string deltaIcon = GetDeltaIcon(i, e.PlayerName, out string deltaPlaceColor);
+		string deltaPrefix = "∆ ±";
+		if (e.ScoreDelta > 0f) { deltaPrefix = "∆ +"; }
+
+		string deltaPosIcon = GetDeltaPositionIcon(i, e.PlayerName, out string deltaPlaceColor);
 
 		<div class="entry">
 			<div class="placing"> #@((i+1).ToString())</div>
-			<div class="steamicon" style="background-image: url( avatar:@e.SteamId )"></div>
+			<div class="steamicon" style="background-image: url( avatar:@e.SteamId ); transform: rotate(@(e.IsLocal ? ClientIconRotate : 0));" )"></div>
 			<div class="name">@(e.PlayerName)</div>
 			<div class="score">@(e.Score)</div>
 			<div class="pts">₧</div>
 			<div class="scoredelta" style="color: @(DeltaColor(e.ScoreDelta))">@(deltaPrefix + e.ScoreDelta)</div>
-			<div class="deltaicon" style="color: @(deltaPlaceColor)">@(deltaIcon)</div>
+			<div class="deltaicon" style="color: @(deltaPlaceColor)">@(deltaPosIcon)</div>
 		</div>
 	}
 
@@ -37,7 +39,26 @@
 	[Sync] private static List<ScoreBoardEntry> OldEntries { get; set; }
 	[Sync] public static List<ScoreBoardEntry> Entries { get; private set; }
 
+	float ClientIconRotate => MathF.Sin(Time.Now * 10) * 5;
+
 	private int DisplayedEntryCount => (int)MathF.Min(Entries.Count, MAX_DISPLAYED_ENTRIES);
+
+	public static int GetPositioning(Player player)
+	{
+		if(Entries?.Count() == 0) { return 99; }
+
+		string name = player.Network.OwnerConnection.DisplayName;
+
+		if (!ScoreBoard.Entries.Exists(x => x.PlayerName == name))
+		{
+			return 99;
+		}
+
+		IEnumerable<ScoreBoardEntry> ent = Entries.TakeWhile(x => x.PlayerName != name);
+
+		return ent.Count();
+
+	}
 
 	public ScoreBoard() {
 		OldEntries = new();
@@ -51,9 +72,9 @@
 		else { return Color.Green.Hex; }
 	}
 
-	private string GetDeltaIcon( int place, string playerName, out string color )
+	private string GetDeltaPositionIcon( int place, string playerName, out string color )
 	{
-		int oldPlace = place;
+		int oldPlace = place; 
 
 		if(OldEntries.Count > 0) {
 			oldPlace = OldEntries.TakeWhile(x => x.PlayerName != playerName).Count();
@@ -81,7 +102,6 @@
 
 	protected override void OnUpdate()
 	{
-
 	}
 
 	[Broadcast]
@@ -104,7 +124,7 @@
 	[Broadcast]
 	public static void UpdateScoreBoard()
 	{
-		OldEntries = Entries;
+		OldEntries = new( Entries );
 		Entries.Clear();
 
 		IEnumerable<Player> players = PartyFacesManager.Players;
@@ -117,8 +137,9 @@
 
 			ScoreBoardEntry entryOld = OldEntries.FirstOrDefault(x => x.PlayerName == con.DisplayName);
 			int oldScore = entryOld.PlayerName == string.Empty ? 0 : entryOld.Score;
+			Log.Info(oldScore);
 
-			Entries.Add(new ScoreBoardEntry(con.DisplayName, con.SteamId, p.Score, oldScore));
+			Entries.Add(new ScoreBoardEntry(con.DisplayName, con.SteamId, p.Score, oldScore, !p.IsProxy));
 
 			//ClientAddEntry( con.DisplayName, con.SteamId, p.Score, oldScore );
 
@@ -141,13 +162,16 @@
 		public int Score;
 		public int ScoreDelta;
 
-		public ScoreBoardEntry(string playerName, ulong steamId, int score, int oldScore)
+		public bool IsLocal;
+
+		public ScoreBoardEntry(string playerName, ulong steamId, int score, int oldScore, bool isLocal)
 		{
 			this.PlayerName = playerName;
 			this.SteamId = steamId;
 
 			this.Score = score;
 			this.ScoreDelta = score - oldScore;
+			this.IsLocal = isLocal;
 		}
 
 	}

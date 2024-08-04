@@ -165,7 +165,7 @@
         {
           "__type": "Sandbox.CameraComponent",
           "__guid": "cf3cbf96-22b6-4be4-a5d0-672a96c17f9f",
-          "BackgroundColor": "0.55349,0.5907,1,1",
+          "BackgroundColor": "0,0,0,1",
           "ClearFlags": "All",
           "FieldOfView": 45,
           "IsMainCamera": true,

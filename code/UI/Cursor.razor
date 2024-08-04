@@ -1,55 +1,72 @@
-@using System;
+﻿@using System;
 @using Sandbox;
 @using Sandbox.UI;
 @attribute [StyleSheet]
-@inherits Panel
+@inherits PanelComponent
 
 <root class="container">
 
 
-	<div class="cursor visible" style="transform: rotate(@(Tilt)deg);" @ref="CursorPanel" />
+	<div class="cursor visible @(IsProxy ? "peer" : "")" style="transform: rotate(@(Tilt)deg);" @ref="CursorPanel">
+		<div class="crown @(HasCrown?"visible" : "")">👑</div>
+	<div/>
 
 </root>
 
 @code
 {
-	//	<div class="cursor @(Visible ? "visible" : "")" @ref="CursorPanel" />
-	public Player Owner { get; set; }
+	bool HasCrown => ScoreBoard.GetPositioning(Owner) == 0;
 
-	public static bool Visible { get; private set; } = true;
+	[Property] public Player Owner { get; private set; }
+
+	public bool Visible { get; private set; } = true;
 
 	public Panel CursorPanel { get; set; }
 
-	public static Vector2 CursorPosition { get; private set; }
+	[Sync] public Vector2 CursorPosition { get; private set; }
 
-	private static float Tilt { get; set; } = 0;
+	[Sync] private float Tilt { get; set; } = 0;
 
 	public Cursor() {
 		CursorPanel = new Panel();
 		Visible = true;
 	}
 
-	public override void Tick()
+	protected override void OnStart()
 	{
-		base.Tick();
 
-		if(Visible)
-		{
-			CursorPanel.Style.Left = Length.Fraction(Mouse.Position.x / Screen.Width);
-			CursorPanel.Style.Top = Length.Fraction(Mouse.Position.y / Screen.Height);
+		if(!IsProxy) {
+			Components.Get<ScreenPanel>().ZIndex = 501;
 		}
+	}
+
+	protected override void OnUpdate()
+	{
+		base.OnUpdate();
+
+		if (Visible)
+		{
+			CursorPanel.Style.Left = Length.Fraction(CursorPosition.x);
+			CursorPanel.Style.Top = Length.Fraction(CursorPosition.y);
+		}
+
+		if(IsProxy) { return; }
+
+		CursorPosition = Mouse.Position / Screen.Size;
 
 		Tilt = -Mouse.Velocity.x * 2;
 		Tilt = MathX.Clamp(Tilt, -20, 20);
 
 	}
 
-	public static void Show()
+	[Broadcast]
+	public void Show()
 	{
 		Visible = true;
 	}
 
-	public static void Hide()
+	[Broadcast]
+	public void Hide()
 	{
 		Visible = false;
 	}

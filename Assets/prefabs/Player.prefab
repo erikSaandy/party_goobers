@@ -14,6 +14,34 @@
     ],
     "Children": [
       {
+        "__guid": "3e413ab4-ee99-4d37-b41c-3a0444561ccb",
+        "Flags": 0,
+        "Name": "Cursor",
+        "Position": "111.791,-456.7381,415.8712",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "Components": [
+          {
+            "__type": "Cursor",
+            "__guid": "32f7e4ec-98f1-439f-9712-e29c2734605e",
+            "Owner": {
+              "_type": "component",
+              "component_id": "b864fe8c-c607-442e-8273-88ee1b484ac7",
+              "go": "cbbfcc15-bf66-4507-b14d-0cb8c45ebb90",
+              "component_type": "Player"
+            }
+          },
+          {
+            "__type": "Sandbox.ScreenPanel",
+            "__guid": "f624d0f2-2ca8-4bcf-a8e1-1f3f19b4d5b3",
+            "AutoScreenScale": true,
+            "Opacity": 1,
+            "Scale": 1,
+            "ZIndex": 500
+          }
+        ]
+      },
+      {
         "__guid": "b1e2878f-7ccb-4fe7-aedb-01f76a198e15",
         "Flags": 0,
         "Name": "HUD",

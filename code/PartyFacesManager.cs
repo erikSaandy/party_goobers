@@ -159,7 +159,7 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 
 		LevelHandler.Instance.LoadRandomLevel();
 
-		await Task.Delay( 3500 );
+		await Task.Delay( 2000 );
 
 		ScoreBoard.Hide();
 

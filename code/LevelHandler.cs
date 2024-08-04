@@ -20,7 +20,6 @@ public class LevelHandler : SingletonComponent<LevelHandler>
 		levelObject.BreakFromPrefab();
 		levelObject.NetworkSpawn();
 		LevelDataComponent levelData = levelObject.Components.Get<LevelDataComponent>();
-
 		Scene.Camera.Transform.Position = levelData.CameraReference.Transform.Position;
 		Scene.Camera.Transform.Rotation = levelData.CameraReference.Transform.Rotation;
 		Scene.Camera.FieldOfView = levelData.CameraReference.FieldOfView;

@@ -4,7 +4,7 @@ LevelTimer {
     height: 70px;
     left: 50%;
     bottom: 5px;
-    background-color: rgba(0,0,0, 0.8);
+    background-color: rgba(15,15,50, .8);
     transform: translate(-50%, -50%);
     align-items: center;
     color: white;
@@ -16,6 +16,7 @@ LevelTimer {
     border-width: 2px;
     box-shadow: 4px 4px 8px black;
     text-shadow: 4px 4px 0px black;
+    backdrop-filter: blur(10px);
 
     > .icon {
         text-align: left;

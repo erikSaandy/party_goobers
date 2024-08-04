@@ -1,7 +1,7 @@
 ﻿ScoreBoard {
 	position: absolute;
-	left: 25%;
-	right: 25%;
+	left: 20%;
+	right: 20%;
 	font-weight: 700;
 	font-size: 20px;
 	font-family: Poppins;
@@ -11,7 +11,7 @@
 	box-shadow: 0px 0px 32px black;
 	text-shadow: 4px 4px 0px black;
 	color: white;
-	background-color: rgba(5,5,20, .8);
+	background-color: rgba(5,5,25, .8);
 	backdrop-filter: blur(10px);
 	flex: auto;
 	flex-direction: column;
@@ -21,7 +21,7 @@
 	justify-content: center;
 	align-self: center;
 	padding-top: 20px;
-	padding-bottom:20px;
+	padding-bottom: 20px;
 
 	&.visible {
 		opacity: 1;
@@ -29,12 +29,13 @@
 
 	.entry {
 		margin-top: 20px;
-		width: 900px;
+		width: 1000px;
 		height: 70px;
-		background-color: rgba(5,5,20, .8);
+		background-color: rgba(15,15,50, .8);
 		align-items: center;
 		border-radius: 15px;
 		border-width: 2px;
+		box-shadow: 0px 0px 40px black;
 
 		> .placing {
 			width: 90px;
@@ -84,7 +85,7 @@
 
 		> .scoredelta {
 			margin-right: 5px;
-			font-size: 28px;
+			font-size: 22px;
 			font-weight: 600;
 		}
 

@@ -50,6 +50,7 @@ public abstract class LevelObjective : Component
 
 		ClientSelectedNPC( player, npc );
 
+		Log.Info( "Selected NPC count: " + SelectedNPCs.Count );
 		bool evaluate = SelectedNPCs.Count >= MaxSelectedNPCs;
 
 		if (evaluate)

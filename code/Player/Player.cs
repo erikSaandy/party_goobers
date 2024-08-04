@@ -28,9 +28,15 @@ public class Player : Component
 	private IInteractable PreviousHit { get; set; } = null;
 
 	public int LifeCount { get; private set; } = 3;
-	[Sync] public PlayerLifeState LifeState { get; set; }
+	[Sync] public PlayerLifeState LifeState { get; private set; }
 
-	[Sync] public int Score { get; set; } = 1254;
+	[Sync] public int Score { get; set; } = 0;
+
+	[Authority]
+	public void AddScore(int score)
+	{
+		this.Score += score;
+	}
 
 	public Player()
 	{
@@ -40,7 +46,10 @@ public class Player : Component
 	[Broadcast]
 	public void SetNPC(Guid npcId)
 	{
-		if(IsProxy) { return; }
+		PartyFacesManager.Instance.OnRoundEnter += OnRoundEnter;
+		PartyFacesManager.Instance.OnRoundExit += OnRoundExit;
+
+		if (IsProxy) { return; }
 
 		// Player already owns other NPC
 		if(NPC != null && NPC.Owner == this)
@@ -66,6 +75,19 @@ public class Player : Component
 
 	}
 
+	void OnRoundExit()
+	{
+
+	}
+
+	void OnRoundEnter()
+	{
+		if(LifeState == PlayerLifeState.Safe )
+		{
+			LifeState = PlayerLifeState.Alive;
+		}
+	}
+
 	[Broadcast]
 	public void Kill( string source = "" )
 	{
@@ -80,11 +102,20 @@ public class Player : Component
 
 	}
 
+	[Broadcast]
+	public void MarkAsSafe()
+	{
+		LifeState = PlayerLifeState.Safe;
+	}
+
 	protected override void OnDestroy()
 	{
 		Kill( "Disconnected from server" );
 
 		base.OnDestroy();
+
+		PartyFacesManager.Instance.OnRoundEnter -= OnRoundEnter;
+		PartyFacesManager.Instance.OnRoundExit -= OnRoundExit;
 
 	}
 
@@ -131,7 +162,7 @@ public class Player : Component
 		interactable = null;
 
 		//Log.Info( FadeScreen.Visible + " :: " + LevelTimer.IsRunning );
-		if ( FadeScreen.Visible || LifeState == PlayerLifeState.Alive ) { return false; }
+		if ( FadeScreen.Visible || LifeState != PlayerLifeState.Alive ) { return false; }
 
 		//Log.Info( CursorHud.CursorPosition );
 		Ray ray = Scene.Camera.ScreenPixelToRay( Mouse.Position );
