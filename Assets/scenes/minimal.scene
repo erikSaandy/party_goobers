@@ -2,32 +2,9 @@
   "__guid": "ff1d7b56-a34a-4fe6-8059-82ba5739b46a",
   "GameObjects": [
     {
-      "__guid": "6c816dee-d61c-475e-aa6d-e8affd8afccc",
-      "Flags": 0,
-      "Name": "LevelTimer",
-      "Position": "-68.22887,-364.3546,54.29333",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "Components": [
-        {
-          "__type": "Sandbox.ScreenPanel",
-          "__guid": "f13a86e8-5438-420c-aeb8-5319875324a6",
-          "AutoScreenScale": true,
-          "Opacity": 1,
-          "Scale": 1,
-          "ZIndex": 50
-        },
-        {
-          "__type": "LevelTimer",
-          "__guid": "9f6449fa-3b65-4357-a658-989477f1a714"
-        }
-      ]
-    },
-    {
       "__guid": "fc2d98ed-64ef-487e-92a6-69517a8ba18c",
       "Flags": 0,
       "Name": "GameManager",
-      "Position": "1434.675,-1101.596,695.3961",
       "Enabled": true,
       "NetworkMode": 1,
       "NetworkOrphaned": 2,
@@ -40,18 +17,23 @@
       ]
     },
     {
-      "__guid": "b7839f82-bb06-407f-83b7-d1d74d0a1b58",
+      "__guid": "09023b3c-a4b8-4e81-8d8d-ce088d12619c",
       "Flags": 0,
-      "Name": "NPC Buffer",
-      "Position": "-24.59171,127.0008,46.44773",
+      "Name": "ScoreBoard",
       "Enabled": true,
       "NetworkMode": 1,
       "Components": [
         {
-          "__type": "NPCBuffer",
-          "__guid": "8c5b41ce-ec79-49f7-b83f-af54dd106869",
-          "NPCs": [],
-          "Prefab": "prefabs/npc.prefab"
+          "__type": "Sandbox.ScreenPanel",
+          "__guid": "7bc8ef98-8778-4f51-a9b8-c57ef42b1e93",
+          "AutoScreenScale": true,
+          "Opacity": 1,
+          "Scale": 1,
+          "ZIndex": 105
+        },
+        {
+          "__type": "ScoreBoard",
+          "__guid": "b189edac-502b-402f-b67c-e774c69e3655"
         }
       ]
     },
@@ -72,10 +54,42 @@
       ]
     },
     {
+      "__guid": "b7839f82-bb06-407f-83b7-d1d74d0a1b58",
+      "Flags": 0,
+      "Name": "NPC Buffer",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "Components": [
+        {
+          "__type": "NPCBuffer",
+          "__guid": "8c5b41ce-ec79-49f7-b83f-af54dd106869",
+          "NPCs": [],
+          "Prefab": "prefabs/npc.prefab"
+        }
+      ]
+    },
+    {
+      "__guid": "d3b6c1f5-e1b1-4db0-8d86-6d10cecdb67d",
+      "Flags": 0,
+      "Name": "Network Helper",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.NetworkHelper",
+          "__guid": "55b45dd3-bb75-490c-8f8a-05b1fcbfee21",
+          "PlayerPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/player.prefab"
+          },
+          "SpawnPoints": [],
+          "StartServer": true
+        }
+      ]
+    },
+    {
       "__guid": "f9cbb4c3-a23c-487d-a2dc-9749bff0a0a2",
       "Flags": 0,
       "Name": "Face Data",
-      "Position": "262.7379,-134.4273,520.2098",
       "Enabled": true,
       "Components": [
         {
@@ -192,25 +206,6 @@
         {
           "__type": "Sandbox.Highlight",
           "__guid": "c5e402bd-3d17-4e09-9598-9c831a154e82"
-        }
-      ]
-    },
-    {
-      "__guid": "d3b6c1f5-e1b1-4db0-8d86-6d10cecdb67d",
-      "Flags": 0,
-      "Name": "Network Helper",
-      "Position": "309.2853,-134.1234,-256.8865",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.NetworkHelper",
-          "__guid": "55b45dd3-bb75-490c-8f8a-05b1fcbfee21",
-          "PlayerPrefab": {
-            "_type": "gameobject",
-            "prefab": "prefabs/player.prefab"
-          },
-          "SpawnPoints": [],
-          "StartServer": true
         }
       ]
     }

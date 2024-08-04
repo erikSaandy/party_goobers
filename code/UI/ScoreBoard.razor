@@ -1,0 +1,154 @@
+﻿@using System;
+@using Sandbox;
+@using Sandbox.UI;
+@attribute [StyleSheet]
+@inherits PanelComponent
+
+<root class="@( Visible ? "visible" : "" )">
+
+	@for (int i = 0; i < DisplayedEntryCount; i++)
+	{
+		ScoreBoardEntry e = Entries[i];
+
+		string deltaPrefix = e.ScoreDelta > 0 ? "+" : "";
+		string deltaIcon = GetDeltaIcon(i, e.PlayerName, out string deltaPlaceColor);
+
+		<div class="entry">
+			<div class="placing"> #@((i+1).ToString())</div>
+			<div class="steamicon" style="background-image: url( avatar:@e.SteamId )"></div>
+			<div class="name">@(e.PlayerName)</div>
+			<div class="score">@(e.Score)</div>
+			<div class="pts">₧</div>
+			<div class="scoredelta" style="color: @(DeltaColor(e.ScoreDelta))">@(deltaPrefix + e.ScoreDelta)</div>
+			<div class="deltaicon" style="color: @(deltaPlaceColor)">@(deltaIcon)</div>
+		</div>
+	}
+
+	<div class="dots">. . .</div>
+
+</root>
+
+@code
+{
+	const int MAX_DISPLAYED_ENTRIES = 10;
+
+	[Sync] public static bool Visible { get; set; } = true;
+
+	[Sync] private static List<ScoreBoardEntry> OldEntries { get; set; }
+	[Sync] public static List<ScoreBoardEntry> Entries { get; private set; }
+
+	private int DisplayedEntryCount => (int)MathF.Min(Entries.Count, MAX_DISPLAYED_ENTRIES);
+
+	public ScoreBoard() {
+		OldEntries = new();
+		Entries = new();
+	}
+
+	private string DeltaColor(int delta)
+	{
+		if (delta < 0) { return Color.Red.Hex; }
+		else if (delta == 0) { return Color.Yellow.Hex; }
+		else { return Color.Green.Hex; }
+	}
+
+	private string GetDeltaIcon( int place, string playerName, out string color )
+	{
+		int oldPlace = place;
+
+		if(OldEntries.Count > 0) {
+			oldPlace = OldEntries.TakeWhile(x => x.PlayerName != playerName).Count();
+		}
+
+		int deltaPlace = oldPlace - place;
+
+		string result = deltaPlace + " ▲";
+
+		if(deltaPlace == 0) {
+			result = "-";
+		}
+		else if(deltaPlace < 0) {
+			result = MathF.Abs(deltaPlace) + " ▼";
+		}
+
+		color = DeltaColor(deltaPlace);
+		return result;
+	}
+
+
+	protected override void OnStart()
+	{
+		UpdateScoreBoard();
+	}
+
+	protected override void OnUpdate()
+	{
+
+	}
+
+	public static void Show()
+	{
+		Visible = true;
+	}
+
+	public static void Hide()
+	{
+		Visible = false;
+	}
+
+	protected override int BuildHash()
+	{
+		return System.HashCode.Combine( Time.Now );
+	}
+
+	[Broadcast]
+	public static void UpdateScoreBoard()
+	{
+		OldEntries = Entries;
+		Entries.Clear();
+
+		IEnumerable<Player> players = PartyFacesManager.Players;
+		int playerCount = players.Count();
+
+		for (int i = 0; i < playerCount; i++)
+		{
+			Player p = players.ElementAt(i);
+			Connection con = p.Network.OwnerConnection;
+
+			ScoreBoardEntry entryOld = OldEntries.FirstOrDefault(x => x.PlayerName == con.DisplayName);
+			int oldScore = entryOld.PlayerName == string.Empty ? 0 : entryOld.Score;
+
+			Entries.Add(new ScoreBoardEntry(con.DisplayName, con.SteamId, p.Score, oldScore));
+
+			//ClientAddEntry( con.DisplayName, con.SteamId, p.Score, oldScore );
+
+		}
+
+
+		Entries = Entries.OrderBy(x => x.Score).ToList();
+
+
+		Show();
+
+	}
+
+	public struct ScoreBoardEntry
+	{
+
+		public string PlayerName;
+		public ulong SteamId;
+
+		public int Score;
+		public int ScoreDelta;
+
+		public ScoreBoardEntry(string playerName, ulong steamId, int score, int oldScore)
+		{
+			this.PlayerName = playerName;
+			this.SteamId = steamId;
+
+			this.Score = score;
+			this.ScoreDelta = score - oldScore;
+		}
+
+	}
+
+}

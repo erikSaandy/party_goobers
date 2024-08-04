@@ -1,0 +1,105 @@
+﻿ScoreBoard {
+	position: absolute;
+	left: 25%;
+	right: 25%;
+	font-weight: 700;
+	font-size: 20px;
+	font-family: Poppins;
+	border-radius: 3%;
+	border-color: white;
+	border-width: 3px;
+	box-shadow: 0px 0px 32px black;
+	text-shadow: 4px 4px 0px black;
+	color: white;
+	background-color: rgba(5,5,20, .8);
+	backdrop-filter: blur(10px);
+	flex: auto;
+	flex-direction: column;
+	opacity: 0;
+	transition: opacity 0.2s linear;
+	align-items: center;
+	justify-content: center;
+	align-self: center;
+	padding-top: 20px;
+	padding-bottom:20px;
+
+	&.visible {
+		opacity: 1;
+	}
+
+	.entry {
+		margin-top: 20px;
+		width: 900px;
+		height: 70px;
+		background-color: rgba(5,5,20, .8);
+		align-items: center;
+		border-radius: 15px;
+		border-width: 2px;
+
+		> .placing {
+			width: 90px;
+			text-align: left;
+			font-size: 40px;
+			margin-left: 15px;
+			font-style: italic;
+			font-weight: 270;
+		}
+
+		> .steamicon {
+			background-color: white;
+			border-radius: 50%;
+			background-image: url( avatar:76561198057680429 );
+			width: 80px;
+			height: 80px;
+			background-size: 100%;
+			margin-left: 5px;
+			margin-right: 5px;
+			border-width: 3px;
+		}
+
+		> .name {
+			width: 300px;
+			height: 100%;
+			align-items: center;
+			margin-left: 10px;
+			margin-right: 40px;
+			font-size: 25px;
+			font-weight: 300;
+			text-overflow: clip;
+		}
+
+		> .score {
+			font-size: 40px;
+			font-weight: 600;
+			margin-left: 5px;
+			margin-right: 5px;
+			color: gold;
+		}
+
+		> .pts {
+			margin-left: -5px;
+			margin-top: 12px;
+			margin-right: 10px;
+		}
+
+		> .scoredelta {
+			margin-right: 5px;
+			font-size: 28px;
+			font-weight: 600;
+		}
+
+		> .deltaicon {
+			font-size: 25px;
+			margin-right: 25px;
+			margin-left: auto;
+			width: auto;
+		}
+	}
+
+	> .dots {
+		font-size: 25px;
+		align-items: center;
+		width: auto;
+		height: 70px;
+	}
+}

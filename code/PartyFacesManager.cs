@@ -69,6 +69,8 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 		FadeScreen.Hide();
 		LevelTimer.Start();
 
+		ScoreBoard.UpdateScoreBoard();
+
 	}
 
 	[Broadcast]

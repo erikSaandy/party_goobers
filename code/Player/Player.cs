@@ -1,6 +1,5 @@
 using Sandbox;
 using System;
-using System.Timers;
 
 public class Player : Component
 {
@@ -11,6 +10,8 @@ public class Player : Component
 
 	public int LifeCount { get; private set; } = 3;
 	public bool IsDead { get; private set; } = false;
+
+	[Sync] public int Score { get; set; } = 1254;
 
 	public Player()
 	{
@@ -103,9 +104,9 @@ public class Player : Component
 
 		if(Input.Pressed("Jump"))
 		{
-			LevelTimer.Start( 10 );
-			if ( FadeScreen.Visible ) { FadeScreen.Hide(); }
-			else { FadeScreen.Show(); }
+			//LevelTimer.Start( 10 );
+			if ( ScoreBoard.Visible ) { ScoreBoard.Hide(); }
+			else { ScoreBoard.Show(); }
 		}
 
 		PreviousHit = hit;
@@ -117,7 +118,7 @@ public class Player : Component
 		interactable = null;
 
 		//Log.Info( FadeScreen.Visible + " :: " + LevelTimer.IsRunning );
-		if( FadeScreen.Visible || !LevelTimer.IsRunning ) { return false; }
+		if( FadeScreen.Visible ) { return false; }
 
 		//Log.Info( CursorHud.CursorPosition );
 		Ray ray = Scene.Camera.ScreenPixelToRay( Mouse.Position );

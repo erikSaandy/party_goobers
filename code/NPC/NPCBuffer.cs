@@ -33,6 +33,7 @@ public class NPCBuffer : SingletonComponent<NPCBuffer>
 			NPC c = npc.Components.Get<NPC>();
 
 			NPCs.Add( c );
+			c.Face.Hide();
 			c.Hide();
 
 		}

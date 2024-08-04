@@ -107,15 +107,11 @@ public class NPC : Component, IInteractable
 	public void OnRoundEnter()
 	{
 		if ( IsProxy ) { return; }
-
 	}
 
 	public void OnRoundExit()
 	{
 		if(IsProxy) { return; }
-
-
-
 	}
 
 	[Broadcast]
@@ -139,15 +135,33 @@ public class NPC : Component, IInteractable
 	}
 
 	[Broadcast]
+	public void Spawn( Transform spawnTransform )
+	{
+
+		Renderer.Set( "e_behaviour", (int)NPC.AnimationBehaviour.Default );
+
+		Show();
+
+		if ( IsProxy ) { return; }
+
+		Transform.Position = spawnTransform.Position;
+		Transform.Rotation = spawnTransform.Rotation;
+
+	}
+
+	[Broadcast]
 	public void Hide()
 	{
 		GameObject.Enabled = false;
+		Face.Hide();
+
 	}
 
 	[Broadcast]
 	public void Show()
 	{
 		GameObject.Enabled = true;
+		Face.Show();
 	}
 
 	public void SetRandomColor()
@@ -168,11 +182,11 @@ public class NPC : Component, IInteractable
 			LookAtPosition( Scene.Camera.Transform.Position );	
 		}
 
-		if(WantedPosition.HasValue)
-		{
-			Gizmo.Draw.Color = Color.White;
-			Gizmo.Draw.Line( Transform.Position, WantedPosition.Value );
-		}
+		//if(WantedPosition.HasValue)
+		//{
+		//	Gizmo.Draw.Color = Color.White;
+		//	Gizmo.Draw.Line( Transform.Position, WantedPosition.Value );
+		//}
 
 	}
 
@@ -191,8 +205,8 @@ public class NPC : Component, IInteractable
 		{
 
 			Vector3 wantedDir = (WantedPosition.Value - Transform.Position).Normal;
-			Gizmo.Draw.Color = Color.Red;
-			Gizmo.Draw.Line( Transform.Position, Transform.Position + wantedDir * WalkSpeed );
+			//Gizmo.Draw.Color = Color.Red;
+			//Gizmo.Draw.Line( Transform.Position, Transform.Position + wantedDir * WalkSpeed );
 			float angle = Transform.Rotation.Yaw();
 			Transform.Rotation = Rotation.Lerp( Rotation.FromYaw( angle ), Vector3.VectorAngle( wantedDir ).WithPitch( 0 ).WithRoll( 0 ), Time.Delta * 2 );
 			Controller.Accelerate( Transform.Rotation.Forward * 60 );
@@ -211,21 +225,6 @@ public class NPC : Component, IInteractable
 
 
 		Controller?.Move();
-	}
-
-	[Broadcast]
-	public void Spawn( Transform spawnTransform )
-	{
-
-		Renderer.Set( "e_behaviour", (int)NPC.AnimationBehaviour.Default );
-
-		Show();
-
-		if(IsProxy) { return; }
-
-		Transform.Position = spawnTransform.Position;
-		Transform.Rotation = spawnTransform.Rotation;
-
 	}
 
 	[Broadcast]

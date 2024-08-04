@@ -2,7 +2,7 @@
 @using Sandbox;
 @using Sandbox.UI;
 @attribute [StyleSheet]
-@inherits PanelComponent
+@inherits Panel
 
 <root>
 
@@ -15,8 +15,8 @@
 {
 	[Sync] public static bool IsRunning { get; private set; } = false;
 
-	[Sync] private static TimeSince TimeSinceStarted { get; set; } = 0;
-	 
+	[Sync] private static float TimeSinceStarted { get; set; } = 0;
+
 	[Sync] private static float TargetTime { get; set; } = 0;
 
 	private static float TimeNow => IsRunning ? (TargetTime - TimeSinceStarted) : 0;
@@ -27,12 +27,14 @@
 
 	public LevelTimer() { }
 
-	protected override void OnUpdate()
+	public override void Tick()
 	{
-		base.OnUpdate();
+		base.Tick();
 
 		if(IsRunning)
 		{
+			TimeSinceStarted += Time.Delta;
+
 			if(TimeNow <= -1f)
 			{
 				OnTimerDepleted?.Invoke();

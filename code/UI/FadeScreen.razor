@@ -7,6 +7,7 @@
 <root>
 
 	<div class="circle @(Visible ? "visible" : "")" @ref="FadePanel"></div>
+	<div class="scroll @(Visible ? "visible" : "")" style="background-position: @(-Time.Now * 50)" />
 	 
 </root>
 
@@ -15,13 +16,14 @@
 
 	public Panel FadePanel { get; set; }
 
-	public static bool Visible { get; set; } = false;
+	public static bool Visible { get; set; } = true;
 
 	private static float CircleFade = 1;
 
 	public FadeScreen()
 	{
 		FadePanel = new Panel();
+		CircleFade = Visible ? 0 : 1;
 	}
 
 	public override void Tick()
@@ -55,6 +57,6 @@
 
 	protected override int BuildHash()
 	{
-		return System.HashCode.Combine(CircleFade);
+		return System.HashCode.Combine(CircleFade, Time.Now);
 	}
 }

@@ -1,4 +1,6 @@
-﻿FadeScreen {
+﻿$color: white;
+
+FadeScreen {
 	position: absolute;
 	width: 100%;
 	height: 100%;
@@ -14,8 +16,22 @@
 		top: 50%;
 		width: 500px;
 		height: 500px;
-		box-shadow: 0 0 0 99999px rgba(255,255,255);
+		box-shadow: 0 0 0 99999px $color;
 		border-radius: 50%;
 		transform: translate(-50%, -50%);
+	}
+
+	> .scroll {
+		width: 100%;
+		height: 100%;
+		background-image: url( "textures/icons/spyglass.png" );
+		background-size: 65px;
+		opacity: 0;
+		transition: opacity 0.2s linear;
+
+		&.visible {
+			opacity: 0.5;
+			transition: opacity 0.2s linear;
+		}
 	}
 }
