@@ -1,10 +1,9 @@
-﻿using Sandbox;
-using System;
-using System.Threading.Tasks;
-using System.Xml.Linq;
+﻿using System;
 
 public class NPCIconGenerator : SingletonComponent<NPCIconGenerator>
 {
+	private static Color BG_COLOR = new Color( 0, 0, 0, 0 );
+
 	public static Texture RenderTexture { get; private set; } = null;
 	[Property] private CameraComponent Camera { get; set; }
 
@@ -16,40 +15,43 @@ public class NPCIconGenerator : SingletonComponent<NPCIconGenerator>
 
 		RenderTexture = null;
 		RenderTexture = Texture.CreateRenderTarget()
-			.WithSize( 512, 512 )
+			.WithSize( 256, 256 )
 			.WithFormat( ImageFormat.RGBA32323232F )
 			.Create( "icon_texture" );
 
 	}
 
-	protected override void OnUpdate()
+	protected override void OnStart()
 	{
-
-		if(Input.Pressed("Jump"))
-		{
-			RequestNPCHeadshot( Scene.Components.GetAll<NPC>().Shuffle().First().GameObject.Id );
-
-		}
+		base.OnStart();
+		DisplayNPC.GameObject.Enabled = true;
+		//PartyFacesManager.EnableGameobject( DisplayNPC.GameObject.Id, true );
 	}
 
-	public void RequestNPCHeadshot(Guid npcGuid)
+	protected override void OnUpdate()
 	{
+	}
+
+	public async void RequestNPCHeadshot(Guid npcGuid)
+	{
+		await Task.Delay( 300 );
+
 		NPC npc = Scene.Directory.FindByGuid( npcGuid ).Components.Get<NPC>();
+
 		DisplayNPC.CopyFrom( npc.GameObject.Id );
+		DisplayNPC.GameObject.Enabled = true;
 
-		//npc.Tags.Add( "npcrt" );
-		//Camera.RenderTags.Add( "npcrt" );
-
-		Camera.Orthographic = true;
-		Camera.OrthographicHeight = 64;
+		Camera.BackgroundColor = BG_COLOR;
+		Camera.OrthographicHeight = 35;
 		Camera.ZFar = 128;
 		Camera.ZNear = 32;
 		Camera.Transform.Rotation = Vector3.VectorAngle( DisplayNPC.ForwardReference.Value.Rotation.Backward );
 		Camera.Transform.Position = DisplayNPC.Face.Transform.Position - DisplayNPC.ForwardReference.Value.Rotation.Backward * 64;
 
+		await Task.Delay(300);
+
 		Camera.RenderToTexture( RenderTexture );
 
-		//npc.Tags.Remove( "npcrt" );
 	}
 
 	protected override void OnDestroy()

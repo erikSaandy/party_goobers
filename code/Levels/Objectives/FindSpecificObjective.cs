@@ -16,6 +16,8 @@ public class FindSpecificObjective : LevelObjective
 
 		TargetNPCId = npcs.GetRandom().GameObject.Id;
 
+		NPCIconGenerator.Instance.RequestNPCHeadshot( TargetNPCId );
+
 		return npcs;
 
 	}

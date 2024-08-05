@@ -28,6 +28,7 @@
           "go": "876ad418-ece7-4933-bb51-4ccc5046fc0b",
           "component_type": "Face"
         },
+        "LookAtObjectId": "00000000-0000-0000-0000-000000000000",
         "Physics": {
           "_type": "component",
           "component_id": "b7642419-c98d-45d8-a904-67a5b7477064",
@@ -171,7 +172,7 @@
                 "FogStrength": 1,
                 "Opaque": true,
                 "Size": "1,1",
-                "Texture": "textures/faces/eyebrows01.jpg"
+                "Texture": "textures/faces/eyebrows05.vtex"
               },
               {
                 "__type": "Eyebrows",
@@ -197,7 +198,7 @@
                 "FogStrength": 1,
                 "Opaque": true,
                 "Size": "1,1",
-                "Texture": "textures/faces/eyebrows01.jpg"
+                "Texture": "textures/faces/eyes01.vtex"
               },
               {
                 "__type": "Eyes",
@@ -223,7 +224,7 @@
                 "FogStrength": 1,
                 "Opaque": true,
                 "Size": "1,1",
-                "Texture": "textures/faces/eyebrows01.jpg"
+                "Texture": "textures/faces/nose03.vtex"
               },
               {
                 "__type": "Nose",
@@ -249,7 +250,7 @@
                 "FogStrength": 1,
                 "Opaque": true,
                 "Size": "1,1",
-                "Texture": "textures/faces/eyebrows01.jpg"
+                "Texture": "textures/faces/mouth07.vtex"
               },
               {
                 "__type": "Mouth",

@@ -1,5 +1,4 @@
 ﻿
-using Microsoft.VisualBasic;
 using System;
 using System.Text.Json.Serialization;
 
@@ -24,7 +23,7 @@ public abstract class FaceFeature : Component
 
 	[JsonIgnore] public bool IsSpawned { get; private set; } = false;
 
-	public SpriteRenderer Renderer => GameObject.Components.Get<SpriteRenderer>(true);
+	[JsonIgnore] public SpriteRenderer Renderer => GameObject.Components.Get<SpriteRenderer>(true);
 
 	[JsonIgnore] public abstract float ZDepth { get; }
 
@@ -44,7 +43,6 @@ public abstract class FaceFeature : Component
 		GameObject.Parent = Owner.GameObject;
 		GameObject.Transform.LocalPosition = 0;
 
-		SetTextureID( TextureCollection.GetRandomId() );
 		Data.Offset = 0;
 	}
 
@@ -81,12 +79,19 @@ public abstract class FaceFeature : Component
 		Renderer.Color = color;
 	}
 
+	[Authority]
 	public void Randomize()
 	{
 		if(IsProxy) { return; }
 
-		Data.Offset = GetRandomOffset();
+		SetOffset( GetRandomOffset() );
 		SetTextureID( TextureCollection.GetRandomId() );
+	}
+
+	[Authority]
+	private void SetOffset( Vector2 offset )
+	{
+		Data.Offset = offset;
 	}
 
 	public virtual Vector2 GetRandomOffset()
@@ -94,10 +99,11 @@ public abstract class FaceFeature : Component
 		return new Vector2( Game.Random.Float( -0.2f, 0.2f ), Game.Random.Float( -0.2f, 0.2f ) ) * 0.1f;
 	}
 
+	[Serializable]
 	public class FaceFeatureData
 	{
-		[Property] public Vector2 Offset { get; set; }
-		[Property] public int ID { get; set; }
+		[Property][JsonInclude] public Vector2 Offset { get; set; }
+		[Property][JsonInclude] public int ID { get; set; }
 
 		public FaceFeatureData()
 		{

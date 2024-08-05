@@ -2,25 +2,79 @@
 @using Sandbox;
 @using Sandbox.UI;
 @attribute [StyleSheet]
-@inherits Panel
+@inherits PanelComponent
 
-<root>
-	<Image class="texture" Texture=@NPCIconGenerator.RenderTexture/>
+<root class="@(Visible ? "visible" : "")">
+	<div class ="level">Level 88</div>
+
+	<div class="objective">
+
+		@if(Objective != null && Visible) 
+		{
+			switch( Objective )
+			{
+				case FindSpecificObjective : 
+			
+				<div class="title">Find this dude!</div>
+				<div class ="npcicon">
+					<Image class="npctexture" Texture=@NPCIconGenerator.RenderTexture/>	
+				</div>
+			
+				return;
+
+				default : return;
+			}
+
+		}
+
+		</div>
 </root>
 
 
 @code {
 
-	//https://gist.github.com/CarsonKompon/be43451a518293356feca8095352614f
+	public LevelObjective Objective => GetObjective();
 
-	public override void Tick()
+	public static bool Visible { get; private set; } = false;
+
+	//https://gist.github.com/CarsonKompon/be43451a518293356feca8095352614f
+	//<Image class="texture" Texture=@NPCIconGenerator.RenderTexture/>
+
+	private LevelObjective GetObjective()
 	{
-		base.Tick();
+		if(LevelHandler.Instance.CurrentLevelData?.Objective == null)
+		{
+			return null;
+		}
+
+		return LevelHandler.Instance.CurrentLevelData.Objective;
+	}
+
+	protected override void OnUpdate()
+	{
+		base.OnUpdate();
+	}
+
+	[Broadcast]
+	public static void Show()
+	{
+		Visible = true;
+	}
+
+	[Broadcast]
+	public static void Hide()
+	{
+		Visible = false;
 	}
 
 	protected override int BuildHash()
 	{
 		return System.HashCode.Combine(Time.Now);
+	}
+
+	protected override void OnDestroy()
+	{
+		Visible = false;
 	}
 
 }

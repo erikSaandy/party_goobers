@@ -30,21 +30,17 @@ public class Face : Component, Component.INetworkListener
 		Nose.Randomize();
 		Mouth.Randomize();
 
-		if ( !IsProxy && Owner != null )
-		{
-			Save();
-		}
-
 	}
 
 	[Broadcast]
-	public void SetColor(Color color)
+	public void SetColor(uint rgba)
 	{
-		color = color * 2;
-		Eyebrows.SetColor( color );
-		Eyes.SetColor( color );
-		Nose.SetColor( color );
-		Mouth.SetColor( color );
+		Color col = Color.FromRgba( rgba );
+		col = col * 2;
+		Eyebrows.SetColor( col );
+		Eyes.SetColor( col );
+		Nose.SetColor( col );
+		Mouth.SetColor( col );
 	}
 
 	[Broadcast]
@@ -65,8 +61,9 @@ public class Face : Component, Component.INetworkListener
 		Mouth.Renderer.Enabled = true;
 	}
 
-	protected override void OnAwake()
+	protected override void OnStart()
 	{
+		Randomize();
 
 		base.OnStart(); 
 
@@ -103,6 +100,7 @@ public class Face : Component, Component.INetworkListener
 		if ( !Sandbox.FileSystem.Data.FileExists( fullPath ) ) { return false; }
 
 		List<FaceFeature.FaceFeatureData> data = Sandbox.FileSystem.Data.ReadJson<List<FaceFeature.FaceFeatureData>>( fullPath );
+
 		Eyebrows.SetTextureID( data[0].ID );
 		Eyes.SetTextureID( data[1].ID );
 		Nose.SetTextureID( data[2].ID );
@@ -134,11 +132,10 @@ public class Face : Component, Component.INetworkListener
 		Transform.Scale = 13 * scale;
 
 		// Blinking
-
 		if(TimeSinceBlink > blinkTimer)
 		{
 			blinkTimer = Game.Random.Float( 0.2f, 7f );
-			TimeSinceBlink = 0;
+			TimeSinceBlink = 0;											
 			Eyes.Blink();
 		}
 

@@ -38,6 +38,28 @@
       ]
     },
     {
+      "__guid": "ab096332-2e20-4ce7-9e26-b2ba727cc642",
+      "Flags": 0,
+      "Name": "Objective Dispaly",
+      "Position": "-32.33688,28.03505,-4978.75",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "Components": [
+        {
+          "__type": "Sandbox.ScreenPanel",
+          "__guid": "e8a73f5c-65dd-4bc0-9286-dcf9550351d4",
+          "AutoScreenScale": true,
+          "Opacity": 1,
+          "Scale": 1,
+          "ZIndex": 110
+        },
+        {
+          "__type": "ObjectiveDisplay",
+          "__guid": "07e4d840-7836-44af-884e-ef84a677d1fb"
+        }
+      ]
+    },
+    {
       "__guid": "0ce79441-1e99-4cfb-905d-381dae4e01c5",
       "Flags": 0,
       "Name": "LevelHandler",
@@ -138,6 +160,245 @@
       ]
     },
     {
+      "__guid": "f85b75e3-f2d5-4a8e-b0ed-f982ab356ce7",
+      "Flags": 0,
+      "Name": "NPC Icon Generator",
+      "Position": "60.55878,-0.000005294217,-4936.067",
+      "Rotation": "0,-0,-1,-0.00000004371139",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "NPCIconGenerator",
+          "__guid": "4eb8e374-3bd7-4694-9604-18dafe662d25",
+          "Camera": {
+            "_type": "component",
+            "component_id": "0a0db736-dc04-4292-97c4-68873f3a4244",
+            "go": "f85b75e3-f2d5-4a8e-b0ed-f982ab356ce7",
+            "component_type": "CameraComponent"
+          },
+          "DisplayNPC": {
+            "_type": "component",
+            "component_id": "038c51d4-5270-48d7-a1cf-0b9f122c6b16",
+            "go": "05bcac61-026d-41d7-bb13-a274806b228e",
+            "component_type": "NPC"
+          }
+        },
+        {
+          "__type": "Sandbox.CameraComponent",
+          "__guid": "0a0db736-dc04-4292-97c4-68873f3a4244",
+          "BackgroundColor": "0.33333,0.46275,0.52157,1",
+          "ClearFlags": "All",
+          "FieldOfView": 60,
+          "IsMainCamera": false,
+          "Orthographic": true,
+          "OrthographicHeight": 50,
+          "Priority": 1,
+          "RenderExcludeTags": "",
+          "RenderTags": "npcrt",
+          "TargetEye": "None",
+          "Viewport": "1,0,1,1",
+          "ZFar": 128,
+          "ZNear": 1
+        }
+      ]
+    },
+    {
+      "__guid": "05bcac61-026d-41d7-bb13-a274806b228e",
+      "Flags": 0,
+      "Name": "Display NPC",
+      "Position": "0,0,-5000",
+      "Tags": "npcrt",
+      "Enabled": true,
+      "NetworkMode": 0,
+      "Components": [
+        {
+          "__type": "NPC",
+          "__guid": "038c51d4-5270-48d7-a1cf-0b9f122c6b16",
+          "Face": {
+            "_type": "component",
+            "component_id": "bf74abed-fa46-4a0e-ba46-9badf35e8f62",
+            "go": "789e31ee-1908-4ec0-8d5b-692cafaeb4e9",
+            "component_type": "Face"
+          },
+          "LookAtObjectId": "00000000-0000-0000-0000-000000000000",
+          "PlayerId": "00000000-0000-0000-0000-000000000000",
+          "Renderer": {
+            "_type": "component",
+            "component_id": "a026606c-a72b-4a1c-803d-129110806935",
+            "go": "05bcac61-026d-41d7-bb13-a274806b228e",
+            "component_type": "SkinnedModelRenderer"
+          },
+          "WalkSpeed": 50
+        },
+        {
+          "__type": "Sandbox.SkinnedModelRenderer",
+          "__guid": "a026606c-a72b-4a1c-803d-129110806935",
+          "BodyGroups": 18446744073709551615,
+          "CreateBoneObjects": false,
+          "Model": "models/player/player.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1",
+          "UseAnimGraph": true
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "789e31ee-1908-4ec0-8d5b-692cafaeb4e9",
+          "Flags": 0,
+          "Name": "face",
+          "Position": "-301.787,3023.935,-1248.957",
+          "Scale": "9,9,9",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Face",
+              "__guid": "bf74abed-fa46-4a0e-ba46-9badf35e8f62",
+              "Eyebrows": {
+                "_type": "component",
+                "component_id": "05d01f17-a1ba-452a-bc32-d351a35984c4",
+                "go": "30592bb1-0f41-4946-bc04-005afbc6390a",
+                "component_type": "Eyebrows"
+              },
+              "Eyes": {
+                "_type": "component",
+                "component_id": "f3b0629e-3103-4602-b868-6bf36e03f711",
+                "go": "84cf2da3-b7fc-4ce8-8cd5-2398c1a9a2fd",
+                "component_type": "Eyes"
+              },
+              "Mouth": {
+                "_type": "component",
+                "component_id": "f8a25302-9326-4158-9a37-2e50ef843ca8",
+                "go": "37cb673f-23c8-4bba-8ace-ee1e14204fdc",
+                "component_type": "Mouth"
+              },
+              "Nose": {
+                "_type": "component",
+                "component_id": "4e3e8ab6-3560-4d8d-84e2-6a88a0ac01d0",
+                "go": "163a7fa5-3007-4a31-9495-3dd56ce68f3f",
+                "component_type": "Nose"
+              },
+              "Owner": {
+                "_type": "component",
+                "component_id": "038c51d4-5270-48d7-a1cf-0b9f122c6b16",
+                "go": "05bcac61-026d-41d7-bb13-a274806b228e",
+                "component_type": "NPC"
+              }
+            }
+          ],
+          "Children": [
+            {
+              "__guid": "30592bb1-0f41-4946-bc04-005afbc6390a",
+              "Flags": 0,
+              "Name": "Eyebrows",
+              "Position": "0,0,0",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.SpriteRenderer",
+                  "__guid": "ee33b490-e0db-4cb6-add4-ab37623ee172",
+                  "Additive": false,
+                  "CastShadows": false,
+                  "Color": "1,1,1,1",
+                  "DepthFeather": 0,
+                  "FlipHorizontal": false,
+                  "FlipVertical": false,
+                  "FogStrength": 1,
+                  "Opaque": true,
+                  "Size": "1,1",
+                  "Texture": "textures/faces/eyebrows01.jpg"
+                },
+                {
+                  "__type": "Eyebrows",
+                  "__guid": "05d01f17-a1ba-452a-bc32-d351a35984c4"
+                }
+              ]
+            },
+            {
+              "__guid": "84cf2da3-b7fc-4ce8-8cd5-2398c1a9a2fd",
+              "Flags": 0,
+              "Name": "Eyes",
+              "Position": "0,0,0",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.SpriteRenderer",
+                  "__guid": "090b7be1-2377-4ab9-ac32-80e10c68eb4a",
+                  "Additive": false,
+                  "CastShadows": false,
+                  "Color": "1,1,1,1",
+                  "DepthFeather": 0,
+                  "FlipHorizontal": false,
+                  "FlipVertical": false,
+                  "FogStrength": 1,
+                  "Opaque": true,
+                  "Size": "1,1",
+                  "Texture": "textures/faces/eyebrows01.jpg"
+                },
+                {
+                  "__type": "Eyes",
+                  "__guid": "f3b0629e-3103-4602-b868-6bf36e03f711"
+                }
+              ]
+            },
+            {
+              "__guid": "163a7fa5-3007-4a31-9495-3dd56ce68f3f",
+              "Flags": 0,
+              "Name": "Nose",
+              "Position": "0,0,0",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.SpriteRenderer",
+                  "__guid": "73329f87-bbf4-443f-a53b-742ab33ef1a3",
+                  "Additive": false,
+                  "CastShadows": false,
+                  "Color": "1,1,1,1",
+                  "DepthFeather": 0,
+                  "FlipHorizontal": false,
+                  "FlipVertical": false,
+                  "FogStrength": 1,
+                  "Opaque": true,
+                  "Size": "1,1",
+                  "Texture": "textures/faces/eyebrows01.jpg"
+                },
+                {
+                  "__type": "Nose",
+                  "__guid": "4e3e8ab6-3560-4d8d-84e2-6a88a0ac01d0"
+                }
+              ]
+            },
+            {
+              "__guid": "37cb673f-23c8-4bba-8ace-ee1e14204fdc",
+              "Flags": 0,
+              "Name": "Mouth",
+              "Position": "0,0,0",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.SpriteRenderer",
+                  "__guid": "da7779b6-a26a-446e-bbdc-d5b5f2c14dc0",
+                  "Additive": false,
+                  "CastShadows": false,
+                  "Color": "1,1,1,1",
+                  "DepthFeather": 0,
+                  "FlipHorizontal": false,
+                  "FlipVertical": false,
+                  "FogStrength": 1,
+                  "Opaque": true,
+                  "Size": "1,1",
+                  "Texture": "textures/faces/eyebrows01.jpg"
+                },
+                {
+                  "__type": "Mouth",
+                  "__guid": "f8a25302-9326-4158-9a37-2e50ef843ca8"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
       "__guid": "d3b6c1f5-e1b1-4db0-8d86-6d10cecdb67d",
       "Flags": 0,
       "Name": "Network Helper",
@@ -171,7 +432,7 @@
           "FieldOfView": 45,
           "IsMainCamera": true,
           "Orthographic": false,
-          "OrthographicHeight": 400,
+          "OrthographicHeight": 150,
           "Priority": 2,
           "RenderExcludeTags": "",
           "RenderTags": "",

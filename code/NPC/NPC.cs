@@ -43,9 +43,9 @@ public class NPC : Component, IInteractable
 	[Broadcast]
 	public void CopyFrom(Guid other)
 	{
-		NPC npc = Scene.Directory.FindByGuid( other ).Components.Get < NPC >();
+		NPC npc = Scene.Directory.FindByGuid( other ).Components.Get < NPC >(true);
 
-		SetColor( npc.Color );
+		SetColor( npc.Color.RgbaInt );
 		Face.Eyebrows.SetTextureID( npc.Face.Eyebrows.Data.ID );
 		Face.Eyes.SetTextureID( npc.Face.Eyes.Data.ID );
 		Face.Nose.SetTextureID( npc.Face.Nose.Data.ID );
@@ -64,7 +64,7 @@ public class NPC : Component, IInteractable
 
 	[Property] public Face Face { get; set; }
 
-	public Color Color { get; private set; }
+	public Color Color => Renderer == null ? Color.White : Renderer.Tint;
 
 	public GameObject LookAtObject => Scene.Directory.FindByGuid( LookAtObjectId );
 	[Property][Sync] public Guid LookAtObjectId { get; private set; }
@@ -158,14 +158,15 @@ public class NPC : Component, IInteractable
 
 	public void SetRandomColor()
 	{
-		SetColor( ColorX.MiiColors.GetRandom() );
+		SetColor( ColorX.MiiColors.GetRandom().RgbaInt );
 	}
 
 	[Broadcast]
-	public void SetColor( Color color )
+	public void SetColor( uint rgba )
 	{
-		Face.SetColor( color );
-		Renderer.Tint = color;
+		Color col = Color.FromRgba( rgba );
+		Face.SetColor( rgba );
+		Renderer.Tint = col;
 	}
 
 	protected override void OnUpdate()
@@ -177,11 +178,6 @@ public class NPC : Component, IInteractable
 			Vector3 dir = ( LookAtObject.Transform.Position - from);
 			Renderer.SetLookDirection( "aim_head", dir );
 
-		}
-
-		if(Input.Pressed("Jump"))
-		{
-			Face.Eyes.Blink();
 		}
 
 		//if(WantedPosition.HasValue)

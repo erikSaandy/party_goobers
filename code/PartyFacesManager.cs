@@ -50,6 +50,7 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 
 		if(IsProxy) { return; }
 
+		//FadeScreen.Show();
 		ExitRound();
 
 		LevelTimer.OnTimerDepleted += OnTimerDepleted;
@@ -76,11 +77,17 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 
 		if ( Input.Pressed( "Jump" ) )
 		{
-			//LevelTimer.Start( 10 );
-			if ( ScoreBoard.Visible ) { ScoreBoard.Hide(); }
-			else { ScoreBoard.Show(); }
-		}
+			//	//LevelTimer.Start( 10 );
 
+			//	if ( ScoreBoard.Visible ) { ScoreBoard.Hide(); }
+			//	else { ScoreBoard.Show(); }
+
+			//NPCIconGenerator.Instance.RequestNPCHeadshot( Scene.Components.GetAll<NPC>().Shuffle().First().GameObject.Id );
+
+			//if ( ObjectiveDisplay.Visible ) { ObjectiveDisplay.Hide(); }
+			//else { ObjectiveDisplay.Show(); }
+
+		}
 
 	}
 
@@ -165,6 +172,16 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 
 		ScoreBoard.Hide();
 
+		await Task.Delay( 400 );
+
+		ObjectiveDisplay.Show();
+
+		await Task.Delay( 2500 );
+
+		ObjectiveDisplay.Hide();
+
+		await Task.Delay( 250 );
+
 		EnterRound();
 
 	}
@@ -179,6 +196,8 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 	protected override void OnDestroy()
 	{
 		base.OnDestroy();
+
+		FadeScreen.Visible = true;
 
 	}
 
