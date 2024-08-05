@@ -117,21 +117,21 @@ public class Face : Component, Component.INetworkListener
 			Nose.Renderer.FlipHorizontal = Nose.Transform.Position.y < Transform.Parent.Transform.Position.y; //Nose.Transform.Rotation.Yaw() < 0;
 		}
 
+		if(!Owner.Enabled ) { GameObject.Transform.LocalPosition = 0; return; }
+
 		float sin = MathF.Sin( Time.Now * 2 );
 		float a = sin * 20;
 		GameObject.Transform.Rotation = Rotation.FromYaw( a );
 
-		Vector3 fwd = Owner.ForwardReference?.Forward ?? 0;
-		Vector3 scale = (Owner.ForwardReference?.Scale ?? 1);
-		Transform.Position = (Owner.ForwardReference?.Position ?? 0) + (fwd.Normal * 17f * scale);	
+		Transform _ref = Owner.ForwardReference.Value;
+		Gizmo.Draw.Color = Color.Green;
+		Gizmo.Draw.Line( _ref.Position, _ref.Position + _ref.Forward * 24 );
+		Vector3 scale = _ref.Scale;
+		Transform.Position = _ref.Position + (_ref.Forward.Normal * 17f * scale);	
 		Transform.Scale = 13 * scale;
 
 		//if ( IsProxy ) { return; }
 
-		//if(Input.Pressed("Jump"))
-		//{	
-		//	Randomize();
-		//}
 	}
 
 }

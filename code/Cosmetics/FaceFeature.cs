@@ -19,33 +19,24 @@ public abstract class FaceFeature : Component
 		UpdateRenderer();
 	}
 
-	public void SetFeatureData(FaceFeatureData data)
-	{
-		this.Data.Offset = data.Offset;
-		SetTextureID(data.ID);
-	}
-
  	[JsonIgnore] public abstract List<Texture> TextureCollection { get; }
 	[JsonIgnore] public Texture WantedTexture => TextureCollection[Data.ID];
 
 	[JsonIgnore] public bool IsSpawned { get; private set; } = false;
 
-	[JsonIgnore] public SpriteRenderer Renderer { get; private set; }
+	public SpriteRenderer Renderer => GameObject.Components.Get<SpriteRenderer>(true);
 
 	[JsonIgnore] public abstract float ZDepth { get; }
 
-	public FaceFeature( ) { }
+	public FaceFeature() { }
 
 	protected override void OnAwake()
 	{
 		base.OnAwake();
 
-		Owner = Components.GetInParentOrSelf<Face>();
+		Owner = Components.GetInParentOrSelf<Face>( true );
 
 		Data = new();
-
-		Renderer = GameObject.Components.GetOrCreate<SpriteRenderer>();
-		Renderer.Opaque = true;
 
 		if ( IsProxy ) { return; }
 
@@ -59,9 +50,9 @@ public abstract class FaceFeature : Component
 
 	private void UpdateRenderer()
 	{
+		if(Renderer == null) { return; }
 
 		Renderer.Texture = WantedTexture;
-
 		//Owner.Transform.Parent.Transform.Position = new Vector3( Game.Random.Float( -0, 0 ), Game.Random.Float( -0, 00 ) );
 	}
 
@@ -69,17 +60,24 @@ public abstract class FaceFeature : Component
 	{
 		// Apply offsets relative to camera.
 		Vector3 off = (BaseOffset + Data.Offset);
-		Rotation rot = Scene.Camera.Transform.Rotation;
+
+		//Vector3 dir = Owner.Transform.Position - Owner.Owner.LookAtObject.Transform.Position;
+
+		Rotation rot = Owner.Owner.ForwardReference.Value.Rotation;
+		//Rotation rot = Scene.Camera.Transform.Rotation;
+
 		Transform.LocalPosition = 
-			rot.Up * off.y 
+			Vector3.Up * off.y 
 			+ rot.Left * off.x + 
-			rot.Forward * ZDepth;
+			rot.Backward * ZDepth;
 		
 	}
 
 	[Broadcast]
 	public void SetColor(Color color)
 	{
+		if ( Renderer == null ) { return; }
+
 		Renderer.Color = color;
 	}
 

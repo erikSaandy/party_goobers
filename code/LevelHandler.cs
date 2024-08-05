@@ -53,8 +53,6 @@ public class LevelHandler : SingletonComponent<LevelHandler>
 			CurrentLevelDataId = default;
 		}
 
-		NPCBuffer.Instance.HideNPCs();
-
 	}
 
 	public bool FindSpawnLocation( out Transform transform )

@@ -14,6 +14,8 @@ public abstract class LevelObjective : Component
 
 	public LevelObjectiveHandler Handler => LevelHandler.Instance.CurrentLevelData.ObjectiveHandler;
 
+	protected virtual GameObject NPCLookAt => null;
+
 	/// <summary>
 	/// Does this NPC satisfy the objective?
 	/// </summary>
@@ -103,6 +105,14 @@ public abstract class LevelObjective : Component
 		spawnCount = int.Min( spawnCount, set.Count );
 
 		set = set.Shuffle().ToList();
+
+		GameObject lookAt = NPCLookAt == null ? Scene.Camera.GameObject : NPCLookAt;
+
+		// Make sure npc looks at Objective lookAt (defaults to scene camera).
+		foreach(NPC npc in set)
+		{
+			npc.LookAt( lookAt.Id );
+		}
 
 		//TODO: Make sure player NPCs are always chosen.
 		return set.Take( spawnCount );

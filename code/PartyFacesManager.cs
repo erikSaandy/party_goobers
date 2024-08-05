@@ -155,6 +155,8 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 		ScoreBoard.UpdateScoreBoard();
 		ScoreBoard.Show();
 
+		NPCBuffer.Instance.HideNPCs();
+
 		await Task.Delay( 500 );
 
 		LevelHandler.Instance.LoadRandomLevel();
@@ -164,6 +166,19 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 		ScoreBoard.Hide();
 
 		EnterRound();
+
+	}
+
+	[Broadcast]
+	public static void EnableGameobject( Guid gameObjectId, bool enabled )
+	{
+		var gameObject = Game.ActiveScene.Directory.FindByGuid( gameObjectId );
+		gameObject.Enabled = enabled;
+	}
+
+	protected override void OnDestroy()
+	{
+		base.OnDestroy();
 
 	}
 
@@ -179,6 +194,7 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 		}
 
 	}
+
 
 
 }

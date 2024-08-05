@@ -158,7 +158,6 @@
             "Flags": 0,
             "Name": "Eyebrows",
             "Enabled": true,
-            "NetworkMode": 1,
             "Components": [
               {
                 "__type": "Sandbox.SpriteRenderer",
@@ -185,7 +184,6 @@
             "Flags": 0,
             "Name": "Eyes",
             "Enabled": true,
-            "NetworkMode": 1,
             "Components": [
               {
                 "__type": "Sandbox.SpriteRenderer",
@@ -212,7 +210,6 @@
             "Flags": 0,
             "Name": "Nose",
             "Enabled": true,
-            "NetworkMode": 1,
             "Components": [
               {
                 "__type": "Sandbox.SpriteRenderer",
@@ -239,7 +236,6 @@
             "Flags": 0,
             "Name": "Mouth",
             "Enabled": true,
-            "NetworkMode": 1,
             "Components": [
               {
                 "__type": "Sandbox.SpriteRenderer",

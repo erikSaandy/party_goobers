@@ -17,7 +17,6 @@ public class NPC : Component, IInteractable
 		Cheer
 	}
 
-
 	const float MIN_WALKSPEED = 40f;
 	const float MAX_WALKSPEED = 70f;
 	[Property] float WalkSpeed { get; set; } = 50f;
@@ -41,6 +40,19 @@ public class NPC : Component, IInteractable
 		this.PlayerId = default;
 	}
 
+	[Broadcast]
+	public void CopyFrom(Guid other)
+	{
+		NPC npc = Scene.Directory.FindByGuid( other ).Components.Get < NPC >();
+
+		SetColor( npc.Color );
+		Face.Eyebrows.SetTextureID( npc.Face.Eyebrows.Data.ID );
+		Face.Eyes.SetTextureID( npc.Face.Eyes.Data.ID );
+		Face.Nose.SetTextureID( npc.Face.Nose.Data.ID );
+		Face.Mouth.SetTextureID( npc.Face.Mouth.Data.ID );
+
+	}
+
 	[Property] public SkinnedModelRenderer Renderer { get; set; }
 	[Property] public ModelPhysics Physics { get; set; }
 
@@ -54,8 +66,14 @@ public class NPC : Component, IInteractable
 
 	public Color Color { get; private set; }
 
-	[Property] GameObject LookAt { get; set; }
+	public GameObject LookAtObject => Scene.Directory.FindByGuid( LookAtObjectId );
+	[Property][Sync] public Guid LookAtObjectId { get; private set; }
 
+	[Broadcast]
+	public void LookAt(Guid obj)
+	{
+		LookAtObjectId = obj;
+	}
 
 	public Transform? ForwardReference => Renderer.GetAttachment( "forward_reference" );
 
@@ -86,11 +104,8 @@ public class NPC : Component, IInteractable
 	{
 		base.OnStart();	
 
-		LookAt = Scene.Camera.GameObject;
-
 		PartyFacesManager.Instance.OnRoundEnter += OnRoundEnter;
 		PartyFacesManager.Instance.OnRoundExit += OnRoundExit;
-
 
 		if (IsProxy) { return; }
 
@@ -130,47 +145,15 @@ public class NPC : Component, IInteractable
 		SetRandomColor();
 	}
 
-	[Button("ToggleVisible")]
-	public void ToggleVisible()
-	{
-		if(GameObject.Enabled)
-		{
-			Hide();
-		}
-		else
-		{
-			Show();
-		}
-	}
-
-	[Broadcast]
 	public void Spawn( Transform spawnTransform )
 	{
-
 		Renderer.Set( "e_behaviour", (int)NPC.AnimationBehaviour.Default );
-
-		Show();
 
 		if ( IsProxy ) { return; }
 
 		Transform.Position = spawnTransform.Position;
 		Transform.Rotation = spawnTransform.Rotation;
 
-	}
-
-	[Broadcast]
-	public void Hide()
-	{
-		GameObject.Enabled = false;
-		Face.Hide();
-
-	}
-
-	[Broadcast]
-	public void Show()
-	{
-		GameObject.Enabled = true;
-		Face.Show();
 	}
 
 	public void SetRandomColor()
@@ -187,8 +170,13 @@ public class NPC : Component, IInteractable
 
 	protected override void OnUpdate()
 	{
-		if(LookAt != null) {
-			LookAtPosition( Scene.Camera.Transform.Position );	
+
+		if (LookAtObject != null) {
+
+			Vector3 from = ForwardReference?.Position ?? 0;
+			Vector3 dir = ( LookAtObject.Transform.Position - from);
+			Renderer.SetLookDirection( "aim_head", dir );
+
 		}
 
 		//if(WantedPosition.HasValue)
@@ -205,7 +193,9 @@ public class NPC : Component, IInteractable
 
 		if(IsProxy) { return; }
 
-		if ( Controller.IsOnGround )
+		if(Controller == null ) { return; }
+
+		if (Controller.IsOnGround )
 		{
 			Controller.ApplyFriction( 3f );
 		}
@@ -257,14 +247,6 @@ public class NPC : Component, IInteractable
 		if ( IsProxy ) { return; }
 
 		this.WantedPosition = null;
-	}
-
-	private void LookAtPosition( Vector3 pos )
-	{
-		Vector3 from = ForwardReference?.Position ?? 0;
-		Vector3 dir = (pos - from);
-		Renderer.SetLookDirection( "aim_head", dir );
-
 	}
 
 }

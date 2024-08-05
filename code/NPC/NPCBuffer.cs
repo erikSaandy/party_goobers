@@ -30,11 +30,11 @@ public class NPCBuffer : SingletonComponent<NPCBuffer>
 			npc.BreakFromPrefab();
 			npc.NetworkSpawn();
 
-			NPC c = npc.Components.Get<NPC>();
+			NPC c = npc.Components.Get<NPC>(true);
 
 			NPCs.Add( c );
-			c.Face.Hide();
-			c.Hide();
+
+			PartyFacesManager.EnableGameobject( c.GameObject.Id, false );
 
 		}
 
@@ -85,6 +85,7 @@ public class NPCBuffer : SingletonComponent<NPCBuffer>
 
 			if ( LevelHandler.Instance.FindSpawnLocation( out Transform tr ) )
 			{
+				PartyFacesManager.EnableGameobject( npc.GameObject.Id, true );
 				npc.Spawn( tr );
 			}
 			else
@@ -107,8 +108,6 @@ public class NPCBuffer : SingletonComponent<NPCBuffer>
 				npc.MoveTowards( nextTargetPos );
 			}
 
-			npc.Show();
-
 		}
 
 	}
@@ -121,7 +120,10 @@ public class NPCBuffer : SingletonComponent<NPCBuffer>
 	{
 		foreach(NPC npc in NPCs)
 		{
-			npc.Hide();
+			if(npc.GameObject.Enabled)
+			{
+				PartyFacesManager.EnableGameobject( npc.GameObject.Id, false );
+			}
 		}
 	}
 
