@@ -14,4 +14,14 @@ public class Eyes : FaceFeature
 
 	public Eyes() : base( ) { }
 
+	public async void Blink()
+	{
+		Renderer.Texture = FaceData.Instance.EyeBlinkTexture;
+
+		await Task.Delay( 100 );
+
+		Renderer.Texture = FaceData.Instance.EyeTextures[Data.ID];
+
+	}
+
 }

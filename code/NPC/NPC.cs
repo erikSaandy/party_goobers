@@ -179,6 +179,11 @@ public class NPC : Component, IInteractable
 
 		}
 
+		if(Input.Pressed("Jump"))
+		{
+			Face.Eyes.Blink();
+		}
+
 		//if(WantedPosition.HasValue)
 		//{
 		//	Gizmo.Draw.Color = Color.White;

@@ -20,6 +20,9 @@ public class Face : Component, Component.INetworkListener
 	[Property] public Nose Nose { get; set; }
 	[Property] public Mouth Mouth { get; set; }
 
+	private TimeSince TimeSinceBlink { get; set; } = 0;
+	private float blinkTimer { get; set; } = 0;
+
 	public void Randomize()
 	{
 		Eyebrows.Randomize();
@@ -129,6 +132,15 @@ public class Face : Component, Component.INetworkListener
 		Vector3 scale = _ref.Scale;
 		Transform.Position = _ref.Position + (_ref.Forward.Normal * 17f * scale);	
 		Transform.Scale = 13 * scale;
+
+		// Blinking
+
+		if(TimeSinceBlink > blinkTimer)
+		{
+			blinkTimer = Game.Random.Float( 0.2f, 7f );
+			TimeSinceBlink = 0;
+			Eyes.Blink();
+		}
 
 		//if ( IsProxy ) { return; }
 

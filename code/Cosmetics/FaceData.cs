@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 public class FaceData : SingletonComponent<FaceData>
 {
-
+	[Property] public Texture EyeBlinkTexture { get; set; }
 	[Property] public List<Texture> EyebrowTextures { get; set; }
 	[Property] public List<Texture> EyeTextures { get; set; }
 	[Property] public List<Texture> NoseTextures { get; set; }
