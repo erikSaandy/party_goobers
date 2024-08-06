@@ -35,8 +35,6 @@ public class LevelObjectiveHandler : Component
 
 		if (player == null) { Log.Error( "Player that completed objective is null? fuck off." ); return; }
 
-		player.MarkAsSafe();
-
 		float time = MathF.Max( LevelTimer.TimeNow + 1, 0 );
 
 		player.AddScore( (int)(time * 1000) );

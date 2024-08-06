@@ -30,7 +30,7 @@ public class NPCFootsteps : Component
 
 	private void OnEvent( SceneModel.FootstepEvent e )
 	{
-		if ( TimeSinceLastStep < 0.2f || !FadeScreen.Visible )
+		if ( TimeSinceLastStep < 0.2f || FadeScreen.Visible )
 			return;
 
 		var trace = Scene.Trace

@@ -41,6 +41,8 @@ public class NPCIconGenerator : SingletonComponent<NPCIconGenerator>
 		DisplayNPC.CopyFrom( npc.GameObject.Id );
 		DisplayNPC.GameObject.Enabled = true;
 
+		await Task.Delay( 100 );
+
 		Camera.BackgroundColor = BG_COLOR;
 		Camera.OrthographicHeight = 35;
 		Camera.ZFar = 128;
@@ -48,7 +50,7 @@ public class NPCIconGenerator : SingletonComponent<NPCIconGenerator>
 		Camera.Transform.Rotation = Vector3.VectorAngle( DisplayNPC.ForwardReference.Value.Rotation.Backward );
 		Camera.Transform.Position = DisplayNPC.Face.Transform.Position - DisplayNPC.ForwardReference.Value.Rotation.Backward * 64;
 
-		await Task.Delay(300);
+		await Task.Delay( 100 );
 
 		Camera.RenderToTexture( RenderTexture );
 

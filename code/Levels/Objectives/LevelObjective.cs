@@ -58,16 +58,22 @@ public abstract class LevelObjective : Component
 		if (evaluate)
 		{
 			AcceptSelection = false;
-			await Task.Delay( 1000 );
 
 			if( ObjectiveIsSatisfied() )
 			{
+				Scene.Directory.FindByGuid( player ).Components.Get<Player>().MarkAsSafe();
+
+				await Task.Delay( 1000 );
+
+				Handler.OnPlayerCompletedObjective( player );
+
 				// ON CORRECT SELECTION
 				OnCompletedObjective( player );
-				Handler.OnPlayerCompletedObjective( player );
 			}
 			else
 			{
+				await Task.Delay( 1000 );
+
 				// ON WRONG SELECTION
 				ResetSelection( player );
 			}

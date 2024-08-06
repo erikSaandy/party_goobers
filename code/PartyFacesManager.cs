@@ -107,13 +107,6 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 	{
 		Log.Info( "> TIMER ENDED");
 
-		IEnumerable<Player> alives = PlayersAlive;
-
-		foreach(Player player in alives)
-		{
-			player.TakeLife();
-		}
-
 		ExitRound();
 
 	}

@@ -1,5 +1,6 @@
 using Sandbox;
 using System;
+using System.Numerics;
 
 public class Player : Component
 {
@@ -31,7 +32,7 @@ public class Player : Component
 
 	public Action OnLifeTaken { get; set; } 
 
-	[Sync] public int Lives { get; private set; } = MAX_HEALTH;
+	[Sync][Property] public int Lives { get; private set; } = MAX_HEALTH;
 
 	[Broadcast]
 	public void TakeLife()
@@ -51,7 +52,7 @@ public class Player : Component
 
 	}
 
-	[Sync] public PlayerLifeState LifeState { get; private set; }
+	[Sync][Property] public PlayerLifeState LifeState { get; private set; }
 
 	[Sync] public int Score { get; set; } = 0;
 
@@ -90,10 +91,22 @@ public class Player : Component
 		PartyFacesManager.Instance.OnRoundEnter += OnRoundEnter;
 		PartyFacesManager.Instance.OnRoundExit += OnRoundExit;
 
+		LevelTimer.OnTimerDepleted += OnTimerDepleted;
+		
 		NPCBuffer.Instance.PossessFreeNPC( GameObject.Id );
 
 		LifeState = PlayerLifeState.Safe;
 
+	}
+
+	void OnTimerDepleted()
+	{
+		Log.Info(LifeState);
+
+		if(LifeState == PlayerLifeState.Alive)
+		{
+			TakeLife();
+		}
 	}
 
 	[Broadcast]
@@ -139,6 +152,8 @@ public class Player : Component
 
 		PartyFacesManager.Instance.OnRoundEnter -= OnRoundEnter;
 		PartyFacesManager.Instance.OnRoundExit -= OnRoundExit;
+
+		LevelTimer.OnTimerDepleted -= OnTimerDepleted;
 
 	}
 
