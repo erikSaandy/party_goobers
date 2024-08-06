@@ -21,7 +21,6 @@
       "Flags": 0,
       "Name": "ScoreBoard",
       "Enabled": true,
-      "NetworkMode": 1,
       "Components": [
         {
           "__type": "Sandbox.ScreenPanel",
@@ -38,12 +37,32 @@
       ]
     },
     {
+      "__guid": "80270ff8-ee9e-4211-aea6-0d362790364c",
+      "Flags": 0,
+      "Name": "ClientInfo",
+      "Position": "-326.8838,107.8843,-4.400826",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ClientInfo",
+          "__guid": "c4c18b83-50d8-4afd-831d-a4197911e3ce"
+        },
+        {
+          "__type": "Sandbox.ScreenPanel",
+          "__guid": "394464a5-6cee-4639-ae69-8823c6baefe3",
+          "AutoScreenScale": true,
+          "Opacity": 1,
+          "Scale": 1,
+          "ZIndex": 200
+        }
+      ]
+    },
+    {
       "__guid": "ab096332-2e20-4ce7-9e26-b2ba727cc642",
       "Flags": 0,
-      "Name": "Objective Dispaly",
+      "Name": "Objective Display",
       "Position": "-32.33688,28.03505,-4978.75",
       "Enabled": true,
-      "NetworkMode": 1,
       "Components": [
         {
           "__type": "Sandbox.ScreenPanel",
@@ -209,7 +228,6 @@
       "Position": "0,0,-5000",
       "Tags": "npcrt",
       "Enabled": true,
-      "NetworkMode": 0,
       "Components": [
         {
           "__type": "NPC",

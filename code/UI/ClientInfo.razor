@@ -1,0 +1,71 @@
+﻿@using System;
+@using Sandbox;
+@using Sandbox.UI;
+@attribute [StyleSheet]
+@inherits PanelComponent
+
+
+<root class="@(Visible ? "visible" : "")">
+
+	<div class="container">
+		<div class="info">@Info</div>
+	</div>
+
+</root>
+
+@code
+{
+
+	public ClientInfo() {}
+
+	public static bool Visible { get; private set; } = false;
+
+	private static string Info { get; set; } = "";
+
+	private static Func<bool> ExitClause { get; set; }
+
+	protected override void OnStart()
+	{
+	}
+
+	protected override void OnUpdate()
+	{
+		base.OnUpdate();
+
+		if(ExitClause == null) { return; }
+
+		if(ExitClause.Invoke() == true)
+		{
+			Hide();
+			ExitClause = null;
+		}
+
+	}
+
+	public static void Show( string info, Func<bool> exitClause )
+	{
+		Info = info;
+		Visible = true;
+		ExitClause = exitClause;
+
+	}
+
+	public static void Hide()
+	{
+		Visible = false;
+	}
+
+
+	protected override void OnDestroy()
+	{
+		Visible = false;
+		Info = "";
+		ExitClause = null;
+	}
+
+	protected override int BuildHash()
+	{
+		return System.HashCode.Combine(Visible);
+	}
+
+}

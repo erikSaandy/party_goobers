@@ -48,10 +48,10 @@
 {
 	const int MAX_DISPLAYED_ENTRIES = 10;
 
-	[Sync] public static bool Visible { get; set; } = false;
+	public static bool Visible { get; set; } = false;
 
-	[Sync] private static List<ScoreBoardEntry> OldEntries { get; set; }
-	[Sync] public static List<ScoreBoardEntry> Entries { get; private set; }
+	private static List<ScoreBoardEntry> OldEntries { get; set; }
+	public static List<ScoreBoardEntry> Entries { get; private set; }
 
 	float ClientIconRotate => MathF.Sin(Time.Now * 10) * 5;
 

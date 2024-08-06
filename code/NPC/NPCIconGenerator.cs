@@ -32,6 +32,7 @@ public class NPCIconGenerator : SingletonComponent<NPCIconGenerator>
 	{
 	}
 
+	[Broadcast]
 	public async void RequestNPCHeadshot(Guid npcGuid)
 	{
 		await Task.Delay( 300 );

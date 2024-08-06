@@ -63,12 +63,16 @@ public class Face : Component, Component.INetworkListener
 
 	protected override void OnStart()
 	{
-		Randomize();
 
 		base.OnStart(); 
 
 		GameObject.Name = "Face";
 		GameObject.Transform.Scale = 9;
+
+		if ( IsProxy ) { return; }
+
+		Randomize();
+
 
 	}
 

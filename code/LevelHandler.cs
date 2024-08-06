@@ -7,6 +7,8 @@ public class LevelHandler : SingletonComponent<LevelHandler>
 	[Sync] private Guid CurrentLevelDataId { get; set; } = default;
 	[Property] public LevelDataComponent CurrentLevelData => CurrentLevelDataId == default ? null : Scene.Directory.FindByGuid( CurrentLevelDataId ).Components.Get<LevelDataComponent>();
 
+	[Sync] public bool LevelIsLoaded { get; private set; } = false;
+
 	[ResourceType( "prefab" )]
 	[Property] public string[] LevelPrefabs { get; set; }
 
@@ -35,6 +37,8 @@ public class LevelHandler : SingletonComponent<LevelHandler>
 
 		NPCBuffer.Instance.PlaceNPCs();
 
+		Instance.LevelIsLoaded = true;
+
 	}
 
 	protected override void OnUpdate()
@@ -51,8 +55,16 @@ public class LevelHandler : SingletonComponent<LevelHandler>
 		{
 			CurrentLevelData.GameObject.Destroy();
 			CurrentLevelDataId = default;
+			Instance.LevelIsLoaded = false;
 		}
 
+	}
+
+	protected override void OnDestroy()
+	{
+		base.OnDestroy();
+
+		LevelIsLoaded = false;
 	}
 
 	public bool FindSpawnLocation( out Transform transform )

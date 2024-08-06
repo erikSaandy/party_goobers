@@ -37,6 +37,8 @@
 		{
 			TimeSinceStarted += Time.Delta;
 
+			if (IsProxy) { return; }
+
 			if(TimeNow <= -1f)
 			{
 				OnTimerDepleted?.Invoke();
@@ -49,12 +51,12 @@
 	[Broadcast]
 	public static void Start()
 	{
+
 		TargetTime = ROUND_TIME;
 		TimeSinceStarted = 0;
 		IsRunning = true;
 
 		OnTimerStarted?.Invoke();
-
 
 	}
 

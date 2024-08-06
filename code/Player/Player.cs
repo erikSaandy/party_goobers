@@ -1,6 +1,7 @@
 using Sandbox;
 using System;
 using System.Numerics;
+using System.Threading.Tasks;
 
 public class Player : Component
 {
@@ -52,7 +53,7 @@ public class Player : Component
 
 	}
 
-	[Sync][Property] public PlayerLifeState LifeState { get; private set; }
+	[Sync][Property] public PlayerLifeState LifeState { get; private set; } = PlayerLifeState.Safe;
 
 	[Sync] public int Score { get; set; } = 0;
 
@@ -86,22 +87,27 @@ public class Player : Component
 	{
 		base.OnStart();
 
-		if(IsProxy) { return; }
-
 		PartyFacesManager.Instance.OnRoundEnter += OnRoundEnter;
 		PartyFacesManager.Instance.OnRoundExit += OnRoundExit;
 
 		LevelTimer.OnTimerDepleted += OnTimerDepleted;
-		
+
+		if (IsProxy) { return; }
+
 		NPCBuffer.Instance.PossessFreeNPC( GameObject.Id );
 
-		LifeState = PlayerLifeState.Safe;
+
+		if( LevelHandler.Instance.LevelIsLoaded )
+		{
+			ClientInfo.Show( "Hold on, \nThe round has already started!", new Func<bool>( () => !LevelHandler.Instance.LevelIsLoaded ) );
+		}
 
 	}
 
+	[Broadcast]
 	void OnTimerDepleted()
 	{
-		Log.Info(LifeState);
+		if(IsProxy) { return; }
 
 		if(LifeState == PlayerLifeState.Alive)
 		{
@@ -112,14 +118,18 @@ public class Player : Component
 	[Broadcast]
 	void OnRoundExit()
 	{
+		if ( IsProxy ) { return; }
 
 	}
 
 	[Broadcast]
 	void OnRoundEnter()
 	{
+		if(IsProxy) { return; }
+
 		if(LifeState == PlayerLifeState.Safe )
 		{
+			Log.Info( Network.OwnerConnection.DisplayName + " entered round!" );
 			LifeState = PlayerLifeState.Alive;
 		}
 	}
