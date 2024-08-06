@@ -3,6 +3,8 @@ using System;
 
 public class Player : Component
 {
+	public const int MAX_HEALTH = 3;
+
 	public enum PlayerLifeState
 	{
 		/// <summary>
@@ -27,16 +29,34 @@ public class Player : Component
 
 	private IInteractable PreviousHit { get; set; } = null;
 
-	public int LifeCount { get; private set; } = 3;
+	public Action OnLifeTaken { get; set; } 
+
+	[Sync] public int Lives { get; private set; } = MAX_HEALTH;
+
+	[Broadcast]
+	public void TakeLife()
+	{
+		if(IsProxy) { return; }
+
+		if(LifeState == PlayerLifeState.Dead ) { return; }
+
+		Lives--;
+		OnLifeTaken?.Invoke();
+
+		if(Lives <= 0)
+		{
+			Lives = 0;
+			Kill( "Ran out of lives!" );
+		}
+
+	}
+
 	[Sync] public PlayerLifeState LifeState { get; private set; }
 
 	[Sync] public int Score { get; set; } = 0;
 
 	[Authority]
-	public void AddScore(int score)
-	{
-		this.Score += score;
-	}
+	public void AddScore(int score) { this.Score += score; }
 
 	public Player()
 	{
@@ -46,8 +66,6 @@ public class Player : Component
 	[Broadcast]
 	public void SetNPC(Guid npcId)
 	{
-		PartyFacesManager.Instance.OnRoundEnter += OnRoundEnter;
-		PartyFacesManager.Instance.OnRoundExit += OnRoundExit;
 
 		if (IsProxy) { return; }
 
@@ -69,17 +87,22 @@ public class Player : Component
 
 		if(IsProxy) { return; }
 
+		PartyFacesManager.Instance.OnRoundEnter += OnRoundEnter;
+		PartyFacesManager.Instance.OnRoundExit += OnRoundExit;
+
 		NPCBuffer.Instance.PossessFreeNPC( GameObject.Id );
 
 		LifeState = PlayerLifeState.Safe;
 
 	}
 
+	[Broadcast]
 	void OnRoundExit()
 	{
 
 	}
 
+	[Broadcast]
 	void OnRoundEnter()
 	{
 		if(LifeState == PlayerLifeState.Safe )
@@ -94,7 +117,7 @@ public class Player : Component
 		if( LifeState == PlayerLifeState.Dead ) { return; }
 
 		LifeState = PlayerLifeState.Dead;
-		LifeCount = 0;
+		Lives = 0;
 
 		if( IsProxy ) { return; }
 

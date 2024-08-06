@@ -17,9 +17,21 @@
 
 		string deltaPosIcon = GetDeltaPositionIcon(i, e.PlayerName, out string deltaPlaceColor);
 
-		<div class="entry">
+		bool dead = e.Lives <= 0;
+
+		<div class="entry @(dead ? "dead" : "")">
 			<div class="placing"> #@((i+1).ToString())</div>
-			<div class="steamicon" style="background-image: url( avatar:@e.SteamId ); transform: rotate(@(e.IsLocal ? ClientIconRotate : 0));" )"></div>
+			<div class="steamicon @(dead ? "dead" : "")" style="background-image: url( avatar:@e.SteamId ); transform: rotate(@(e.IsLocal ? ClientIconRotate : 0));" )">
+
+				<div class="heartcontainer">
+					@for(int j = 0; j < Player.MAX_HEALTH; j++)
+					{
+						<div class="heart">@(HeartEmoji(j, e.Lives))</div>
+					}
+				</div>
+
+			</div>
+
 			<div class="name">@(medal + " " + e.PlayerName)</div>
 			<div class="score">@(e.Score.ToString("0,000"))</div>
 			<div class="pts">₧</div>
@@ -44,6 +56,11 @@
 	float ClientIconRotate => MathF.Sin(Time.Now * 10) * 5;
 
 	private int DisplayedEntryCount => (int)MathF.Min(Entries.Count, MAX_DISPLAYED_ENTRIES);
+
+	private string HeartEmoji( int i, int lives )
+	{
+		return i >= lives ? "🖤" : "❤️";
+	}
 
 	private string MedalEmoji(int place)
 	{
@@ -153,7 +170,7 @@
 			ScoreBoardEntry entryOld = OldEntries.FirstOrDefault(x => x.PlayerName == con.DisplayName);
 			int oldScore = entryOld.PlayerName == string.Empty ? 0 : entryOld.Score;
 
-			Entries.Add(new ScoreBoardEntry(con.DisplayName, con.SteamId, p.Score, oldScore, !p.IsProxy));
+			Entries.Add(new ScoreBoardEntry(con.DisplayName, con.SteamId, p.Score, oldScore, p.Lives, !p.IsProxy));
 
 			//ClientAddEntry( con.DisplayName, con.SteamId, p.Score, oldScore );
 
@@ -181,15 +198,20 @@
 		public int Score;
 		public int ScoreDelta;
 
+		public int Lives;
+
 		public bool IsLocal;
 
-		public ScoreBoardEntry(string playerName, ulong steamId, int score, int oldScore, bool isLocal)
+		public ScoreBoardEntry(string playerName, ulong steamId, int score, int oldScore, int lives, bool isLocal)
 		{
 			this.PlayerName = playerName;
 			this.SteamId = steamId;
 
 			this.Score = score;
 			this.ScoreDelta = score - oldScore;
+
+			this.Lives = lives;
+
 			this.IsLocal = isLocal;
 		}
 

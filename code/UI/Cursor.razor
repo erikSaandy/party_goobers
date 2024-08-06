@@ -4,10 +4,10 @@
 @attribute [StyleSheet]
 @inherits PanelComponent
 
-<root class="container">
+<root class="container @(Visible ? "visible" : "")">
 
 
-	<div class="cursor visible @(IsProxy ? "peer" : "")" style="transform: rotate(@(Tilt)deg);" @ref="CursorPanel">
+	<div class="cursor @(IsGhost ? "ghost" : "")" style="transform: rotate(@(Tilt)deg);" @ref="CursorPanel">
 		<div class="crown @(HasCrown?"visible" : "")">👑</div>
 	<div/>
 
@@ -21,6 +21,18 @@
 
 	public bool Visible { get; private set; } = true;
 
+	public bool IsGhost
+	{
+		get
+		{
+			if (IsProxy) { return true; }
+			else
+			{
+				return (Owner.LifeState == Player.PlayerLifeState.Dead);
+			}
+		}
+	}
+
 	public Panel CursorPanel { get; set; }
 
 	[Sync] public Vector2 CursorPosition { get; private set; }
@@ -29,7 +41,6 @@
 
 	public Cursor() {
 		CursorPanel = new Panel();
-		Visible = true;
 	}
 
 	protected override void OnStart()
@@ -59,20 +70,8 @@
 
 	}
 
-	[Broadcast]
-	public void Show()
-	{
-		Visible = true;
-	}
-
-	[Broadcast]
-	public void Hide()
-	{
-		Visible = false;
-	}
-
 	protected override int BuildHash()
 	{
-		return System.HashCode.Combine((Visible ? CursorPosition : 0), Visible, Tilt);
+		return System.HashCode.Combine(CursorPosition, Visible, Tilt);
 	}
 }

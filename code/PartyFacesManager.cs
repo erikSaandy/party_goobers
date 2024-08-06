@@ -51,7 +51,7 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 		if(IsProxy) { return; }
 
 		//FadeScreen.Show();
-		ExitRound();
+		EnterRound();
 
 		LevelTimer.OnTimerDepleted += OnTimerDepleted;
 		LevelTimer.OnTimerStarted += OnTimerStarted;
@@ -79,8 +79,8 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 		{
 			//	//LevelTimer.Start( 10 );
 
-			//	if ( ScoreBoard.Visible ) { ScoreBoard.Hide(); }
-			//	else { ScoreBoard.Show(); }
+			//if ( ScoreBoard.Visible ) { ScoreBoard.Hide(); }
+			//else { ScoreBoard.Show(); }
 
 			//NPCIconGenerator.Instance.RequestNPCHeadshot( Scene.Components.GetAll<NPC>().Shuffle().First().GameObject.Id );
 
@@ -106,12 +106,24 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 	private void OnTimerDepleted()
 	{
 		Log.Info( "> TIMER ENDED");
+
+		IEnumerable<Player> alives = PlayersAlive;
+
+		foreach(Player player in alives)
+		{
+			player.TakeLife();
+		}
+
+		ExitRound();
+
 	}
 
 	[Broadcast]
 	public void EnterRound()
 	{
-		OnRoundEnter?.Invoke();
+		if ( RoundIsOn ) { Log.Warning( "Can't enter round as round is already going on." ); return; }
+
+		RoundIsOn = true;
 
 		RoundDeaths?.Clear();
 
@@ -124,19 +136,46 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 	public async void EnterRoundAsync()
 	{
 
+		FadeScreen.Show();
+
+		await Task.Delay( 200 );
+
+		OnRoundEnter?.Invoke();
+
+		ScoreBoard.UpdateScoreBoard();
+		ScoreBoard.Show();
+
+		await Task.Delay( 500 );
+
+		LevelHandler.Instance.LoadRandomLevel();
+
+		await Task.Delay( 2000 );
+
+		ScoreBoard.Hide();
+
+		await Task.Delay( 200 );
+
+		ObjectiveDisplay.Show();
+
+		await Task.Delay( 2500 );
+
+		ObjectiveDisplay.Hide();
+
+		await Task.Delay( 250 );
+
 		await Task.Delay( 500 );
 
 		FadeScreen.Hide();
 		LevelTimer.Start();
-
-		RoundIsOn = true;
 
 	}
 
 	[Broadcast]
 	public void ExitRound()
 	{
-		OnRoundExit?.Invoke();
+		if ( !RoundIsOn ) { Log.Warning( "Can't exit round as no round is going on." ); return; }
+
+		RoundIsOn = false;
 
 		if(IsProxy) { return; }
 
@@ -151,6 +190,8 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 
 		await Task.Delay( 1000 );
 
+		OnRoundExit?.Invoke();
+
 		FadeScreen.Show();
 
 		await Task.Delay( 600 );
@@ -159,28 +200,7 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 
 		LevelHandler.Instance.UnloadCurrentLevel();
 
-		ScoreBoard.UpdateScoreBoard();
-		ScoreBoard.Show();
-
 		NPCBuffer.Instance.HideNPCs();
-
-		await Task.Delay( 500 );
-
-		LevelHandler.Instance.LoadRandomLevel();
-
-		await Task.Delay( 2000 );
-
-		ScoreBoard.Hide();
-
-		await Task.Delay( 400 );
-
-		ObjectiveDisplay.Show();
-
-		await Task.Delay( 2500 );
-
-		ObjectiveDisplay.Hide();
-
-		await Task.Delay( 250 );
 
 		EnterRound();
 
@@ -198,6 +218,10 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 		base.OnDestroy();
 
 		FadeScreen.Visible = true;
+		RoundIsOn = false;
+
+		LevelTimer.OnTimerDepleted = null;
+		LevelTimer.OnTimerStarted = null;
 
 	}
 

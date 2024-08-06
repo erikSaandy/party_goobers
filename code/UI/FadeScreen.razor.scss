@@ -2,14 +2,16 @@
 
 FadeScreen {
 	position: absolute;
-	width: 130%;
-	height: 130%;
+	width: 100%;
+	height: 100%;
 	justify-content: center;
 	align-items: center;
+	align-self: center;
 	opacity: 1;
 	margin: 0;
 	padding: 0;
-	transform: translate(-15%, -15%);
+	background-position: center;
+	//transform: translate(-15%, -15%);
 
 	> .circle {
 		position: absolute;
@@ -26,10 +28,11 @@ FadeScreen {
 		width: 100%;
 		height: 100%;
 		background-image: url( "textures/icons/spyglass.png" );
-		background-size: 80px;
+		background-size: 85px;
 		opacity: 0;
 		transition: opacity 0.2s linear;
-		transform: rotate(3deg);
+		//transform: rotate(3deg);
+
 
 		&.visible {
 			opacity: 0.5;
