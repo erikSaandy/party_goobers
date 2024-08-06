@@ -1,0 +1,8 @@
+Sound list
+
+Objective jingle
+Hover over NPC
+Click confirm NPC
+Objective cleared jingle
+
+map bg noise

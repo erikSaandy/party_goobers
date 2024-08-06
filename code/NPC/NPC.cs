@@ -145,6 +145,7 @@ public class NPC : Component, IInteractable
 		SetRandomColor();
 	}
 
+	[Broadcast]
 	public void Spawn( Transform spawnTransform )
 	{
 		Renderer.Set( "e_behaviour", (int)NPC.AnimationBehaviour.Default );
