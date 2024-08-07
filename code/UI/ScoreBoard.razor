@@ -35,7 +35,7 @@
 			<div class="name">@(medal + " " + e.PlayerName)</div>
 			<div class="score">@(e.Score.ToString("0,000"))</div>
 			<div class="pts">₧</div>
-			<div class="scoredelta" style="color: @(DeltaColor(e.ScoreDelta))">@(deltaPrefix + e.ScoreDelta)</div>
+			<div class="scoredelta" style="color: @(DeltaColor(e.ScoreDelta))">@(deltaPrefix + e.ScoreDelta.ToString("0,000"))</div>
 			<div class="deltaicon" style="color: @(deltaPlaceColor)">@(deltaPosIcon)</div>
 		</div>
 	}

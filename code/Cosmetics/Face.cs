@@ -71,8 +71,6 @@ public class Face : Component, Component.INetworkListener
 
 		if ( IsProxy ) { return; }
 
-		Randomize();
-
 
 	}
 

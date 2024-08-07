@@ -5,7 +5,7 @@
   "Ident": "party_face",
   "Schema": 1,
   "IncludeSourceFiles": false,
-  "Resources": "\ntextures/icons/cursor.png\ntextures/icons/playericon_default.png\ntextures/icons/spyglass.png",
+  "Resources": "\ntextures/icons/cursor.png\ntextures/icons/playericon_default.png\ntextures/icons/spyglass.png\nsounds/npc_cheer.wav\nsounds/npc_hello.wav\nsounds/npc_hover.wav\nsounds/npc_select.wav\nsounds/round_start.wav",
   "PackageReferences": [],
   "EditorReferences": null,
   "Metadata": {

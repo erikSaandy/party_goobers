@@ -63,7 +63,7 @@ public abstract class LevelObjective : Component
 			{
 				Scene.Directory.FindByGuid( player ).Components.Get<Player>().MarkAsSafe();
 
-				await Task.Delay( 1000 );
+				await Task.Delay( 700 );
 
 				Handler.OnPlayerCompletedObjective( player );
 
@@ -114,14 +114,17 @@ public abstract class LevelObjective : Component
 
 		GameObject lookAt = NPCLookAt == null ? Scene.Camera.GameObject : NPCLookAt;
 
+		IEnumerable<NPC> npcs = set.Take( spawnCount );
+
 		// Make sure npc looks at Objective lookAt (defaults to scene camera).
-		foreach(NPC npc in set)
+		foreach (NPC npc in npcs )
 		{
+			PartyFacesManager.EnableGameobject( npc.GameObject.Id, true );
 			npc.LookAt( lookAt.Id );
 		}
 
 		//TODO: Make sure player NPCs are always chosen.
-		return set.Take( spawnCount );
+		return npcs;
 
 	}
 
@@ -137,6 +140,9 @@ public abstract class LevelObjective : Component
 			npc.SetClientAnimationBehaviour( player, NPC.AnimationBehaviour.Cheer );
 
 		}
+
+		Log.Info( "Cleared objective!" );
+
 	}
 
 }

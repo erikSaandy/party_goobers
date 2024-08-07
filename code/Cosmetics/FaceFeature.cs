@@ -19,7 +19,8 @@ public abstract class FaceFeature : Component
 	}
 
  	[JsonIgnore] public abstract List<Texture> TextureCollection { get; }
-	[JsonIgnore] public Texture WantedTexture => TextureCollection[Data.ID];
+	[JsonIgnore] public int TextureId => Data.ID;
+	[JsonIgnore] public Texture Texture => TextureCollection[Data.ID];
 
 	[JsonIgnore] public bool IsSpawned { get; private set; } = false;
 
@@ -48,10 +49,7 @@ public abstract class FaceFeature : Component
 
 	private void UpdateRenderer()
 	{
-		if(Renderer == null) { return; }
-
-		Renderer.Texture = WantedTexture;
-		//Owner.Transform.Parent.Transform.Position = new Vector3( Game.Random.Float( -0, 0 ), Game.Random.Float( -0, 00 ) );
+		Renderer.Texture = Texture;
 	}
 
 	protected override void OnUpdate()
@@ -88,7 +86,7 @@ public abstract class FaceFeature : Component
 		SetTextureID( TextureCollection.GetRandomId() );
 	}
 
-	[Authority]
+	[Broadcast]
 	private void SetOffset( Vector2 offset )
 	{
 		Data.Offset = offset;

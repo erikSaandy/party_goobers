@@ -33,8 +33,11 @@ public class FindSpecificObjective : LevelObjective
 		
 		if(IsProxy) { return; }
 
-		Gizmo.Draw.Color = Color.Green;
-		Gizmo.Draw.LineSphere( Scene.Directory.FindByGuid( TargetNPCId ).Transform.Position + Vector3.Up * 16, 16 );
+		if( TargetNPCId != default)
+		{
+			Gizmo.Draw.Color = Color.Green;
+			Gizmo.Draw.LineSphere( Scene.Directory.FindByGuid( TargetNPCId ).Transform.Position + Vector3.Up * 16, 16 );
+		}
 
 	}
 
@@ -46,8 +49,6 @@ public class FindSpecificObjective : LevelObjective
 	protected override void OnCompletedObjective( Guid player )
 	{
 		base.OnCompletedObjective( player );
-
-		Log.Info( "Cleared objective!" );
 
 	}
 

@@ -27,12 +27,13 @@ public class NPCBuffer : SingletonComponent<NPCBuffer>
 		{
 			GameObject npc = SceneUtility.GetPrefabScene( Prefab ).Clone();
 
-			npc.BreakFromPrefab();
-			npc.NetworkSpawn();
-
-			NPC c = npc.Components.Get<NPC>(true);
+			NPC c = npc.Components.Get<NPC>( true );
+			c.Randomize();
 
 			NPCs.Add( c );
+
+			npc.BreakFromPrefab();
+			npc.NetworkSpawn();
 
 			PartyFacesManager.EnableGameobject( c.GameObject.Id, false );
 
@@ -82,9 +83,9 @@ public class NPCBuffer : SingletonComponent<NPCBuffer>
 		{
 			NPC npc = pool.ElementAt( i );
 
-
 			if ( LevelHandler.Instance.FindSpawnLocation( out Transform tr ) )
 			{
+
 				PartyFacesManager.EnableGameobject( npc.GameObject.Id, true );
 				npc.Spawn( tr );
 			}

@@ -40,17 +40,37 @@ public class NPC : Component, IInteractable
 		this.PlayerId = default;
 	}
 
-	[Broadcast]
+	[Authority]
 	public void CopyFrom(Guid other)
 	{
-		NPC npc = Scene.Directory.FindByGuid( other ).Components.Get < NPC >(true);
+		NPC npc = Scene.Directory.FindByGuid( other ).Components.Get<NPC>(true);
 
 		SetColor( npc.Color.RgbaInt );
-		Face.Eyebrows.SetTextureID( npc.Face.Eyebrows.Data.ID );
-		Face.Eyes.SetTextureID( npc.Face.Eyes.Data.ID );
-		Face.Nose.SetTextureID( npc.Face.Nose.Data.ID );
-		Face.Mouth.SetTextureID( npc.Face.Mouth.Data.ID );
+		Face.Eyebrows.SetTextureID( npc.Face.Eyebrows.TextureId );
+		Face.Eyes.SetTextureID( npc.Face.Eyes.TextureId );
+		Face.Nose.SetTextureID( npc.Face.Nose.TextureId );
+		Face.Mouth.SetTextureID( npc.Face.Mouth.TextureId );
+	}
 
+	public bool IsAlike( Guid other )
+	{
+		NPC npc = Scene.Directory.FindByGuid( other ).Components.Get<NPC>( true );
+		return IsAlike( npc );
+	}
+	public bool IsAlike(NPC other)
+	{
+
+		if ( other.Color == Color
+			&& other.Face.Eyebrows.Texture == Face.Eyebrows.Texture
+			&& other.Face.Eyes.Texture == Face.Eyes.Texture
+			&& other.Face.Nose.Texture == Face.Nose.Texture
+			&& other.Face.Mouth.Texture == Face.Mouth.Texture
+			)
+		{
+			return true;
+		}
+
+		return false;
 	}
 
 	[Property] public SkinnedModelRenderer Renderer { get; set; }
@@ -105,14 +125,12 @@ public class NPC : Component, IInteractable
 
 	protected override void OnStart()
 	{
-		base.OnStart();	
+		base.OnStart();
 
 		PartyFacesManager.Instance.OnRoundEnter += OnRoundEnter;
 		PartyFacesManager.Instance.OnRoundExit += OnRoundExit;
 
 		if (IsProxy) { return; }
-
-		SetRandomColor();
 
 		WalkSpeed = Game.Random.Float( MIN_WALKSPEED, MAX_WALKSPEED );
 		float sp = Math2d.InverseLerp( 0.75f, 1.4f, WalkSpeed );
@@ -150,6 +168,8 @@ public class NPC : Component, IInteractable
 	public void Randomize()
 	{
 		if(IsProxy) { return; }
+
+		Face.Randomize();
 		SetRandomColor();
 	}
 
@@ -165,6 +185,7 @@ public class NPC : Component, IInteractable
 
 	}
 
+	[Authority]
 	public void SetRandomColor()
 	{
 		SetColor( ColorX.MiiColors.GetRandom().RgbaInt );

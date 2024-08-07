@@ -44,6 +44,16 @@
       {
         "__type": "FindSpecificObjective",
         "__guid": "e732dbf7-1b7d-4fab-bfa3-79f0731f2eec"
+      },
+      {
+        "__type": "FindAlikeObjective",
+        "__guid": "199a6a0f-e871-4e15-ab6d-43c20a11cb2a",
+        "NumberOfAlike": 2
+      },
+      {
+        "__type": "FindAlikeObjective",
+        "__guid": "b7f06bbc-adf3-4e05-889d-3cbfc6435e76",
+        "NumberOfAlike": 3
       }
     ],
     "Children": [

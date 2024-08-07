@@ -74,7 +74,7 @@ public class Player : Component
 		// Player already owns other NPC
 		if(NPC != null && NPC.Owner == this)
 		{
-			NPC.Randomize();
+			//NPC.Randomize();
 			NPC.ClearOwner();
 		}
 
@@ -94,7 +94,7 @@ public class Player : Component
 
 		if (IsProxy) { return; }
 
-		NPCBuffer.Instance.PossessFreeNPC( GameObject.Id );
+		//NPCBuffer.Instance.PossessFreeNPC( GameObject.Id );
 
 
 		if( LevelHandler.Instance.LevelIsLoaded )
