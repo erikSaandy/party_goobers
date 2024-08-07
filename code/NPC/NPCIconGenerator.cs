@@ -35,11 +35,10 @@ public class NPCIconGenerator : SingletonComponent<NPCIconGenerator>
 	[Broadcast]
 	public async void RequestNPCHeadshot(Guid npcGuid)
 	{
-		await Task.Delay( 100 );
 
 		NPC npc = Scene.Directory.FindByGuid( npcGuid ).Components.Get<NPC>(true);
 
-		await Task.Delay( 100 );
+		await Task.Delay( 250 );
 
 		DisplayNPC.CopyFrom( npc.GameObject.Id );
 		DisplayNPC.GameObject.Enabled = true;
@@ -51,7 +50,7 @@ public class NPCIconGenerator : SingletonComponent<NPCIconGenerator>
 		Camera.Transform.Rotation = Vector3.VectorAngle( DisplayNPC.ForwardReference.Value.Rotation.Backward );
 		Camera.Transform.Position = DisplayNPC.Face.Transform.Position - DisplayNPC.ForwardReference.Value.Rotation.Backward * 64;
 
-		await Task.Delay( 400 );
+		await Task.Delay( 250 );
 
 		Camera.RenderToTexture( RenderTexture );
 

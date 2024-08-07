@@ -92,12 +92,11 @@ public class FindAlikeObjective : LevelObjective
 		if(AlikeNPCIds == null) { return; }
 
 		// randomize alike npcs on level unload.
-		//foreach ( Guid id in AlikeNPCIds )
-		//{
-		//	NPC npc = Scene.Directory.FindByGuid( id ).Components.Get<NPC>( true );
-		//	Log.Info( "..." );
-		//	npc.Randomize();
-		//}
+		foreach ( Guid id in AlikeNPCIds )
+		{
+			NPC npc = Scene.Directory.FindByGuid( id ).Components.Get<NPC>( true );
+			npc.Randomize();
+		}
 
 	}
 

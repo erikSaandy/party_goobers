@@ -115,8 +115,6 @@ public class NPC : Component, IInteractable
 	{
 		LevelHandler.Instance.CurrentLevelData.ClientClickedOnNPC( playerId, this );
 
-		Sound.Play( "sounds/npc_select.sound" );
-
 		Log.Info( "Interacted with " + GameObject.Name );
 
 	}

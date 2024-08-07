@@ -30,6 +30,11 @@ public abstract class LevelObjective : Component
 	/// <param name="npc"></param>
 	protected abstract void ClientSelectedNPC( Guid player, NPC npc );
 
+	protected virtual void ClientDeselectedNPC( Guid player, NPC npc )
+	{
+
+	}
+
 	/// <summary>
 	/// Client clicked on an NPC in the level.
 	/// </summary>
@@ -44,11 +49,27 @@ public abstract class LevelObjective : Component
 	{
 
 		// Return if doesn't accept selection or player has selected all npcs to trigger objective
-		if ( !AcceptSelection || SelectedNPCs.Count >= MaxSelectedNPCs ) { return; }
+		if ( !AcceptSelection ) { return; }
+
+
+		if ( SelectedNPCs.Contains( npc ) )
+		{
+			SelectedNPCs.Remove( npc );
+			ClientDeselectedNPC( player, npc );
+
+			npc.SetClientAnimationBehaviour( player, NPC.AnimationBehaviour.Default );
+			//Sound.Play( "sounds/npc_deselect.sound" );
+			return;
+		}
+
+		if( SelectedNPCs.Count >= MaxSelectedNPCs ) { return; }
 
 
 		SelectedNPCs.Add( npc );
+
 		npc.SetClientAnimationBehaviour( player, NPC.AnimationBehaviour.Wave );
+		Sound.Play( "sounds/npc_select.sound" );
+
 
 		ClientSelectedNPC( player, npc );
 
