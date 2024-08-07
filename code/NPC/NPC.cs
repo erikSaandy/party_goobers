@@ -82,6 +82,7 @@ public class NPC : Component, IInteractable
 	public void OnMouseEnter( Guid playerId )
 	{
 		Renderer.Set( "b_big_head", true );
+		Sound.Play( "sounds/npc_hover.sound" );
 	}
 
 	public void OnMouseExit( Guid playerId )
@@ -93,6 +94,8 @@ public class NPC : Component, IInteractable
 	public void OnInteract( Guid playerId )
 	{
 		LevelHandler.Instance.CurrentLevelData.ClientClickedOnNPC( playerId, this );
+
+		Sound.Play( "sounds/npc_select.sound" );
 
 		Log.Info( "Interacted with " + GameObject.Name );
 
@@ -124,6 +127,11 @@ public class NPC : Component, IInteractable
 		if ( Scene.Directory.FindByGuid( player ).IsProxy ) { return; }
 
 		Renderer.Set( "e_behaviour", (int)behaviour );
+
+		if(behaviour == AnimationBehaviour.Cheer)
+		{
+			Sound.Play( "sounds/npc_cheer.sound" );
+		}
 
 	}
 

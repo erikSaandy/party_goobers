@@ -56,9 +56,10 @@
 	}
 
 	[Broadcast]
-	public static void Show()
+	public static async void Show()
 	{
 		Visible = true;
+		Sound.Play("sounds/round_start.sound");
 	}
 
 	[Broadcast]

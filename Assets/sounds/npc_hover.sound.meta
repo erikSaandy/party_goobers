@@ -1,0 +1,19 @@
+{
+  "publish": {
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "npc_hover",
+      "Type": "sound",
+      "Org": "local",
+      "Ident": "npc_hover",
+      "Schema": 0,
+      "IncludeSourceFiles": true,
+      "Resources": null,
+      "PackageReferences": null,
+      "EditorReferences": null,
+      "Metadata": {
+        "SingleAssetSource": "sounds/npc_hover.sound"
+      }
+    }
+  }
+}

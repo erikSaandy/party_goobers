@@ -43,7 +43,7 @@
 				{
 					_class = "CStateMachineAnimNode"
 					m_sName = "Random Start time"
-					m_vecPosition = [ -720.0, -48.0 ]
+					m_vecPosition = [ -768.0, -48.0 ]
 					m_nNodeID = 
 					{
 						m_id = 345444040
@@ -182,20 +182,73 @@
 			{
 				key = 
 				{
+					m_id = 1050181211
+				}
+				value = 
+				{
+					_class = "CBoneMaskAnimNode"
+					m_sName = "Unnamed"
+					m_vecPosition = [ -32.0, 272.0 ]
+					m_nNodeID = 
+					{
+						m_id = 1050181211
+					}
+					m_sNote = ""
+					m_weightListName = "upper_body_mask"
+					m_inputConnection1 = 
+					{
+						m_nodeID = 
+						{
+							m_id = 1373532984
+						}
+						m_outputID = 
+						{
+							m_id = 4294967295
+						}
+					}
+					m_inputConnection2 = 
+					{
+						m_nodeID = 
+						{
+							m_id = 1424465531
+						}
+						m_outputID = 
+						{
+							m_id = 4294967295
+						}
+					}
+					m_blendSpace = "BlendSpace_Model"
+					m_bUseBlendScale = false
+					m_blendValueSource = "Parameter"
+					m_blendParameter = 
+					{
+						m_id = 4294967295
+					}
+					m_timingBehavior = "UseChild2"
+					m_flTimingBlend = 0.5
+					m_flRootMotionBlend = 0.0
+					m_footMotionTiming = "Child1"
+					m_bResetChild1 = true
+					m_bResetChild2 = true
+				}
+			},
+			{
+				key = 
+				{
 					m_id = 1069043992
 				}
 				value = 
 				{
 					_class = "CCommentAnimNode"
 					m_sName = "Big Head"
-					m_vecPosition = [ -272.0, 336.0 ]
+					m_vecPosition = [ -464.0, 416.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1069043992
 					}
 					m_sNote = ""
 					m_commentText = ""
-					m_size = [ 384.0, 144.0 ]
+					m_size = [ 576.0, 144.0 ]
 					m_color = [ 49, 139, 146, 255 ]
 				}
 			},
@@ -229,7 +282,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Big Head"
-					m_vecPosition = [ -256.0, 400.0 ]
+					m_vecPosition = [ -400.0, 480.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1181870377
@@ -281,7 +334,7 @@
 						{
 							m_nodeID = 
 							{
-								m_id = 1424465531
+								m_id = 1050181211
 							}
 							m_outputID = 
 							{
@@ -337,7 +390,7 @@
 				{
 					_class = "CSelectorAnimNode"
 					m_sName = "Base Animation"
-					m_vecPosition = [ -256.0, -96.0 ]
+					m_vecPosition = [ -304.0, -96.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1373532984
@@ -411,7 +464,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Base Animation"
-					m_vecPosition = [ -944.0, -32.0 ]
+					m_vecPosition = [ -992.0, -32.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1397365581
@@ -432,7 +485,7 @@
 				{
 					_class = "CSpeedScaleAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -480.0, -48.0 ]
+					m_vecPosition = [ -528.0, -48.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1405444041
@@ -464,7 +517,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -32.0, 256.0 ]
+					m_vecPosition = [ -304.0, 288.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1424465531
@@ -541,7 +594,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Base Animation"
-					m_vecPosition = [ -944.0, -128.0 ]
+					m_vecPosition = [ -992.0, -128.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1469057987
@@ -615,14 +668,14 @@
 				{
 					_class = "CCommentAnimNode"
 					m_sName = "Base Animation"
-					m_vecPosition = [ -928.0, -208.0 ]
+					m_vecPosition = [ -1024.0, -208.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1698987188
 					}
 					m_sNote = ""
 					m_commentText = ""
-					m_size = [ 832.0, 272.0 ]
+					m_size = [ 880.0, 272.0 ]
 					m_color = [ 49, 139, 146, 255 ]
 				}
 			},
@@ -688,7 +741,7 @@
 				{
 					_class = "CSelectorAnimNode"
 					m_sName = "Big Head"
-					m_vecPosition = [ -48.0, 384.0 ]
+					m_vecPosition = [ -48.0, 464.0 ]
 					m_nNodeID = 
 					{
 						m_id = 2070768187

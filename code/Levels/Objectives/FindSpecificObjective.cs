@@ -22,6 +22,11 @@ public class FindSpecificObjective : LevelObjective
 
 	}
 
+	protected override void OnAwake()
+	{
+		base.OnAwake();
+	}
+
 	protected override void OnUpdate()
 	{
 		base.OnUpdate();

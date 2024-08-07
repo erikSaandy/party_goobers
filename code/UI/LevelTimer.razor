@@ -66,6 +66,11 @@
 		IsRunning = false;
 	}
 
+	protected override void OnDestroy()
+	{
+		IsRunning = false;
+	}
+
 	protected override int BuildHash()
 	{
 		return System.HashCode.Combine(TimeNow);

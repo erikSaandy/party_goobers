@@ -1,0 +1,17 @@
+{
+  "UI": true,
+  "Volume": "0.20,1.00,0",
+  "Pitch": "0.80,1.20,1",
+  "Decibels": 20,
+  "SelectionMode": "Random",
+  "Sounds": [
+    "sounds/npc_hover.vsnd"
+  ],
+  "Occlusion": false,
+  "AirAbsorption": false,
+  "Transmission": false,
+  "OcclusionRadius": 64,
+  "DistanceAttenuation": false,
+  "__references": [],
+  "__version": 0
+}
