@@ -58,7 +58,7 @@ public abstract class LevelObjective : Component
 			ClientDeselectedNPC( player, npc );
 
 			npc.SetClientAnimationBehaviour( player, NPC.AnimationBehaviour.Default );
-			//Sound.Play( "sounds/npc_deselect.sound" );
+			Sound.Play( "sounds/npc_deselect.sound" );
 			return;
 		}
 

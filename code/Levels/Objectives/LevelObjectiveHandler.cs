@@ -35,6 +35,8 @@ public class LevelObjectiveHandler : Component
 
 		player.AddScore( (int)(time * 1000) );
 
+		PartyFacesManager.Instance.ThrowConfetti();
+
 		Log.Info( player.Network.OwnerConnection.DisplayName + " completed objective.");
 
 		if (IsProxy) { return; }
@@ -43,7 +45,6 @@ public class LevelObjectiveHandler : Component
 
 		// TODO: bandaid fix because player life state won't update in time?
 		int aliveCount = PartyFacesManager.PlayersAlive.Where( x => x != player ).Count();
-
 
 		if ( aliveCount == 0 )
 		{

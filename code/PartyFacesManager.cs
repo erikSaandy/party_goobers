@@ -1,6 +1,7 @@
 using Sandbox;
 using Sandbox.UI;
 using System;
+using System.Numerics;
 using System.Threading.Tasks;
 
 public class PartyFacesManager : SingletonComponent<PartyFacesManager>
@@ -30,7 +31,7 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 	// Juggle can
 
 	public static IEnumerable<Player> Players => Instance.Scene.GetAllComponents<Player>();
-	public static IEnumerable<Player> PlayersAlive => Players.Where(x => x.LifeState == Player.PlayerLifeState.Alive );
+	public static IEnumerable<Player> PlayersAlive => Players.Where( x => x.LifeState == Player.PlayerLifeState.Alive );
 	public static IEnumerable<Player> PlayersSafe => Players.Where( x => x.LifeState == Player.PlayerLifeState.Safe );
 
 	public static TimeSince TimeSinceRoundStart { get; private set; } = new TimeSince();
@@ -43,6 +44,17 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 	[Sync] public static bool RoundIsOn { get; private set; } = false;
 
 	public LevelDataComponent CurrentLevelData { get; set; } = null;
+
+	[Property] public GameObject ConfettiParticles { get; private set; }
+
+	[Broadcast]
+	public void ThrowConfetti()
+	{
+		Vector3 pos = Scene.Camera.Transform.Position + Scene.Camera.Transform.Rotation.Down * 150 + Scene.Camera.Transform.Rotation.Forward * 600;
+		GameObject conf = ConfettiParticles.Clone( pos, Vector3.VectorAngle( Scene.Camera.Transform.Rotation.Up ) );
+		conf.Enabled = true;
+		Sound.Play( "sounds/confetti_throw.sound" );
+	}
 
 	protected override void OnStart()
 	{
