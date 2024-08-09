@@ -89,6 +89,8 @@ public class FindAlikeObjective : LevelObjective
 		
 		if(AlikeNPCIds == null) { return; }
 
+		if ( !PartyFacesManager.DEBUG ) { return; }
+
 		// randomize alike npcs on level unload.
 		foreach ( Guid id in AlikeNPCIds )
 		{

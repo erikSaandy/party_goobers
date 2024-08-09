@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 {
+	public static readonly bool DEBUG = true;
 
 	// Hide Screen with "loading-screen"
 	// Load random map prefab
@@ -41,7 +42,8 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 	public Action OnRoundEnter { get; set; }
 	public Action OnRoundExit { get; set; }
 
-	[Sync] public static bool RoundIsOn { get; private set; } = false;
+	[Sync] public bool RoundIsOn { get; private set; } = false;
+	[Sync] public bool GameIsOn { get; private set; }
 
 	public LevelDataComponent CurrentLevelData { get; set; } = null;
 
@@ -71,8 +73,7 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 
 	}
 
-	[Authority]
-	public async void OpenLobby()
+	private async void OpenLobby()
 	{
 
 		await Task.Delay( 1000 );
@@ -144,9 +145,14 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 
 	}
 
-	[Authority]
 	public async void StartGame()
 	{
+		if(IsProxy) { Log.Warning( "Only the host can start a game." ); return; }
+
+		if(GameIsOn) { Log.Warning( "Can't start game as the game is already going on." ); return; }
+
+		GameIsOn = true;
+
 		RoundNumber = 0;
 
 		FadeScreen.Show();
@@ -161,7 +167,7 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 	}
 
 	[Authority]
-	public void EnterRound()
+	private void EnterRound()
 	{
 
 		if ( IsProxy ) { return; }
@@ -172,12 +178,10 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 		RoundNumber++;
 
 		RoundDeaths?.Clear();
-
 		EnterRoundAsync();
-
 	}
 
-	public async void EnterRoundAsync()
+	private async void EnterRoundAsync()
 	{
 
 		FadeScreen.Show();
@@ -220,11 +224,11 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 
 	}
 
-	public async void ExitRoundAsync()
+	private async void ExitRoundAsync()
 	{
 		LevelTimer.Stop();
 
-		await Task.Delay( 1000 );
+		await Task.Delay( 2500 );
 
 		OnRoundExit?.Invoke();
 

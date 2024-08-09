@@ -47,12 +47,48 @@ LobbyHud {
             align-items: center;
             width: auto;
             height: $iconsize;
-            font-size:20px;
+            font-size: 20px;
             font-weight: 500;
             text-stroke: 4px black;
             color: white;
             margin-left: 10px;
             margin-right: 20px;
+        }
+    }
+
+    .startbutton {
+        position: absolute;
+        width: 350px;
+        height: 120px;
+        background-color: rgba(white, 0.2);
+        border-radius: 35px;
+        border-width: 6px;
+        border-color: white;
+        align-items: center;
+        justify-content: center;
+        font-size: 40px;
+        font-weight: 500;
+        text-stroke: 10px black;
+        right: 35px;
+        bottom: 35px;
+        color: linear-gradient(white, #9198e5);
+        backdrop-filter: blur(10px);
+        pointer-events: all;
+        cursor: none;
+        transition: all 0.2s linear;
+        box-shadow: -10px, -10px, 100px, black;
+
+        &:hover {
+            width: 370px;
+            height: 140px;
+            font-size: 50px;
+            right: 40px;
+            bottom: 40px;
+            sound-in: "ui.button.over";
+        }
+
+        &:active {
+            sound-in: "ui.button.press";
         }
     }
 }

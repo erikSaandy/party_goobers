@@ -79,9 +79,9 @@ public class Player : Component
 		//NPCBuffer.Instance.PossessFreeNPC( GameObject.Id );
 
 
-		if( PartyFacesManager.RoundIsOn )
+		if( PartyFacesManager.Instance.RoundIsOn )
 		{
-			ClientInfo.Show( "Hold on, \nThe round has already started!", new Func<bool>( () => !PartyFacesManager.RoundIsOn  ) );
+			ClientInfo.Show( "Hold on, \nThe round has already started!", new Func<bool>( () => !PartyFacesManager.Instance.RoundIsOn ) );
 		}
 
 	}
@@ -151,6 +151,7 @@ public class Player : Component
 
 	protected override void OnUpdate()
 	{
+
 		base.OnUpdate();
 
 		if ( IsProxy ) { return; }

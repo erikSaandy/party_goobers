@@ -33,6 +33,8 @@ public class FindSpecificObjective : LevelObjective
 		
 		if(IsProxy) { return; }
 
+		if(!PartyFacesManager.DEBUG) { return; }
+
 		if( TargetNPCId != default)
 		{
 			Gizmo.Draw.Color = Color.Green;

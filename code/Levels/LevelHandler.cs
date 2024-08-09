@@ -1,9 +1,11 @@
 using Sandbox;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
 
 public class LevelHandler : SingletonComponent<LevelHandler>
 {
+
 	[Sync] private Guid CurrentLevelDataId { get; set; } = default;
 	[Property] public LevelDataComponent CurrentLevelData => CurrentLevelDataId == default ? null : Scene.Directory.FindByGuid( CurrentLevelDataId ).Components.Get<LevelDataComponent>();
 
@@ -22,7 +24,21 @@ public class LevelHandler : SingletonComponent<LevelHandler>
 
 		UnloadCurrentLevel();
 
-		GameObject levelObject = SceneUtility.GetPrefabScene( ResourceLibrary.Get<PrefabFile>( LevelPrefabs.GetRandom() ) ).Clone( Vector3.Zero );
+		string level = LevelPrefabs.GetRandom();
+
+		if(PartyFacesManager.DEBUG )
+		{
+			for (int i = 1; i <= 10; i++ )
+			{
+				if(Input.Down($"Slot{i}"))
+				{
+					level = LevelPrefabs[(int)MathF.Min(i-1, LevelPrefabs.Count())];
+					break;
+				}
+			}
+		}
+
+		GameObject levelObject = SceneUtility.GetPrefabScene( ResourceLibrary.Get<PrefabFile>( level ) ).Clone( Vector3.Zero );
 		levelObject.BreakFromPrefab();
 		levelObject.NetworkSpawn();
 

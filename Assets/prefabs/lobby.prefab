@@ -57,12 +57,57 @@
           {
             "__type": "LobbyHud",
             "__guid": "d4febc20-042d-4ecd-ac2e-de21212ed787",
+            "Emote": {
+              "_type": "gameobject",
+              "go": "e143ee6f-79c7-435f-80da-5ce8208d3c71"
+            },
             "Lobby": {
               "_type": "component",
               "component_id": "07452266-e4ac-4dc9-8226-0fb2a8f95b6f",
               "go": "ba2a03e9-fef0-4c0b-a32d-c92d8ed6d3f8",
               "component_type": "LobbyComponent"
             }
+          }
+        ]
+      },
+      {
+        "__guid": "e143ee6f-79c7-435f-80da-5ce8208d3c71",
+        "Flags": 0,
+        "Name": "Emote",
+        "Rotation": "0,0,-0.7071067,0.7071068",
+        "Components": [
+          {
+            "__type": "Sandbox.WorldPanel",
+            "__guid": "734f38bf-3ae2-49f1-8973-98a975e01f8b",
+            "HorizontalAlign": "Center",
+            "InteractionRange": 1000,
+            "LookAtCamera": true,
+            "PanelSize": "512,512",
+            "RenderScale": 1.5,
+            "VerticalAlign": "Center"
+          },
+          {
+            "__type": "Emote",
+            "__guid": "8284ea39-1af5-489e-a72f-4b1f4ac153e7"
+          }
+        ]
+      },
+      {
+        "__guid": "f66382ab-483b-46f2-b1f3-f35d65ca5a59",
+        "Flags": 0,
+        "Name": "spot",
+        "Position": "0,0,-128",
+        "Scale": "18,18,18",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "de048ba2-0a34-4353-bccb-418765b83e6f",
+            "BodyGroups": 18446744073709551615,
+            "MaterialOverride": "materials/effects/gradient_circle.vmat",
+            "Model": "models/dev/plane.vmdl",
+            "RenderType": "Off",
+            "Tint": "0.38337,0.37815,0.53488,1"
           }
         ]
       },
@@ -81,27 +126,6 @@
             "Scale": "2048,2048,50",
             "Static": false
           }
-        ],
-        "Children": [
-          {
-            "__guid": "f66382ab-483b-46f2-b1f3-f35d65ca5a59",
-            "Flags": 0,
-            "Name": "spot",
-            "Position": "0,0,0",
-            "Scale": "18,18,18",
-            "Enabled": true,
-            "Components": [
-              {
-                "__type": "Sandbox.ModelRenderer",
-                "__guid": "de048ba2-0a34-4353-bccb-418765b83e6f",
-                "BodyGroups": 18446744073709551615,
-                "MaterialOverride": "materials/effects/gradient_circle.vmat",
-                "Model": "models/dev/plane.vmdl",
-                "RenderType": "On",
-                "Tint": "1,1,1,1"
-              }
-            ]
-          }
         ]
       },
       {
@@ -118,7 +142,7 @@
             "__guid": "50cce94a-27d1-4d6b-9527-9c52e04aff3d",
             "FogMode": "Enabled",
             "FogStrength": 1,
-            "LightColor": "0.91373,0.98039,1,1",
+            "LightColor": "0.75349,0.69274,0.38901,1",
             "Shadows": true,
             "SkyColor": "0,0,0,0"
           }
@@ -135,7 +159,7 @@
           {
             "__type": "Sandbox.CameraComponent",
             "__guid": "46edf104-965a-4138-a25a-201065e5a4f3",
-            "BackgroundColor": "0.58897,0.58453,0.65116,1",
+            "BackgroundColor": "0.40694,0.40045,0.49767,1",
             "ClearFlags": "All",
             "FieldOfView": 37,
             "IsMainCamera": false,

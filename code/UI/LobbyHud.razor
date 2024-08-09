@@ -5,8 +5,9 @@
 @inherits PanelComponent
 
 <root>
-	<dir class="header">@(Lobby.PlayersInLobby)/25 waiting@(Dots())</dir>
+	<div class="header">@(Lobby.PlayersInLobby)/25 waiting@(Dots())</div>
 
+	@*Nametags*@
 	@for (int i = 0; i < Lobby.NPCs.Count; i++)
 	{
 		GameObject npc = Scene.Directory.FindByGuid(Lobby.NPCs[i]);
@@ -14,16 +15,23 @@
 
 		Vector2 pos = NametagPosition(npc);
 
-		<dir class="nametag" style=" top: @(Length.Fraction(pos.y)); left: @(Length.Fraction(pos.x));">
-			<dir class="icon" style="background-image: url( avatar:@con.SteamId );" />
-			<dir class="name">@(con.DisplayName)</dir>
-		</dir>
+		<div class="nametag" style=" top: @(Length.Fraction(pos.y)); left: @(Length.Fraction(pos.x));">
+			<div class="icon" style="background-image: url( avatar:@con.SteamId );" />
+			<div class="name">@(con.DisplayName)</div>
+		</div>
 	}
+
+	@*Start Button*@
+	<div class="startbutton" onclick="@OnClickedStartButton">
+		Start Game
+		</div>
 </root>
 
 @code
 {
 	[Property] public LobbyComponent Lobby { get; set; }
+
+	[Property] public GameObject Emote { get; private set; }
 
 	private Vector2 NametagPosition(GameObject npc)
 	{
@@ -38,6 +46,34 @@
 		for(int i = 0; i < nr; i++) { s += "."; }
 
 		return s;
+	}
+
+	private void OnClickedStartButton()
+	{
+
+		if(true || IsProxy) {
+
+			SpawnEmoji(new Vector2(Mouse.Position.x / Screen.Width, Mouse.Position.y / Screen.Height));
+
+			return;
+		}
+
+		PartyFacesManager.Instance.StartGame();
+
+	}
+
+	[Authority]
+	private void SpawnEmoji( Vector2 screenPosNormal )
+	{
+		Vector2 screenPos = ( screenPosNormal + Vector2.Down * 0.1f) * Screen.Size;
+		Ray ray = Scene.Camera.ScreenPixelToRay(screenPos);
+		Vector3 pos = ray.Position + ( ray.Forward * 1024 );
+		
+
+		GameObject e = Emote.Clone(pos, Rotation.Identity);
+		e.NetworkMode = NetworkMode.Object;
+		e.NetworkSpawn();
+
 	}
 
 	protected override void OnUpdate()

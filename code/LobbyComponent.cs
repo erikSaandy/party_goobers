@@ -31,19 +31,13 @@ public class LobbyComponent : Component, Component.INetworkListener
 		{
 			PlayersInLobby++;
 			NPC npc = NPCBuffer.Instance.PlaceLobbyNPC( player.Network.OwnerConnection.Id );
+			//npc.SetAnimationBehaviour( NPC.AnimationBehaviour.Cheer );
 			NPCs.Add( npc.GameObject.Id );
 		}
 	}
 
 	protected override void OnUpdate()
 	{
-
-		if(IsProxy) { return; }
-
-		if(Input.Pressed("Jump"))
-		{
-			PartyFacesManager.Instance.StartGame();
-		}
 
 	}
 
@@ -59,6 +53,9 @@ public class LobbyComponent : Component, Component.INetworkListener
 		PlayersInLobby++;
 		NPC npc = NPCBuffer.Instance.PlaceLobbyNPC( channel.Id );
 		NPCs.Add( npc.GameObject.Id );
+
+		//npc.SetAnimationBehaviour( NPC.AnimationBehaviour.Cheer );
+
 	}
 
 	public void OnDisconnected( Connection channel )

@@ -14,7 +14,8 @@ public class NPC : Component, IInteractable
 	{
 		Default,
 		Wave,
-		Cheer
+		Cheer,
+		Dance
 	}
 
 	const float MIN_WALKSPEED = 40f;
@@ -137,6 +138,7 @@ public class NPC : Component, IInteractable
 	}
 
 
+	[Broadcast]
 	public void SetClientAnimationBehaviour( Guid player, AnimationBehaviour behaviour )
 	{
 		if ( Scene.Directory.FindByGuid( player ).IsProxy ) { return; }
@@ -148,6 +150,17 @@ public class NPC : Component, IInteractable
 			Sound.Play( "sounds/npc_cheer.sound" );
 		}
 
+	}
+
+	[Broadcast]
+	public void SetAnimationBehaviour( AnimationBehaviour behaviour )
+	{
+		Renderer.Set( "e_behaviour", (int)behaviour );
+
+		if ( behaviour == AnimationBehaviour.Cheer )
+		{
+			Sound.Play( "sounds/npc_cheer.sound" );
+		}
 	}
 
 	public void OnRoundEnter()

@@ -1,0 +1,15 @@
+Emote {
+    position: absolute;
+    width: 100%;
+    width: 100%;
+    font-size: 200px;
+    transition: all 3s linear;
+    color: white;
+    text-align: center;
+    opacity: 0;
+
+    &.visible {
+        opacity: 1;
+    }
+
+}

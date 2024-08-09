@@ -18,6 +18,8 @@ public class NPCFootsteps : Component
 			return;
 
 		Owner.OnFootstepEvent += OnEvent;
+
+		Owner.OnSoundEvent += OnSoundEvent;
 	}
 
 	protected override void OnDisabled()
@@ -51,6 +53,12 @@ public class NPCFootsteps : Component
 		var handle = Sound.Play( sound, trace.HitPosition + trace.Normal * 5f );
 		handle.Volume *= e.Volume * 8;
 
+	}
+
+	private void OnSoundEvent( SceneModel.SoundEvent e )
+	{
+		Log.Info( e.Name );
+		//Sound.Play( "", e.Position );
 	}
 
 }

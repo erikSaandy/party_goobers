@@ -783,6 +783,28 @@
           "RateOverDistance": 0
         }
       ]
+    },
+    {
+      "__guid": "aefe9083-c0dc-404b-bfb7-6fe1835da4db",
+      "Flags": 0,
+      "Name": "Emote",
+      "Rotation": "0,0,-0.7071067,0.7071068",
+      "Components": [
+        {
+          "__type": "Sandbox.WorldPanel",
+          "__guid": "25a8704a-c1b7-4707-8f62-301029415417",
+          "HorizontalAlign": "Center",
+          "InteractionRange": 1000,
+          "LookAtCamera": true,
+          "PanelSize": "512,512",
+          "RenderScale": 1,
+          "VerticalAlign": "Center"
+        },
+        {
+          "__type": "Emote",
+          "__guid": "a33aace8-412c-4e77-af4d-611c7d0ee2c6"
+        }
+      ]
     }
   ],
   "SceneProperties": {

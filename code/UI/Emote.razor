@@ -1,0 +1,52 @@
+﻿@using Sandbox;
+@using Sandbox.UI;
+@using System;
+
+@inherits PanelComponent
+
+<root class="@(Visible ? "visible" : "")">
+	@(Emoticon)
+</root>
+
+@code
+{
+
+	public bool Visible { get; private set; } = true;
+
+	[Sync] public string Emoticon { get; set; } = "👍";
+
+	public TimeSince TimeSinceSpawn { get; private set; } = 0;
+
+	protected override void OnStart()
+	{
+		TimeSinceSpawn = 0;
+
+		base.OnStart();
+	}
+
+	protected override void OnUpdate()
+	{
+		base.OnUpdate();
+
+		if(IsProxy) { return; }
+
+		Transform.Position += Vector3.Up * Time.Delta * 20;
+
+		if(Visible && TimeSinceSpawn >= 7f )
+		{
+			Visible = false;
+		}
+
+		else if (TimeSinceSpawn >= 10)
+		{
+			GameObject.Destroy();
+		}
+
+	}
+
+	protected override int BuildHash()
+	{
+		return System.HashCode.Combine(Emoticon, Visible);
+	}
+
+}
