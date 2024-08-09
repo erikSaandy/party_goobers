@@ -11,7 +11,20 @@
       "Resources": null,
       "PackageReferences": [],
       "EditorReferences": [
-        "saandy.glass02_hs#17240"
+        "saandy.glass02_hs#17240",
+        "facepunch.plaster_a#18740",
+        "facepunch.plaster_hs_03#33581",
+        "facepunch.plaster_hs_01#33578",
+        "facepunch.concrete_cast_hs_02#37803",
+        "facepunch.wood_painted_a_hs#28972",
+        "facepunch.stone_cladding_01#33579",
+        "saandy.wallpaper07_hs#17239",
+        "saandy.aluminum_slip_pattern_001#23863",
+        "facepunch.wood_trim_03#43511",
+        "facepunch.waterbase_sign#33713",
+        "facepunch.floor_wood_laminated#18686",
+        "facepunch.carpet_a#18621",
+        "facepunch.cardboard_box#33592"
       ],
       "Metadata": {
         "SingleAssetSource": "maps/map01.vmap"

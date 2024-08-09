@@ -65,24 +65,6 @@ public class Player : Component
 
 	}
 
-	[Broadcast]
-	public void SetNPC(Guid npcId)
-	{
-
-		if (IsProxy) { return; }
-
-		// Player already owns other NPC
-		if(NPC != null && NPC.Owner == this)
-		{
-			//NPC.Randomize();
-			NPC.ClearOwner();
-		}
-
-
-		this.NPCId = npcId;
-
-	}
-
 	protected override void OnStart()
 	{
 		base.OnStart();
@@ -97,9 +79,9 @@ public class Player : Component
 		//NPCBuffer.Instance.PossessFreeNPC( GameObject.Id );
 
 
-		if( LevelHandler.Instance.LevelIsLoaded )
+		if( PartyFacesManager.RoundIsOn )
 		{
-			ClientInfo.Show( "Hold on, \nThe round has already started!", new Func<bool>( () => !LevelHandler.Instance.LevelIsLoaded ) );
+			ClientInfo.Show( "Hold on, \nThe round has already started!", new Func<bool>( () => !PartyFacesManager.RoundIsOn  ) );
 		}
 
 	}

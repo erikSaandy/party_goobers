@@ -47,8 +47,9 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 
 	[Property] public GameObject ConfettiParticles { get; private set; }
 
-	[Broadcast]
-	public void ThrowConfetti()
+	[Sync] public int RoundNumber { get; private set; }
+
+	public void ThrowConfettiClient()
 	{
 		Vector3 pos = Scene.Camera.Transform.Position + Scene.Camera.Transform.Rotation.Down * 150 + Scene.Camera.Transform.Rotation.Forward * 600;
 		GameObject conf = ConfettiParticles.Clone( pos, Vector3.VectorAngle( Scene.Camera.Transform.Rotation.Up ) );
@@ -62,11 +63,25 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 
 		if(IsProxy) { return; }
 
-		//FadeScreen.Show();
-		EnterRound();
+		OpenLobby();
+		//StartGame();
 
 		LevelTimer.OnTimerDepleted += OnTimerDepleted;
 		LevelTimer.OnTimerStarted += OnTimerStarted;
+
+	}
+
+	[Authority]
+	public async void OpenLobby()
+	{
+
+		await Task.Delay( 1000 );
+
+		LevelHandler.Instance.LoadLobbyLevel();
+
+		await Task.Delay( 1000 );
+
+		FadeScreen.Hide();
 
 	}
 
@@ -79,6 +94,12 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 			player?.Kill( "Game has ended!" );
 		}
 
+	}
+
+
+	public static void PlaySoundClient( string path )
+	{
+		Sound.Play( path );
 	}
 
 	protected override void OnUpdate()
@@ -124,6 +145,22 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 	}
 
 	[Authority]
+	public async void StartGame()
+	{
+		RoundNumber = 0;
+
+		FadeScreen.Show();
+
+		await Task.Delay( 1000 );
+
+		LevelHandler.Instance.UnloadCurrentLevel();
+
+		await Task.Delay( 1000 );
+
+		EnterRound();
+	}
+
+	[Authority]
 	public void EnterRound()
 	{
 
@@ -132,6 +169,7 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 		if ( RoundIsOn ) { Log.Warning( "Can't enter round as round is already going on." ); return; }
 
 		RoundIsOn = true;
+		RoundNumber++;
 
 		RoundDeaths?.Clear();
 

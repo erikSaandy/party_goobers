@@ -41,26 +41,26 @@ public class NPCBuffer : SingletonComponent<NPCBuffer>
 
 	}
 
-	[Authority]
-	public void PossessFreeNPC( Guid playerId )
-	{
-		if(IsProxy) { return; }
+	//[Authority]
+	//public void PossessFreeNPC( Guid playerId )
+	//{
+	//	if(IsProxy) { return; }
 
-		IEnumerable<NPC> FreeNPCs = NPCs.Where( x => x.Owner == null );
-		NPC npc = FreeNPCs.GetRandom();
-		npc.SetOwner( playerId );
+	//	IEnumerable<NPC> FreeNPCs = NPCs.Where( x => x.Owner == null );
+	//	NPC npc = FreeNPCs.GetRandom();
+	//	npc.SetOwner( playerId );
 
-		Player player = Instance.Scene.Directory.FindByGuid( playerId ).Components.Get<Player>();
-		player.SetNPC( npc.GameObject.Id );
+	//	Player player = Instance.Scene.Directory.FindByGuid( playerId ).Components.Get<Player>();
+	//	player.SetNPC( npc.GameObject.Id );
 
-		//Network.AssignOwnership( owner.Network.OwnerConnection );
-		Log.Info( $"{player.Network.OwnerConnection.DisplayName} posessed npc" );
-		npc.GameObject.Name = $"NPC ({player.Network.OwnerConnection.DisplayName})";
+	//	//Network.AssignOwnership( owner.Network.OwnerConnection );
+	//	Log.Info( $"{player.Network.OwnerConnection.DisplayName} posessed npc" );
+	//	npc.GameObject.Name = $"NPC ({player.Network.OwnerConnection.DisplayName})";
 
-		// Load client face if excists on file.
-		npc.Face.Load();
+	//	// Load client face if excists on file.
+	//	npc.Face.Load();
 
-	}
+	//}
 
 	/// <summary>
 	/// Place NPCs into current level.
@@ -108,8 +108,33 @@ public class NPCBuffer : SingletonComponent<NPCBuffer>
 				//Log.Info( NPCs[i].GameObject.Name + ": " +	 nextTargetPos );
 				npc.MoveTowards( nextTargetPos );
 			}
+			else
+			{
+				npc.StopMoving();
+			}
 
 		}
+
+	}
+
+	public NPC PlaceLobbyNPC( Guid playerId )
+	{
+		NPC npc = NPCs.Where( x => x.Enabled == true ).GetRandom();
+
+		Vector3 pos = new Vector3( Game.Random.Float( -300, 300 ), Game.Random.Float( -300, 300 ), 0 );
+		npc.LookAt( Scene.Camera.GameObject.Id );
+
+		PartyFacesManager.EnableGameobject( npc.GameObject.Id, true );
+
+		Log.Info( "place lobby" );
+
+		SpawnPoint sp = LevelHandler.Instance.CurrentLevelData.SpawnPoints.Where( x => !x.Tags.Contains( "taken" ) ).GetRandom();
+		sp.Tags.Add( "taken" );
+		// Place NPC on a spawnpoint in lobby that is not taken.
+		npc.Spawn( sp.Transform.World );
+		npc.SetOwner( playerId );
+
+		return npc;
 
 	}
 

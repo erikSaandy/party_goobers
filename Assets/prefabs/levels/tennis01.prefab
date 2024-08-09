@@ -1,0 +1,179 @@
+{
+  "RootObject": {
+    "__guid": "c3e9fb56-c60b-431f-95f9-e19db364aaa9",
+    "Flags": 0,
+    "Name": "tennis01",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "LevelDataComponent",
+        "__guid": "5b0add82-e157-4075-b21e-12612d72ac1a",
+        "CameraReference": {
+          "_type": "component",
+          "component_id": "c502937c-f19d-414a-91bb-6be5b9cabe02",
+          "go": "5dccb25f-71f8-4a21-bd0c-b271d5282226",
+          "component_type": "CameraComponent"
+        },
+        "MapInstance": {
+          "_type": "component",
+          "component_id": "c3cf6827-6128-481a-8712-ff0f180fa115",
+          "go": "668989d0-c260-43a7-a59c-900852f32110",
+          "component_type": "MapInstance"
+        },
+        "NodePaths": [],
+        "NpcLookAtOverride": {
+          "_type": "gameobject",
+          "go": "327f3ef0-91f2-4563-abe9-42c61d3402fa"
+        },
+        "ObjectiveHandler": {
+          "_type": "component",
+          "component_id": "a8813f12-ec76-46a1-b5ae-b93cd05d81fa",
+          "go": "c3e9fb56-c60b-431f-95f9-e19db364aaa9",
+          "component_type": "LevelObjectiveHandler"
+        }
+      },
+      {
+        "__type": "LevelObjectiveHandler",
+        "__guid": "a8813f12-ec76-46a1-b5ae-b93cd05d81fa",
+        "ObjectiveId": 0
+      },
+      {
+        "__type": "FindSpecificObjective",
+        "__guid": "8203a1ac-223c-4367-ab4b-ff6d45368618"
+      },
+      {
+        "__type": "FindAlikeObjective",
+        "__guid": "3085aa25-3999-43e9-bed1-1491df8b3c56",
+        "NumberOfAlike": 2
+      },
+      {
+        "__type": "FindAlikeObjective",
+        "__guid": "a023e122-11ef-4ff6-b7b4-4ab462da7a30",
+        "NumberOfAlike": 3
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "668989d0-c260-43a7-a59c-900852f32110",
+        "Flags": 0,
+        "Name": "Map Instance",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.MapInstance",
+            "__guid": "c3cf6827-6128-481a-8712-ff0f180fa115",
+            "__version": 1,
+            "EnableCollision": true,
+            "MapName": "maps/map02.vmap",
+            "NoOrigin": false,
+            "UseMapFromLaunch": false
+          }
+        ],
+        "Children": []
+      },
+      {
+        "__guid": "5dccb25f-71f8-4a21-bd0c-b271d5282226",
+        "Flags": 0,
+        "Name": "Camera",
+        "Position": "0.006479254,-812.2419,505.5988",
+        "Rotation": "-0.111928,0.111928,0.698192,0.698192",
+        "Scale": "-1.058358,1,1",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.CameraComponent",
+            "__guid": "c502937c-f19d-414a-91bb-6be5b9cabe02",
+            "BackgroundColor": "0.33333,0.46275,0.52157,1",
+            "ClearFlags": "All",
+            "FieldOfView": 30,
+            "IsMainCamera": false,
+            "Orthographic": false,
+            "OrthographicHeight": 1204,
+            "Priority": 1,
+            "RenderExcludeTags": "",
+            "RenderTags": "",
+            "TargetEye": "None",
+            "Viewport": "0,0,1,1",
+            "ZFar": 10000,
+            "ZNear": 10
+          }
+        ]
+      },
+      {
+        "__guid": "327f3ef0-91f2-4563-abe9-42c61d3402fa",
+        "Flags": 0,
+        "Name": "TennisBall",
+        "Position": "-352,-544,320",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "Components": [
+          {
+            "__type": "TennisBall",
+            "__guid": "7e2f084d-48d6-4f67-be9f-c0cd78db8819",
+            "PointA": {
+              "_type": "gameobject",
+              "go": "46da6eb3-30e5-491a-aa12-bd91d256a43d"
+            },
+            "PointB": {
+              "_type": "gameobject",
+              "go": "781df7c4-ef23-4a5a-95c2-67ffc918c4c2"
+            },
+            "PointC": {
+              "_type": "gameobject",
+              "go": "8decaca1-4443-4af0-832b-10b20d120ebc"
+            }
+          },
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "ecd50dd1-09e1-4261-afa3-eb1119dcba7d",
+            "__enabled": false,
+            "BodyGroups": 18446744073709551615,
+            "Model": "models/dev/sphere.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "46da6eb3-30e5-491a-aa12-bd91d256a43d",
+        "Flags": 0,
+        "Name": "Ball Point A",
+        "Position": "-320,-544,320",
+        "Enabled": true
+      },
+      {
+        "__guid": "781df7c4-ef23-4a5a-95c2-67ffc918c4c2",
+        "Flags": 0,
+        "Name": "Ball Point B",
+        "Position": "320,-543.9989,320",
+        "Enabled": true
+      },
+      {
+        "__guid": "8decaca1-4443-4af0-832b-10b20d120ebc",
+        "Flags": 0,
+        "Name": "Ball Point C",
+        "Position": "0,-543.9998,576",
+        "Enabled": true
+      },
+      {
+        "__guid": "f4164dfb-62f2-4375-9a31-3cc3901a0e53",
+        "Flags": 0,
+        "Name": "Spotlight Cursor",
+        "Rotation": "0,0.7071068,0,0.7071068",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "__Prefab": "prefabs/spotlight_cursor.prefab",
+        "__PrefabVariables": {
+          "Visible Chance": 0.1
+        }
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

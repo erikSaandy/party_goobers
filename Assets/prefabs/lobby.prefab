@@ -1,0 +1,788 @@
+{
+  "RootObject": {
+    "__guid": "a60e9458-4444-446c-ac0d-936ef4f4538d",
+    "Flags": 0,
+    "Name": "lobby",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "Components": [
+      {
+        "__type": "LevelDataComponent",
+        "__guid": "aec7f505-65fd-4dd0-b969-bd214482c128",
+        "CameraReference": {
+          "_type": "component",
+          "component_id": "46edf104-965a-4138-a25a-201065e5a4f3",
+          "go": "aa17f685-9b9c-48c6-8bd6-59c0e50a49a7",
+          "component_type": "CameraComponent"
+        },
+        "NodePaths": []
+      },
+      {
+        "__type": "LobbyComponent",
+        "__guid": "00000000-0000-0000-0000-000000000000",
+        "__enabled": false
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "ba2a03e9-fef0-4c0b-a32d-c92d8ed6d3f8",
+        "Flags": 0,
+        "Name": "Lobby",
+        "Position": "8.571518,100.332,174.6182",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "Components": [
+          {
+            "__type": "LobbyComponent",
+            "__guid": "07452266-e4ac-4dc9-8226-0fb2a8f95b6f"
+          }
+        ]
+      },
+      {
+        "__guid": "6a47881a-c861-4ab0-8f4a-dd2fe8d44e6a",
+        "Flags": 0,
+        "Name": "Lobby HUD",
+        "Position": "8.571518,100.332,174.6182",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "Components": [
+          {
+            "__type": "Sandbox.ScreenPanel",
+            "__guid": "a5da9367-a25e-4fd8-bd0c-6c99dbc2d83e",
+            "AutoScreenScale": true,
+            "Opacity": 1,
+            "Scale": 1,
+            "ZIndex": 55
+          },
+          {
+            "__type": "LobbyHud",
+            "__guid": "d4febc20-042d-4ecd-ac2e-de21212ed787",
+            "Lobby": {
+              "_type": "component",
+              "component_id": "07452266-e4ac-4dc9-8226-0fb2a8f95b6f",
+              "go": "ba2a03e9-fef0-4c0b-a32d-c92d8ed6d3f8",
+              "component_type": "LobbyComponent"
+            }
+          }
+        ]
+      },
+      {
+        "__guid": "ec2af158-1428-47fb-bd07-3847fc3bed8a",
+        "Flags": 0,
+        "Name": "ground",
+        "Position": "0,0,-25",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.BoxCollider",
+            "__guid": "bb360ed2-df53-450b-9c34-6602e1348e1f",
+            "Center": "0,0,0",
+            "IsTrigger": false,
+            "Scale": "2048,2048,50",
+            "Static": false
+          }
+        ],
+        "Children": [
+          {
+            "__guid": "f66382ab-483b-46f2-b1f3-f35d65ca5a59",
+            "Flags": 0,
+            "Name": "spot",
+            "Position": "0,0,0",
+            "Scale": "18,18,18",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "Sandbox.ModelRenderer",
+                "__guid": "de048ba2-0a34-4353-bccb-418765b83e6f",
+                "BodyGroups": 18446744073709551615,
+                "MaterialOverride": "materials/effects/gradient_circle.vmat",
+                "Model": "models/dev/plane.vmdl",
+                "RenderType": "On",
+                "Tint": "1,1,1,1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "__guid": "66bd9f86-c2df-4c3c-a23f-f2bf2ccc888a",
+        "Flags": 0,
+        "Name": "Directional Light",
+        "Position": "0,0,200",
+        "Rotation": "-0.2459842,0.5938582,0.2931525,0.7077327",
+        "Tags": "light_directional,light",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.DirectionalLight",
+            "__guid": "50cce94a-27d1-4d6b-9527-9c52e04aff3d",
+            "FogMode": "Enabled",
+            "FogStrength": 1,
+            "LightColor": "0.91373,0.98039,1,1",
+            "Shadows": true,
+            "SkyColor": "0,0,0,0"
+          }
+        ]
+      },
+      {
+        "__guid": "aa17f685-9b9c-48c6-8bd6-59c0e50a49a7",
+        "Flags": 0,
+        "Name": "Camera",
+        "Position": "0,1172.796,563.4419",
+        "Rotation": "0.1530459,0.1530459,-0.6903455,0.6903455",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.CameraComponent",
+            "__guid": "46edf104-965a-4138-a25a-201065e5a4f3",
+            "BackgroundColor": "0.58897,0.58453,0.65116,1",
+            "ClearFlags": "All",
+            "FieldOfView": 37,
+            "IsMainCamera": false,
+            "Orthographic": false,
+            "OrthographicHeight": 1204,
+            "Priority": 1,
+            "RenderExcludeTags": "",
+            "RenderTags": "",
+            "TargetEye": "None",
+            "Viewport": "0,0,1,1",
+            "ZFar": 10000,
+            "ZNear": 10
+          }
+        ]
+      },
+      {
+        "__guid": "7cb17e71-e016-4c05-a330-a9edfeeaafe9",
+        "Flags": 0,
+        "Name": "Spawn",
+        "Position": "233.4737,204.9495,0.0000440629",
+        "Rotation": "0,0,0.7933533,0.6087615",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "57f58760-dbb1-497c-9e6b-321faf8dbfdf",
+            "Color": "0.8902,0.31765,0.05098,1"
+          },
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "0e43790c-7738-4410-90c4-8dd7576bd8dd",
+            "__enabled": false,
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": false,
+            "RenderType": "On",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          }
+        ]
+      },
+      {
+        "__guid": "4e58369c-1c49-49e6-bbcf-b292eb924851",
+        "Flags": 0,
+        "Name": "Spawn",
+        "Position": "39.96376,212.1123,0.00004644109",
+        "Rotation": "0,0,0.7933533,0.6087615",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "f623e7d1-4f70-4095-9fc7-a8ae93f6485a",
+            "Color": "0.8902,0.31765,0.05098,1"
+          },
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "1f0c47f8-7002-4dd8-b1de-da15433d0e3c",
+            "__enabled": false,
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": false,
+            "RenderType": "On",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          }
+        ]
+      },
+      {
+        "__guid": "ee158a2d-ac25-4832-b9a8-b8a1832f3d7d",
+        "Flags": 0,
+        "Name": "Spawn",
+        "Position": "268.253,158.4178,0.00007422367",
+        "Rotation": "0,0,0.7933533,0.6087615",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "ae4cc69a-a35f-4c45-9f58-474304205b37",
+            "Color": "0.8902,0.31765,0.05098,1"
+          },
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "2a0b8f5c-37a1-414f-a6a0-a676f9f2b64a",
+            "__enabled": false,
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": false,
+            "RenderType": "On",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          }
+        ]
+      },
+      {
+        "__guid": "92d3540d-e25a-4955-89fa-af77ac579209",
+        "Flags": 0,
+        "Name": "Spawn",
+        "Position": "74.74306,165.5806,0.00007660186",
+        "Rotation": "0,0,0.7933533,0.6087615",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "88c70083-bb85-469f-ab03-e2958da2053d",
+            "Color": "0.8902,0.31765,0.05098,1"
+          },
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "0609866e-ac56-4664-8568-e9c67304b90a",
+            "__enabled": false,
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": false,
+            "RenderType": "On",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          }
+        ]
+      },
+      {
+        "__guid": "09496dc3-6b98-48aa-9123-d691d26b15e4",
+        "Flags": 0,
+        "Name": "Spawn",
+        "Position": "217.3758,144.3799,0.0000739454",
+        "Rotation": "0,0,0.7933533,0.6087615",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "b4324fde-cceb-495f-b92d-def8c803d5dd",
+            "Color": "0.8902,0.31765,0.05098,1"
+          },
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "0cbf6dcc-39dc-4df6-bfc1-4066ad87e02c",
+            "__enabled": false,
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": false,
+            "RenderType": "On",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          }
+        ]
+      },
+      {
+        "__guid": "0ae81914-587d-41c9-b132-946383370843",
+        "Flags": 0,
+        "Name": "Spawn",
+        "Position": "23.86586,151.5427,0.00007632359",
+        "Rotation": "0,0,0.7933533,0.6087615",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "683e0c8c-ae70-4dd2-8900-3c1da95f8016",
+            "Color": "0.8902,0.31765,0.05098,1"
+          },
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "195a7aea-21e5-499b-b1f4-5547f30e3279",
+            "__enabled": false,
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": false,
+            "RenderType": "On",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          }
+        ]
+      },
+      {
+        "__guid": "8149cfc3-17df-4880-85e6-0a0ed1b6038f",
+        "Flags": 0,
+        "Name": "Spawn",
+        "Position": "181.9111,190.3404,0.0001769626",
+        "Rotation": "0,0,0.7933533,0.6087615",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "26136166-28a7-47a5-b01e-3a9bf6a8593e",
+            "Color": "0.8902,0.31765,0.05098,1"
+          },
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "d7804b08-c7ca-478a-96d9-f449c2a946f8",
+            "__enabled": false,
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": false,
+            "RenderType": "On",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          }
+        ]
+      },
+      {
+        "__guid": "f5cf0210-74c5-4a24-83b8-6e9f11348823",
+        "Flags": 0,
+        "Name": "Spawn",
+        "Position": "-11.59883,197.5032,0.0001793408",
+        "Rotation": "0,0,0.7933533,0.6087615",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "945cd9d6-7a6c-49ed-bf21-7cd7d184c7a5",
+            "Color": "0.8902,0.31765,0.05098,1"
+          },
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "f8a57a69-4a46-4d9f-9576-b2ede59bf69f",
+            "__enabled": false,
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": false,
+            "RenderType": "On",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          }
+        ]
+      },
+      {
+        "__guid": "237d4c16-720f-47a0-8568-eb79031d1214",
+        "Flags": 0,
+        "Name": "Spawn",
+        "Position": "165.527,129.9634,-0.0000381548",
+        "Rotation": "0,0,0.7933533,0.6087615",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "6c526612-7d48-4ae5-8352-062a4c5891a9",
+            "Color": "0.8902,0.31765,0.05098,1"
+          },
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "33856707-55e5-498f-adf3-f15eaa1f12a6",
+            "__enabled": false,
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": false,
+            "RenderType": "On",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          }
+        ]
+      },
+      {
+        "__guid": "25492f94-dfaf-495a-bc49-591172b975dd",
+        "Flags": 0,
+        "Name": "Spawn",
+        "Position": "-27.98294,137.1262,-0.00003577661",
+        "Rotation": "0,0,0.7933533,0.6087615",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "e620f882-4585-4942-9a12-04bdd081b5d7",
+            "Color": "0.8902,0.31765,0.05098,1"
+          },
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "efead84e-67a8-40a3-8ffe-2f91b7d729ab",
+            "__enabled": false,
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": false,
+            "RenderType": "On",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          }
+        ]
+      },
+      {
+        "__guid": "ffb8772c-11d0-4eac-9298-36bcaf76a593",
+        "Flags": 0,
+        "Name": "Spawn",
+        "Position": "156.1982,299.6036,-0.0004271857",
+        "Rotation": "0,0,0.7933533,0.6087615",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "241efd86-6fb2-436b-a839-061cef88318a",
+            "Color": "0.8902,0.31765,0.05098,1"
+          },
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "0b73a3cf-7b87-4ae0-b0da-a0c974feff4e",
+            "__enabled": false,
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": false,
+            "RenderType": "On",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          }
+        ]
+      },
+      {
+        "__guid": "66b625e5-0ec1-45a2-a8b5-3d6f6c66e1a5",
+        "Flags": 0,
+        "Name": "Spawn",
+        "Position": "63.18358,104.7681,-0.0003618712",
+        "Rotation": "0,0,0.7933533,0.6087615",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "7f1c532f-1833-48f1-929a-60002ef62ff2",
+            "Color": "0.8902,0.31765,0.05098,1"
+          },
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "0f16d9f2-6dc8-4ac2-8959-3b012c34f210",
+            "__enabled": false,
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": false,
+            "RenderType": "On",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          }
+        ]
+      },
+      {
+        "__guid": "ba4b202d-51f5-42a6-8f0d-fd7fe76f78b1",
+        "Flags": 0,
+        "Name": "Spawn",
+        "Position": "104.8675,283.2793,-0.0003541127",
+        "Rotation": "0,0,0.7933533,0.6087615",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "7099a58f-6460-497e-9dd9-b4388a613e4a",
+            "Color": "0.8902,0.31765,0.05098,1"
+          },
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "74600908-0fd5-4a90-a3d5-4a4f5ce2e845",
+            "__enabled": false,
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": false,
+            "RenderType": "On",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          }
+        ]
+      },
+      {
+        "__guid": "af3974c0-94b8-42f6-9534-db667e203608",
+        "Flags": 0,
+        "Name": "Spawn",
+        "Position": "11.85286,88.44384,-0.0002887982",
+        "Rotation": "0,0,0.7933533,0.6087615",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "20eeb4eb-e9dc-486e-a1a1-73d127571a9f",
+            "Color": "0.8902,0.31765,0.05098,1"
+          },
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "8946a149-3449-49e1-9c9f-81561cd3685c",
+            "__enabled": false,
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": false,
+            "RenderType": "On",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          }
+        ]
+      },
+      {
+        "__guid": "8f03d9ec-513f-4c8a-8f43-8f83a0f1155d",
+        "Flags": 0,
+        "Name": "Spawn",
+        "Position": "207.0634,312.0324,-0.0004558046",
+        "Rotation": "0,0,0.7933533,0.6087615",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "e2049520-10b1-4eba-8912-5cea015a78ec",
+            "Color": "0.8902,0.31765,0.05098,1"
+          },
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "7c46fde5-b1e0-4174-b184-92c68695b7c9",
+            "__enabled": false,
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": false,
+            "RenderType": "On",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          }
+        ]
+      },
+      {
+        "__guid": "7efaba85-254f-4b2b-bc72-22f8b146e07a",
+        "Flags": 0,
+        "Name": "Spawn",
+        "Position": "114.0488,117.1969,-0.0003904901",
+        "Rotation": "0,0,0.7933533,0.6087615",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "b7646df7-c54d-41cc-8ebc-3c01b5948c81",
+            "Color": "0.8902,0.31765,0.05098,1"
+          },
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "b96bf3b0-4fec-4352-8e26-56517a15f275",
+            "__enabled": false,
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": false,
+            "RenderType": "On",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          }
+        ]
+      },
+      {
+        "__guid": "4a44c16b-8a66-4af5-bac3-1de1dc2cc9c1",
+        "Flags": 0,
+        "Name": "Spawn",
+        "Position": "320.2077,169.7563,-0.0003910537",
+        "Rotation": "0,0,0.7933533,0.6087615",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "ac125727-d411-4c83-a6e4-5991a5250c55",
+            "Color": "0.8902,0.31765,0.05098,1"
+          },
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "67a7fa4a-24a9-4c63-b548-697562d4906d",
+            "__enabled": false,
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": false,
+            "RenderType": "On",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          }
+        ]
+      },
+      {
+        "__guid": "f64a54c8-d2b7-4880-b58e-f4af53d9db6b",
+        "Flags": 0,
+        "Name": "Spawn",
+        "Position": "126.6978,176.9191,-0.0003886755",
+        "Rotation": "0,0,0.7933533,0.6087615",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "48046301-5364-4d39-a3aa-991f27528461",
+            "Color": "0.8902,0.31765,0.05098,1"
+          },
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "a00f0236-b3e9-4dd4-ba0d-94bb0ecb4426",
+            "__enabled": false,
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": false,
+            "RenderType": "On",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          }
+        ]
+      },
+      {
+        "__guid": "392ce8ed-ade9-44b6-9392-014b0ed5c6d5",
+        "Flags": 0,
+        "Name": "Spawn",
+        "Position": "285.0699,217.6443,-0.0002009786",
+        "Rotation": "0,0,0.7933533,0.6087615",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "4a77bef4-4548-421a-9118-0b1d176debca",
+            "Color": "0.8902,0.31765,0.05098,1"
+          },
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "0eb96de8-f645-4327-af30-79a1925da05e",
+            "__enabled": false,
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": false,
+            "RenderType": "On",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          }
+        ]
+      },
+      {
+        "__guid": "49d1d246-a887-4395-a4bd-4fc184511dea",
+        "Flags": 0,
+        "Name": "Spawn",
+        "Position": "91.55995,224.8071,-0.0001986004",
+        "Rotation": "0,0,0.7933533,0.6087615",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "d6238a50-6b55-49e4-937d-4341310eca75",
+            "Color": "0.8902,0.31765,0.05098,1"
+          },
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "c2458462-025f-42f5-8f10-640495d8c32f",
+            "__enabled": false,
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": false,
+            "RenderType": "On",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          }
+        ]
+      },
+      {
+        "__guid": "ac90924f-3ef3-4504-b177-0307bf4a7bcb",
+        "Flags": 0,
+        "Name": "Spawn",
+        "Position": "244.689,263.5767,-0.0003772361",
+        "Rotation": "0,0,0.7933533,0.6087615",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "52c7542b-61dd-43e7-9fe7-c98c893f1b36",
+            "Color": "0.8902,0.31765,0.05098,1"
+          },
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "8b2f574b-87e0-41f2-a5ef-b51841966467",
+            "__enabled": false,
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": false,
+            "RenderType": "On",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          }
+        ]
+      },
+      {
+        "__guid": "2e052f1d-4912-4117-aa09-37f7f089f5ca",
+        "Flags": 0,
+        "Name": "Spawn",
+        "Position": "51.17906,270.7395,-0.0003748579",
+        "Rotation": "0,0,0.7933533,0.6087615",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "88d6d5f7-96d6-4d05-82ee-e495f7ee6367",
+            "Color": "0.8902,0.31765,0.05098,1"
+          },
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "b9c31eb5-b670-48c8-8fa6-3db15cea17f1",
+            "__enabled": false,
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": false,
+            "RenderType": "On",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          }
+        ]
+      },
+      {
+        "__guid": "4cefb577-efbb-4c30-8467-f767e1ad555b",
+        "Flags": 0,
+        "Name": "Spawn",
+        "Position": "191.5815,250.1535,-0.0005272853",
+        "Rotation": "0,0,0.7933533,0.6087615",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "d0f43943-d514-4745-9363-3a01b7362421",
+            "Color": "0.8902,0.31765,0.05098,1"
+          },
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "4dfff91a-ea9a-4595-8214-9e6823d1120b",
+            "__enabled": false,
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": false,
+            "RenderType": "On",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          }
+        ]
+      },
+      {
+        "__guid": "3077d3c1-c96c-4428-b694-1568faa1be8d",
+        "Flags": 0,
+        "Name": "Spawn",
+        "Position": "141.7116,236.184,-0.0005528924",
+        "Rotation": "0,0,0.7933533,0.6087615",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "39f97055-d4d3-4b28-87f7-7cfcce7f4da8",
+            "Color": "0.8902,0.31765,0.05098,1"
+          },
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "b6e4ca3b-a097-4016-bf47-6e1e1185f4dd",
+            "__enabled": false,
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": false,
+            "RenderType": "On",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          }
+        ]
+      },
+      {
+        "__guid": "8b992463-8400-4074-9369-5475fec586fb",
+        "Flags": 0,
+        "Name": "Spawn",
+        "Position": "-1.928436,257.3163,-0.0005249071",
+        "Rotation": "0,0,0.7933533,0.6087615",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "05e0d78c-39ae-4f9b-8187-3623383192dd",
+            "Color": "0.8902,0.31765,0.05098,1"
+          },
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "8684879c-48d7-48dd-9bd7-b1fe858809b1",
+            "__enabled": false,
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": false,
+            "RenderType": "On",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

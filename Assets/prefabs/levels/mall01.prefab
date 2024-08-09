@@ -38,8 +38,7 @@
       {
         "__type": "LevelObjectiveHandler",
         "__guid": "92d31fbb-4186-4794-9131-3a047194d4e8",
-        "ObjectiveId": 0,
-        "PlayerCount": 0
+        "ObjectiveId": 0
       },
       {
         "__type": "FindSpecificObjective",
@@ -162,6 +161,18 @@
             "ZNear": 10
           }
         ]
+      },
+      {
+        "__guid": "5c349dc3-0b75-4e26-9cc5-1c460b144b5c",
+        "Flags": 0,
+        "Name": "spotlight_cursor",
+        "Rotation": "0.5,0.5,-0.5,0.5",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "__Prefab": "prefabs/spotlight_cursor.prefab",
+        "__PrefabVariables": {
+          "Visible Chance": 0.2
+        }
       }
     ],
     "__variables": []

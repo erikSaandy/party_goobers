@@ -117,7 +117,7 @@ public class Face : Component, Component.INetworkListener
 	{
 		if ( Nose.Renderer != null )
 		{
-			Nose.Renderer.FlipHorizontal = Nose.Transform.Position.y < Transform.Parent.Transform.Position.y; //Nose.Transform.Rotation.Yaw() < 0;
+			Nose.Renderer.FlipHorizontal = Nose.Transform.Position.x < Transform.Parent.Transform.Position.x; //Nose.Transform.Rotation.Yaw() < 0;
 		}
 
 		if(!Owner.Enabled ) { GameObject.Transform.LocalPosition = 0; return; }

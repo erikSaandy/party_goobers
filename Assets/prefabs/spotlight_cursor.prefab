@@ -1,0 +1,43 @@
+{
+  "RootObject": {
+    "__guid": "88f60630-d23e-4fa4-be2d-55be2d043205",
+    "Flags": 0,
+    "Name": "spotlight_cursor",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "Components": [
+      {
+        "__type": "Sandbox.ScreenPanel",
+        "__guid": "465b70ca-571e-4153-8281-62c045121fff",
+        "AutoScreenScale": true,
+        "Opacity": 1,
+        "Scale": 1,
+        "ZIndex": 50
+      },
+      {
+        "__type": "SpotlightCursor",
+        "__guid": "615c64b8-0d99-42c0-b0c4-6dbd94973381",
+        "VisibleChance": 0.2
+      }
+    ],
+    "Children": [],
+    "__variables": [
+      {
+        "Id": "Visible Chance",
+        "Title": "Visible Chance",
+        "Targets": [
+          {
+            "Id": "615c64b8-0d99-42c0-b0c4-6dbd94973381",
+            "Property": "VisibleChance"
+          }
+        ]
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

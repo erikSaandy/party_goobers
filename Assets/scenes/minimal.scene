@@ -93,8 +93,11 @@
           "__type": "LevelHandler",
           "__guid": "51bdbcaf-87b0-4571-b6eb-559b224332c1",
           "LevelPrefabs": [
-            "prefabs/levels/mall01.prefab"
-          ]
+            "prefabs/levels/mall01.prefab",
+            "prefabs/levels/tennis01.prefab",
+            "prefabs/levels/hotel01.prefab"
+          ],
+          "LobbyPrefab": "prefabs/lobby.prefab"
         }
       ]
     },
@@ -236,6 +239,7 @@
         {
           "__type": "NPC",
           "__guid": "038c51d4-5270-48d7-a1cf-0b9f122c6b16",
+          "ConnectionId": "00000000-0000-0000-0000-000000000000",
           "Face": {
             "_type": "component",
             "component_id": "bf74abed-fa46-4a0e-ba46-9badf35e8f62",
@@ -243,7 +247,6 @@
             "component_type": "Face"
           },
           "LookAtObjectId": "00000000-0000-0000-0000-000000000000",
-          "PlayerId": "00000000-0000-0000-0000-000000000000",
           "Renderer": {
             "_type": "component",
             "component_id": "a026606c-a72b-4a1c-803d-129110806935",

@@ -5,7 +5,7 @@
 @inherits PanelComponent
 
 <root class="@(Visible ? "visible" : "")">
-	<div class ="level">Level 88</div>
+	<div class ="level">Level @( PartyFacesManager.Instance.RoundNumber )</div>
 
 	<div class="objective">
 
@@ -62,7 +62,7 @@
 	}
 
 	[Broadcast]
-	public static async void Show()
+	public static void Show()
 	{
 		Visible = true;
 		Sound.Play("sounds/round_start.sound");

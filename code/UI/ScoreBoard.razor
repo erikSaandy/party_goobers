@@ -12,8 +12,10 @@
 
 		string medal = MedalEmoji(i);
 
-		string deltaPrefix = "∆ ±";
-		if (e.ScoreDelta > 0f) { deltaPrefix = "∆ +"; }
+		string deltaPrefix = "∆";
+		if (e.ScoreDelta > 0f) { deltaPrefix += " +"; }
+		else if (e.ScoreDelta == 0f) { deltaPrefix += " ±"; }
+
 
 		string deltaPosIcon = GetDeltaPositionIcon(i, e.PlayerName, out string deltaPlaceColor);
 

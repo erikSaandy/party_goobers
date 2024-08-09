@@ -10,8 +10,12 @@ public class LevelHandler : SingletonComponent<LevelHandler>
 	[Sync] public bool LevelIsLoaded { get; private set; } = false;
 
 	[ResourceType( "prefab" )]
+	[Property] public string LobbyPrefab { get; set; }
+
+	[ResourceType( "prefab" )]
 	[Property] public string[] LevelPrefabs { get; set; }
 
+	[Authority]
 	public void LoadRandomLevel()
 	{
 		if(IsProxy) { return; }
@@ -21,23 +25,35 @@ public class LevelHandler : SingletonComponent<LevelHandler>
 		GameObject levelObject = SceneUtility.GetPrefabScene( ResourceLibrary.Get<PrefabFile>( LevelPrefabs.GetRandom() ) ).Clone( Vector3.Zero );
 		levelObject.BreakFromPrefab();
 		levelObject.NetworkSpawn();
-		LevelDataComponent levelData = levelObject.Components.Get<LevelDataComponent>();
-		Scene.Camera.Transform.Position = levelData.CameraReference.Transform.Position;
-		Scene.Camera.Transform.Rotation = levelData.CameraReference.Transform.Rotation;
-		Scene.Camera.FieldOfView = levelData.CameraReference.FieldOfView;
-		Scene.Camera.ZFar = levelData.CameraReference.ZFar;
-		Scene.Camera.ZNear = levelData.CameraReference.ZNear;
-
-		levelData.CameraReference.GameObject.Destroy();
-
-		levelObject.BreakFromPrefab();
-		//levelObject.NetworkSpawn();
 
 		CurrentLevelDataId = levelObject.Id;
 
 		NPCBuffer.Instance.PlaceNPCs();
 
 		Instance.LevelIsLoaded = true;
+
+	}
+
+	[Authority]
+	public void LoadLobbyLevel()
+	{
+		if ( IsProxy ) { return; }
+
+		UnloadCurrentLevel();
+
+		GameObject lobbyObj = SceneUtility.GetPrefabScene( ResourceLibrary.Get<PrefabFile>( LobbyPrefab ) ).Clone( Vector3.Zero );
+		lobbyObj.BreakFromPrefab();
+		lobbyObj.NetworkSpawn();
+
+		CurrentLevelDataId = lobbyObj.Id;
+
+		Instance.LevelIsLoaded = true;
+
+	}
+
+	[Broadcast]
+	public void UpdateSceneCamera(Vector3 position, Rotation rotation, float fov, float zFar, float zNear )
+	{
 
 	}
 

@@ -29,8 +29,6 @@ public class FindAlikeObjective : LevelObjective
 			id++;
 			id %= npcs.Count();
 
-			if ( npcs.ElementAt(id).Owner != null ) { continue; }
-
 			npcs.ElementAt( id ).GameObject.Components.Get<NPC>(true).CopyFrom( TargetNPCId );
 
 			AlikeNPCIds.Add( npcs.ElementAt( id ).GameObject.Id );

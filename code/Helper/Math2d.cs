@@ -350,10 +350,16 @@ namespace Saandy
 
 		public static Vector2 QuadraticCurve( Vector2 a, Vector2 b, Vector2 c, float t )
 		{
-			Vector2 p0 = Lerp( a, b, t );
-			Vector2 p1 = Lerp( b, c, t );
+			return QuadraticCurve( (Vector3)a, (Vector3)b, (Vector3)c, t );
+		}
+
+		public static Vector3 QuadraticCurve( Vector3 a, Vector3 b, Vector3 c, float t )
+		{
+			Vector3 p0 = Lerp( a, b, t );
+			Vector3 p1 = Lerp( b, c, t );
 			return Lerp( p0, p1, t );
 		}
+
 
 		public static Vector2 CubicCurve( Vector2 a, Vector2 b, Vector2 c, Vector2 d, float t )
 		{

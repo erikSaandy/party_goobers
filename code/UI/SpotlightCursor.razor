@@ -1,0 +1,49 @@
+@using System;
+@using Sandbox;
+@using Sandbox.UI;
+@attribute [StyleSheet]
+@inherits PanelComponent
+
+<root class="@(Visible ? "visible" : "")">
+
+	<div class="spotlight" style="left: @(Length.Fraction(CursorPosition.x)); top: @(Length.Fraction(CursorPosition.y))" />
+
+</root>
+
+@code
+{
+
+	[Property][Range(0f, 1f)] public float VisibleChance { get; set; } = 0.2f;
+
+	[Sync] public bool Visible { get; private set; } = true;
+
+	public Vector2 CursorPosition { get; private set; }
+
+	public SpotlightCursor() { }
+
+	protected override void OnAwake()
+	{
+		base.OnAwake();
+
+		CursorPosition = Mouse.Position / Screen.Size;
+
+		if(IsProxy) { return; }
+
+		Visible = Game.Random.Float(0f, 1f) < VisibleChance;
+
+	}
+
+	protected override void OnUpdate()
+	{
+		base.OnUpdate();
+
+		CursorPosition = Vector2.Lerp(CursorPosition, Mouse.Position / Screen.Size, Time.Delta * 6);
+
+	}
+
+	protected override int BuildHash()
+	{
+		return System.HashCode.Combine(CursorPosition, Visible);
+	}
+
+}

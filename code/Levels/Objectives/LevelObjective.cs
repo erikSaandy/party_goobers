@@ -1,5 +1,6 @@
 ﻿using Sandbox;
 using System;
+using System.Globalization;
 using System.Numerics;
 using System.Threading.Tasks;
 
@@ -14,7 +15,7 @@ public abstract class LevelObjective : Component
 
 	public LevelObjectiveHandler Handler => LevelHandler.Instance.CurrentLevelData.ObjectiveHandler;
 
-	protected virtual GameObject NPCLookAt => null;
+	public LevelDataComponent LevelData => LevelHandler.Instance.CurrentLevelData;
 
 	/// <summary>
 	/// Does this NPC satisfy the objective?
@@ -45,7 +46,7 @@ public abstract class LevelObjective : Component
 		CheckSuccess( player, npc );
 	}
 
-	private async void CheckSuccess( Guid player, NPC npc )
+	private async void CheckSuccess( Guid playerId, NPC npc )
 	{
 
 		// Return if doesn't accept selection or player has selected all npcs to trigger objective
@@ -55,10 +56,10 @@ public abstract class LevelObjective : Component
 		if ( SelectedNPCs.Contains( npc ) )
 		{
 			SelectedNPCs.Remove( npc );
-			ClientDeselectedNPC( player, npc );
+			ClientDeselectedNPC( playerId, npc );
 
-			npc.SetClientAnimationBehaviour( player, NPC.AnimationBehaviour.Default );
-			Sound.Play( "sounds/npc_deselect.sound" );
+			npc.SetClientAnimationBehaviour( playerId, NPC.AnimationBehaviour.Default );
+			PartyFacesManager.PlaySoundClient( "sounds/npc_deselect.sound" );
 			return;
 		}
 
@@ -67,11 +68,12 @@ public abstract class LevelObjective : Component
 
 		SelectedNPCs.Add( npc );
 
-		npc.SetClientAnimationBehaviour( player, NPC.AnimationBehaviour.Wave );
+		npc.SetClientAnimationBehaviour( playerId, NPC.AnimationBehaviour.Wave );
 		Sound.Play( "sounds/npc_select.sound" );
+		PartyFacesManager.PlaySoundClient( "sounds/npc_select.sound" );
 
 
-		ClientSelectedNPC( player, npc );
+		ClientSelectedNPC( playerId, npc );
 
 		Log.Info( "Selected NPC count: " + SelectedNPCs.Count );
 		bool evaluate = SelectedNPCs.Count >= MaxSelectedNPCs;
@@ -80,23 +82,28 @@ public abstract class LevelObjective : Component
 		{
 			AcceptSelection = false;
 
-			if( ObjectiveIsSatisfied() )
+			Player player = Scene.Directory.FindByGuid( playerId ).Components.Get<Player>();
+
+			if ( ObjectiveIsSatisfied() )
 			{
-				Scene.Directory.FindByGuid( player ).Components.Get<Player>().MarkAsSafe();
+				Scene.Directory.FindByGuid( playerId ).Components.Get<Player>().MarkAsSafe();
 
 				await Task.Delay( 700 );
 
-				Handler.OnPlayerCompletedObjective( player );
+				PartyFacesManager.Instance.ThrowConfettiClient();
+				Handler.OnPlayerCompletedObjective( playerId );
 
 				// ON CORRECT SELECTION
-				OnCompletedObjective( player );
+				OnCompletedObjective( playerId );
 			}
 			else
 			{
-				await Task.Delay( 1000 );
+				await Task.Delay( 700 );
+
+				player.AddScore( -2000 );
 
 				// ON WRONG SELECTION
-				ResetSelection( player );
+				ResetSelection( playerId );
 			}
 
 		}
@@ -126,16 +133,17 @@ public abstract class LevelObjective : Component
 	{
 		if ( IsProxy ) { return null; }
 
-		int spawnCount = LevelHandler.Instance.CurrentLevelData.SpawnPoints.Count();
+		int spawnCount = LevelData.MinSpawnCount.HasValue ? Game.Random.Int(LevelData.MinSpawnCount.Value, LevelData.SpawnPoints.Count()) : LevelData.SpawnPoints.Count();
 		Log.Info( "found " + spawnCount + " spawners in level." );
 
 		spawnCount = int.Min( spawnCount, set.Count );
 
 		set = set.Shuffle().ToList();
 
-		GameObject lookAt = NPCLookAt == null ? Scene.Camera.GameObject : NPCLookAt;
-
 		IEnumerable<NPC> npcs = set.Take( spawnCount );
+
+		// Get lookAt
+		GameObject lookAt = LevelData.NpcLookAtOverride == null ? Scene.Camera.GameObject : LevelData.NpcLookAtOverride;
 
 		// Make sure npc looks at Objective lookAt (defaults to scene camera).
 		foreach (NPC npc in npcs )

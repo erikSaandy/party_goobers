@@ -69,6 +69,8 @@
 	protected override void OnDestroy()
 	{
 		IsRunning = false;
+		TimeSinceStarted = 0;
+		TargetTime = 0;
 	}
 
 	protected override int BuildHash()

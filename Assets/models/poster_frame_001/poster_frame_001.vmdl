@@ -1,0 +1,121 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:modeldoc29:version{3cec427c-1b0e-4d48-a90a-0436f33a6041} -->
+{
+	rootNode = 
+	{
+		_class = "RootNode"
+		children = 
+		[
+			{
+				_class = "MaterialGroupList"
+				children = 
+				[
+					{
+						_class = "DefaultMaterialGroup"
+						name = "default"
+						remaps = 
+						[
+							{
+								from = "m_frame.vmat"
+								to = "models/poster_frame_001/poster_frame_001.vmat"
+							},
+							{
+								from = "m_poster.vmat"
+								to = "models/poster_frame_001/material/poster_001.vmat"
+							},
+						]
+						use_global_default = false
+						global_default_material = ""
+					},
+					{
+						_class = "MaterialGroup"
+						name = "gvarados"
+						remaps = 
+						[
+							{
+								from = "models/poster_frame_001/material/poster_001.vmat"
+								to = "models/poster_frame_001/material/poster_002.vmat"
+							},
+						]
+					},
+					{
+						_class = "MaterialGroup"
+						name = "joy"
+						remaps = 
+						[
+							{
+								from = "models/poster_frame_001/material/poster_001.vmat"
+								to = "models/poster_frame_001/material/poster_003.vmat"
+							},
+						]
+					},
+					{
+						_class = "MaterialGroup"
+						name = "fort"
+						remaps = 
+						[
+							{
+								from = "models/poster_frame_001/material/poster_001.vmat"
+								to = "models/poster_frame_001/material/poster_004.vmat"
+							},
+						]
+					},
+					{
+						_class = "MaterialGroup"
+						name = "terry"
+						remaps = 
+						[
+							{
+								from = "models/poster_frame_001/material/poster_001.vmat"
+								to = "models/poster_frame_001/material/poster_005.vmat"
+							},
+						]
+					},
+				]
+			},
+			{
+				_class = "RenderMeshList"
+				children = 
+				[
+					{
+						_class = "RenderMeshFile"
+						name = "kitchen_door_left_001"
+						filename = "models/poster_frame_001/poster_frame_001.fbx"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = false
+							exception_list = [  ]
+						}
+					},
+				]
+			},
+			{
+				_class = "GameDataList"
+				children = 
+				[
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_box"
+						game_keys = 
+						{
+							bonename = ""
+							dimensions = [ 73.0343, 2.70662, 120.918 ]
+							offset_origin = [ -0.047689, -1.21759, -0.05308 ]
+							offset_angles = [ 0.0, 0.0, 0.0 ]
+						}
+					},
+				]
+			},
+		]
+		model_archetype = ""
+		primary_associated_entity = ""
+		anim_graph_name = ""
+		base_model_name = ""
+	}
+}

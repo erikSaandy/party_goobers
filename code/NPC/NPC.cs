@@ -21,15 +21,14 @@ public class NPC : Component, IInteractable
 	const float MAX_WALKSPEED = 70f;
 	[Property] float WalkSpeed { get; set; } = 50f;
 
-	[Sync][Property] private Guid PlayerId { get; set; } = default;
-	public Player Owner => PlayerId == default ? null : Scene.Directory.FindByGuid(PlayerId).Components.Get<Player>();
+	[Sync][Property] public Guid ConnectionId { get; set; } = default;
 
 	[Broadcast]
-	public void SetOwner(Guid playerId)
+	public void SetOwner( Guid connectionId )
 	{
 		if(IsProxy) { return; }
 
-		this.PlayerId = playerId;
+		this.ConnectionId = connectionId;
 	}
 
 	[Broadcast]
@@ -37,7 +36,7 @@ public class NPC : Component, IInteractable
 	{
 		if ( IsProxy ) { return; }
 
-		this.PlayerId = default;
+		this.ConnectionId = default;
 	}
 
 	[Authority]

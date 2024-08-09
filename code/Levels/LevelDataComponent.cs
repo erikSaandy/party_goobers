@@ -14,10 +14,13 @@ public sealed class LevelDataComponent : Component
 	[Property] public MapInstance MapInstance { get; set; }
 
 	[Property] public LevelObjectiveHandler ObjectiveHandler { get; set; }
-	public LevelObjective Objective => ObjectiveHandler.CurrentObjective;
+	public LevelObjective Objective => ObjectiveHandler?.CurrentObjective;
 
 	[Property] public NodePathComponent[] NodePaths { get; set; }
 
+	[Property] public GameObject NpcLookAtOverride { get; set; } = null;
+
+	[Property] public int? MinSpawnCount { get; set; }
 
 	public List<SpawnPoint> SpawnPoints { get; set; }
 
@@ -26,7 +29,30 @@ public sealed class LevelDataComponent : Component
 	{
 		base.OnAwake();
 
-		SpawnPoints = MapInstance.Components.GetAll<SpawnPoint>( FindMode.InDescendants ).ToList();
+		if(MapInstance != null)
+		{
+			SpawnPoints = MapInstance.Components.GetAll<SpawnPoint>( FindMode.InDescendants ).ToList();
+		}
+		else
+		{
+			SpawnPoints = Scene.GetAllComponents<SpawnPoint>().ToList();
+		}
+
+	}
+
+	protected override void OnStart()
+	{
+		base.OnStart();
+
+		Scene.Camera.Transform.Position = CameraReference.Transform.Position;
+		Scene.Camera.Transform.Rotation = CameraReference.Transform.Rotation;
+		Scene.Camera.FieldOfView = CameraReference.FieldOfView;
+		Scene.Camera.ZFar = CameraReference.ZFar;
+		Scene.Camera.ZNear = CameraReference.ZNear;
+		Scene.Camera.BackgroundColor = CameraReference.BackgroundColor;
+		CameraReference.Enabled = false;
+
+		//CameraReference.GameObject.Destroy();
 
 	}
 

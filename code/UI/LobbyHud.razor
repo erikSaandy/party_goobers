@@ -1,0 +1,53 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using System;
+
+@inherits PanelComponent
+
+<root>
+	<dir class="header">@(Lobby.PlayersInLobby)/25 waiting@(Dots())</dir>
+
+	@for (int i = 0; i < Lobby.NPCs.Count; i++)
+	{
+		GameObject npc = Scene.Directory.FindByGuid(Lobby.NPCs[i]);
+		Connection con = npc.Network.OwnerConnection;
+
+		Vector2 pos = NametagPosition(npc);
+
+		<dir class="nametag" style=" top: @(Length.Fraction(pos.y)); left: @(Length.Fraction(pos.x));">
+			<dir class="icon" style="background-image: url( avatar:@con.SteamId );" />
+			<dir class="name">@(con.DisplayName)</dir>
+		</dir>
+	}
+</root>
+
+@code
+{
+	[Property] public LobbyComponent Lobby { get; set; }
+
+	private Vector2 NametagPosition(GameObject npc)
+	{
+		return Scene.Camera.PointToScreenNormal(npc.Transform.Position + Vector3.Up * 112);
+	}
+
+	private string Dots()
+	{
+		int nr = (int)(((Time.Now * 1.5f)) % 3 );
+
+		string s = ".";
+		for(int i = 0; i < nr; i++) { s += "."; }
+
+		return s;
+	}
+
+	protected override void OnUpdate()
+	{
+		base.OnUpdate();
+
+	}
+
+	protected override int BuildHash() 
+	{
+		return System.HashCode.Combine(Time.Now);
+	}
+}

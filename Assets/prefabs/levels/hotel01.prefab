@@ -1,0 +1,120 @@
+{
+  "RootObject": {
+    "__guid": "4707757d-664b-46f4-9bf4-92acb95d6153",
+    "Flags": 0,
+    "Name": "hotel01",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "LevelDataComponent",
+        "__guid": "85d44e64-6c8a-41d2-bc5e-b8e5f2ef6142",
+        "CameraReference": {
+          "_type": "component",
+          "component_id": "710b17a1-f551-46e1-b11a-c26c69a0e89d",
+          "go": "141d8831-ce9d-4f8e-95ed-65acb401d17b",
+          "component_type": "CameraComponent"
+        },
+        "MapInstance": {
+          "_type": "component",
+          "component_id": "e18eb1b8-1072-4c97-89c9-0e6b8fb1eedb",
+          "go": "471c3921-52e1-42a1-8571-2382f085327b",
+          "component_type": "MapInstance"
+        },
+        "MinSpawnCount": 4,
+        "NodePaths": [],
+        "ObjectiveHandler": {
+          "_type": "component",
+          "component_id": "6580e484-b046-4976-bef8-f27c14b81aa9",
+          "go": "4707757d-664b-46f4-9bf4-92acb95d6153",
+          "component_type": "LevelObjectiveHandler"
+        }
+      },
+      {
+        "__type": "LevelObjectiveHandler",
+        "__guid": "6580e484-b046-4976-bef8-f27c14b81aa9",
+        "ObjectiveId": 0
+      },
+      {
+        "__type": "FindSpecificObjective",
+        "__guid": "d49e8de3-2523-4d01-a821-328bdf0279f1"
+      },
+      {
+        "__type": "FindAlikeObjective",
+        "__guid": "a0965181-8162-4740-b247-74869aa76706",
+        "NumberOfAlike": 2
+      },
+      {
+        "__type": "FindAlikeObjective",
+        "__guid": "a5d55c89-a2ed-4c84-ae4e-0a65a3198a30",
+        "NumberOfAlike": 3
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "471c3921-52e1-42a1-8571-2382f085327b",
+        "Flags": 0,
+        "Name": "Map Instance",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.MapInstance",
+            "__guid": "e18eb1b8-1072-4c97-89c9-0e6b8fb1eedb",
+            "__version": 1,
+            "EnableCollision": true,
+            "MapName": "maps/map03.vmap",
+            "NoOrigin": false,
+            "UseMapFromLaunch": false
+          }
+        ],
+        "Children": []
+      },
+      {
+        "__guid": "141d8831-ce9d-4f8e-95ed-65acb401d17b",
+        "Flags": 0,
+        "Name": "Camera",
+        "Position": "0,-777.8726,358.3938",
+        "Rotation": "-0.111928,0.111928,0.698192,0.698192",
+        "Scale": "-1.058358,1,1",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.CameraComponent",
+            "__guid": "710b17a1-f551-46e1-b11a-c26c69a0e89d",
+            "BackgroundColor": "0.33333,0.46275,0.52157,1",
+            "ClearFlags": "All",
+            "FieldOfView": 24.58,
+            "IsMainCamera": false,
+            "Orthographic": false,
+            "OrthographicHeight": 1204,
+            "Priority": 1,
+            "RenderExcludeTags": "",
+            "RenderTags": "",
+            "TargetEye": "None",
+            "Viewport": "0,0,1,1",
+            "ZFar": 10000,
+            "ZNear": 10
+          }
+        ]
+      },
+      {
+        "__guid": "603458aa-0221-4bcd-b371-544a6833b10a",
+        "Flags": 0,
+        "Name": "Spotlight Cursor",
+        "Rotation": "0,0.7071068,0,0.7071068",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "__Prefab": "prefabs/spotlight_cursor.prefab",
+        "__PrefabVariables": {
+          "Visible Chance": 0.4
+        }
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

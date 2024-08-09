@@ -1,0 +1,34 @@
+{
+  "publish": {
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "map_darkroom01",
+      "Type": "map",
+      "Org": "local",
+      "Ident": "map_darkroom01",
+      "Schema": 0,
+      "IncludeSourceFiles": false,
+      "Resources": null,
+      "PackageReferences": [],
+      "EditorReferences": [
+        "facepunch.stone_cladding_01#33579",
+        "facepunch.concrete_cast_hs_02#37803",
+        "facepunch.floor_wood_laminated#18686",
+        "facepunch.waterbase_sign#33713",
+        "saandy.glass02_hs#17240",
+        "saandy.wallpaper07_hs#17239",
+        "facepunch.cardboard_box#33592",
+        "saandy.aluminum_slip_pattern_001#23863",
+        "facepunch.plaster_hs_03#33581",
+        "facepunch.carpet_a#18621",
+        "facepunch.wood_painted_a_hs#28972",
+        "facepunch.wood_trim_03#43511",
+        "facepunch.plaster_a#18740",
+        "facepunch.plaster_hs_01#33578"
+      ],
+      "Metadata": {
+        "SingleAssetSource": "maps/map_darkroom01.vmap"
+      }
+    }
+  }
+}
