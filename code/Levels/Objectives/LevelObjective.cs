@@ -100,7 +100,9 @@ public abstract class LevelObjective : Component
 			{
 				await Task.Delay( 700 );
 
-				player.AddScore( -2000 );
+				int score = -2000;
+				PartyFacesManager.Instance.LabelHandler.SpawnLabel( score.ToString(), Mouse.Position / Screen.Size, Vector2.Up * 250, true );
+				player.AddScore( score );
 
 				// ON WRONG SELECTION
 				ResetSelection( playerId );

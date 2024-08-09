@@ -16,7 +16,35 @@
           "ConfettiParticles": {
             "_type": "gameobject",
             "go": "0b90ab80-a59c-4df2-b002-66cceaa74b39"
+          },
+          "LabelHandler": {
+            "_type": "component",
+            "component_id": "06082bb7-959a-4519-a08d-ef58dd000181",
+            "go": "a868cdcf-7e30-4a3b-93b5-ba187300ff5a",
+            "component_type": "ScreenLabelHandler"
           }
+        }
+      ]
+    },
+    {
+      "__guid": "a868cdcf-7e30-4a3b-93b5-ba187300ff5a",
+      "Flags": 0,
+      "Name": "Screen Label Handler",
+      "Position": "106.8778,216.9349,115.9221",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "Components": [
+        {
+          "__type": "Sandbox.ScreenPanel",
+          "__guid": "f9a72670-7b3a-4b6f-a67d-7580ced12161",
+          "AutoScreenScale": true,
+          "Opacity": 1,
+          "Scale": 1,
+          "ZIndex": 499
+        },
+        {
+          "__type": "ScreenLabelHandler",
+          "__guid": "06082bb7-959a-4519-a08d-ef58dd000181"
         }
       ]
     },
@@ -328,6 +356,7 @@
                   "FlipHorizontal": false,
                   "FlipVertical": false,
                   "FogStrength": 1,
+                  "Lighting": false,
                   "Opaque": true,
                   "Size": "1,1",
                   "Texture": "textures/faces/eyebrows01.jpg"
@@ -355,6 +384,7 @@
                   "FlipHorizontal": false,
                   "FlipVertical": false,
                   "FogStrength": 1,
+                  "Lighting": false,
                   "Opaque": true,
                   "Size": "1,1",
                   "Texture": "textures/faces/eyebrows01.jpg"
@@ -382,6 +412,7 @@
                   "FlipHorizontal": false,
                   "FlipVertical": false,
                   "FogStrength": 1,
+                  "Lighting": false,
                   "Opaque": true,
                   "Size": "1,1",
                   "Texture": "textures/faces/eyebrows01.jpg"
@@ -409,6 +440,7 @@
                   "FlipHorizontal": false,
                   "FlipVertical": false,
                   "FogStrength": 1,
+                  "Lighting": false,
                   "Opaque": true,
                   "Size": "1,1",
                   "Texture": "textures/faces/eyebrows01.jpg"
@@ -758,6 +790,7 @@
           "FaceVelocity": false,
           "FogStrength": 1,
           "LeadingTrail": false,
+          "Lighting": false,
           "MotionBlur": false,
           "Opaque": false,
           "RotationOffset": 0,

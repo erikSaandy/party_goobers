@@ -47,6 +47,8 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 
 	public LevelDataComponent CurrentLevelData { get; set; } = null;
 
+	[Property] public ScreenLabelHandler LabelHandler { get; private set; }
+
 	[Property] public GameObject ConfettiParticles { get; private set; }
 
 	[Sync] public int RoundNumber { get; private set; }

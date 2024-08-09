@@ -1,0 +1,104 @@
+﻿@using Sandbox;
+@using Sandbox.UI;
+@using System;
+
+@inherits PanelComponent
+
+<root>
+
+	@foreach (ScreenLabel l in Labels)
+	{
+		float x = (l.Position.x / Screen.Width);
+		float y = (l.Position.y / Screen.Height);
+
+		<div class="label @(l.Alive ? "alive " : "")" style="left: @(Length.Fraction(x)); top: @(Length.Fraction(y))">@(l.Text)</div>
+	}
+
+</root>
+
+@code
+{
+	const float GRAVITY = 8.5f;
+
+
+	public bool Visible { get; private set; } = true;
+
+	private List<ScreenLabel> Labels { get; set; } = new();
+
+	public TimeSince TimeSinceSpawn { get; private set; } = 0;
+
+	protected override void OnStart()
+	{
+		TimeSinceSpawn = 0;
+
+		base.OnStart();
+	}
+
+	protected override void OnFixedUpdate()
+	{
+		base.OnFixedUpdate();
+
+		for ( int i = Labels.Count - 1; i >= 0; i-- )
+		{
+			ScreenLabel l = Labels[i];
+
+			l.Velocity.y += l.UseGravity ? GRAVITY : 0;
+			l.Position += l.Velocity * Time.Delta;
+
+			if (l.Alive && l.TimeAlive > l.Life - 1)
+			{
+				l.Alive = false;
+			}
+			else if (l.TimeAlive > l.Life)
+			{
+				Labels.RemoveAt(i);	
+			}
+
+		}
+
+		if( IsProxy ) { return; }
+
+	}
+
+	[Broadcast]
+	public void SpawnLabel(string text, Vector2 startPosNormal, Vector2 velocity, bool useGravity, float life = 3)
+	{
+		Log.Info(Screen.Height);
+		Vector2 pos = startPosNormal * Screen.Size;
+		Labels.Add(new ScreenLabel(text, pos, velocity, useGravity, life));
+	}
+
+	protected override int BuildHash()
+	{
+		return System.HashCode.Combine(Time.Now);
+	}
+
+	public class ScreenLabel
+	{
+		public bool Alive;
+
+		public string Text;
+		public Vector2 Position;
+		public Vector2 Velocity;
+		public bool UseGravity;
+		public float Life;
+		public TimeSince TimeAlive;
+
+		public ScreenLabel(string text, Vector2 startPos, Vector2 velocity, bool useGravity, float life)
+		{
+			this.Text = text;
+			this.Position = startPos;
+
+			this.Velocity = velocity;
+			this.Velocity.y *= -1;
+
+			this.UseGravity = useGravity;
+			this.Life = life;
+
+			TimeAlive = 0;
+			Alive = true;
+		}
+
+	}
+
+}

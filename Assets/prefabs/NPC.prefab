@@ -16,6 +16,7 @@
           "go": "7e4da760-5759-4095-9556-43a5192c7a5c",
           "component_type": "CapsuleCollider"
         },
+        "ConnectionId": "00000000-0000-0000-0000-000000000000",
         "Controller": {
           "_type": "component",
           "component_id": "bcd337c0-d231-4c9b-8604-d117a6e100cb",
@@ -35,7 +36,6 @@
           "go": "7e4da760-5759-4095-9556-43a5192c7a5c",
           "component_type": "ModelPhysics"
         },
-        "PlayerId": "00000000-0000-0000-0000-000000000000",
         "Renderer": {
           "_type": "component",
           "component_id": "5dd7bfea-ae37-490f-845a-e0d63462dc36",
@@ -170,6 +170,7 @@
                 "FlipHorizontal": false,
                 "FlipVertical": false,
                 "FogStrength": 1,
+                "Lighting": false,
                 "Opaque": true,
                 "Size": "1,1",
                 "Texture": "textures/faces/eyebrows05.vtex"
@@ -196,6 +197,7 @@
                 "FlipHorizontal": false,
                 "FlipVertical": false,
                 "FogStrength": 1,
+                "Lighting": false,
                 "Opaque": true,
                 "Size": "1,1",
                 "Texture": "textures/faces/eyes01.vtex"
@@ -222,6 +224,7 @@
                 "FlipHorizontal": false,
                 "FlipVertical": false,
                 "FogStrength": 1,
+                "Lighting": false,
                 "Opaque": true,
                 "Size": "1,1",
                 "Texture": "textures/faces/nose03.vtex"
@@ -248,6 +251,7 @@
                 "FlipHorizontal": false,
                 "FlipVertical": false,
                 "FogStrength": 1,
+                "Lighting": false,
                 "Opaque": true,
                 "Size": "1,1",
                 "Texture": "textures/faces/mouth07.vtex"

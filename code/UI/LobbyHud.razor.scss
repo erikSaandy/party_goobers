@@ -7,6 +7,8 @@ LobbyHud {
     font-family: Poppins;
     font-weight: 600;
     justify-content: center;
+    cursor: none;
+    pointer-events: all;
 
     > .header {
         position: absolute;
@@ -73,8 +75,6 @@ LobbyHud {
         bottom: 35px;
         color: linear-gradient(white, #9198e5);
         backdrop-filter: blur(10px);
-        pointer-events: all;
-        cursor: none;
         transition: all 0.2s linear;
         box-shadow: -10px, -10px, 100px, black;
 

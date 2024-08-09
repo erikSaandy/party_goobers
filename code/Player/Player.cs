@@ -1,4 +1,4 @@
-using Sandbox;
+﻿using Sandbox;
 using System;
 using System.Numerics;
 using System.Threading.Tasks;
@@ -44,8 +44,9 @@ public class Player : Component
 
 		Lives--;
 		OnLifeTaken?.Invoke();
+		PartyFacesManager.Instance.LabelHandler.SpawnLabel( "❤️", Mouse.Position / Screen.Size, Vector2.Up * 250, true );
 
-		if(Lives <= 0)
+		if (Lives <= 0)
 		{
 			Lives = 0;
 			Kill( "Ran out of lives!" );
@@ -58,7 +59,9 @@ public class Player : Component
 	[Sync] public int Score { get; set; } = 0;
 
 	[Authority]
-	public void AddScore(int score) { this.Score += score; }
+	public void AddScore(int score) {
+		this.Score += score;
+	}
 
 	public Player()
 	{
