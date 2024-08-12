@@ -90,5 +90,10 @@ LobbyHud {
         &:active {
             sound-in: "ui.button.press";
         }
+
+        &.locked {
+            pointer-events: none;
+            opacity: 0.5;
+        }
     }
 }

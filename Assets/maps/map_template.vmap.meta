@@ -12,7 +12,8 @@
       "PackageReferences": [],
       "EditorReferences": [
         "facepunch.plaster_hs_03#33581",
-        "facepunch.waterbase_sign#33713"
+        "facepunch.waterbase_sign#33713",
+        "facepunch.plastic_glossy_a_hs#28966"
       ],
       "Metadata": {
         "SingleAssetSource": "maps/map_template.vmap"

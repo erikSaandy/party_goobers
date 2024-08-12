@@ -97,17 +97,26 @@ public class NodePathComponent : Component
 			col.GameObject.Parent = GameObject;
 			col.Transform.Position = GetTargetPosition( i ) + Vector3.Up * col.Radius;
 			col.IsTrigger = true;
-			col.OnTriggerEnter += NPCEnteredNodeTrigger;
+			col.OnTriggerEnter += OnTriggerEnter;
 
 		}
 
 	}
 
-	public void NPCEnteredNodeTrigger( Collider collider )
+	private void OnTriggerEnter( Collider collider )
 	{
 		if ( IsProxy ) { return; }
 
-		NPC npc = collider.Components.Get<NPC>();
+		if(collider.Components.TryGet<NPC>(out NPC npc ))
+		{
+			NPCEnteredNodeTrigger( npc );
+		}
+	}
+
+	private void NPCEnteredNodeTrigger( NPC npc )
+	{
+		if ( IsProxy ) { return; }
+
 		if ( npc == null ) { return; }
 
 		// Don't start moving if not already moving.
@@ -117,7 +126,9 @@ public class NodePathComponent : Component
 
 		if( MoveType == MoveTypes.Straight && nextTargetId == 0 )
 		{
-			npc.StopMoving();
+			npc.Teleport( GetTargetPosition( 0 ) );
+			npc.MoveTowards( GetTargetPosition( 1 ) );
+			//npc.StopMoving();
 		}
 		else
 		{

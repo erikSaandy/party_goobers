@@ -1,5 +1,6 @@
 ﻿using Saandy;
 using Sandbox;
+using Sandbox.Network;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -143,6 +144,7 @@ public class NPC : Component, IInteractable
 	{
 		if ( Scene.Directory.FindByGuid( player ).IsProxy ) { return; }
 
+		Renderer.Set( "b_crouching", false );
 		Renderer.Set( "e_behaviour", (int)behaviour );
 
 		if(behaviour == AnimationBehaviour.Cheer)
@@ -155,12 +157,27 @@ public class NPC : Component, IInteractable
 	[Broadcast]
 	public void SetAnimationBehaviour( AnimationBehaviour behaviour )
 	{
+		Renderer.Set( "b_crouching", false );
 		Renderer.Set( "e_behaviour", (int)behaviour );
 
 		if ( behaviour == AnimationBehaviour.Cheer )
 		{
 			Sound.Play( "sounds/npc_cheer.sound" );
 		}
+	}
+
+	[Broadcast]
+	public void Crouch(bool crouch = true)
+	{
+		Renderer.Set( "b_crouching", crouch );
+	}
+
+	[Authority]
+	public void ToggleCrouch()
+	{
+		if(IsProxy) { return; }
+
+		Crouch( !Renderer.GetBool( "b_crouching" ) );
 	}
 
 	public void OnRoundEnter()
@@ -196,6 +213,13 @@ public class NPC : Component, IInteractable
 	}
 
 	[Authority]
+	public void Teleport(Vector3 to)
+	{
+		Transform.Position = to;
+		Transform.ClearInterpolation();
+	}
+
+	[Authority]
 	public void SetRandomColor()
 	{
 		SetColor( ColorX.MiiColors.GetRandom().RgbaInt );
@@ -219,6 +243,8 @@ public class NPC : Component, IInteractable
 			Renderer.SetLookDirection( "aim_head", dir );
 
 		}
+
+		if(IsProxy) { return; }
 
 		//if(WantedPosition.HasValue)
 		//{
@@ -272,6 +298,7 @@ public class NPC : Component, IInteractable
 	{
 
 		Renderer.Set( "b_walking", true );
+		Renderer.Set( "b_crouching", false );
 
 		if (IsProxy) { return; }
 
@@ -288,6 +315,33 @@ public class NPC : Component, IInteractable
 		if ( IsProxy ) { return; }
 
 		this.WantedPosition = null;
+
 	}
+
+
+	//[Authority]
+	//public void AddCrown()
+	//{
+	//	// NPC already has crown.
+	//	if( GameObject.Children.Find(x => x.Name == "Crown") != null ) { return; }
+
+	//	SkinnedModelRenderer npc = Renderer;
+
+	//	Model model = Sandbox.Model.Load( PartyFacesManager.Instance.CrownModel );
+
+	//	if ( model is null || model.IsError ) { return; }
+
+	//	var go = new GameObject( false, "Crown" );
+	//	go.Parent = npc.GameObject;
+	//	go.Tags.Add( "clothing" );
+
+	//	var r = go.Components.Create<SkinnedModelRenderer>();
+	//	r.Model = model;
+	//	r.BoneMergeTarget = npc;
+
+	//	go.Enabled = true;
+	//	go.NetworkSpawn();
+
+	//}
 
 }

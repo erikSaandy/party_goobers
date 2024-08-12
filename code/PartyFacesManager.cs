@@ -34,11 +34,13 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 	public static IEnumerable<Player> Players => Instance.Scene.GetAllComponents<Player>();
 	public static IEnumerable<Player> PlayersAlive => Players.Where( x => x.LifeState == Player.PlayerLifeState.Alive );
 	public static IEnumerable<Player> PlayersSafe => Players.Where( x => x.LifeState == Player.PlayerLifeState.Safe );
+	public static IEnumerable<Player> PlayersNotDead => Players.Where( x => x.LifeState != Player.PlayerLifeState.Dead );
 
 	public static TimeSince TimeSinceRoundStart { get; private set; } = new TimeSince();
 
 	public List<DeathInstance> RoundDeaths { get; private set; } = new();
 
+	public Action OnGameStart { get; set; }
 	public Action OnRoundEnter { get; set; }
 	public Action OnRoundExit { get; set; }
 
@@ -50,6 +52,9 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 	[Property] public ScreenLabelHandler LabelHandler { get; private set; }
 
 	[Property] public GameObject ConfettiParticles { get; private set; }
+
+	[ResourceType("vmdl")]
+	[Property] public string CrownModel { get; set; }
 
 	[Sync] public int RoundNumber { get; private set; }
 
@@ -157,6 +162,8 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 
 		RoundNumber = 0;
 
+		OnGameStart?.Invoke();
+
 		FadeScreen.Show();
 
 		await Task.Delay( 1000 );
@@ -236,7 +243,7 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 
 		FadeScreen.Show();
 
-		await Task.Delay( 600 );
+		await Task.Delay( 500 );
 
 		RoundIsOn = false;
 
@@ -246,7 +253,13 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 
 		await Task.Delay( 200 );
 
-		ScoreBoard.UpdateScoreBoard();
+		if ( PlayersNotDead.Count() == 0 )
+		{
+			ExitGame();
+			return;
+		}
+
+		ScoreBoard.Refresh();
 		ScoreBoard.Show();
 
 		await Task.Delay( 3500 );
@@ -256,6 +269,26 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 		await Task.Delay( 200 );
 
 		EnterRound();
+
+	}
+
+	private async void ExitGame()
+	{
+
+		await Task.Delay( 100 );
+
+		GameIsOn = false;
+
+		ScoreBoard.Refresh();
+		ScoreBoard.Show();
+
+		await Task.Delay( 3500 );
+	
+		ScoreBoard.Hide();
+
+		await Task.Delay( 200 );
+
+		OpenLobby();
 
 	}
 

@@ -21,6 +21,7 @@ public class LevelObjectiveHandler : Component
 		if (IsProxy) { return; }	
 
 		ObjectiveId = Objectives.GetRandomId();
+		Log.Info( $"Selected Objective: {CurrentObjective.GetType()}." );
 
 	}
 

@@ -75,6 +75,8 @@ public class Player : Component
 		PartyFacesManager.Instance.OnRoundEnter += OnRoundEnter;
 		PartyFacesManager.Instance.OnRoundExit += OnRoundExit;
 
+		PartyFacesManager.Instance.OnGameStart += OnGameStart;
+
 		LevelTimer.OnTimerDepleted += OnTimerDepleted;
 
 		if (IsProxy) { return; }
@@ -98,6 +100,16 @@ public class Player : Component
 		{
 			TakeLife();
 		}
+	}
+
+	[Broadcast]
+	void OnGameStart()
+	{
+		if(IsProxy) { return; }
+
+		Score = 0;
+		Lives = MAX_HEALTH;
+		LifeState = PlayerLifeState.Safe;
 	}
 
 	[Broadcast]
@@ -147,6 +159,8 @@ public class Player : Component
 
 		PartyFacesManager.Instance.OnRoundEnter -= OnRoundEnter;
 		PartyFacesManager.Instance.OnRoundExit -= OnRoundExit;
+
+		PartyFacesManager.Instance.OnGameStart -= OnGameStart;
 
 		LevelTimer.OnTimerDepleted -= OnTimerDepleted;
 

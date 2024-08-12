@@ -17,6 +17,7 @@
             "_type": "gameobject",
             "go": "0b90ab80-a59c-4df2-b002-66cceaa74b39"
           },
+          "CrownModel": "models/player/crown/crown.vmdl",
           "LabelHandler": {
             "_type": "component",
             "component_id": "06082bb7-959a-4519-a08d-ef58dd000181",
@@ -121,9 +122,11 @@
           "__type": "LevelHandler",
           "__guid": "51bdbcaf-87b0-4571-b6eb-559b224332c1",
           "LevelPrefabs": [
+            "prefabs/levels/hotel01.prefab",
             "prefabs/levels/mall01.prefab",
-            "prefabs/levels/tennis01.prefab",
-            "prefabs/levels/hotel01.prefab"
+            "prefabs/levels/mole01.prefab",
+            "prefabs/levels/street01.prefab",
+            "prefabs/levels/tennis01.prefab"
           ],
           "LobbyPrefab": "prefabs/lobby.prefab"
         }

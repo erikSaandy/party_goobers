@@ -2,6 +2,7 @@ using Sandbox;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 public class LevelHandler : SingletonComponent<LevelHandler>
 {
@@ -17,8 +18,7 @@ public class LevelHandler : SingletonComponent<LevelHandler>
 	[ResourceType( "prefab" )]
 	[Property] public string[] LevelPrefabs { get; set; }
 
-	[Authority]
-	public void LoadRandomLevel()
+	public async void LoadRandomLevel()
 	{
 		if(IsProxy) { return; }
 
@@ -39,12 +39,16 @@ public class LevelHandler : SingletonComponent<LevelHandler>
 		}
 
 		GameObject levelObject = SceneUtility.GetPrefabScene( ResourceLibrary.Get<PrefabFile>( level ) ).Clone( Vector3.Zero );
+
 		levelObject.BreakFromPrefab();
 		levelObject.NetworkSpawn();
-
 		CurrentLevelDataId = levelObject.Id;
 
-		NPCBuffer.Instance.PlaceNPCs();
+		await NPCBuffer.Instance.PlaceNPCs();
+
+		await Task.Delay( 200 );
+
+		CurrentLevelData.OnInitiated?.Invoke();
 
 		Instance.LevelIsLoaded = true;
 

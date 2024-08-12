@@ -3,6 +3,7 @@ ScoreBoard {
 	position: absolute;
 	left: 20%;
 	right: 20%;
+	min-width:1000px;
 	font-weight: 700;
 	font-size: 20px;
 	font-family: Poppins;
@@ -30,7 +31,8 @@ ScoreBoard {
 
 	.entry {
 		margin-top: 20px;
-		width: 1000px;
+		width: auto;
+		max-width: 1200px;
 		height: 70px;
 		background-color: rgba(15,15,50, .8);
 		align-items: center;

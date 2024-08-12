@@ -1,0 +1,533 @@
+{
+  "RootObject": {
+    "__guid": "eee03bc2-f4b0-4fd5-84a7-5e230f312b61",
+    "Flags": 0,
+    "Name": "street01",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "LevelDataComponent",
+        "__guid": "fb77aa47-3998-4df6-9a51-2606bcac9a68",
+        "CameraReference": {
+          "_type": "component",
+          "component_id": "66418023-7f13-4634-a5e2-aacd38d44617",
+          "go": "f2d2fb9a-6be2-4a79-a377-ac9bcc230298",
+          "component_type": "CameraComponent"
+        },
+        "MapInstance": {
+          "_type": "component",
+          "component_id": "ec667cae-8ccc-403f-9433-c1fec7fabec7",
+          "go": "3c056c33-1485-4021-9d06-fdb1706698ef",
+          "component_type": "MapInstance"
+        },
+        "NodePaths": [
+          {
+            "_type": "component",
+            "component_id": "fd61f58e-aa17-4eba-8f73-3a11176a0588",
+            "go": "6f141ace-5f13-400e-adf7-1239e3e0afa1",
+            "component_type": "NodePathComponent"
+          },
+          {
+            "_type": "component",
+            "component_id": "ee17bbed-560f-46e8-9618-8adf942f3edc",
+            "go": "f29a890b-0ab1-4580-a5a1-fd1c516b00ff",
+            "component_type": "NodePathComponent"
+          },
+          {
+            "_type": "component",
+            "component_id": "a8f1aa1c-88bc-4d73-a5d4-f27faa063549",
+            "go": "15be88f1-fd51-4d41-a078-e49bd035df01",
+            "component_type": "NodePathComponent"
+          },
+          {
+            "_type": "component",
+            "component_id": "b5f4c672-4540-4a58-88d3-82edc7a6574d",
+            "go": "9e314c88-0f38-4894-b41a-23fb16aac808",
+            "component_type": "NodePathComponent"
+          }
+        ],
+        "ObjectiveHandler": {
+          "_type": "component",
+          "component_id": "8e853bb9-ae3b-4400-a3b2-3a8383310b45",
+          "go": "eee03bc2-f4b0-4fd5-84a7-5e230f312b61",
+          "component_type": "LevelObjectiveHandler"
+        }
+      },
+      {
+        "__type": "LevelObjectiveHandler",
+        "__guid": "8e853bb9-ae3b-4400-a3b2-3a8383310b45",
+        "ObjectiveId": 0
+      },
+      {
+        "__type": "FindSpecificObjective",
+        "__guid": "89b21591-44e0-4934-a957-a36e340ba657"
+      },
+      {
+        "__type": "FindAlikeObjective",
+        "__guid": "e9fc9728-025d-4522-8d6e-66eb36169309",
+        "NumberOfAlike": 2
+      },
+      {
+        "__type": "FindAlikeObjective",
+        "__guid": "f9bbb3e9-0f96-4099-93b3-95eea2d16a02",
+        "NumberOfAlike": 3
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "3c056c33-1485-4021-9d06-fdb1706698ef",
+        "Flags": 0,
+        "Name": "Map Instance",
+        "Position": "-134.7281,0,0",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.MapInstance",
+            "__guid": "ec667cae-8ccc-403f-9433-c1fec7fabec7",
+            "__version": 1,
+            "EnableCollision": true,
+            "MapName": "maps/map04.vmap",
+            "NoOrigin": false,
+            "UseMapFromLaunch": false
+          }
+        ],
+        "Children": []
+      },
+      {
+        "__guid": "f2d2fb9a-6be2-4a79-a377-ac9bcc230298",
+        "Flags": 0,
+        "Name": "Camera",
+        "Position": "-200.7171,1149.706,473.1304",
+        "Rotation": "0.1447334,0.1447334,-0.6921358,0.692136",
+        "Scale": "-1.058358,1,1",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.CameraComponent",
+            "__guid": "66418023-7f13-4634-a5e2-aacd38d44617",
+            "BackgroundColor": "0.33333,0.46275,0.52157,1",
+            "ClearFlags": "All",
+            "FieldOfView": 24.58,
+            "IsMainCamera": false,
+            "Orthographic": false,
+            "OrthographicHeight": 1204,
+            "Priority": 1,
+            "RenderExcludeTags": "",
+            "RenderTags": "",
+            "TargetEye": "None",
+            "Viewport": "0,0,1,1",
+            "ZFar": 10000,
+            "ZNear": 10
+          }
+        ]
+      },
+      {
+        "__guid": "6f141ace-5f13-400e-adf7-1239e3e0afa1",
+        "Flags": 0,
+        "Name": "Node Path",
+        "Position": "-603.0063,-106.4056,0.9902239",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "NodePathComponent",
+            "__guid": "fd61f58e-aa17-4eba-8f73-3a11176a0588",
+            "MoveType": "Straight",
+            "TargetPointsEnabled": true,
+            "Targets": [
+              {},
+              {
+                "Position": "379.1003,32.80002,0"
+              },
+              {
+                "Position": "447.5004,-31.40001,0"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "__guid": "f29a890b-0ab1-4580-a5a1-fd1c516b00ff",
+        "Flags": 0,
+        "Name": "Node Path (1)",
+        "Position": "-565.233,110.9732,0.9902239",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "NodePathComponent",
+            "__guid": "ee17bbed-560f-46e8-9618-8adf942f3edc",
+            "MoveType": "Straight",
+            "TargetPointsEnabled": true,
+            "Targets": [
+              {},
+              {
+                "Position": "373.7011,10.50002,0"
+              },
+              {
+                "Position": "348.0003,-10.99996,0"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "__guid": "15be88f1-fd51-4d41-a078-e49bd035df01",
+        "Flags": 0,
+        "Name": "Node Path (2)",
+        "Position": "176.9205,-42.50291,0.9902239",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "NodePathComponent",
+            "__guid": "a8f1aa1c-88bc-4d73-a5d4-f27faa063549",
+            "MoveType": "Straight",
+            "TargetPointsEnabled": true,
+            "Targets": [
+              {},
+              {
+                "Position": "-332.6002,8.30002,0"
+              },
+              {
+                "Position": "-401.101,6.800003,0"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "__guid": "9e314c88-0f38-4894-b41a-23fb16aac808",
+        "Flags": 0,
+        "Name": "Node Path (3)",
+        "Position": "176.5397,175.152,2.439575",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "NodePathComponent",
+            "__guid": "b5f4c672-4540-4a58-88d3-82edc7a6574d",
+            "MoveType": "Straight",
+            "TargetPointsEnabled": true,
+            "Targets": [
+              {},
+              {
+                "Position": "-270.7004,8.30002,0"
+              },
+              {
+                "Position": "-443.2003,6.800003,0"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "__guid": "c9abd793-5b35-4945-b08a-101e743f8d9b",
+        "Flags": 0,
+        "Name": "Spawnpoint (8)",
+        "Position": "-293.2135,-19.76383,-11.12138",
+        "Rotation": "0,0,1,0.0000001947072",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "1bec3249-6bbc-4c18-a2a8-e01ea7274df5",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "57dc04bb-6b0c-41db-bb77-cb79266e1024",
+        "Flags": 0,
+        "Name": "Spawnpoint (19)",
+        "Position": "-146.4196,103.3833,-11.12138",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "aa188496-e969-454a-95bd-ed38bc6a3a40",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "061b0fdb-5222-4d2d-89a7-163bf48a9b70",
+        "Flags": 0,
+        "Name": "Spawnpoint (10)",
+        "Position": "-153.843,-19.0163,-11.12138",
+        "Rotation": "0,0,1,0.0000001947072",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "6811d3d3-9d56-43ea-8e89-131b61623bb9",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "5cd2a98d-c6b1-4aeb-b6d1-8b82c286ebb9",
+        "Flags": 0,
+        "Name": "Spawnpoint (14)",
+        "Position": "-149.2125,205.023,-11.12138",
+        "Rotation": "0,0,1,0.0000001947072",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "d2ddda87-f095-487d-a20c-a9c2abdfa140",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "c7702095-a724-4908-b80b-fbba45f6492c",
+        "Flags": 0,
+        "Name": "Spawnpoint (20)",
+        "Position": "-268.4771,100.1658,-11.12138",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "18c171ce-3bae-4c89-a6bd-d843516489a0",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "948efb8b-e1dc-4c75-9b2c-362a8a2761ff",
+        "Flags": 0,
+        "Name": "Spawnpoint (11)",
+        "Position": "-24.9387,-18.05696,-11.12138",
+        "Rotation": "0,0,1,0.0000001947072",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "856f6052-0272-4b13-adb6-cd9867ef000e",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "e7e05260-0687-491c-a14f-5dd85b9d79a7",
+        "Flags": 0,
+        "Name": "Spawnpoint (15)",
+        "Position": "-9.349529,205.4521,-11.12138",
+        "Rotation": "0,0,1,0.0000001947072",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "b3e1a351-cf8f-4af5-bdf5-dae9235d416f",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "7b542780-aba1-4b22-88ce-a19c4afc3cc5",
+        "Flags": 0,
+        "Name": "Spawnpoint (21)",
+        "Position": "-387.3947,91.37383,-11.12138",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "c0598e69-dbc1-4170-bd5d-d66879287aaf",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "fdeb9a7c-8e50-4d0f-990d-f4604a924660",
+        "Flags": 0,
+        "Name": "Spawnpoint (12)",
+        "Position": "94.12221,-19.96072,-11.12138",
+        "Rotation": "0,0,1,0.0000001947072",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "437d1ceb-0850-4308-92a6-b1eed6489c46",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "03037cca-a03a-46f6-a5a3-19eab2643d33",
+        "Flags": 0,
+        "Name": "Spawnpoint (16)",
+        "Position": "107.1647,203.5955,-11.12138",
+        "Rotation": "0,0,1,0.0000001947072",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "e48919ee-17cd-476e-a4f2-62a086d16d76",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "3ff69abd-1c6d-4e08-821b-b42db5847c99",
+        "Flags": 0,
+        "Name": "Spawnpoint (22)",
+        "Position": "-519.5344,91.37383,-11.12138",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "68aa769b-aaeb-4d4c-9fef-f36196f6141d",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "6ab29dbc-9952-4c92-b6c6-49ef7f405e75",
+        "Flags": 0,
+        "Name": "Spawnpoint (18)",
+        "Position": "-445.2217,204.6049,-11.12138",
+        "Rotation": "0,0,1,0.0000001947072",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "7f564476-ceaa-4782-ae79-aea159bcef93",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "5ef1b57b-5901-4514-9635-cf3e51468c86",
+        "Flags": 0,
+        "Name": "Spawnpoint (24)",
+        "Position": "148.7498,91.37374,-11.12138",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "8d34c8b5-43eb-4003-82bd-a050e14b2d1f",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "4bbe1d2a-5621-4c38-aba2-462e122cfefb",
+        "Flags": 0,
+        "Name": "Spawnpoint (9)",
+        "Position": "-422.1088,-26.05025,-11.12138",
+        "Rotation": "0,0,1,0.0000001947072",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "38c600d3-5a94-46c8-903c-d3d73a447f0d",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "44b5968a-ef2e-48c8-a1a0-0dd39e632cd8",
+        "Flags": 0,
+        "Name": "Spawnpoint (17)",
+        "Position": "-302.0308,204.8838,-11.12138",
+        "Rotation": "0,0,1,0.0000001947072",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "063f1841-6ffa-4251-8fcd-3c3500772f1f",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "124f202e-c48a-4046-aae7-7e5b396e7d70",
+        "Flags": 0,
+        "Name": "Spawnpoint (23)",
+        "Position": "-12.30736,91.37365,-11.12138",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "a1ae66e1-9e3b-446e-ad50-92a8cfd3b5a3",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "cecb49f4-3a1a-49e0-9e8c-f9734db1c242",
+        "Flags": 0,
+        "Name": "Spawnpoint (1)",
+        "Position": "-493.3922,-115.1431,-11.12137",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "50617da4-a8ef-4fc0-8c81-3e7a134f39d4",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "868d70a6-a789-40e5-b7a3-dcc829a73aab",
+        "Flags": 0,
+        "Name": "Spawnpoint (2)",
+        "Position": "-342.8212,-115.9647,-11.12136",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "3672a07f-1437-4948-b9f6-97a6171007e6",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "177cfa08-6a7c-4978-b595-ba5fffdd356f",
+        "Flags": 0,
+        "Name": "Spawnpoint (3)",
+        "Position": "-210.2268,-104.3075,-11.12136",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "33291ca9-9aa5-49e2-b7da-18252315f245",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "2de0c03a-50fa-4091-aafc-674f2a055484",
+        "Flags": 0,
+        "Name": "Spawnpoint (5)",
+        "Position": "-62.90725,-112.9167,-11.12135",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "4fa67364-6547-41cb-9949-b937916a6ac9",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "5691376e-c090-46d0-b057-8cf3007e8b5c",
+        "Flags": 0,
+        "Name": "Spawnpoint (6)",
+        "Position": "95.46236,-115.5866,-11.12135",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "896cfb4f-a8c2-4d0c-87d3-aa2ba00f33f0",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

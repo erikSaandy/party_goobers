@@ -16,7 +16,6 @@
 		if (e.ScoreDelta > 0f) { deltaPrefix += " +"; }
 		else if (e.ScoreDelta == 0f) { deltaPrefix += " ±"; }
 
-
 		string deltaPosIcon = GetDeltaPositionIcon(i, e.PlayerName, out string deltaPlaceColor);
 
 		bool dead = e.Lives <= 0;
@@ -156,7 +155,7 @@
 	}
 
 	[Broadcast]
-	public static void UpdateScoreBoard()
+	public static void Refresh()
 	{
 		OldEntries = new( Entries );
 		Entries.Clear();

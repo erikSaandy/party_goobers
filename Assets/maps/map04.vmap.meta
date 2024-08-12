@@ -1,0 +1,29 @@
+{
+  "publish": {
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "map04",
+      "Type": "map",
+      "Org": "local",
+      "Ident": "map04",
+      "Schema": 0,
+      "IncludeSourceFiles": false,
+      "Resources": null,
+      "PackageReferences": [],
+      "EditorReferences": [
+        "facepunch.plaster_hs_03#33581",
+        "facepunch.waterbase_sign#33713",
+        "facepunch.floor_asphalt_blend#33646",
+        "facepunch.decal_street_arrow_marking_a#33802",
+        "facepunch.road_sign_round_complete#28916",
+        "facepunch.traffic_cone#33627",
+        "facepunch.folding_construction_sign#19200",
+        "facepunch.road_sign_triangle_complete_flip#29202",
+        "facepunch.sign_octagon#28917"
+      ],
+      "Metadata": {
+        "SingleAssetSource": "maps/map04.vmap"
+      }
+    }
+  }
+}

@@ -1,0 +1,187 @@
+{
+  "RootObject": {
+    "__guid": "7101bd4b-2e1e-46f4-ae00-e856d06b51f0",
+    "Flags": 0,
+    "Name": "mole01",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "LevelDataComponent",
+        "__guid": "8a08b9dc-4108-432c-9d50-09b010f11457",
+        "CameraReference": {
+          "_type": "component",
+          "component_id": "a959c83c-1da2-4d22-b5a8-7ce197eb9c81",
+          "go": "b02a6fa4-cc65-43d9-aca5-9b68519c9a9f",
+          "component_type": "CameraComponent"
+        },
+        "MapInstance": {
+          "_type": "component",
+          "component_id": "8856a57a-539a-44e5-95ef-127729e46045",
+          "go": "9a84fa88-cb04-4bfd-8409-54d5a01f828e",
+          "component_type": "MapInstance"
+        },
+        "NodePaths": [],
+        "ObjectiveHandler": {
+          "_type": "component",
+          "component_id": "3afe7792-5953-457f-8860-2d24b3426916",
+          "go": "7101bd4b-2e1e-46f4-ae00-e856d06b51f0",
+          "component_type": "LevelObjectiveHandler"
+        },
+        "OnInitiated": {
+          "__version": 7,
+          "__guid": "17aca7e1-98cb-46f6-b160-5570ebfb0258",
+          "UserData": {
+            "Title": "On Initiated",
+            "ReferencedComponentTypes": []
+          },
+          "Variables": [],
+          "Nodes": [
+            {
+              "Id": 0,
+              "Type": "input",
+              "UserData": {
+                "Position": "384,0"
+              }
+            },
+            {
+              "Id": 4,
+              "Type": "scene.ref",
+              "Properties": {
+                "component": {
+                  "_type": "component",
+                  "component_id": "dd35c3d7-b699-417b-8817-002df78e1048",
+                  "go": "1037660b-b8e6-48e3-a82f-dd95e3b36cbc",
+                  "component_type": "WhackamoleComponent"
+                }
+              },
+              "UserData": {
+                "Position": "240,64"
+              }
+            },
+            {
+              "Id": 5,
+              "Type": "call",
+              "Properties": {
+                "_isStatic": false,
+                "_type": "WhackamoleComponent",
+                "_name": "OnInitiated"
+              },
+              "UserData": {
+                "Position": "624,64"
+              }
+            }
+          ],
+          "Links": [
+            {
+              "SrcId": 0,
+              "SrcName": "_signal",
+              "DstId": 5,
+              "DstName": "_signal"
+            },
+            {
+              "SrcId": 4,
+              "SrcName": "_result",
+              "DstId": 5,
+              "DstName": "_target"
+            }
+          ],
+          "Defaults": {
+            "$4.component": {
+              "_type": "component",
+              "component_id": "dd35c3d7-b699-417b-8817-002df78e1048",
+              "go": "1037660b-b8e6-48e3-a82f-dd95e3b36cbc",
+              "component_type": "WhackamoleComponent"
+            }
+          }
+        }
+      },
+      {
+        "__type": "LevelObjectiveHandler",
+        "__guid": "3afe7792-5953-457f-8860-2d24b3426916",
+        "ObjectiveId": 0
+      },
+      {
+        "__type": "FindSpecificObjective",
+        "__guid": "cee95493-7480-4bfc-a494-b36e62a96a74"
+      },
+      {
+        "__type": "FindAlikeObjective",
+        "__guid": "d0614514-f27b-43dc-a9c7-585bb4a06f00",
+        "NumberOfAlike": 2
+      },
+      {
+        "__type": "FindAlikeObjective",
+        "__guid": "a2d47cdd-12a0-4a1f-b484-08e15c649c60",
+        "NumberOfAlike": 3
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "9a84fa88-cb04-4bfd-8409-54d5a01f828e",
+        "Flags": 0,
+        "Name": "Map Instance",
+        "Position": "-134.7281,0,0",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.MapInstance",
+            "__guid": "8856a57a-539a-44e5-95ef-127729e46045",
+            "__version": 1,
+            "EnableCollision": true,
+            "MapName": "maps/map05.vmap",
+            "NoOrigin": false,
+            "UseMapFromLaunch": false
+          }
+        ],
+        "Children": []
+      },
+      {
+        "__guid": "b02a6fa4-cc65-43d9-aca5-9b68519c9a9f",
+        "Flags": 0,
+        "Name": "Camera",
+        "Position": "-144.3506,-641.6282,718.1169",
+        "Rotation": "-0.09229587,0.09229593,0.7010574,0.7010574",
+        "Scale": "-1.058358,1,1",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.CameraComponent",
+            "__guid": "a959c83c-1da2-4d22-b5a8-7ce197eb9c81",
+            "BackgroundColor": "0.33333,0.46275,0.52157,1",
+            "ClearFlags": "All",
+            "FieldOfView": 55.61,
+            "IsMainCamera": false,
+            "Orthographic": false,
+            "OrthographicHeight": 1204,
+            "Priority": 1,
+            "RenderExcludeTags": "",
+            "RenderTags": "",
+            "TargetEye": "None",
+            "Viewport": "0,0,1,1",
+            "ZFar": 10000,
+            "ZNear": 10
+          }
+        ]
+      },
+      {
+        "__guid": "1037660b-b8e6-48e3-a82f-dd95e3b36cbc",
+        "Flags": 0,
+        "Name": "Whackamole",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "WhackamoleComponent",
+            "__guid": "dd35c3d7-b699-417b-8817-002df78e1048"
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

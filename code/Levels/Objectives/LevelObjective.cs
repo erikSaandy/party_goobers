@@ -17,6 +17,8 @@ public abstract class LevelObjective : Component
 
 	public LevelDataComponent LevelData => LevelHandler.Instance.CurrentLevelData;
 
+	public IEnumerable<NPC> NPCs { get; set; } = null;
+
 	/// <summary>
 	/// Does this NPC satisfy the objective?
 	/// </summary>
@@ -142,20 +144,20 @@ public abstract class LevelObjective : Component
 
 		set = set.Shuffle().ToList();
 
-		IEnumerable<NPC> npcs = set.Take( spawnCount );
+		NPCs = set.Take( spawnCount );
 
 		// Get lookAt
 		GameObject lookAt = LevelData.NpcLookAtOverride == null ? Scene.Camera.GameObject : LevelData.NpcLookAtOverride;
 
 		// Make sure npc looks at Objective lookAt (defaults to scene camera).
-		foreach (NPC npc in npcs )
+		foreach (NPC npc in NPCs )
 		{
 			PartyFacesManager.EnableGameobject( npc.GameObject.Id, true );
 			npc.LookAt( lookAt.Id );
 		}
 
 		//TODO: Make sure player NPCs are always chosen.
-		return npcs;
+		return NPCs;
 
 	}
 

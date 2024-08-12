@@ -24,6 +24,8 @@ public sealed class LevelDataComponent : Component
 
 	public List<SpawnPoint> SpawnPoints { get; set; }
 
+	[Property] public Action OnInitiated { get; set; }
+
 
 	protected override void OnAwake()
 	{
@@ -31,7 +33,7 @@ public sealed class LevelDataComponent : Component
 
 		if(MapInstance != null)
 		{
-			SpawnPoints = MapInstance.Components.GetAll<SpawnPoint>( FindMode.InDescendants ).ToList();
+			SpawnPoints = Components.GetAll<SpawnPoint>( FindMode.InDescendants ).ToList();
 		}
 		else
 		{

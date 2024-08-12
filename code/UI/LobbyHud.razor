@@ -22,7 +22,7 @@
 	}
 
 	@*Start Button*@
-	<div class="startbutton" onclick="@OnClickedStartButton">
+	<div class="startbutton @(CanStartGame ? "" : "locked")" onclick="@OnClickedStartButton">
 		Start Game
 		</div>
 </root>
@@ -32,6 +32,9 @@
 	[Property] public LobbyComponent Lobby { get; set; }
 
 	[Property] public GameObject Emote { get; private set; }
+
+	private TimeSince TimeAlive { get; set; }
+	bool CanStartGame => TimeAlive > 3f;
 
 	private Vector2 NametagPosition(GameObject npc)
 	{
@@ -46,6 +49,13 @@
 		for(int i = 0; i < nr; i++) { s += "."; }
 
 		return s;
+	}
+
+	protected override void OnAwake()
+	{
+		base.OnAwake();
+
+		TimeAlive = 0;
 	}
 
 	private void OnClickedStartButton()

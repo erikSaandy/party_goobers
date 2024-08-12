@@ -57,7 +57,7 @@ public class NPCFootsteps : Component
 
 	private void OnSoundEvent( SceneModel.SoundEvent e )
 	{
-		Log.Info( e.Name );
+		//Log.Info( e.Name );
 		//Sound.Play( "", e.Position );
 	}
 

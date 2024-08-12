@@ -38,7 +38,6 @@ public class LobbyComponent : Component, Component.INetworkListener
 
 	protected override void OnUpdate()
 	{
-
 	}
 
 	/// <summary>

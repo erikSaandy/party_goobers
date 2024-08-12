@@ -65,13 +65,13 @@ public class NPCBuffer : SingletonComponent<NPCBuffer>
 	/// <summary>
 	/// Place NPCs into current level.
 	/// </summary>
-	[Authority]
-	public void PlaceNPCs()
+	public async Task PlaceNPCs()
 	{
 
 		if(IsProxy) { return; }
 
 		LevelDataComponent level = LevelHandler.Instance.CurrentLevelData;
+
 		if(level == null) {
 			Log.Error( "Can't spawn NPCs because there is no level loaded." );
 			return;
@@ -81,6 +81,7 @@ public class NPCBuffer : SingletonComponent<NPCBuffer>
 
 		for ( int i = 0; i < pool.Count(); i++ ) 
 		{
+
 			NPC npc = pool.ElementAt( i );
 
 			if ( LevelHandler.Instance.FindSpawnLocation( out Transform tr ) )
@@ -94,24 +95,44 @@ public class NPCBuffer : SingletonComponent<NPCBuffer>
 				continue;
 			}
 
-			// Is there a valid path?
-			if ( level.GetRandomNodePath( out NodePathComponent path ) )
+			if( level.NodePaths?.Length > 0)
 			{
-				Vector3 pointOnPath = path.ClosestPointOnPath( npc.Transform.Position );
-				int nextTargetId = path.GetNextTargetFromPos( pointOnPath );
+
+				// Get closest path point among all level paths.
+				NodePathComponent path = null;
+				float dstClosest = 99999999;
+				Vector3 closestPathPoint = 0;
+
+				foreach(NodePathComponent pPath in level.NodePaths)
+				{
+					Vector3 pointOnPath = pPath.ClosestPointOnPath( npc.Transform.Position );
+
+					float dst = Vector3.DistanceBetweenSquared( npc.Transform.Position, pointOnPath );
+
+					if ( dst < dstClosest )
+					{
+						dstClosest = dst;
+						closestPathPoint = pointOnPath;
+						path = pPath;
+					}
+
+				}
+
+
+				int nextTargetId = path.GetNextTargetFromPos( closestPathPoint );
 				Vector3 nextTargetPos = path.GetTargetPosition( nextTargetId );
+				Vector3 dirToNext = (nextTargetPos - closestPathPoint).Normal;
 
-				Vector3 dirToNext = (nextTargetPos - pointOnPath).Normal;
-				npc.Transform.Position = pointOnPath;
-				//NPCs[i].Transform.Rotation = Rotation.FromYaw( Vector3.VectorAngle( dirToNext ).yaw );
-
-				//Log.Info( NPCs[i].GameObject.Name + ": " +	 nextTargetPos );
+				npc.Transform.Position = closestPathPoint;
 				npc.MoveTowards( nextTargetPos );
+
 			}
 			else
 			{
 				npc.StopMoving();
 			}
+
+			await Task.Yield();
 
 		}
 
@@ -120,10 +141,8 @@ public class NPCBuffer : SingletonComponent<NPCBuffer>
 	public NPC PlaceLobbyNPC( Guid playerId )
 	{
 		NPC npc = NPCs.Where( x => x.Enabled == true ).GetRandom();
-
-		Vector3 pos = new Vector3( Game.Random.Float( -300, 300 ), Game.Random.Float( -300, 300 ), 0 );
+		npc.StopMoving();
 		npc.LookAt( Scene.Camera.GameObject.Id );
-
 		PartyFacesManager.EnableGameobject( npc.GameObject.Id, true );
 
 		Log.Info( "place lobby" );

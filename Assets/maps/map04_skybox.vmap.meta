@@ -1,0 +1,28 @@
+{
+  "publish": {
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "map04_skybox",
+      "Type": "map",
+      "Org": "local",
+      "Ident": "map04_skybox",
+      "Schema": 0,
+      "IncludeSourceFiles": false,
+      "Resources": null,
+      "PackageReferences": [],
+      "EditorReferences": [
+        "saandy.bucket01_open#17243",
+        "facepunch.ceiling_plaster_01#33577",
+        "saandy.fluorescent_ceiling_light01#36033",
+        "saandy.vent_01#38453",
+        "facepunch.floor_wood_laminated#18686",
+        "saandy.wallpaper07_hs#17239",
+        "saandy.aluminum_slip_pattern_001#23863",
+        "saandy.weird_chair#19944"
+      ],
+      "Metadata": {
+        "SingleAssetSource": "maps/map04_skybox.vmap"
+      }
+    }
+  }
+}
