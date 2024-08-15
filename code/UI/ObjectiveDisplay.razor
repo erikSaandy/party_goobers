@@ -24,7 +24,14 @@
 
 				case FindAlikeObjective :
 
-					<div class="title">Find @((Objective as FindAlikeObjective).NumberOfAlike.ToEnglish()) look-alikes!</div>
+                    <div class="title">Find @((Objective as FindAlikeObjective).NumberOfAlike.ToEnglish()) look-alikes!</div>
+
+                    return;
+
+                case FindOddObjective :
+
+                    string suffix = (Objective as FindOddObjective).TargetNPCCount == 1 ? "" : "s";
+                    <div class="title">Find @((Objective as FindOddObjective).TargetNPCCount.ToEnglish()) odd dude@(suffix)!</div>
 
 				return;
 

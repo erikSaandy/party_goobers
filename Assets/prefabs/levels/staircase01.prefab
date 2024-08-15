@@ -1,0 +1,550 @@
+{
+  "RootObject": {
+    "__guid": "da0e6997-c44f-46fb-b5d8-d24fd5359292",
+    "Flags": 0,
+    "Name": "staircase01",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "LevelDataComponent",
+        "__guid": "984686c4-4542-4220-a5c1-de9acb04524b",
+        "CameraReference": {
+          "_type": "component",
+          "component_id": "aa605ca0-3b2a-4f0f-8d05-442286267a29",
+          "go": "8bce7055-31ee-4570-aeb4-ef3b3197bf8a",
+          "component_type": "CameraComponent"
+        },
+        "MapInstance": {
+          "_type": "component",
+          "component_id": "90a5a513-21cc-4304-aa3e-5df2701738a2",
+          "go": "d88ede1f-8f29-41ab-afe2-7cc2919cc324",
+          "component_type": "MapInstance"
+        },
+        "NodePaths": [
+          {
+            "_type": "component",
+            "component_id": "9a883ff9-c3bc-4f6c-b836-30baac2f11f3",
+            "go": "a139d355-4518-4024-b070-2ddc64c04c2b",
+            "component_type": "NodePathComponent"
+          },
+          {
+            "_type": "component",
+            "component_id": "551ced0c-59cf-46f3-9871-63ef64772652",
+            "go": "81759c6e-d528-4a0f-a20a-607fea4488a6",
+            "component_type": "NodePathComponent"
+          },
+          {
+            "_type": "component",
+            "component_id": "944ffb10-59d6-410c-ba43-421637e21119",
+            "go": "58ec0dce-f696-4af1-a023-7e5db9c47aad",
+            "component_type": "NodePathComponent"
+          }
+        ],
+        "ObjectiveHandler": {
+          "_type": "component",
+          "component_id": "116783fb-8b0f-4aa9-8eab-474dc3975b02",
+          "go": "da0e6997-c44f-46fb-b5d8-d24fd5359292",
+          "component_type": "LevelObjectiveHandler"
+        },
+        "OnInitiated": {
+          "__version": 7,
+          "__guid": "27c615d3-9ec1-4733-bade-f32b4d83f645",
+          "UserData": {
+            "Title": "On Initiated",
+            "ReferencedComponentTypes": []
+          },
+          "Variables": [],
+          "Nodes": [
+            {
+              "Id": 0,
+              "Type": "input"
+            },
+            {
+              "Id": 2,
+              "Type": "scene.ref",
+              "UserData": {
+                "Position": "80,112"
+              }
+            },
+            {
+              "Id": 3,
+              "Type": "call",
+              "Properties": {
+                "_isStatic": false,
+                "_name": "OnInitiated"
+              },
+              "UserData": {
+                "Position": "368,96"
+              }
+            }
+          ],
+          "Links": [
+            {
+              "SrcId": 0,
+              "SrcName": "_signal",
+              "DstId": 3,
+              "DstName": "_signal"
+            },
+            {
+              "SrcId": 2,
+              "SrcName": "_result",
+              "DstId": 3,
+              "DstName": "_target"
+            }
+          ]
+        },
+        "OverrideLookAt": false
+      },
+      {
+        "__type": "LevelObjectiveHandler",
+        "__guid": "116783fb-8b0f-4aa9-8eab-474dc3975b02",
+        "ObjectiveId": 0
+      },
+      {
+        "__type": "FindSpecificObjective",
+        "__guid": "eee9fedd-559f-4d16-b237-aed1b56946a6"
+      },
+      {
+        "__type": "FindAlikeObjective",
+        "__guid": "1214ce39-9a4a-4112-8f62-0f9f07c658e7",
+        "NumberOfAlike": 2
+      },
+      {
+        "__type": "FindAlikeObjective",
+        "__guid": "ffbab634-a939-4974-a541-e9df598c0095",
+        "NumberOfAlike": 3
+      },
+      {
+        "__type": "FindOddObjective",
+        "__guid": "da0a1968-1a39-4b89-9eb5-566622e21813",
+        "MaxTargetNPCs": 3,
+        "OddityMask": "OddRunner, OddSleeper"
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "80b6f339-2c74-4112-8bbc-29b1a399294a",
+        "Flags": 0,
+        "Name": "Confusion",
+        "Enabled": true,
+        "NetworkMode": 1
+      },
+      {
+        "__guid": "e658e87d-967d-4c6b-baff-290edef68384",
+        "Flags": 0,
+        "Name": "Spotlight Cursor",
+        "Rotation": "0,0.7071068,0,0.7071068",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "__Prefab": "prefabs/spotlight_cursor.prefab",
+        "__PrefabVariables": {
+          "Visible Chance": 0.3
+        }
+      },
+      {
+        "__guid": "d88ede1f-8f29-41ab-afe2-7cc2919cc324",
+        "Flags": 0,
+        "Name": "Map Instance",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.MapInstance",
+            "__guid": "90a5a513-21cc-4304-aa3e-5df2701738a2",
+            "__version": 1,
+            "EnableCollision": true,
+            "MapName": "maps/map08.vmap",
+            "NoOrigin": false,
+            "UseMapFromLaunch": false
+          }
+        ],
+        "Children": []
+      },
+      {
+        "__guid": "8bce7055-31ee-4570-aeb4-ef3b3197bf8a",
+        "Flags": 0,
+        "Name": "Camera",
+        "Position": "-0.002406628,-1682.71,685.6573",
+        "Rotation": "0.1447334,-0.1447334,-0.6921361,-0.6921357",
+        "Scale": "-1.058358,1,1",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.CameraComponent",
+            "__guid": "aa605ca0-3b2a-4f0f-8d05-442286267a29",
+            "BackgroundColor": "0.33333,0.46275,0.52157,1",
+            "ClearFlags": "All",
+            "FieldOfView": 24.58,
+            "IsMainCamera": false,
+            "Orthographic": false,
+            "OrthographicHeight": 1204,
+            "Priority": 1,
+            "RenderExcludeTags": "",
+            "RenderTags": "",
+            "TargetEye": "None",
+            "Viewport": "0,0,1,1",
+            "ZFar": 10000,
+            "ZNear": 10
+          }
+        ]
+      },
+      {
+        "__guid": "a139d355-4518-4024-b070-2ddc64c04c2b",
+        "Flags": 0,
+        "Name": "Node Path",
+        "Position": "-162.4075,-160,255.9708",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "NodePathComponent",
+            "__guid": "9a883ff9-c3bc-4f6c-b836-30baac2f11f3",
+            "MoveType": "Straight",
+            "TargetPointsEnabled": true,
+            "Targets": [
+              {},
+              {
+                "Position": "0,-263.3995,-124.9995"
+              },
+              {
+                "Position": "0,-246.5995,-116.0998"
+              },
+              {
+                "Position": "0,-50,0"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "__guid": "81759c6e-d528-4a0f-a20a-607fea4488a6",
+        "Flags": 0,
+        "Name": "Node Path (1)",
+        "Position": "-0.04948425,-160,255.9708",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "NodePathComponent",
+            "__guid": "551ced0c-59cf-46f3-9871-63ef64772652",
+            "MoveType": "Straight",
+            "TargetPointsEnabled": true,
+            "Targets": [
+              {},
+              {
+                "Position": "0,-263.3995,-124.9995"
+              },
+              {
+                "Position": "0,-247.9008,-116.0998"
+              },
+              {
+                "Position": "0,-50,0"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "__guid": "58ec0dce-f696-4af1-a023-7e5db9c47aad",
+        "Flags": 0,
+        "Name": "Node Path (2)",
+        "Position": "160.144,-160,255.9708",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "NodePathComponent",
+            "__guid": "944ffb10-59d6-410c-ba43-421637e21119",
+            "MoveType": "Straight",
+            "TargetPointsEnabled": true,
+            "Targets": [
+              {},
+              {
+                "Position": "0,-263.3995,-124.9995"
+              },
+              {
+                "Position": "0,-245.0014,-116.0998"
+              },
+              {
+                "Position": "0,-50,0"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "__guid": "801b6bc6-ba3c-4454-aa67-184279a2fa9b",
+        "Flags": 0,
+        "Name": "Spawnpoint (8)",
+        "Position": "175.3495,-197.199,237.6711",
+        "Rotation": "0,0,0.7071069,-0.7071066",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "f3ba54a6-497a-408b-90a8-5e304a40ace2",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "0acdb546-0235-40b2-9c84-e2f7736a675d",
+        "Flags": 0,
+        "Name": "Spawnpoint (6)",
+        "Position": "-118.0599,-197.199,237.6711",
+        "Rotation": "0,0,0.7071069,-0.7071066",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "fa0c82f5-78ae-41d4-b503-5be7e62bfedc",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "80789e5e-f0c3-40dc-8288-f73344616d4a",
+        "Flags": 0,
+        "Name": "Spawnpoint (13)",
+        "Position": "28.74584,-197.199,237.6711",
+        "Rotation": "0,0,0.7071069,-0.7071066",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "59df626e-ccc9-4bc0-8425-d5fd2ad44995",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "08ce69b9-e5b3-4ec9-a8de-c399fbb5ce26",
+        "Flags": 0,
+        "Name": "Spawnpoint (1)",
+        "Position": "134.2751,-297.7274,203.0993",
+        "Rotation": "0,0,0.7071069,-0.7071066",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "c84bcdb3-4bd0-437a-996e-c164ee50f17b",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "50f6cbc4-44b2-48e8-93a9-ba71cb3836a5",
+        "Flags": 0,
+        "Name": "Spawnpoint (7)",
+        "Position": "-159.1343,-297.7274,203.0993",
+        "Rotation": "0,0,0.7071069,-0.7071066",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "9a74aa47-756c-412a-b9a3-44eca912d58b",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "4828a7ac-7f77-4ba0-94a7-4686a81ead87",
+        "Flags": 0,
+        "Name": "Spawnpoint (14)",
+        "Position": "-4.134872,-297.7274,203.0993",
+        "Rotation": "0,0,0.7071069,-0.7071066",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "10b08347-d6c5-4677-a839-137a6bf25480",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "f1295b2e-3d38-4528-ada0-87c6e9e5fab9",
+        "Flags": 0,
+        "Name": "Spawnpoint (2)",
+        "Position": "174.1411,-369.2743,159.7545",
+        "Rotation": "0,0,0.7071069,-0.7071066",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "4c9c40e1-62b6-4253-9d9d-edd7685e4851",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "81d9656c-72f8-4127-a2f2-964cbb906d0a",
+        "Flags": 0,
+        "Name": "Spawnpoint (9)",
+        "Position": "-119.2683,-369.2743,159.7545",
+        "Rotation": "0,0,0.7071069,-0.7071066",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "6d47761c-43cb-4867-b57d-c48e33f67dbf",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "ceede8e6-a188-41ae-92d7-48ad44e7e453",
+        "Flags": 0,
+        "Name": "Spawnpoint (15)",
+        "Position": "25.66171,-369.2743,159.7545",
+        "Rotation": "0,0,0.7071069,-0.7071066",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "a13e4118-969c-4474-9d70-5b014259150c",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "392ebf06-76d1-41bf-a1b9-e4bec898f4f4",
+        "Flags": 0,
+        "Name": "Spawnpoint (3)",
+        "Position": "134.2753,-450.8093,112.6077",
+        "Rotation": "0,0,0.7071069,-0.7071066",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "ad5b59f9-26b0-47ff-8efb-6ac0e5cf77c9",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "009820a5-71f6-41e8-8233-0356461b943d",
+        "Flags": 0,
+        "Name": "Spawnpoint (10)",
+        "Position": "-159.1341,-450.8093,112.6077",
+        "Rotation": "0,0,0.7071069,-0.7071066",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "ba1fd399-b35b-4e68-bc25-edee89dbf190",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "5a0cd87f-bfd7-4360-8773-2edff65b416d",
+        "Flags": 0,
+        "Name": "Spawnpoint (16)",
+        "Position": "-4.134674,-450.8093,112.6077",
+        "Rotation": "0,0,0.7071069,-0.7071066",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "1b6e47ab-8fd3-46fd-8103-49b4e93cd8c8",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "1819e42e-a91b-4625-a4b3-ecd65d77dbed",
+        "Flags": 0,
+        "Name": "Spawnpoint (4)",
+        "Position": "177.3402,-528.3085,78.35134",
+        "Rotation": "0,0,0.7071069,-0.7071066",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "4bed422f-6607-4357-b1da-5068bcc96d8f",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "6d1a966f-d8b6-41f8-a51c-f83389ccea30",
+        "Flags": 0,
+        "Name": "Spawnpoint (11)",
+        "Position": "-116.0692,-528.3085,78.35134",
+        "Rotation": "0,0,0.7071069,-0.7071066",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "0fe7a979-21f4-4aad-8c6b-fc8a74992c2f",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "096cead7-f93e-4536-a08b-a1a4c95e3a7d",
+        "Flags": 0,
+        "Name": "Spawnpoint (17)",
+        "Position": "28.64592,-528.3084,78.35134",
+        "Rotation": "0,0,0.7071069,-0.7071066",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "b7fe58b5-9b57-4136-a2a0-a684c9b153e1",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "536af625-1aa2-4be1-8449-0e1ad4f8159a",
+        "Flags": 0,
+        "Name": "Spawnpoint (5)",
+        "Position": "137.4793,-588.8303,40.27403",
+        "Rotation": "0,0,0.7071069,-0.7071066",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "fc144a2f-4648-4fd3-b4b8-e65a487406f0",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "c222d8f0-6852-4bd9-9561-f9fd00057092",
+        "Flags": 0,
+        "Name": "Spawnpoint (12)",
+        "Position": "-155.9301,-588.8302,40.27403",
+        "Rotation": "0,0,0.7071069,-0.7071066",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "e26bd319-a235-452c-8513-e1f58fa21ee7",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "ecae51ee-a05c-431f-ac47-a81b32b07bbc",
+        "Flags": 0,
+        "Name": "Spawnpoint (18)",
+        "Position": "-0.9306793,-588.8302,40.27403",
+        "Rotation": "0,0,0.7071069,-0.7071066",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "1d210cd1-e14e-4aa0-b082-f2cb5dced90c",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

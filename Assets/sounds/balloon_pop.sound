@@ -1,11 +1,13 @@
 {
   "UI": true,
-  "Volume": "0.60,2.00,0",
-  "Pitch": "1.00,2.00,0",
+  "Volume": "1.00,1.00,0",
+  "Pitch": "0.90,1.20,1",
   "Decibels": 70,
   "SelectionMode": "Random",
   "Sounds": [
-    "sounds/npc_deselect.vsnd"
+    "sounds/balloon_pop01.vsnd",
+    "sounds/balloon_pop02.vsnd",
+    "sounds/balloon_pop03.vsnd"
   ],
   "Occlusion": true,
   "AirAbsorption": false,

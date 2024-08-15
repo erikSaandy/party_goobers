@@ -1,0 +1,107 @@
+{
+  "RootObject": {
+    "__guid": "0cc0c6fc-fc4e-4d74-84b5-f709588f01c1",
+    "Flags": 0,
+    "Name": "Escalator",
+    "Position": "143.9999,-112,0",
+    "Rotation": "0,0,-0.7071067,0.7071068",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "EscalatrorComponent",
+        "__guid": "803c4c12-7dbc-4fe6-8cdf-17d3253f193b",
+        "LoopTriggerVolume": {
+          "_type": "component",
+          "component_id": "ad6af937-e910-4f71-900f-189350437187",
+          "go": "8867f07d-97fc-4a4b-9299-c4886943e842",
+          "component_type": "BoxCollider"
+        },
+        "Passengers": [],
+        "Renderer": {
+          "_type": "component",
+          "component_id": "28def9bf-0a4c-453f-9db3-c94535a4b2fc",
+          "go": "a5347ac3-65f7-493e-9cb5-3628540ab76e",
+          "component_type": "SkinnedModelRenderer"
+        },
+        "Speed": 1,
+        "TriggerVolume": {
+          "_type": "component",
+          "component_id": "13e3ac4a-f7d4-463c-9bbc-b69e05cca881",
+          "go": "53727a34-eb76-47bf-9cb8-73b0b3e6f1ea",
+          "component_type": "BoxCollider"
+        }
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "a5347ac3-65f7-493e-9cb5-3628540ab76e",
+        "Flags": 0,
+        "Name": "escalator_01",
+        "Position": "0,0,0",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "28def9bf-0a4c-453f-9db3-c94535a4b2fc",
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": false,
+            "Model": "models/escalator_01/escalator_01.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          },
+          {
+            "__type": "Sandbox.ModelCollider",
+            "__guid": "01518584-b602-448f-904d-88a11a879eb8",
+            "IsTrigger": false,
+            "Model": "models/escalator_01/escalator_01.vmdl",
+            "Static": false
+          }
+        ]
+      },
+      {
+        "__guid": "53727a34-eb76-47bf-9cb8-73b0b3e6f1ea",
+        "Flags": 0,
+        "Name": "Trigger",
+        "Position": "217.2991,0,97.48791",
+        "Rotation": "0,-0.258819,0,0.9659258",
+        "Scale": "9.319951,1.436386,4.819574",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.BoxCollider",
+            "__guid": "13e3ac4a-f7d4-463c-9bbc-b69e05cca881",
+            "Center": "0,0,0",
+            "IsTrigger": true,
+            "Scale": "50,50,50",
+            "Static": false
+          }
+        ]
+      },
+      {
+        "__guid": "8867f07d-97fc-4a4b-9299-c4886943e842",
+        "Flags": 0,
+        "Name": "Loop Trigger",
+        "Position": "452.3362,0.00001066871,231.0792",
+        "Scale": "2.036623,1.367587,3.217495",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.BoxCollider",
+            "__guid": "ad6af937-e910-4f71-900f-189350437187",
+            "Center": "0,0,0",
+            "IsTrigger": true,
+            "Scale": "50,50,50",
+            "Static": false
+          }
+        ]
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

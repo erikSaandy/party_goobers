@@ -28,6 +28,23 @@
       ]
     },
     {
+      "__guid": "0ce79441-1e99-4cfb-905d-381dae4e01c5",
+      "Flags": 0,
+      "Name": "LevelHandler",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "Components": [
+        {
+          "__type": "LevelHandler",
+          "__guid": "51bdbcaf-87b0-4571-b6eb-559b224332c1",
+          "LevelPrefabs": [
+            "prefabs/levels/tennis01.prefab"
+          ],
+          "LobbyPrefab": "prefabs/lobby.prefab"
+        }
+      ]
+    },
+    {
       "__guid": "a868cdcf-7e30-4a3b-93b5-ba187300ff5a",
       "Flags": 0,
       "Name": "Screen Label Handler",
@@ -108,27 +125,6 @@
         {
           "__type": "ObjectiveDisplay",
           "__guid": "07e4d840-7836-44af-884e-ef84a677d1fb"
-        }
-      ]
-    },
-    {
-      "__guid": "0ce79441-1e99-4cfb-905d-381dae4e01c5",
-      "Flags": 0,
-      "Name": "LevelHandler",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "Components": [
-        {
-          "__type": "LevelHandler",
-          "__guid": "51bdbcaf-87b0-4571-b6eb-559b224332c1",
-          "LevelPrefabs": [
-            "prefabs/levels/hotel01.prefab",
-            "prefabs/levels/mall01.prefab",
-            "prefabs/levels/mole01.prefab",
-            "prefabs/levels/street01.prefab",
-            "prefabs/levels/tennis01.prefab"
-          ],
-          "LobbyPrefab": "prefabs/lobby.prefab"
         }
       ]
     },

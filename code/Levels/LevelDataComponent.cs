@@ -18,7 +18,8 @@ public sealed class LevelDataComponent : Component
 
 	[Property] public NodePathComponent[] NodePaths { get; set; }
 
-	[Property] public GameObject NpcLookAtOverride { get; set; } = null;
+	[Group( "LookAt" )][Property] public bool OverrideLookAt { get; set; } = false;
+	[Group( "LookAt" )][Property] public GameObject NpcLookAtOverride { get; set; }
 
 	[Property] public int? MinSpawnCount { get; set; }
 

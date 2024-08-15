@@ -134,7 +134,8 @@ public class NPC : Component, IInteractable
 		WalkSpeed = Game.Random.Float( MIN_WALKSPEED, MAX_WALKSPEED );
 		float sp = Math2d.InverseLerp( 0.75f, 1.4f, WalkSpeed );
 
-		Renderer.Set( "f_walk_speed", Math2d.Map(WalkSpeed, MIN_WALKSPEED, MAX_WALKSPEED, 0.75f, 1.4f ) );
+		// Math2d.Map(WalkSpeed, MIN_WALKSPEED, MAX_WALKSPEED, 0.75f, 1.4f )
+		//Renderer.Set( "f_walk_speed", 0.9f );
 
 	}
 
@@ -172,6 +173,13 @@ public class NPC : Component, IInteractable
 		Renderer.Set( "b_crouching", crouch );
 	}
 
+
+	[Broadcast]
+	public void Jog( bool jog = true)
+	{
+		Renderer.Set( "f_walk_speed", jog ? 1.1f : 0.9f );
+	}
+
 	[Authority]
 	public void ToggleCrouch()
 	{
@@ -204,10 +212,11 @@ public class NPC : Component, IInteractable
 	public void Spawn( Transform spawnTransform )
 	{
 		Renderer.Set( "e_behaviour", (int)NPC.AnimationBehaviour.Default );
+		Crouch( false );
 
 		if ( IsProxy ) { return; }
 
-		Transform.Position = spawnTransform.Position;
+		Teleport( spawnTransform.Position );
 		Transform.Rotation = spawnTransform.Rotation;
 
 	}

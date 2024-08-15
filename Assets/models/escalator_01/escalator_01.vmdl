@@ -1,0 +1,259 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:modeldoc29:version{3cec427c-1b0e-4d48-a90a-0436f33a6041} -->
+{
+	rootNode = 
+	{
+		_class = "RootNode"
+		children = 
+		[
+			{
+				_class = "MaterialGroupList"
+				children = 
+				[
+					{
+						_class = "DefaultMaterialGroup"
+						remaps = 
+						[
+							{
+								from = "m_escalator_01.vmat"
+								to = "models/escalator_01/material/escalator_01.vmat"
+							},
+							{
+								from = "m_escalator_railing.vmat"
+								to = "models/escalator_01/material/escalator_railing.vmat"
+							},
+						]
+						use_global_default = false
+						global_default_material = "materials/default.vmat"
+					},
+				]
+			},
+			{
+				_class = "RenderMeshList"
+				children = 
+				[
+					{
+						_class = "RenderMeshFile"
+						filename = "models/escalator_01/escalator_01.fbx"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"steps_bottom",
+								"steps_middle",
+								"steps_top",
+								"railing_right_low",
+								"foot_right_low",
+								"railing_left_low",
+								"foot_left_low",
+								"step_low",
+								"grate_top_low",
+								"grate_bottom_low",
+							]
+						}
+					},
+				]
+			},
+			{
+				_class = "PhysicsShapeList"
+				children = 
+				[
+					{
+						_class = "PhysicsHullFile"
+						name = "escalator_01"
+						parent_bone = "j_step_bottom"
+						surface_prop = "default"
+						collision_tags = "solid"
+						recenter_on_parent_bone = false
+						offset_origin = [ 0.0, 0.0, 0.0 ]
+						offset_angles = [ 0.0, 0.0, 0.0 ]
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						filename = "models/escalator_01/escalator_01.fbx"
+						import_scale = 1.0
+						faceMergeAngle = 10.0
+						maxHullVertices = 0
+						import_mode = "SingleHull"
+						optimization_algorithm = "QEM"
+						import_filter = 
+						{
+							exclude_by_default = false
+							exception_list = 
+							[
+								"railing_right_low",
+								"foot_right_low",
+								"railing_left_low",
+								"foot_left_low",
+								"grate_top_low",
+								"grate_bottom_low",
+								"steps_middle",
+								"steps_top",
+							]
+						}
+					},
+					{
+						_class = "PhysicsHullFile"
+						name = "escalator_01_copy"
+						parent_bone = "j_step_top"
+						surface_prop = "default"
+						collision_tags = "solid"
+						recenter_on_parent_bone = false
+						offset_origin = [ 0.0, 0.0, 0.0 ]
+						offset_angles = [ 0.0, 0.0, 0.0 ]
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						filename = "models/escalator_01/escalator_01.fbx"
+						import_scale = 1.0
+						faceMergeAngle = 10.0
+						maxHullVertices = 0
+						import_mode = "SingleHull"
+						optimization_algorithm = "QEM"
+						import_filter = 
+						{
+							exclude_by_default = false
+							exception_list = 
+							[
+								"railing_right_low",
+								"foot_right_low",
+								"railing_left_low",
+								"foot_left_low",
+								"grate_top_low",
+								"grate_bottom_low",
+								"steps_middle",
+								"steps_bottom",
+							]
+						}
+					},
+					{
+						_class = "PhysicsMeshFile"
+						name = "escalator_02_copy"
+						parent_bone = ""
+						surface_prop = "default"
+						collision_tags = "solid"
+						recenter_on_parent_bone = false
+						offset_origin = [ 0.0, 0.0, 0.0 ]
+						offset_angles = [ 0.0, 0.0, 0.0 ]
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						filename = "models/escalator_01/escalator_01.fbx"
+						import_scale = 1.0
+						maxMeshVertices = 76
+						qemError = 0.0
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"grate_bottom_low",
+								"foot_right_low",
+								"railing_left_low",
+								"foot_left_low",
+								"grate_top_low",
+								"railing_right_low",
+							]
+						}
+					},
+					{
+						_class = "PhysicsMeshFile"
+						name = "escalator_02_copy1"
+						parent_bone = "j_step_middle"
+						surface_prop = "default"
+						collision_tags = "solid"
+						recenter_on_parent_bone = false
+						offset_origin = [ 0.0, 0.0, 0.0 ]
+						offset_angles = [ 0.0, 0.0, 0.0 ]
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						filename = "models/escalator_01/escalator_01.fbx"
+						import_scale = 1.0
+						maxMeshVertices = 140
+						qemError = 0.0
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"steps_middle",
+							]
+						}
+					},
+				]
+			},
+			{
+				_class = "AnimationList"
+				children = 
+				[
+					{
+						_class = "AnimFile"
+						name = "escalator_01"
+						activity_name = "climbing"
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.0
+						fade_out_time = 0.0
+						looping = true
+						delta = false
+						worldSpace = true
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						disable_interpolation = false
+						enable_scale = false
+						source_filename = "models/escalator_01/escalator_01.fbx"
+						start_frame = -1
+						end_frame = -1
+						framerate = 50.0
+						take = 0
+						reverse = false
+					},
+				]
+				default_root_bone_name = ""
+			},
+			{
+				_class = "ModelModifierList"
+				children = 
+				[
+					{
+						_class = "ModelModifier_ScaleAndMirror"
+						scale = 29.0
+						mirror_x = false
+						mirror_y = false
+						mirror_z = false
+						flip_bone_forward = false
+						swap_left_and_right_bones = false
+					},
+				]
+			},
+			{
+				_class = "AttachmentList"
+				children = 
+				[
+					{
+						_class = "Attachment"
+						name = "step_reference"
+						parent_bone = "j_step_middle"
+						relative_origin = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ 0.0, 0.0, 0.0 ]
+						weight = 1.0
+						ignore_rotation = true
+					},
+				]
+			},
+		]
+		model_archetype = ""
+		primary_associated_entity = ""
+		anim_graph_name = "models/escalator_01/escalator_01.vanmgrph"
+		base_model_name = ""
+	}
+}

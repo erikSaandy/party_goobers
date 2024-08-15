@@ -95,9 +95,9 @@
         "__type": "Sandbox.CapsuleCollider",
         "__guid": "ee083046-b2bf-4d21-8629-2077086b27f6",
         "End": "0,0,55.64987",
-        "IsTrigger": true,
-        "Radius": 16,
-        "Start": "0,0,8.395042",
+        "IsTrigger": false,
+        "Radius": 8,
+        "Start": "0,0,11.47886",
         "Static": false
       },
       {
@@ -111,6 +111,14 @@
       }
     ],
     "Children": [
+      {
+        "__guid": "9e94cd7c-264c-4807-a284-e595fc62b34d",
+        "Flags": 0,
+        "Name": "sad_lookat",
+        "Position": "75.38583,0.0001818183,43.95772",
+        "Scale": "9,9,9",
+        "Enabled": true
+      },
       {
         "__guid": "876ad418-ece7-4933-bb51-4ccc5046fc0b",
         "Flags": 0,

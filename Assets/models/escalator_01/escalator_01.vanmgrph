@@ -1,0 +1,160 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:animgraph2:version{0f7898b8-5471-45c4-9867-cd9c46bcfdb5} -->
+{
+	_class = "CAnimationGraph"
+	m_nodeManager = 
+	{
+		_class = "CAnimNodeManager"
+		m_nodes = 
+		[
+			{
+				key = 
+				{
+					m_id = 1177969810
+				}
+				value = 
+				{
+					_class = "CRootAnimNode"
+					m_sName = "Unnamed"
+					m_vecPosition = [ 48.0, -48.0 ]
+					m_nNodeID = 
+					{
+						m_id = 1177969810
+					}
+					m_sNote = ""
+					m_inputConnection = 
+					{
+						m_nodeID = 
+						{
+							m_id = 1848419090
+						}
+						m_outputID = 
+						{
+							m_id = 4294967295
+						}
+					}
+				}
+			},
+			{
+				key = 
+				{
+					m_id = 1406613258
+				}
+				value = 
+				{
+					_class = "CSequenceAnimNode"
+					m_sName = "Unnamed"
+					m_vecPosition = [ -480.0, -48.0 ]
+					m_nNodeID = 
+					{
+						m_id = 1406613258
+					}
+					m_sNote = ""
+					m_tagSpans = [  ]
+					m_sequenceName = "escalator_01"
+					m_playbackSpeed = 1.0
+					m_bLoop = true
+				}
+			},
+			{
+				key = 
+				{
+					m_id = 1848419090
+				}
+				value = 
+				{
+					_class = "CSpeedScaleAnimNode"
+					m_sName = "speed"
+					m_vecPosition = [ -208.0, -48.0 ]
+					m_nNodeID = 
+					{
+						m_id = 1848419090
+					}
+					m_sNote = ""
+					m_inputConnection = 
+					{
+						m_nodeID = 
+						{
+							m_id = 1406613258
+						}
+						m_outputID = 
+						{
+							m_id = 4294967295
+						}
+					}
+					m_param = 
+					{
+						m_id = 724759438
+					}
+				}
+			},
+		]
+	}
+	m_pParameterList = 
+	{
+		_class = "CAnimParameterList"
+		m_Parameters = 
+		[
+			{
+				_class = "CFloatAnimParameter"
+				m_name = "f_speed"
+				m_id = 
+				{
+					m_id = 724759438
+				}
+				m_previewButton = "ANIMPARAM_BUTTON_NONE"
+				m_bUseMostRecentValue = false
+				m_bAutoReset = false
+				m_fDefaultValue = 1.0
+				m_fMinValue = -6.0
+				m_fMaxValue = 6.0
+			},
+		]
+	}
+	m_pTagManager = 
+	{
+		_class = "CAnimTagManager"
+		m_tags = [  ]
+	}
+	m_pMovementManager = 
+	{
+		_class = "CAnimMovementManager"
+		m_MotorList = 
+		{
+			_class = "CAnimMotorList"
+			m_motors = [  ]
+		}
+		m_MovementSettings = 
+		{
+			_class = "CAnimMovementSettings"
+			m_bShouldCalculateSlope = false
+		}
+	}
+	m_pSettingsManager = 
+	{
+		_class = "CAnimGraphSettingsManager"
+		m_settingsGroups = 
+		[
+			{
+				_class = "CAnimGraphGeneralSettings"
+				m_iGridSnap = 16
+			},
+		]
+	}
+	m_pActivityValuesList = 
+	{
+		_class = "CActivityValueList"
+		m_activities = [  ]
+	}
+	m_previewModels = 
+	[
+		"models/escalator_01/escalator_01.vmdl",
+	]
+	m_boneMergeModels = [  ]
+	m_cameraSettings = 
+	{
+		m_flFov = 60.0
+		m_sLockBoneName = "j_base"
+		m_bLockCamera = false
+		m_bViewModelCamera = false
+	}
+}

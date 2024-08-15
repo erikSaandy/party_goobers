@@ -18,9 +18,11 @@ public class LevelObjectiveHandler : Component
 
 		Objectives = GameObject.Components.GetAll<LevelObjective>( FindMode.InSelf ).ToList();
 
-		if (IsProxy) { return; }	
+		if (IsProxy) { return; }
 
-		ObjectiveId = Objectives.GetRandomId();
+		ObjectiveId = Objectives.TakeWhile( x => (x is not FindOddObjective) ).Count();
+		//ObjectiveId = Objectives.GetRandomId();
+
 		Log.Info( $"Selected Objective: {CurrentObjective.GetType()}." );
 
 	}

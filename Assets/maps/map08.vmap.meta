@@ -2,28 +2,28 @@
   "publish": {
     "Enabled": false,
     "ProjectConfig": {
-      "Title": "map_template",
+      "Title": "map08",
       "Type": "map",
       "Org": "local",
-      "Ident": "map_template",
+      "Ident": "map08",
       "Schema": 0,
       "IncludeSourceFiles": false,
       "Resources": null,
       "PackageReferences": [],
       "EditorReferences": [
-        "facepunch.plaster_hs_03#33581",
         "facepunch.waterbase_sign#33713",
-        "facepunch.plastic_glossy_a_hs#28966",
-        "facepunch.wood_painted_b_hs#28975",
-        "facepunch.wooden_door_01d#43543",
-        "facepunch.wood_trim_03#43511",
-        "facepunch.floor_wood_laminated#18686",
         "facepunch.plaster_hs_01#33578",
+        "facepunch.plaster_a#18740",
         "facepunch.concrete_c_painted_hs#28942",
-        "facepunch.plywood_hs#33583"
+        "facepunch.cinderblocks_01_hs#28856",
+        "saandy.caged_light01_wall#35996",
+        "facepunch.plastic_glossy_a_hs#28966",
+        "facepunch.concretebarrier_damaged#58325",
+        "facepunch.binbag_a1#17181",
+        "facepunch.tyre#35766"
       ],
       "Metadata": {
-        "SingleAssetSource": "maps/map_template.vmap"
+        "SingleAssetSource": "maps/map08.vmap"
       }
     }
   }

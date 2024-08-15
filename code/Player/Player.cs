@@ -210,7 +210,7 @@ public class Player : Component
 		interactable = null;
 
 		//Log.Info( FadeScreen.Visible + " :: " + LevelTimer.IsRunning );
-		if ( FadeScreen.Visible || LifeState != PlayerLifeState.Alive ) { return false; }
+		if ( FadeScreen.Visible || LifeState != PlayerLifeState.Alive || !LevelTimer.IsRunning ) { return false; }
 
 		//Log.Info( CursorHud.CursorPosition );
 		Ray ray = Scene.Camera.ScreenPixelToRay( Mouse.Position );

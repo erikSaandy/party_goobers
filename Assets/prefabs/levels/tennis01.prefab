@@ -30,7 +30,72 @@
           "component_id": "a8813f12-ec76-46a1-b5ae-b93cd05d81fa",
           "go": "c3e9fb56-c60b-431f-95f9-e19db364aaa9",
           "component_type": "LevelObjectiveHandler"
-        }
+        },
+        "OnInitiated": {
+          "__version": 7,
+          "__guid": "2285700e-bf8b-4a04-a56d-7552f17123ad",
+          "UserData": {
+            "Title": "On Initiated",
+            "ReferencedComponentTypes": []
+          },
+          "Variables": [],
+          "Nodes": [
+            {
+              "Id": 0,
+              "Type": "input"
+            },
+            {
+              "Id": 2,
+              "Type": "scene.ref",
+              "Properties": {
+                "component": {
+                  "_type": "component",
+                  "component_id": "d020f07c-8bc5-4ef7-8b13-fe353cd00361",
+                  "go": "076c8b0b-38fa-4b80-bbed-d355f5268007",
+                  "component_type": "ConfusionSpell"
+                }
+              },
+              "UserData": {
+                "Position": "112,176"
+              }
+            },
+            {
+              "Id": 3,
+              "Type": "call",
+              "Properties": {
+                "_type": "ConfusionSpell",
+                "_isStatic": false,
+                "_name": "OnInitiated"
+              },
+              "UserData": {
+                "Position": "384,176"
+              }
+            }
+          ],
+          "Links": [
+            {
+              "SrcId": 0,
+              "SrcName": "_signal",
+              "DstId": 3,
+              "DstName": "_signal"
+            },
+            {
+              "SrcId": 2,
+              "SrcName": "_result",
+              "DstId": 3,
+              "DstName": "_target"
+            }
+          ],
+          "Defaults": {
+            "$2.component": {
+              "_type": "component",
+              "component_id": "d020f07c-8bc5-4ef7-8b13-fe353cd00361",
+              "go": "076c8b0b-38fa-4b80-bbed-d355f5268007",
+              "component_type": "ConfusionSpell"
+            }
+          }
+        },
+        "OverrideLookAt": true
       },
       {
         "__type": "LevelObjectiveHandler",
@@ -50,9 +115,41 @@
         "__type": "FindAlikeObjective",
         "__guid": "a023e122-11ef-4ff6-b7b4-4ab462da7a30",
         "NumberOfAlike": 3
+      },
+      {
+        "__type": "FindOddObjective",
+        "__guid": "56152675-96c5-4553-83c2-b00050e81012",
+        "MaxTargetNPCs": 3,
+        "OddityMask": "OddSleeper, OddTennis"
       }
     ],
     "Children": [
+      {
+        "__guid": "f4164dfb-62f2-4375-9a31-3cc3901a0e53",
+        "Flags": 0,
+        "Name": "Spotlight Cursor",
+        "Rotation": "0,0.7071068,0,0.7071068",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "__Prefab": "prefabs/spotlight_cursor.prefab",
+        "__PrefabVariables": {
+          "Visible Chance": 0.1
+        }
+      },
+      {
+        "__guid": "076c8b0b-38fa-4b80-bbed-d355f5268007",
+        "Flags": 0,
+        "Name": "Confusion",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "Components": [
+          {
+            "__type": "ConfusionSpell",
+            "__guid": "d020f07c-8bc5-4ef7-8b13-fe353cd00361",
+            "TriggerChance": 1
+          }
+        ]
+      },
       {
         "__guid": "668989d0-c260-43a7-a59c-900852f32110",
         "Flags": 0,
@@ -110,6 +207,10 @@
           {
             "__type": "TennisBall",
             "__guid": "7e2f084d-48d6-4f67-be9f-c0cd78db8819",
+            "InvertedBall": {
+              "_type": "gameobject",
+              "go": "ceacc012-2480-4193-9877-91e2115017a7"
+            },
             "PointA": {
               "_type": "gameobject",
               "go": "46da6eb3-30e5-491a-aa12-bd91d256a43d"
@@ -126,6 +227,25 @@
           {
             "__type": "Sandbox.ModelRenderer",
             "__guid": "ecd50dd1-09e1-4261-afa3-eb1119dcba7d",
+            "__enabled": false,
+            "BodyGroups": 18446744073709551615,
+            "Model": "models/dev/sphere.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "ceacc012-2480-4193-9877-91e2115017a7",
+        "Flags": 0,
+        "Name": "Inverted TennisBall",
+        "Position": "358.0817,-544,320",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "d7af083f-33f8-48e5-a4fe-1513619d5f35",
             "__enabled": false,
             "BodyGroups": 18446744073709551615,
             "Model": "models/dev/sphere.vmdl",
@@ -154,18 +274,6 @@
         "Name": "Ball Point C",
         "Position": "0,-543.9998,576",
         "Enabled": true
-      },
-      {
-        "__guid": "f4164dfb-62f2-4375-9a31-3cc3901a0e53",
-        "Flags": 0,
-        "Name": "Spotlight Cursor",
-        "Rotation": "0,0.7071068,0,0.7071068",
-        "Enabled": true,
-        "NetworkMode": 1,
-        "__Prefab": "prefabs/spotlight_cursor.prefab",
-        "__PrefabVariables": {
-          "Visible Chance": 0.1
-        }
       }
     ],
     "__variables": []

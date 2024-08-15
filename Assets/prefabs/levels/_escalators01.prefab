@@ -1,0 +1,777 @@
+{
+  "RootObject": {
+    "__guid": "4ae5fee9-354a-4385-801f-1f0c4bea0b66",
+    "Flags": 0,
+    "Name": "escalators01",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "LevelDataComponent",
+        "__guid": "f78d5d51-ce83-4381-ab89-7e057402aaec",
+        "CameraReference": {
+          "_type": "component",
+          "component_id": "a0b7ab42-d264-43a1-95d5-b5580addbe4e",
+          "go": "414a9433-f10c-444a-beae-a1c0cd18e433",
+          "component_type": "CameraComponent"
+        },
+        "MapInstance": {
+          "_type": "component",
+          "component_id": "da6af2ef-8c60-4ea3-b123-e4866bc3f42c",
+          "go": "e0c9cb3f-6358-4268-943b-768c2f9d7bec",
+          "component_type": "MapInstance"
+        },
+        "NodePaths": [],
+        "ObjectiveHandler": {
+          "_type": "component",
+          "component_id": "a77fead9-045d-49e5-8dc6-01a5469cf4c1",
+          "go": "4ae5fee9-354a-4385-801f-1f0c4bea0b66",
+          "component_type": "LevelObjectiveHandler"
+        }
+      },
+      {
+        "__type": "LevelObjectiveHandler",
+        "__guid": "a77fead9-045d-49e5-8dc6-01a5469cf4c1",
+        "ObjectiveId": 0
+      },
+      {
+        "__type": "FindSpecificObjective",
+        "__guid": "4ac3791b-2eae-48f4-a94e-518306580370"
+      },
+      {
+        "__type": "FindAlikeObjective",
+        "__guid": "5aea82cb-5fe8-46eb-8871-f6c891da799c",
+        "NumberOfAlike": 2
+      },
+      {
+        "__type": "FindAlikeObjective",
+        "__guid": "75b8ffb2-1bc5-4d5d-a51d-bbbceed2433d",
+        "NumberOfAlike": 3
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "e0c9cb3f-6358-4268-943b-768c2f9d7bec",
+        "Flags": 0,
+        "Name": "Map Instance",
+        "Position": "-2312.939,-0.0003662109,-0.00009155273",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.MapInstance",
+            "__guid": "da6af2ef-8c60-4ea3-b123-e4866bc3f42c",
+            "__version": 1,
+            "EnableCollision": true,
+            "MapName": "maps/map07.vmap",
+            "NoOrigin": false,
+            "UseMapFromLaunch": false
+          }
+        ],
+        "Children": []
+      },
+      {
+        "__guid": "414a9433-f10c-444a-beae-a1c0cd18e433",
+        "Flags": 0,
+        "Name": "Camera",
+        "Position": "-2295.032,838.7561,787.7733",
+        "Rotation": "0.18019,0.18019,-0.6837627,0.6837627",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.CameraComponent",
+            "__guid": "a0b7ab42-d264-43a1-95d5-b5580addbe4e",
+            "BackgroundColor": "0.33333,0.46275,0.52157,1",
+            "ClearFlags": "All",
+            "FieldOfView": 18,
+            "IsMainCamera": false,
+            "Orthographic": false,
+            "OrthographicHeight": 1204,
+            "Priority": 1,
+            "RenderExcludeTags": "",
+            "RenderTags": "",
+            "TargetEye": "None",
+            "Viewport": "0,0,1,1",
+            "ZFar": 3000,
+            "ZNear": 10
+          }
+        ]
+      },
+      {
+        "__guid": "8a402b70-8087-43b9-bd0a-97151e609ae9",
+        "Flags": 0,
+        "Name": "Spotlight Cursor",
+        "Position": "-2312.939,-0.0003662109,-0.00009155273",
+        "Rotation": "0,0.7071068,0,0.7071068",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "__Prefab": "prefabs/spotlight_cursor.prefab",
+        "__PrefabVariables": {
+          "Visible Chance": 0.1
+        }
+      },
+      {
+        "__guid": "0cc0c6fc-fc4e-4d74-84b5-f709588f01c1",
+        "Flags": 0,
+        "Name": "Escalator",
+        "Position": "-2168.939,-112.0004,-0.00009155273",
+        "Rotation": "0,0,-0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "EscalatrorComponent",
+            "__guid": "8bed2137-8c3b-4d02-ab02-f65989ea17f1",
+            "LoopTriggerVolume": {
+              "_type": "component",
+              "component_id": "3bc89dbf-e922-46f8-a2b3-0ff0d33c0404",
+              "go": "d0ae3353-7226-4b31-bee2-31e260fd93aa",
+              "component_type": "BoxCollider"
+            },
+            "Passengers": [],
+            "Renderer": {
+              "_type": "component",
+              "component_id": "808add3c-6594-4385-a565-83233293e284",
+              "go": "edebf41f-53ac-46a4-a057-4bd50dde890d",
+              "component_type": "SkinnedModelRenderer"
+            },
+            "Speed": 1,
+            "TriggerVolume": {
+              "_type": "component",
+              "component_id": "86812097-d69c-4632-8a98-c5a0d6b2c94f",
+              "go": "f09008b9-b15e-433f-9996-f44bccfa5aab",
+              "component_type": "BoxCollider"
+            }
+          }
+        ],
+        "Children": [
+          {
+            "__guid": "edebf41f-53ac-46a4-a057-4bd50dde890d",
+            "Flags": 0,
+            "Name": "escalator_01",
+            "Position": "0,0,0",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "Sandbox.SkinnedModelRenderer",
+                "__guid": "808add3c-6594-4385-a565-83233293e284",
+                "BodyGroups": 18446744073709551615,
+                "CreateBoneObjects": false,
+                "Model": "models/escalator_01/escalator_01.vmdl",
+                "RenderType": "On",
+                "Tint": "1,1,1,1",
+                "UseAnimGraph": true
+              },
+              {
+                "__type": "Sandbox.ModelCollider",
+                "__guid": "fa7990c5-8364-4b08-b6bc-634f00be78aa",
+                "IsTrigger": false,
+                "Model": "models/escalator_01/escalator_01.vmdl",
+                "Static": false
+              }
+            ]
+          },
+          {
+            "__guid": "f09008b9-b15e-433f-9996-f44bccfa5aab",
+            "Flags": 0,
+            "Name": "Trigger",
+            "Position": "217.2991,0,97.48791",
+            "Rotation": "0,-0.258819,0,0.9659258",
+            "Scale": "9.319951,1.255316,4.819574",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "Sandbox.BoxCollider",
+                "__guid": "86812097-d69c-4632-8a98-c5a0d6b2c94f",
+                "Center": "0,0,0",
+                "IsTrigger": true,
+                "Scale": "50,50,50",
+                "Static": false
+              }
+            ]
+          },
+          {
+            "__guid": "d0ae3353-7226-4b31-bee2-31e260fd93aa",
+            "Flags": 0,
+            "Name": "Loop Trigger",
+            "Position": "452.3362,0.00001066871,231.0792",
+            "Scale": "2.036623,1.367587,3.217495",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "Sandbox.BoxCollider",
+                "__guid": "3bc89dbf-e922-46f8-a2b3-0ff0d33c0404",
+                "Center": "0,0,0",
+                "IsTrigger": true,
+                "Scale": "50,50,50",
+                "Static": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "__guid": "be902f29-6e9f-490f-b225-bf5032e0cb92",
+        "Flags": 0,
+        "Name": "Escalator (1)",
+        "Position": "-2296.992,-112.0004,-0.00009155273",
+        "Rotation": "0,0,-0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "EscalatrorComponent",
+            "__guid": "00cb36f1-25f6-4080-80ba-c41d9a0f58ba",
+            "LoopTriggerVolume": {
+              "_type": "component",
+              "component_id": "5abe4c21-92ff-4e81-b36b-535eee198f03",
+              "go": "efa7bd21-ff65-4e74-bf9f-ac3d788bc9b3",
+              "component_type": "BoxCollider"
+            },
+            "Passengers": [],
+            "Renderer": {
+              "_type": "component",
+              "component_id": "6738e5d3-928e-4d56-b2ea-f7b1a6c5f111",
+              "go": "d1270ab7-1764-4460-8e89-497ce3cff9c0",
+              "component_type": "SkinnedModelRenderer"
+            },
+            "Speed": 1,
+            "TriggerVolume": {
+              "_type": "component",
+              "component_id": "28feb9fd-b3ba-47f6-91c7-1c48f37678a0",
+              "go": "bc7d142e-f02e-48e2-97dc-4508763504df",
+              "component_type": "BoxCollider"
+            }
+          }
+        ],
+        "Children": [
+          {
+            "__guid": "d1270ab7-1764-4460-8e89-497ce3cff9c0",
+            "Flags": 0,
+            "Name": "escalator_01",
+            "Position": "0,0,0",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "Sandbox.SkinnedModelRenderer",
+                "__guid": "6738e5d3-928e-4d56-b2ea-f7b1a6c5f111",
+                "BodyGroups": 18446744073709551615,
+                "CreateBoneObjects": false,
+                "Model": "models/escalator_01/escalator_01.vmdl",
+                "RenderType": "On",
+                "Tint": "1,1,1,1",
+                "UseAnimGraph": true
+              },
+              {
+                "__type": "Sandbox.ModelCollider",
+                "__guid": "586f9b3e-5b75-4178-9b88-8226f181efb0",
+                "IsTrigger": false,
+                "Model": "models/escalator_01/escalator_01.vmdl",
+                "Static": false
+              }
+            ]
+          },
+          {
+            "__guid": "bc7d142e-f02e-48e2-97dc-4508763504df",
+            "Flags": 0,
+            "Name": "Trigger",
+            "Position": "217.2991,0,97.48791",
+            "Rotation": "0,-0.258819,0,0.9659258",
+            "Scale": "9.319951,1.255316,4.819574",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "Sandbox.BoxCollider",
+                "__guid": "28feb9fd-b3ba-47f6-91c7-1c48f37678a0",
+                "Center": "0,0,0",
+                "IsTrigger": true,
+                "Scale": "50,50,50",
+                "Static": false
+              }
+            ]
+          },
+          {
+            "__guid": "efa7bd21-ff65-4e74-bf9f-ac3d788bc9b3",
+            "Flags": 0,
+            "Name": "Loop Trigger",
+            "Position": "452.3362,0.00001066871,231.0792",
+            "Scale": "2.036623,1.367587,3.217495",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "Sandbox.BoxCollider",
+                "__guid": "5abe4c21-92ff-4e81-b36b-535eee198f03",
+                "Center": "0,0,0",
+                "IsTrigger": true,
+                "Scale": "50,50,50",
+                "Static": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "__guid": "19f95cce-68d4-410f-b835-b25c87fb8466",
+        "Flags": 0,
+        "Name": "Escalator (2)",
+        "Position": "-2424.939,-112.0004,0.9614559",
+        "Rotation": "0,0,-0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "EscalatrorComponent",
+            "__guid": "3f9d34a8-127e-42b2-8348-af639200f062",
+            "LoopTriggerVolume": {
+              "_type": "component",
+              "component_id": "78f75d5a-8a1f-4429-96ef-a42ed89d5930",
+              "go": "bb9459b7-2eae-417e-b68a-2b688627314d",
+              "component_type": "BoxCollider"
+            },
+            "Passengers": [],
+            "Renderer": {
+              "_type": "component",
+              "component_id": "64155c39-0dee-4e69-8cd4-d100454bab8d",
+              "go": "27c2aaf8-a462-4767-9f6c-efa77fd3ee2e",
+              "component_type": "SkinnedModelRenderer"
+            },
+            "Speed": 1,
+            "TriggerVolume": {
+              "_type": "component",
+              "component_id": "979db4be-a027-4bf6-8c7d-7781d6feda1a",
+              "go": "42b6f1fb-7f3b-4373-a5a9-c804ede6c027",
+              "component_type": "BoxCollider"
+            }
+          }
+        ],
+        "Children": [
+          {
+            "__guid": "27c2aaf8-a462-4767-9f6c-efa77fd3ee2e",
+            "Flags": 0,
+            "Name": "escalator_01",
+            "Position": "0,0,0",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "Sandbox.SkinnedModelRenderer",
+                "__guid": "64155c39-0dee-4e69-8cd4-d100454bab8d",
+                "BodyGroups": 18446744073709551615,
+                "CreateBoneObjects": false,
+                "Model": "models/escalator_01/escalator_01.vmdl",
+                "RenderType": "On",
+                "Tint": "1,1,1,1",
+                "UseAnimGraph": true
+              },
+              {
+                "__type": "Sandbox.ModelCollider",
+                "__guid": "7f173ab4-d5c6-4100-93c3-1b3e8458a907",
+                "IsTrigger": false,
+                "Model": "models/escalator_01/escalator_01.vmdl",
+                "Static": false
+              }
+            ]
+          },
+          {
+            "__guid": "42b6f1fb-7f3b-4373-a5a9-c804ede6c027",
+            "Flags": 0,
+            "Name": "Trigger",
+            "Position": "217.2991,0,97.48791",
+            "Rotation": "0,-0.258819,0,0.9659258",
+            "Scale": "9.319951,1.255316,4.819574",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "Sandbox.BoxCollider",
+                "__guid": "979db4be-a027-4bf6-8c7d-7781d6feda1a",
+                "Center": "0,0,0",
+                "IsTrigger": true,
+                "Scale": "50,50,50",
+                "Static": false
+              }
+            ]
+          },
+          {
+            "__guid": "bb9459b7-2eae-417e-b68a-2b688627314d",
+            "Flags": 0,
+            "Name": "Loop Trigger",
+            "Position": "452.3362,0.00001066871,231.0792",
+            "Scale": "2.036623,1.367587,3.217495",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "Sandbox.BoxCollider",
+                "__guid": "78f75d5a-8a1f-4429-96ef-a42ed89d5930",
+                "Center": "0,0,0",
+                "IsTrigger": true,
+                "Scale": "50,50,50",
+                "Static": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "__guid": "daccb229-632b-4e75-bd0e-66581f783a34",
+        "Flags": 0,
+        "Name": "Spawnpoint (14)",
+        "Position": "-2168.939,-286.4473,427.2253",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "24d05a26-786d-46e6-9083-96941266869f",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "a60d0e84-9acd-444f-bacf-f8679cce0471",
+        "Flags": 0,
+        "Name": "Spawnpoint (21)",
+        "Position": "-2296.939,-286.4471,427.2253",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "2635f323-9d13-44a0-8a9c-56afd4e0833f",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "da52c0cd-2c37-422f-8ebc-5222bea82c9e",
+        "Flags": 0,
+        "Name": "Spawnpoint (28)",
+        "Position": "-2424.939,-286.447,427.2253",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "47467d99-0325-48b5-ac42-0d34dca70a90",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "a8181130-b218-4f78-bb76-8a7a664e3d77",
+        "Flags": 0,
+        "Name": "Spawnpoint (13)",
+        "Position": "-2168.94,-418.8743,504.8973",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "21e2a02a-198e-4411-8145-ca555d9ebfc8",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "959f503f-e6e8-4998-8277-f524f54781ad",
+        "Flags": 0,
+        "Name": "Spawnpoint (18)",
+        "Position": "-2296.939,-418.8741,504.8973",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "d6ad7c71-70bc-44a6-8fe3-efab59238ca5",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "f07fc910-b5e3-4784-9b75-66ae62248ad6",
+        "Flags": 0,
+        "Name": "Spawnpoint (25)",
+        "Position": "-2424.939,-418.874,504.8973",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "26adadf3-b795-4173-bc80-e9859dd0a8a6",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "5d7b4a21-57b8-4fc3-8a31-3e16a9585efc",
+        "Flags": 0,
+        "Name": "Spawnpoint (12)",
+        "Position": "-2168.939,-200.0002,375.6848",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "eaf7b3b3-988f-427d-bfb9-20589a0309b3",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "378df38e-ff95-4ce0-9dbe-625954453378",
+        "Flags": 0,
+        "Name": "Spawnpoint (1)",
+        "Position": "-2168.939,-155.5957,347.5729",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "3b213c53-13f9-4099-bc5a-7aac80337248",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "a8dd18d0-46ca-4ec4-89df-6c25f36e5151",
+        "Flags": 0,
+        "Name": "Spawnpoint (17)",
+        "Position": "-2296.939,-200,375.6848",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "727fb588-8d4a-4255-8153-70d8658a02ab",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "256ef8bd-de44-4a39-aed7-35da9904093e",
+        "Flags": 0,
+        "Name": "Spawnpoint (2)",
+        "Position": "-2296.939,-155.5956,347.5729",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "43b444e6-1d78-4005-88fb-9ebe025b77df",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "19b30e0b-af33-4ad8-8272-a56979586eba",
+        "Flags": 0,
+        "Name": "Spawnpoint (24)",
+        "Position": "-2424.939,-199.9999,375.6848",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "5024438c-394d-4f3f-93ab-268bf7357588",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "1127d769-057e-495d-b916-963e0b649979",
+        "Flags": 0,
+        "Name": "Spawnpoint (3)",
+        "Position": "-2424.939,-155.5954,347.5729",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "af9f99d3-8949-4e8c-99c5-f38a9f8fc067",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "1b159746-a1c2-4850-90b3-7bfb299fbbb4",
+        "Flags": 0,
+        "Name": "Spawnpoint (11)",
+        "Position": "-2168.939,-334.4473,452.3896",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "d454e28e-3c15-48c3-8194-6a3fdc8e8f8f",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "3b8838a9-0f94-467a-a853-a3410a7ec079",
+        "Flags": 0,
+        "Name": "Spawnpoint (16)",
+        "Position": "-2296.939,-334.4471,452.3896",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "754283e4-8d82-40b7-b5c5-083c6bdced6f",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "afddc80e-8bc5-4b1d-979b-aa68ef2ce794",
+        "Flags": 0,
+        "Name": "Spawnpoint (23)",
+        "Position": "-2424.939,-334.447,452.3896",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "93611326-0ff6-4e02-971b-6d58f2a82621",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "b0624253-df01-4310-9ed4-ba4e3693ee1a",
+        "Flags": 0,
+        "Name": "Spawnpoint (10)",
+        "Position": "-2168.94,-466.8743,530.0616",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "d3aa64a1-ef72-4c6c-854f-1b1af77c2d33",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "d0ac10b5-7d1a-401e-bce6-23469296c9ff",
+        "Flags": 0,
+        "Name": "Spawnpoint (19)",
+        "Position": "-2296.939,-466.8741,530.0616",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "6d5900fe-a4e8-4876-88d1-1eb5629ff620",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "a2869465-7d11-40b3-b92e-f43a26369032",
+        "Flags": 0,
+        "Name": "Spawnpoint (26)",
+        "Position": "-2424.939,-466.874,530.0616",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "27100e57-a136-4a1e-8ddc-b0ee8c256dba",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "c82189f9-aa36-422d-ba61-e8492aaa9b94",
+        "Flags": 0,
+        "Name": "Spawnpoint (9)",
+        "Position": "-2168.939,-242.2518,400.9754",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "258f5be3-d8af-4881-a3e4-e747bf645642",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "598373a1-4344-4ad3-bad1-c1f17ad033eb",
+        "Flags": 0,
+        "Name": "Spawnpoint (20)",
+        "Position": "-2296.939,-242.2517,400.9754",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "568aca7f-0163-42b8-89a2-e44d097eaf86",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "7e147e24-7f8b-4953-9ab6-9c111c6a6b89",
+        "Flags": 0,
+        "Name": "Spawnpoint (27)",
+        "Position": "-2424.939,-242.2516,400.9754",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "9dc3aad6-1ecc-49ac-a88a-00ae17fe1793",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "133c2162-275d-4aff-9c72-43657bfce6a0",
+        "Flags": 0,
+        "Name": "Spawnpoint (8)",
+        "Position": "-2168.94,-376.6989,477.6802",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "05b9a550-705a-4ff8-8fa0-b59f0a9de2f4",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "c83a1f29-f92d-4c37-8402-83415ab8ee64",
+        "Flags": 0,
+        "Name": "Spawnpoint (15)",
+        "Position": "-2296.939,-376.6987,477.6802",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "559a7b5f-f8c1-4b72-a960-56a9efead982",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "2a155732-0ab3-42a8-b2e0-70d0b3eeed01",
+        "Flags": 0,
+        "Name": "Spawnpoint (22)",
+        "Position": "-2424.939,-376.6986,477.6802",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "c12160c1-019c-4faf-bb00-be625881a3f1",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

@@ -3,6 +3,8 @@ using Sandbox;
 
 public class TennisBall : Component
 {
+	[Property] public GameObject InvertedBall { get; private set; }
+
 	[Property] public GameObject PointA { get; private set; }
 
 	[Property] public GameObject PointB { get; private set; }
@@ -35,6 +37,7 @@ public class TennisBall : Component
 		}
 
 		GameObject.Transform.Position = Math2d.QuadraticCurve( A, C, B, t );
+		InvertedBall.Transform.Position = Math2d.QuadraticCurve( A, C, B, 1-t );
 	}
 
 

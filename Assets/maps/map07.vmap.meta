@@ -1,0 +1,27 @@
+{
+  "publish": {
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "map07",
+      "Type": "map",
+      "Org": "local",
+      "Ident": "map07",
+      "Schema": 0,
+      "IncludeSourceFiles": false,
+      "Resources": null,
+      "PackageReferences": [],
+      "EditorReferences": [
+        "facepunch.concrete_c_painted_hs#28942",
+        "facepunch.wooden_door_01d#43543",
+        "facepunch.plaster_hs_01#33578",
+        "facepunch.floor_wood_laminated#18686",
+        "facepunch.wood_painted_b_hs#28975",
+        "facepunch.wood_trim_03#43511",
+        "facepunch.plywood_hs#33583"
+      ],
+      "Metadata": {
+        "SingleAssetSource": "maps/map07.vmap"
+      }
+    }
+  }
+}

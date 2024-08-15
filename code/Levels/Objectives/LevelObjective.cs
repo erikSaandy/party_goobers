@@ -102,9 +102,13 @@ public abstract class LevelObjective : Component
 			{
 				await Task.Delay( 700 );
 
-				int score = -2000;
-				PartyFacesManager.Instance.LabelHandler.SpawnLabel( score.ToString(), Mouse.Position / Screen.Size, Vector2.Up * 250, true );
-				player.AddScore( score );
+				foreach(NPC npcSelected in SelectedNPCs)
+				{
+					int score = -1000;
+					PartyFacesManager.Instance.LabelHandler.SpawnLabel( score.ToString(), Scene.Camera.PointToScreenNormal( npcSelected.Transform.Position + Vector3.Up * 32), Vector2.Up * 250, true );
+					player.AddScore( score );
+
+				}
 
 				// ON WRONG SELECTION
 				ResetSelection( playerId );
@@ -147,18 +151,45 @@ public abstract class LevelObjective : Component
 		NPCs = set.Take( spawnCount );
 
 		// Get lookAt
-		GameObject lookAt = LevelData.NpcLookAtOverride == null ? Scene.Camera.GameObject : LevelData.NpcLookAtOverride;
+	   GameObject lookAt = LevelData.OverrideLookAt ? LevelData.NpcLookAtOverride : Scene.Camera.GameObject;
 
 		// Make sure npc looks at Objective lookAt (defaults to scene camera).
 		foreach (NPC npc in NPCs )
 		{
 			PartyFacesManager.EnableGameobject( npc.GameObject.Id, true );
+
+			if(lookAt == null) { continue; }
+
 			npc.LookAt( lookAt.Id );
 		}
 
 		//TODO: Make sure player NPCs are always chosen.
 		return NPCs;
 
+	}
+
+	protected List<Guid> GetTargetNPCs( IEnumerable<NPC> npcs, int count)
+	{
+		int startId = npcs.GetRandomId();
+
+		List<Guid> targets = new();
+
+		int id = startId;
+		while ( true )
+		{
+			targets.Add( npcs.ElementAt( id ).GameObject.Id);
+
+			id++;
+			id %= npcs.Count();
+
+			if ( targets.Count > count - 1 )
+			{
+				break;
+			}
+
+		}
+
+		return targets;
 	}
 
 

@@ -34,7 +34,7 @@
 	[Property] public GameObject Emote { get; private set; }
 
 	private TimeSince TimeAlive { get; set; }
-	bool CanStartGame => TimeAlive > 3f;
+	bool CanStartGame => TimeAlive > 2f;
 
 	private Vector2 NametagPosition(GameObject npc)
 	{

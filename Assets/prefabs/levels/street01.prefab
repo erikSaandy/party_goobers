@@ -51,7 +51,8 @@
           "component_id": "8e853bb9-ae3b-4400-a3b2-3a8383310b45",
           "go": "eee03bc2-f4b0-4fd5-84a7-5e230f312b61",
           "component_type": "LevelObjectiveHandler"
-        }
+        },
+        "OverrideLookAt": false
       },
       {
         "__type": "LevelObjectiveHandler",
@@ -71,6 +72,12 @@
         "__type": "FindAlikeObjective",
         "__guid": "f9bbb3e9-0f96-4099-93b3-95eea2d16a02",
         "NumberOfAlike": 3
+      },
+      {
+        "__type": "FindOddObjective",
+        "__guid": "45b133dd-c358-4916-b42f-469cadf4dca2",
+        "MaxTargetNPCs": 3,
+        "OddityMask": "OddRunner, OddSleeper"
       }
     ],
     "Children": [
