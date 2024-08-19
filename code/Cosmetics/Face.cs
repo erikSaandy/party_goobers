@@ -74,6 +74,14 @@ public class Face : Component, Component.INetworkListener
 
 	}
 
+	public void UpdateRenderer()
+	{
+		Eyebrows.UpdateRenderer();
+		Eyes.UpdateRenderer();
+		Nose.UpdateRenderer();
+		Mouth.UpdateRenderer();		
+	}
+
 	public void Save()
 	{
 

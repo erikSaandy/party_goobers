@@ -9,7 +9,7 @@ public abstract class FaceFeature : Component
 
 	[JsonIgnore] public abstract Vector2 BaseOffset { get; }
 
-	public FaceFeatureData Data { get; set; } 
+	[Sync] public FaceFeatureData Data { get; set; } 
 
 	[Broadcast]
 	public void SetTextureID(int value)
@@ -47,7 +47,7 @@ public abstract class FaceFeature : Component
 		Data.Offset = 0;
 	}
 
-	private void UpdateRenderer()
+	public void UpdateRenderer()
 	{
 		Renderer.Texture = Texture;
 	}

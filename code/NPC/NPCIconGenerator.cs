@@ -77,7 +77,7 @@ public class NPCIconGenerator : SingletonComponent<NPCIconGenerator>
 		Camera.RenderToTexture( RenderTexture );
 		Log.Info( "took headshot" );
 
-		LevelHandler.Instance.CurrentLevelData.OnInitiated -= delegate { TakeNPCHeadshotAsync( npcGuid ); };
+		NPCBuffer.OnNPCsGenerated -= delegate { TakeNPCHeadshotAsync( npcGuid ); };
 
 	}
 

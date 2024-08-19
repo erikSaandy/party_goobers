@@ -353,6 +353,29 @@ public class NPC : Component, IInteractable
 
 	}
 
+	protected override void OnEnabled()
+	{
+		base.OnEnabled();
+
+		// Make sure faces textures are updated to match IDs.
+		Face.UpdateRenderer();
+		//Describe();
+
+	}
+
+	[Broadcast]
+	public void Describe()
+	{
+		Log.Warning( "- - - - - - - - - - -" );
+		Log.Info( "I'm " + GameObject.Name );
+		Log.Info( "and I'm " + Renderer.Tint.ToString() );
+		Log.Info( "eyebrow id is " + Face.Eyebrows.TextureId );
+		Log.Info( "eye id is " + Face.Eyes.TextureId );
+		Log.Info( "nose id is " + Face.Nose.TextureId );
+		Log.Info( "mouth id is " + Face.Mouth.TextureId );
+		Log.Warning( "- - - - - - - - - - -" );
+	}
+
 
 	//[Authority]
 	//public void AddCrown()
