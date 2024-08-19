@@ -1,0 +1,21 @@
+{
+  "publish": {
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "map10",
+      "Type": "map",
+      "Org": "local",
+      "Ident": "map10",
+      "Schema": 0,
+      "IncludeSourceFiles": false,
+      "Resources": null,
+      "PackageReferences": [],
+      "EditorReferences": [
+        "facepunch.plastic_glossy_a_hs#28966"
+      ],
+      "Metadata": {
+        "SingleAssetSource": "maps/map10.vmap"
+      }
+    }
+  }
+}

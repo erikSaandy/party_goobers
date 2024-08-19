@@ -2,16 +2,33 @@ public static class ICollectionExtension
 {
 	public static T GetRandomWeighted<T>( this ICollection<T> pool ) where T : IWeighted
 	{
+		return pool.ElementAt( GetRandomIdWeighted<T>( pool ) );
+
+		//if ( pool == null || pool.Count == 0 ) { Log.Error( $"weighted pool can not be empty." ); }
+
+		//// Only one item in list? select it.
+		//if ( pool.Count == 1 ) { return pool.ElementAt( 0 ); }
+
+		//int totalWeight = pool.Sum( x => x.Weight );
+
+		//int rnd = Game.Random.Next( totalWeight );
+
+		//return pool.First( x => (rnd -= x.Weight) < 0 );
+
+	}
+
+	public static int GetRandomIdWeighted<T>( this ICollection<T> pool ) where T : IWeighted
+	{
 		if ( pool == null || pool.Count == 0 ) { Log.Error( $"weighted pool can not be empty." ); }
 
 		// Only one item in list? select it.
-		if ( pool.Count == 1 ) { return pool.ElementAt( 0 ); }
+		if ( pool.Count == 1 ) { return 0; }
 
 		int totalWeight = pool.Sum( x => x.Weight );
 
 		int rnd = Game.Random.Next( totalWeight );
 
-		return pool.First( x => (rnd -= x.Weight) < 0 );
+		return pool.TakeWhile( x => (rnd -= x.Weight) >= 0 ).Count();
 
 	}
 

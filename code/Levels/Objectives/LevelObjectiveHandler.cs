@@ -20,8 +20,14 @@ public class LevelObjectiveHandler : Component
 
 		if (IsProxy) { return; }
 
-		ObjectiveId = Objectives.TakeWhile( x => (x is not FindOddObjective) ).Count();
-		//ObjectiveId = Objectives.GetRandomId();
+		//ObjectiveId = Objectives.TakeWhile( x => (x is not FindOddObjective) ).Count();
+		ObjectiveId = Objectives.GetRandomIdWeighted<LevelObjective>();
+
+		foreach(LevelObjective objective in Objectives)
+		{
+			if(objective == CurrentObjective) { continue; }
+			objective.Enabled = false;
+		}
 
 		Log.Info( $"Selected Objective: {CurrentObjective.GetType()}." );
 

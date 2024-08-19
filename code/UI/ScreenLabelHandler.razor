@@ -11,7 +11,9 @@
 		float x = (l.Position.x / Screen.Width);
 		float y = (l.Position.y / Screen.Height);
 
-		<div class="label @(l.Alive ? "alive " : "")" style="left: @(Length.Fraction(x)); top: @(Length.Fraction(y))">@(l.Text)</div>
+        string col = (l.IsPossitive ? ColorPossitive : ColorNegative).Rgb;
+
+        <div class="label @(l.Alive ? "alive " : "")" style="left: @(Length.Fraction(x)); top: @(Length.Fraction(y)); color: @(col)">@(l.Text)</div>
 	}
 
 </root>
@@ -20,6 +22,8 @@
 {
     const float GRAVITY = 8.5f;
 
+    private Color ColorPossitive = new Color(35, 240, 35);
+    private Color ColorNegative = new Color(240, 35, 35);
 
     public bool Visible { get; private set; } = true;
 
@@ -50,10 +54,13 @@
             l.Velocity.y += l.UseGravity ? GRAVITY : 0;
             l.Position += l.Velocity * Time.Delta;
 
-            float pLife = l.TimeAlive / l.Life;
-            float pitch = MathX.Remap(1 - pLife, 0, 1, pitchLow, pitchHigh);
-            l.Sound.Pitch = pitch;
-            l.Sound.Volume = pLife > 0.2f ? ( 1 - pLife ) * 0.25f : 0;
+            if (l.Sound != null)
+            {
+                float pLife = l.TimeAlive / l.Life;
+                float pitch = MathX.Remap(1 - pLife, 0, 1, pitchLow, pitchHigh);
+                l.Sound.Pitch = pitch;
+                l.Sound.Volume = pLife > 0.2f ? (1 - pLife) * 0.25f : 0;
+            }
 
             if (l.Alive && l.TimeAlive > l.Life - 1)
             {
@@ -61,7 +68,7 @@
             }
             else if (l.TimeAlive > l.Life)
             {
-                l.Sound.Stop();
+                l.Sound?.Stop();
                 Labels.RemoveAt(i);	
             }
 
@@ -72,13 +79,16 @@
     }
 
     [Broadcast]
-    public void SpawnLabel(string text, Vector2 startPosNormal, Vector2 velocity, bool useGravity, float life = 2)
+    public void SpawnLabel(string text, Vector2 startPosNormal, Vector2 velocity, bool useGravity, float life = 2, bool isPositive = false)
     {
-        SoundHandle handle = Sound.Play("sounds/label_fall.sound");
+        SoundHandle handle = null;
+
+        if (!isPositive) { handle = Sound.Play("sounds/label_fall.sound"); }
+
         Sound.Play("sounds/balloon_pop.sound");
 
         Vector2 pos = startPosNormal * Screen.Size;
-        Labels.Add(new ScreenLabel(text, pos, velocity, useGravity, life, handle));
+        Labels.Add(new ScreenLabel(text, pos, velocity, useGravity, life, isPositive, handle));
     }
 
     protected override int BuildHash()
@@ -97,8 +107,9 @@
         public float Life;
         public TimeSince TimeAlive;
         public SoundHandle Sound;
+        public bool IsPossitive;
 
-        public ScreenLabel(string text, Vector2 startPos, Vector2 velocity, bool useGravity, float life, SoundHandle sound)
+        public ScreenLabel(string text, Vector2 startPos, Vector2 velocity, bool useGravity, float life, bool isPossitive, SoundHandle sound)
         {
             this.Text = text;
             this.Position = startPos;
@@ -113,6 +124,8 @@
             Alive = true;
 
             this.Sound = sound;
+
+            this.IsPossitive = isPossitive;
 
         }
 

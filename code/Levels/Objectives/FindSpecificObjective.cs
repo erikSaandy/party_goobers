@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 public class FindSpecificObjective : LevelObjective
 {
+	public override bool Disabled { get; set; } = false;
+	public override int Weight => 220;
+
 	public override int MaxSelectedNPCs => 1;
 
 	[Sync] public Guid TargetNPCId { get; private set; }
@@ -48,9 +51,9 @@ public class FindSpecificObjective : LevelObjective
 
 	}
 
-	protected override void OnCompletedObjective( Guid player )
+	protected override void CompletedObjective( Guid player )
 	{
-		base.OnCompletedObjective( player );
+		base.CompletedObjective( player );
 
 	}
 

@@ -13,6 +13,8 @@ code/Editor/Properties/*
 code/Editor/*.sln
 code/Editor/.vs/*
 code/Editor/.vscode/*
+Exports/*
+
 
 # Auto-generated asset related files
 *.generated.*
@@ -21,6 +23,8 @@ code/Editor/.vscode/*
 *.vpk
 *.mb
 *.vmap
+*.dll
+*.vcfg
 
 # Source files, not part of the project files (Backed up on Dropbox)
 **/source/*
@@ -28,3 +32,4 @@ code/Editor/.vscode/*
 *.pur
 *.zip
 *.png
+*.spp

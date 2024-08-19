@@ -76,8 +76,8 @@
       {
         "__type": "FindOddObjective",
         "__guid": "45b133dd-c358-4916-b42f-469cadf4dca2",
-        "MaxTargetNPCs": 3,
-        "OddityMask": "OddRunner, OddSleeper"
+        "MaxTargetNPCs": 4,
+        "OddityMask": "OddRunner"
       }
     ],
     "Children": [

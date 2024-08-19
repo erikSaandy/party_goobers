@@ -1,0 +1,47 @@
+{
+  "RootObject": {
+    "__guid": "d6c7701c-ecd0-43ee-8196-ad64e126cc7f",
+    "Flags": 0,
+    "Name": "target",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "Components": [
+      {
+        "__type": "Sandbox.Prop",
+        "__guid": "ceefe179-c489-4a93-8084-da17ee5ad4b2",
+        "BodyGroups": 18446744073709551615,
+        "Health": 0,
+        "IsStatic": false,
+        "Model": "models/target02/target.vmdl",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "Sandbox.ManualHitbox",
+        "__guid": "8512068e-da07-4680-bce5-167e6fd5e397",
+        "CenterA": "0,0,0",
+        "CenterB": "0,0,0",
+        "HitboxTags": "",
+        "Radius": 16.000006,
+        "Shape": "Sphere"
+      },
+      {
+        "__type": "TargetComponent",
+        "__guid": "68690965-197f-461a-a22e-79217b4ba2f6",
+        "Prop": {
+          "_type": "component",
+          "component_id": "ceefe179-c489-4a93-8084-da17ee5ad4b2",
+          "go": "d6c7701c-ecd0-43ee-8196-ad64e126cc7f",
+          "component_type": "Prop"
+        }
+      }
+    ],
+    "Children": [],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

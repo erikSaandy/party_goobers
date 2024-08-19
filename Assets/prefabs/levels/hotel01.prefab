@@ -52,7 +52,7 @@
       {
         "__type": "FindOddObjective",
         "__guid": "e580a83a-6a5a-4f6a-9d1b-400ad881aa7e",
-        "MaxTargetNPCs": 3,
+        "MaxTargetNPCs": 2,
         "OddityMask": "OddSleeper"
       }
     ],
@@ -67,7 +67,7 @@
           {
             "__type": "ConfusionSpell",
             "__guid": "b231e366-2d8c-4cba-9907-ae6741b31c60",
-            "TriggerChance": 0.5
+            "TriggerChance": 0.25
           }
         ]
       },
@@ -128,6 +128,21 @@
         "__PrefabVariables": {
           "Visible Chance": 0.4
         }
+      },
+      {
+        "__guid": "9dfba859-7db8-4595-a13d-173116dfa36a",
+        "Flags": 0,
+        "Name": "Flipper Group",
+        "Position": "0,-17.8013,0",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "Components": [
+          {
+            "__type": "VariationGroup",
+            "__guid": "29dd7a48-602f-4ec3-a16f-3fce8b110e92",
+            "TriggerChance": 1
+          }
+        ]
       }
     ],
     "__variables": []

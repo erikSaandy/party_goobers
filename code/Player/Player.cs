@@ -1,5 +1,6 @@
 ﻿using Sandbox;
 using System;
+using System.Diagnostics;
 using System.Numerics;
 using System.Threading.Tasks;
 
@@ -44,7 +45,7 @@ public class Player : Component
 
 		Lives--;
 		OnLifeTaken?.Invoke();
-		PartyFacesManager.Instance.LabelHandler.SpawnLabel( "❤️", Mouse.Position / Screen.Size, Vector2.Up * 250, true );
+		PartyFacesManager.Instance.LabelHandler.SpawnLabel( "❤️", Mouse.Position / Screen.Size, Vector2.Up * 250 + Vector2.Left * 50, true );
 
 		if (Lives <= 0)
 		{
@@ -173,8 +174,9 @@ public class Player : Component
 
 		if ( IsProxy ) { return; }
 
-		if ( TraceLook( out IInteractable hit ) )
+		if ( TraceLook( out IInteractable hit, out SceneTraceResult trace ) )
 		{
+
 			if ( hit != PreviousHit )
 			{
 				//Log.Info( "Mouse entered interactable!" );
@@ -183,15 +185,13 @@ public class Player : Component
 
 			if ( Input.Pressed( "Attack1" ) )
 			{
-				//Log.Info( "Clicked on interactable!" );
-				hit.OnInteract( GameObject.Id );
+				hit.OnInteract( GameObject.Id, trace );
 			}
 			else
 			{
-				//Log.Info( "Hovering on interactable!" );
+				Log.Info( $"Hovering over {hit}!" );
 				hit.OnMouseHover( GameObject.Id );
 			}
-
 
 		}
 		
@@ -205,32 +205,47 @@ public class Player : Component
 
 	}
 
-	private bool TraceLook( out IInteractable interactable )
+	private bool TraceLook( out IInteractable interactable, out SceneTraceResult trace )
 	{
 		interactable = null;
+		trace = default;
 
-		//Log.Info( FadeScreen.Visible + " :: " + LevelTimer.IsRunning );
+		// Minigame trace first
+
+		Ray ray = MiniGame.Camera.ScreenPixelToRay( Mouse.Position );
+
+		trace = Scene.Trace.Ray( ray, 2000 )
+		.WithoutTags( "player" )
+		.UseHitboxes()
+		.Run();
+
+		if ( trace.GameObject != null ) {
+
+			interactable = trace.GameObject.Components.GetInAncestorsOrSelf<IInteractable>();
+
+			if ( interactable != null ) { return true; }
+		}
+
+		// Check game scene
+
 		if ( FadeScreen.Visible || LifeState != PlayerLifeState.Alive || !LevelTimer.IsRunning ) { return false; }
 
-		//Log.Info( CursorHud.CursorPosition );
-		Ray ray = Scene.Camera.ScreenPixelToRay( Mouse.Position );
+		ray = Scene.Camera.ScreenPixelToRay( Mouse.Position );
 
-		SceneTraceResult trace = Scene.Trace.Ray( ray, 100000 )
-			.WithoutTags("player")
+		trace = Scene.Trace.Ray( ray, 100000 )
+			.WithoutTags( "player" )
+			.UseHitboxes()
 			.Run();
 
 		Gizmo.Draw.Color = Color.Red;
 		Gizmo.Draw.Line( ray.Position, ray.Forward * 100000 );
 
 		if ( trace.GameObject == null ) { return false; }
-
 		interactable = trace.GameObject.Components.GetInAncestorsOrSelf<IInteractable>();
-
 		if ( interactable == null ) { return false; }
 
 		return true;
 
 	}
-
 
 }

@@ -4,8 +4,11 @@ using System.Globalization;
 using System.Numerics;
 using System.Threading.Tasks;
 
-public abstract class LevelObjective : Component
+public abstract class LevelObjective : Component, IWeighted
 {
+	public virtual bool Disabled { get; set; }
+	public virtual int Weight { get; }
+
 
 	public List<NPC> SelectedNPCs { get; set; } = new();
 
@@ -18,6 +21,8 @@ public abstract class LevelObjective : Component
 	public LevelDataComponent LevelData => LevelHandler.Instance.CurrentLevelData;
 
 	public IEnumerable<NPC> NPCs { get; set; } = null;
+
+	public static Action OnCompletedObjective { get; set; }
 
 	/// <summary>
 	/// Does this NPC satisfy the objective?
@@ -77,7 +82,7 @@ public abstract class LevelObjective : Component
 
 		ClientSelectedNPC( playerId, npc );
 
-		Log.Info( "Selected NPC count: " + SelectedNPCs.Count );
+		//Log.Info( "Selected NPC count: " + SelectedNPCs.Count );
 		bool evaluate = SelectedNPCs.Count >= MaxSelectedNPCs;
 
 		if (evaluate)
@@ -96,7 +101,7 @@ public abstract class LevelObjective : Component
 				Handler.OnPlayerCompletedObjective( playerId );
 
 				// ON CORRECT SELECTION
-				OnCompletedObjective( playerId );
+				CompletedObjective( playerId );
 			}
 			else
 			{
@@ -197,9 +202,11 @@ public abstract class LevelObjective : Component
 	/// Called when player completes the objective.
 	/// </summary>
 	/// <param name="player"></param>
-	protected virtual void OnCompletedObjective( Guid player )
+	protected virtual void CompletedObjective( Guid player )
 	{
-		foreach( NPC npc in SelectedNPCs ) {
+		OnCompletedObjective?.Invoke();
+
+		foreach ( NPC npc in SelectedNPCs ) {
 
 			npc.SetClientAnimationBehaviour( player, NPC.AnimationBehaviour.Cheer );
 

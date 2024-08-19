@@ -15,6 +15,8 @@ public class NPCBuffer : SingletonComponent<NPCBuffer>
 	// HOST ONLY
 	[Property] public List<NPC> NPCs { get; private set; }
 
+	public static Action OnNPCsGenerated { get; set; }
+
 	protected override void OnStart()
 	{
 		base.OnStart();
@@ -134,6 +136,8 @@ public class NPCBuffer : SingletonComponent<NPCBuffer>
 
 			await Task.Yield();
 
+			OnNPCsGenerated?.Invoke();
+
 		}
 
 	}
@@ -165,11 +169,21 @@ public class NPCBuffer : SingletonComponent<NPCBuffer>
 	{
 		foreach(NPC npc in NPCs)
 		{
+			if(npc.Tags.Has( "npcdisplay" ) ) { continue; }
+
 			if(npc.GameObject.Enabled)
 			{
 				PartyFacesManager.EnableGameobject( npc.GameObject.Id, false );
 			}
 		}
+	}
+
+	protected override void OnDestroy()
+	{
+		base.OnDestroy();
+
+		OnNPCsGenerated = null;
+
 	}
 
 }

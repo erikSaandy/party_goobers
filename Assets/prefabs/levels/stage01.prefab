@@ -20,14 +20,14 @@
           "go": "ea6af082-fb08-42d6-a080-038d3aac0458",
           "component_type": "MapInstance"
         },
-        "MinSpawnCount": 4,
         "NodePaths": [],
         "ObjectiveHandler": {
           "_type": "component",
           "component_id": "593cf629-3cdf-48da-8f72-e0cef435f92a",
           "go": "dde1e69d-4265-4e46-8f00-824dc4cd4472",
           "component_type": "LevelObjectiveHandler"
-        }
+        },
+        "OverrideLookAt": false
       },
       {
         "__type": "LevelObjectiveHandler",
@@ -47,9 +47,46 @@
         "__type": "FindAlikeObjective",
         "__guid": "30d053ca-75c4-4663-b902-5104e8632961",
         "NumberOfAlike": 3
+      },
+      {
+        "__type": "FindAlikeObjective",
+        "__guid": "e4029677-f001-452a-bfe8-5ffe7ee202e9",
+        "NumberOfAlike": 4
+      },
+      {
+        "__type": "FindOddObjective",
+        "__guid": "2ae169f4-222e-4b16-b264-c8bbb7af589c",
+        "MaxTargetNPCs": 3,
+        "OddityMask": "OddSleeper"
       }
     ],
     "Children": [
+      {
+        "__guid": "930f495e-5c59-401e-9e64-f9c35395e283",
+        "Flags": 0,
+        "Name": "Spotlight Cursor",
+        "Rotation": "0,0.7071068,0,0.7071068",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "__Prefab": "prefabs/spotlight_cursor.prefab",
+        "__PrefabVariables": {
+          "Visible Chance": 0.3
+        }
+      },
+      {
+        "__guid": "696d402f-27dc-44bd-a92b-bfc83c7f178b",
+        "Flags": 0,
+        "Name": "Confusion",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "Components": [
+          {
+            "__type": "ConfusionSpell",
+            "__guid": "f295bb7a-2623-4beb-be3d-848e27d12b27",
+            "TriggerChance": 0.3
+          }
+        ]
+      },
       {
         "__guid": "ea6af082-fb08-42d6-a080-038d3aac0458",
         "Flags": 0,
@@ -61,7 +98,7 @@
             "__guid": "1dba2273-f263-45d4-b500-db81e43330c9",
             "__version": 1,
             "EnableCollision": true,
-            "MapName": "maps/map_template.vmap",
+            "MapName": "maps/map06.vmap",
             "NoOrigin": false,
             "UseMapFromLaunch": false
           }
@@ -69,10 +106,41 @@
         "Children": []
       },
       {
+        "__guid": "6041bfc5-9bc3-4c14-af61-732d4537991d",
+        "Flags": 0,
+        "Name": "audience",
+        "Position": "-0.001304626,-422.417,102.213",
+        "Rotation": "0.4999998,0.4999999,-0.4999998,0.4999999",
+        "Scale": "3.377776,3.378,4.153708",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "cefb0442-0d3b-4c67-961c-757704de7bd7",
+            "BodyGroups": 18446744073709551615,
+            "MaterialOverride": "textures/audience_idle.vmat",
+            "Model": "models/dev/plane.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          },
+          {
+            "__type": "AudienceComponent",
+            "__guid": "8d8d2ea3-bcd8-4a57-8f88-c348abc548d9",
+            "CheerMaterial": "textures/audience_cheer.vmat",
+            "Renderer": {
+              "_type": "component",
+              "component_id": "cefb0442-0d3b-4c67-961c-757704de7bd7",
+              "go": "6041bfc5-9bc3-4c14-af61-732d4537991d",
+              "component_type": "ModelRenderer"
+            }
+          }
+        ]
+      },
+      {
         "__guid": "56a737c5-fff7-46f6-a237-db9a1c85e22f",
         "Flags": 0,
         "Name": "Camera",
-        "Position": "0.00695624,-1209.719,509.3531",
+        "Position": "-0.002453745,-855.1222,90.07047",
         "Rotation": "0,0,0.7071066,0.7071069",
         "Scale": "-1.058358,1,1",
         "Enabled": true,
@@ -97,16 +165,166 @@
         ]
       },
       {
-        "__guid": "930f495e-5c59-401e-9e64-f9c35395e283",
+        "__guid": "e53d73c5-c2db-4978-9db9-e5ad861d5cd4",
         "Flags": 0,
-        "Name": "Spotlight Cursor",
-        "Rotation": "0,0.7071068,0,0.7071068",
+        "Name": "Spawnpoint (2)",
+        "Position": "-191.9999,-94.67005,0",
+        "Rotation": "0,0,-0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "f7ca5fd3-ee60-4d82-bd3a-ef4bb1fb8775",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "0ff084f3-8a1d-4e49-baf9-53cb36e0d946",
+        "Flags": 0,
+        "Name": "Spawnpoint (3)",
+        "Position": "-127.9999,-94.67005,0",
+        "Rotation": "0,0,-0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "02ec43e8-9662-4e6a-be7d-40eb8b94d89d",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "b5507559-9439-4154-a702-6fbcce3986e6",
+        "Flags": 0,
+        "Name": "Spawnpoint (4)",
+        "Position": "-63.99997,-94.67005,0",
+        "Rotation": "0,0,-0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "dcfb2e1f-1261-4748-b7c2-2f83e06617af",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "fcb0a979-4e90-45a1-9ff1-16066ae30a2e",
+        "Flags": 0,
+        "Name": "Spawnpoint (5)",
+        "Position": "0.00001645141,-94.67005,0",
+        "Rotation": "0,0,-0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "0e77bcd5-6cd5-491e-aa95-9f2e367e1c74",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "c9d0cefc-a8b9-4d37-81c4-39a781a75e80",
+        "Flags": 0,
+        "Name": "Spawnpoint (6)",
+        "Position": "64.00002,-94.67005,0",
+        "Rotation": "0,0,-0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "8fdda9a3-acbe-4ff4-8ac8-1813ba1657eb",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "4cb5d658-2393-4809-aa5f-9e32b5f35e1d",
+        "Flags": 0,
+        "Name": "Spawnpoint (7)",
+        "Position": "128.0001,-94.67005,0",
+        "Rotation": "0,0,-0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "ddefab1e-8bdd-4600-8eab-990aef5fb587",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "6f4863ed-69e0-43a8-bef6-ee0878921cf0",
+        "Flags": 0,
+        "Name": "Spawnpoint (8)",
+        "Position": "192.0001,-94.67005,0",
+        "Rotation": "0,0,-0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "99e1055f-e0c5-48f7-a41d-2e0d6304ab25",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "a9d77962-2c01-4264-8c91-726d7d36468d",
+        "Flags": 0,
+        "Name": "Flipper Group",
+        "Position": "0,-17.8013,0",
         "Enabled": true,
         "NetworkMode": 1,
-        "__Prefab": "prefabs/spotlight_cursor.prefab",
-        "__PrefabVariables": {
-          "Visible Chance": 0.4
-        }
+        "Components": [
+          {
+            "__type": "VariationGroup",
+            "__guid": "6c443fd4-c2e4-4175-831b-1c64467a73ea",
+            "TriggerChance": 0.15
+          }
+        ],
+        "Children": [
+          {
+            "__guid": "975772bb-8e1c-4e7f-ab2a-540a834d85d2",
+            "Flags": 0,
+            "Name": "Flipper (3)",
+            "Position": "188.651,-143.9043,0",
+            "Rotation": "0,0,-0.7071071,-0.7071067",
+            "NetworkMode": 1,
+            "__Prefab": "prefabs/flipper.prefab",
+            "__PrefabVariables": {}
+          },
+          {
+            "__guid": "ea8df0e3-bbc6-4555-ba82-a6a4b38c2f33",
+            "Flags": 0,
+            "Name": "Flipper (2)",
+            "Position": "68.88401,-146.5976,0",
+            "Rotation": "0,0,-0.7071071,-0.7071067",
+            "NetworkMode": 1,
+            "__Prefab": "prefabs/flipper.prefab",
+            "__PrefabVariables": {}
+          },
+          {
+            "__guid": "52949c6a-e7e5-44d3-847f-ebb5700006c5",
+            "Flags": 0,
+            "Name": "Flipper (1)",
+            "Position": "-65.00124,-146.5978,0",
+            "Rotation": "0,0,-0.7071071,-0.7071067",
+            "NetworkMode": 1,
+            "__Prefab": "prefabs/flipper.prefab",
+            "__PrefabVariables": {}
+          },
+          {
+            "__guid": "9cbf232a-d33f-49de-93c1-87f2f8055a0a",
+            "Flags": 0,
+            "Name": "Flipper",
+            "Position": "-195.4286,-141.4726,0",
+            "Rotation": "0,0,-0.7071071,-0.7071067",
+            "NetworkMode": 1,
+            "__Prefab": "prefabs/flipper.prefab",
+            "__PrefabVariables": {}
+          }
+        ]
       }
     ],
     "__variables": []

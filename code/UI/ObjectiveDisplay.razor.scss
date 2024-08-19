@@ -46,7 +46,6 @@ ObjectiveDisplay {
             color: linear-gradient(white, #9198e5);
             margin-bottom: 20px;
         }
-
     }
 
     .npcicon {
@@ -64,6 +63,7 @@ ObjectiveDisplay {
             width: $size;
             height: $size;
             background-size: $size;
+            border-radius: 45px;
         }
     }
 

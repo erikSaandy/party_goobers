@@ -1,0 +1,464 @@
+{
+  "RootObject": {
+    "__guid": "745fc44b-f235-4e82-ad99-47353d5ca03c",
+    "Flags": 0,
+    "Name": "flipper01",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "LevelDataComponent",
+        "__guid": "c82fdc81-4ce7-4c42-8847-6e8996fad79d",
+        "CameraReference": {
+          "_type": "component",
+          "component_id": "88379a82-d9d8-4c09-850f-cd82f9eceaa3",
+          "go": "184916b5-8969-48e7-b8eb-d560789b75dd",
+          "component_type": "CameraComponent"
+        },
+        "MapInstance": {
+          "_type": "component",
+          "component_id": "8d792d32-f8b0-4917-976d-0affa184a28c",
+          "go": "a35824fe-4f78-4209-a452-9b4b8498dac8",
+          "component_type": "MapInstance"
+        },
+        "NodePaths": [],
+        "ObjectiveHandler": {
+          "_type": "component",
+          "component_id": "0021783a-04a7-4882-8413-d4454b1fd748",
+          "go": "745fc44b-f235-4e82-ad99-47353d5ca03c",
+          "component_type": "LevelObjectiveHandler"
+        },
+        "OverrideLookAt": false
+      },
+      {
+        "__type": "LevelObjectiveHandler",
+        "__guid": "0021783a-04a7-4882-8413-d4454b1fd748",
+        "ObjectiveId": 0
+      },
+      {
+        "__type": "FindSpecificObjective",
+        "__guid": "dcef0349-1e30-420d-b8b5-c5e9e8d5bc88"
+      },
+      {
+        "__type": "FindAlikeObjective",
+        "__guid": "f4d4548f-ee0a-4c06-9097-5e457cadea7f",
+        "NumberOfAlike": 2
+      },
+      {
+        "__type": "FindAlikeObjective",
+        "__guid": "823a1863-4b42-4ad5-89f2-fb7183bcb28d",
+        "NumberOfAlike": 3
+      },
+      {
+        "__type": "FindOddObjective",
+        "__guid": "a520e8cd-4cde-4d20-b14d-5e11505afb51",
+        "MaxTargetNPCs": 5,
+        "OddityMask": "OddSleeper"
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "a35824fe-4f78-4209-a452-9b4b8498dac8",
+        "Flags": 0,
+        "Name": "Map Instance",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.MapInstance",
+            "__guid": "8d792d32-f8b0-4917-976d-0affa184a28c",
+            "__version": 1,
+            "EnableCollision": true,
+            "MapName": "maps/map_09.vmap",
+            "NoOrigin": false,
+            "UseMapFromLaunch": false
+          }
+        ],
+        "Children": []
+      },
+      {
+        "__guid": "184916b5-8969-48e7-b8eb-d560789b75dd",
+        "Flags": 0,
+        "Name": "Camera",
+        "Position": "0,-2528.874,107.7829",
+        "Rotation": "0,0,0.7071068,0.7071067",
+        "Scale": "-1.058358,1,1",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.CameraComponent",
+            "__guid": "88379a82-d9d8-4c09-850f-cd82f9eceaa3",
+            "BackgroundColor": "0,0,0,1",
+            "ClearFlags": "All",
+            "FieldOfView": 30,
+            "IsMainCamera": false,
+            "Orthographic": true,
+            "OrthographicHeight": 400,
+            "Priority": 1,
+            "RenderExcludeTags": "",
+            "RenderTags": "",
+            "TargetEye": "None",
+            "Viewport": "0,0,1,1",
+            "ZFar": 5000,
+            "ZNear": 10
+          }
+        ]
+      },
+      {
+        "__guid": "b731c354-0d21-469e-8587-4c6c4d3b46ee",
+        "Flags": 0,
+        "Name": "spotlight_cursor",
+        "Rotation": "0.5,0.5,-0.5,0.5",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "__Prefab": "prefabs/spotlight_cursor.prefab",
+        "__PrefabVariables": {
+          "Visible Chance": 0.05
+        }
+      },
+      {
+        "__guid": "9af91581-3603-48c4-8fe9-335cb5d49242",
+        "Flags": 0,
+        "Name": "Confusion",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "Components": [
+          {
+            "__type": "ConfusionSpell",
+            "__guid": "17aa9db9-e14f-458e-815b-05f7259f640b",
+            "TriggerChance": 0.1
+          }
+        ]
+      },
+      {
+        "__guid": "f61edadc-7685-4260-ac99-0e7fa2da543a",
+        "Flags": 0,
+        "Name": "flipper02 (1)",
+        "Position": "-112.0001,-160,0",
+        "Rotation": "0,0,0.7071066,0.7071068",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "__Prefab": "prefabs/flipper02.prefab",
+        "__PrefabVariables": {}
+      },
+      {
+        "__guid": "261a4e82-1196-45c1-97b1-c217dd755030",
+        "Flags": 0,
+        "Name": "flipper02 (4)",
+        "Position": "-112,-31.99999,144",
+        "Rotation": "0,0,0.7071066,0.7071068",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "__Prefab": "prefabs/flipper02.prefab",
+        "__PrefabVariables": {}
+      },
+      {
+        "__guid": "6e509b10-cff4-4b72-a4dd-af10b61f6a5f",
+        "Flags": 0,
+        "Name": "flipper02 (2)",
+        "Position": "111.9999,-160,0",
+        "Rotation": "0,0,0.7071066,0.7071068",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "__Prefab": "prefabs/flipper02.prefab",
+        "__PrefabVariables": {}
+      },
+      {
+        "__guid": "c8160d77-e1fc-44f9-a95d-b6437e259f0f",
+        "Flags": 0,
+        "Name": "flipper02 (3)",
+        "Position": "-0.00008302118,-160,0",
+        "Rotation": "0,0,0.7071066,0.7071068",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "__Prefab": "prefabs/flipper02.prefab",
+        "__PrefabVariables": {}
+      },
+      {
+        "__guid": "d46c0059-ce80-4300-8667-ccb25a5ca226",
+        "Flags": 0,
+        "Name": "flipper02 (6)",
+        "Position": "-0.00004892939,-31.99999,144",
+        "Rotation": "0,0,0.7071066,0.7071068",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "__Prefab": "prefabs/flipper02.prefab",
+        "__PrefabVariables": {}
+      },
+      {
+        "__guid": "9d8182ea-2a55-4069-9799-1c048ea716c5",
+        "Flags": 0,
+        "Name": "flipper02 (5)",
+        "Position": "112,-31.99999,144",
+        "Rotation": "0,0,0.7071066,0.7071068",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "__Prefab": "prefabs/flipper02.prefab",
+        "__PrefabVariables": {}
+      },
+      {
+        "__guid": "40e81d22-d88e-4f57-aee8-2053bb7f3980",
+        "Flags": 0,
+        "Name": "Spawnpoint (1)",
+        "Position": "-112,-80,-0.00003636927",
+        "Rotation": "0,0,-0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "eb0955ef-3e27-461e-a5bf-971d4fec333b",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "2dcfa440-98b0-4f54-b80e-f78623e036c4",
+        "Flags": 0,
+        "Name": "Spawnpoint (4)",
+        "Position": "-112,48,144",
+        "Rotation": "0,0,-0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "27fc88bd-c814-466d-b3f1-5e385d55c03f",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "639eb95d-cf86-456b-9826-4b79e8bef3d7",
+        "Flags": 0,
+        "Name": "Spawnpoint (3)",
+        "Position": "112,-80,-0.00003636927",
+        "Rotation": "0,0,-0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "de6b6082-8ee0-40d2-adf6-ab1319c1db17",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "954db7b8-5565-4b4f-a2dc-26ee0e970a63",
+        "Flags": 0,
+        "Name": "Spawnpoint (5)",
+        "Position": "112,48,144",
+        "Rotation": "0,0,-0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "c7044da9-1eee-49a7-9c4d-59e8c2fbcfab",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "b10bbbfe-8706-4ef8-a413-796f7cd6123c",
+        "Flags": 0,
+        "Name": "Spawnpoint (2)",
+        "Position": "0,-80,-0.00003636927",
+        "Rotation": "0,0,-0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "f596e54d-9028-44c1-ba3e-da39b19bc7f6",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "98df4d61-5af5-4dc6-ae7b-25047a67e6f5",
+        "Flags": 0,
+        "Name": "Spawnpoint (6)",
+        "Position": "0,48,144",
+        "Rotation": "0,0,-0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpawnPoint",
+            "__guid": "cc28f080-a122-4ba5-bbc0-65948dc36a79",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "78bb690a-3120-4a66-b345-6596fa794b59",
+        "Flags": 0,
+        "Name": "lightbulb",
+        "Position": "-192,-165.2577,272",
+        "Rotation": "0.5,0.5,-0.5,0.5",
+        "Scale": "8,8,8",
+        "Enabled": true,
+        "__Prefab": "prefabs/lightbulb.prefab",
+        "__PrefabVariables": {
+          "StartOn": false,
+          "DefaultIsOff": false
+        }
+      },
+      {
+        "__guid": "55198443-89bd-4db9-a037-5f99ce7514e6",
+        "Flags": 0,
+        "Name": "lightbulb (11)",
+        "Position": "200,-165.2577,272",
+        "Rotation": "0.5,0.5,-0.5,0.5",
+        "Scale": "8,8,8",
+        "Enabled": true,
+        "__Prefab": "prefabs/lightbulb.prefab",
+        "__PrefabVariables": {
+          "StartOn": true,
+          "DefaultIsOff": false
+        }
+      },
+      {
+        "__guid": "6909c819-9fca-4e2b-bbd3-f1d2e981d5cd",
+        "Flags": 0,
+        "Name": "lightbulb (1)",
+        "Position": "-192,-165.2577,208",
+        "Rotation": "0.5,0.5,-0.5,0.5",
+        "Scale": "8,8,8",
+        "Enabled": true,
+        "__Prefab": "prefabs/lightbulb.prefab",
+        "__PrefabVariables": {
+          "StartOn": true,
+          "DefaultIsOff": false
+        }
+      },
+      {
+        "__guid": "84884fb2-6e49-487c-9995-c11250f21574",
+        "Flags": 0,
+        "Name": "lightbulb (10)",
+        "Position": "200,-165.2577,208",
+        "Rotation": "0.5,0.5,-0.5,0.5",
+        "Scale": "8,8,8",
+        "Enabled": true,
+        "__Prefab": "prefabs/lightbulb.prefab",
+        "__PrefabVariables": {
+          "StartOn": false,
+          "DefaultIsOff": false
+        }
+      },
+      {
+        "__guid": "41edb8ec-6b64-42ec-b9b6-76010002596a",
+        "Flags": 0,
+        "Name": "lightbulb (2)",
+        "Position": "-192,-165.2577,144",
+        "Rotation": "0.5,0.5,-0.5,0.5",
+        "Scale": "8,8,8",
+        "Enabled": true,
+        "__Prefab": "prefabs/lightbulb.prefab",
+        "__PrefabVariables": {
+          "StartOn": false,
+          "DefaultIsOff": false
+        }
+      },
+      {
+        "__guid": "3e2b893d-8045-4699-92f2-86b558327e51",
+        "Flags": 0,
+        "Name": "lightbulb (9)",
+        "Position": "200,-165.2577,144",
+        "Rotation": "0.5,0.5,-0.5,0.5",
+        "Scale": "8,8,8",
+        "Enabled": true,
+        "__Prefab": "prefabs/lightbulb.prefab",
+        "__PrefabVariables": {
+          "StartOn": true,
+          "DefaultIsOff": false
+        }
+      },
+      {
+        "__guid": "7acf96a2-817e-4bc7-a3be-20903bcd77e6",
+        "Flags": 0,
+        "Name": "lightbulb (3)",
+        "Position": "-192,-165.2577,80",
+        "Rotation": "0.5,0.5,-0.5,0.5",
+        "Scale": "8,8,8",
+        "Enabled": true,
+        "__Prefab": "prefabs/lightbulb.prefab",
+        "__PrefabVariables": {
+          "StartOn": true,
+          "DefaultIsOff": false
+        }
+      },
+      {
+        "__guid": "37a82551-f9a9-4f68-9fdc-e926c19f23f2",
+        "Flags": 0,
+        "Name": "lightbulb (8)",
+        "Position": "200,-165.2577,80",
+        "Rotation": "0.5,0.5,-0.5,0.5",
+        "Scale": "8,8,8",
+        "Enabled": true,
+        "__Prefab": "prefabs/lightbulb.prefab",
+        "__PrefabVariables": {
+          "StartOn": false,
+          "DefaultIsOff": false
+        }
+      },
+      {
+        "__guid": "e23886ba-c1be-4212-a81d-e1b4c99e5336",
+        "Flags": 0,
+        "Name": "lightbulb (4)",
+        "Position": "-192,-165.2577,-48",
+        "Rotation": "0.5,0.5,-0.5,0.5",
+        "Scale": "8,8,8",
+        "Enabled": true,
+        "__Prefab": "prefabs/lightbulb.prefab",
+        "__PrefabVariables": {
+          "StartOn": true,
+          "DefaultIsOff": false
+        }
+      },
+      {
+        "__guid": "7880d1cf-4da2-4530-b1be-fd0e23e69e88",
+        "Flags": 0,
+        "Name": "lightbulb (7)",
+        "Position": "200,-165.2577,-48",
+        "Rotation": "0.5,0.5,-0.5,0.5",
+        "Scale": "8,8,8",
+        "Enabled": true,
+        "__Prefab": "prefabs/lightbulb.prefab",
+        "__PrefabVariables": {
+          "StartOn": false,
+          "DefaultIsOff": false
+        }
+      },
+      {
+        "__guid": "b1029535-c6c2-4624-9b0a-8990fd144a57",
+        "Flags": 0,
+        "Name": "lightbulb (5)",
+        "Position": "-192,-165.2577,16",
+        "Rotation": "0.5,0.5,-0.5,0.5",
+        "Scale": "8,8,8",
+        "Enabled": true,
+        "__Prefab": "prefabs/lightbulb.prefab",
+        "__PrefabVariables": {
+          "StartOn": false,
+          "DefaultIsOff": false
+        }
+      },
+      {
+        "__guid": "87c18792-7f0b-4442-a939-64021725accc",
+        "Flags": 0,
+        "Name": "lightbulb (6)",
+        "Position": "200,-165.2577,16",
+        "Rotation": "0.5,0.5,-0.5,0.5",
+        "Scale": "8,8,8",
+        "Enabled": true,
+        "__Prefab": "prefabs/lightbulb.prefab",
+        "__PrefabVariables": {
+          "StartOn": true,
+          "DefaultIsOff": false
+        }
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

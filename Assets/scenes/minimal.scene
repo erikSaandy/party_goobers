@@ -38,6 +38,13 @@
           "__type": "LevelHandler",
           "__guid": "51bdbcaf-87b0-4571-b6eb-559b224332c1",
           "LevelPrefabs": [
+            "prefabs/levels/flipper01.prefab",
+            "prefabs/levels/hotel01.prefab",
+            "prefabs/levels/mall01.prefab",
+            "prefabs/levels/mole01.prefab",
+            "prefabs/levels/stage01.prefab",
+            "prefabs/levels/staircase01.prefab",
+            "prefabs/levels/street01.prefab",
             "prefabs/levels/tennis01.prefab"
           ],
           "LobbyPrefab": "prefabs/lobby.prefab"
@@ -63,6 +70,84 @@
         {
           "__type": "ScreenLabelHandler",
           "__guid": "06082bb7-959a-4519-a08d-ef58dd000181"
+        }
+      ]
+    },
+    {
+      "__guid": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a",
+      "Flags": 0,
+      "Name": "Camera",
+      "Position": "0.0003116217,-672.5332,499.1384",
+      "Rotation": "-0.1830127,0.1830127,0.6830127,0.6830127",
+      "Tags": "maincamera",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.CameraComponent",
+          "__guid": "cf3cbf96-22b6-4be4-a5d0-672a96c17f9f",
+          "BackgroundColor": "0.0662,0.07425,0.09302,1",
+          "ClearFlags": "All",
+          "FieldOfView": 45,
+          "IsMainCamera": true,
+          "Orthographic": false,
+          "OrthographicHeight": 150,
+          "Priority": 2,
+          "RenderExcludeTags": "",
+          "RenderTags": "",
+          "TargetEye": "None",
+          "Viewport": "0,0,1,1",
+          "ZFar": 2048,
+          "ZNear": 10
+        },
+        {
+          "__type": "Sandbox.Bloom",
+          "__guid": "d73ef723-c888-41d4-802e-f797c79318be",
+          "BloomColor": {
+            "color": [
+              {
+                "c": "1,1,1,1"
+              },
+              {
+                "t": 1,
+                "c": "1,1,1,1"
+              }
+            ],
+            "alpha": []
+          },
+          "BloomCurve": [
+            {
+              "y": 0.5
+            },
+            {
+              "x": 1,
+              "y": 1
+            }
+          ],
+          "Mode": "Additive",
+          "Strength": 0.5,
+          "Threshold": 0.5,
+          "ThresholdWidth": 0.5
+        },
+        {
+          "__type": "Sandbox.Tonemapping",
+          "__guid": "9d76f362-7227-40eb-a189-69353c780c46",
+          "__version": 1,
+          "ExposureBias": 2,
+          "ExposureCompensation": 0,
+          "ExposureMethod": "RGB",
+          "MaximumExposure": 2,
+          "MinimumExposure": 0.96,
+          "Mode": "Legacy",
+          "Rate": 1
+        },
+        {
+          "__type": "Sandbox.Sharpen",
+          "__guid": "0bffee5e-19f2-41c4-88f9-faefbcce6bf4",
+          "Scale": 0
+        },
+        {
+          "__type": "Sandbox.Highlight",
+          "__guid": "c5e402bd-3d17-4e09-9598-9c831a154e82"
         }
       ]
     },
@@ -247,7 +332,7 @@
           "OrthographicHeight": 50,
           "Priority": 1,
           "RenderExcludeTags": "",
-          "RenderTags": "npcrt",
+          "RenderTags": "npcdisplay",
           "TargetEye": "None",
           "Viewport": "1,0,1,1",
           "ZFar": 128,
@@ -260,8 +345,9 @@
       "Flags": 0,
       "Name": "Display NPC",
       "Position": "0,0,-5000",
-      "Tags": "npcrt",
+      "Tags": "npcdisplay",
       "Enabled": true,
+      "NetworkMode": 1,
       "Components": [
         {
           "__type": "NPC",
@@ -290,7 +376,7 @@
           "Model": "models/player/player.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1",
-          "UseAnimGraph": true
+          "UseAnimGraph": false
         }
       ],
       "Children": [
@@ -469,83 +555,6 @@
           },
           "SpawnPoints": [],
           "StartServer": true
-        }
-      ]
-    },
-    {
-      "__guid": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a",
-      "Flags": 0,
-      "Name": "Camera",
-      "Position": "0.0003116217,-672.5332,499.1384",
-      "Rotation": "-0.1830127,0.1830127,0.6830127,0.6830127",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.CameraComponent",
-          "__guid": "cf3cbf96-22b6-4be4-a5d0-672a96c17f9f",
-          "BackgroundColor": "0.0662,0.07425,0.09302,1",
-          "ClearFlags": "All",
-          "FieldOfView": 45,
-          "IsMainCamera": true,
-          "Orthographic": false,
-          "OrthographicHeight": 150,
-          "Priority": 2,
-          "RenderExcludeTags": "",
-          "RenderTags": "",
-          "TargetEye": "None",
-          "Viewport": "0,0,1,1",
-          "ZFar": 2048,
-          "ZNear": 10
-        },
-        {
-          "__type": "Sandbox.Bloom",
-          "__guid": "d73ef723-c888-41d4-802e-f797c79318be",
-          "BloomColor": {
-            "color": [
-              {
-                "c": "1,1,1,1"
-              },
-              {
-                "t": 1,
-                "c": "1,1,1,1"
-              }
-            ],
-            "alpha": []
-          },
-          "BloomCurve": [
-            {
-              "y": 0.5
-            },
-            {
-              "x": 1,
-              "y": 1
-            }
-          ],
-          "Mode": "Additive",
-          "Strength": 0.5,
-          "Threshold": 0.5,
-          "ThresholdWidth": 0.5
-        },
-        {
-          "__type": "Sandbox.Tonemapping",
-          "__guid": "9d76f362-7227-40eb-a189-69353c780c46",
-          "__version": 1,
-          "ExposureBias": 2,
-          "ExposureCompensation": 0,
-          "ExposureMethod": "RGB",
-          "MaximumExposure": 2,
-          "MinimumExposure": 0.96,
-          "Mode": "Legacy",
-          "Rate": 1
-        },
-        {
-          "__type": "Sandbox.Sharpen",
-          "__guid": "0bffee5e-19f2-41c4-88f9-faefbcce6bf4",
-          "Scale": 0
-        },
-        {
-          "__type": "Sandbox.Highlight",
-          "__guid": "c5e402bd-3d17-4e09-9598-9c831a154e82"
         }
       ]
     },
@@ -835,6 +844,131 @@
         {
           "__type": "Emote",
           "__guid": "a33aace8-412c-4e77-af4d-611c7d0ee2c6"
+        }
+      ]
+    },
+    {
+      "__guid": "bd7c162d-b4d5-441b-89bf-28b1e4830fac",
+      "Flags": 0,
+      "Name": "Minigame",
+      "Position": "-5000,0,0",
+      "Rotation": "0,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "Components": [
+        {
+          "__type": "MiniGame",
+          "__guid": "fa4a3310-c103-44d2-963c-ce46374a78f3",
+          "BalloonObject": "prefabs/balloon.prefab",
+          "Distraction": {
+            "_type": "component",
+            "component_id": "8cda3746-1c55-4ff7-a7eb-d9438360b28c",
+            "go": "b849d886-6f57-4867-a222-87a528fc0454",
+            "component_type": "DistractionComponent"
+          },
+          "Margin": 40,
+          "TargetObject": "prefabs/target.prefab"
+        },
+        {
+          "__type": "Sandbox.CameraComponent",
+          "__guid": "373545b5-79af-4381-9f91-9fc23b11b2dd",
+          "BackgroundColor": "0.33333,0.46196,0.52157,0",
+          "ClearFlags": "Stencil",
+          "FieldOfView": 60,
+          "IsMainCamera": false,
+          "Orthographic": true,
+          "OrthographicHeight": 300,
+          "Priority": 5,
+          "RenderExcludeTags": "",
+          "RenderTags": "",
+          "TargetEye": "None",
+          "Viewport": "0,0,1,1",
+          "ZFar": 2000,
+          "ZNear": 10
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "e55b77d6-172a-4ade-9a7b-6e9a3c71abf8",
+          "Flags": 0,
+          "Name": "Point Light",
+          "Position": "-11.86699,223.1274,101.2571",
+          "Tags": "light_point,light",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.PointLight",
+              "__guid": "50690c08-049b-43ed-856c-8d480619746b",
+              "Attenuation": 1,
+              "FogMode": "Disabled",
+              "FogStrength": 1,
+              "LightColor": "2.28433,2.44968,2.5,1",
+              "Radius": 500,
+              "Shadows": false
+            }
+          ]
+        },
+        {
+          "__guid": "50f700a0-6723-41d2-969d-d5fc436a832f",
+          "Flags": 0,
+          "Name": "Point Light",
+          "Position": "-11.86738,-279.4165,-165.7586",
+          "Tags": "light_point,light",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.PointLight",
+              "__guid": "e2326bff-372a-4cf4-8122-af9d6acf714b",
+              "Attenuation": 1,
+              "FogMode": "Disabled",
+              "FogStrength": 1,
+              "LightColor": "2.28433,2.44968,2.5,1",
+              "Radius": 500,
+              "Shadows": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "b849d886-6f57-4867-a222-87a528fc0454",
+      "Flags": 0,
+      "Name": "Distraction",
+      "Position": "-4989.538,654.0936,-287.6639",
+      "Rotation": "0,0,-0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "Components": [
+        {
+          "__type": "Sandbox.SkinnedModelRenderer",
+          "__guid": "edd378bd-25af-4523-967d-ee7e9d407dd5",
+          "AnimationGraph": "models/npc_distraction/distraction01.vanmgrph",
+          "BodyGroups": 18446744073709551615,
+          "CreateBoneObjects": false,
+          "Model": "models/npc_distraction/distraction01.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1",
+          "UseAnimGraph": true
+        },
+        {
+          "__type": "DistractionComponent",
+          "__guid": "8cda3746-1c55-4ff7-a7eb-d9438360b28c",
+          "Renderer": {
+            "_type": "component",
+            "component_id": "edd378bd-25af-4523-967d-ee7e9d407dd5",
+            "go": "b849d886-6f57-4867-a222-87a528fc0454",
+            "component_type": "SkinnedModelRenderer"
+          }
+        },
+        {
+          "__type": "Sandbox.ModelHitboxes",
+          "__guid": "e09b80d8-ed72-42b5-8872-523cdeddb011",
+          "Renderer": {
+            "_type": "component",
+            "component_id": "edd378bd-25af-4523-967d-ee7e9d407dd5",
+            "go": "b849d886-6f57-4867-a222-87a528fc0454",
+            "component_type": "SkinnedModelRenderer"
+          }
         }
       ]
     }

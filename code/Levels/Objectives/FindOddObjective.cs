@@ -15,6 +15,9 @@ public class FindOddObjective : LevelObjective
 		OddTennis = 4,
 	}
 
+	public override bool Disabled { get; set; } = false;
+	public override int Weight => 140;
+
 	public override int MaxSelectedNPCs => TargetNPCCount;
 
 	[Sync] public int TargetNPCCount { get; private set; }
@@ -32,8 +35,6 @@ public class FindOddObjective : LevelObjective
 		TargetNPCIds = GetTargetNPCs( npcs, TargetNPCCount );
 
 		CreateOddity();
-
-		Log.Info( TargetNPCIds.Count() + " vs " + TargetNPCCount );
 
 		return npcs;
 
@@ -108,9 +109,9 @@ public class FindOddObjective : LevelObjective
 
 	}
 
-	protected override void OnCompletedObjective( Guid player )
+	protected override void CompletedObjective( Guid player )
 	{
-		base.OnCompletedObjective( player );
+		base.CompletedObjective( player );
 
 	}
 
@@ -132,9 +133,13 @@ public class FindOddObjective : LevelObjective
 	{
 		base.OnDestroy();
 
+		if( TargetNPCIds == null) { return; }
+
 		foreach ( Guid npcId in TargetNPCIds )
 		{
 			NPC npc = Scene.Directory.FindByGuid( npcId ).Components.Get<NPC>(true);
+
+			if(npc == null) { continue; }
 
 			npc.Jog( false );
 		}

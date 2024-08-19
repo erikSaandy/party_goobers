@@ -8,8 +8,8 @@ ScreenLabelHandler {
         width: auto;
         height: auto;
         //transform: translate(-50%, -50%);
-        opacity: 1;
-        //transition: opacity 0.9s linear;
+        opacity: 0;
+        transition: opacity 0.5s linear;
         justify-content: center;
         align-items: center;
         font-size: 40px;

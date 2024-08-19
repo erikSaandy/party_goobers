@@ -15,12 +15,8 @@
           "go": "aa17f685-9b9c-48c6-8bd6-59c0e50a49a7",
           "component_type": "CameraComponent"
         },
-        "NodePaths": []
-      },
-      {
-        "__type": "LobbyComponent",
-        "__guid": "00000000-0000-0000-0000-000000000000",
-        "__enabled": false
+        "NodePaths": [],
+        "OverrideLookAt": false
       }
     ],
     "Children": [
@@ -96,7 +92,6 @@
         "__guid": "f66382ab-483b-46f2-b1f3-f35d65ca5a59",
         "Flags": 0,
         "Name": "spot",
-        "Position": "0,0,-128",
         "Scale": "18,18,18",
         "Enabled": true,
         "Components": [
@@ -133,7 +128,7 @@
         "Flags": 0,
         "Name": "Directional Light",
         "Position": "0,0,200",
-        "Rotation": "-0.2459842,0.5938582,0.2931525,0.7077327",
+        "Rotation": "-0.3394444,0.819491,0.1767036,0.4266001",
         "Tags": "light_directional,light",
         "Enabled": true,
         "Components": [

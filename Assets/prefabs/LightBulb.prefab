@@ -1,0 +1,93 @@
+{
+  "RootObject": {
+    "__guid": "78bb690a-3120-4a66-b345-6596fa794b59",
+    "Flags": 0,
+    "Name": "lightbulb",
+    "Scale": "8,8,8",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.SkinnedModelRenderer",
+        "__guid": "6260ad7e-97a5-49b6-97c2-fac7c3af1a19",
+        "BodyGroups": 18446744073709551615,
+        "CreateBoneObjects": false,
+        "MaterialGroup": "default",
+        "Model": "models/lightbulb_fixture/lightbulb.vmdl",
+        "RenderType": "On",
+        "Tint": "1,0.78124,0.22791,1",
+        "UseAnimGraph": true
+      },
+      {
+        "__type": "LightBulbComponent",
+        "__guid": "2d53c54b-313e-4c32-9f4e-e612f4ad04fc",
+        "BlinkInterval": 0.7,
+        "DefaultIsOff": false,
+        "LightSource": {
+          "_type": "component",
+          "component_id": "23f375d5-768b-4f5e-952e-b143f3cd16e7",
+          "go": "dee0148a-1927-4d56-8b1e-8951b264b12c",
+          "component_type": "PointLight"
+        },
+        "Renderer": {
+          "_type": "component",
+          "component_id": "6260ad7e-97a5-49b6-97c2-fac7c3af1a19",
+          "go": "78bb690a-3120-4a66-b345-6596fa794b59",
+          "component_type": "SkinnedModelRenderer"
+        },
+        "StartOn": false
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "dee0148a-1927-4d56-8b1e-8951b264b12c",
+        "Flags": 0,
+        "Name": "Point Light",
+        "Position": "0,0,9.397818",
+        "Rotation": "-0.5,-0.5,0.5,0.5",
+        "Scale": "0.125,0.125,0.125",
+        "Tags": "light_point,light",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.PointLight",
+            "__guid": "23f375d5-768b-4f5e-952e-b143f3cd16e7",
+            "Attenuation": 1,
+            "FogMode": "Enabled",
+            "FogStrength": 1,
+            "LightColor": "1,0.78039,0.22745,1",
+            "Radius": 64,
+            "Shadows": true
+          }
+        ]
+      }
+    ],
+    "__variables": [
+      {
+        "Id": "StartOn",
+        "Title": "Start On",
+        "Targets": [
+          {
+            "Id": "2d53c54b-313e-4c32-9f4e-e612f4ad04fc",
+            "Property": "StartOn"
+          }
+        ]
+      },
+      {
+        "Id": "DefaultIsOff",
+        "Title": "Default Is Off",
+        "Targets": [
+          {
+            "Id": "2d53c54b-313e-4c32-9f4e-e612f4ad04fc",
+            "Property": "DefaultIsOff"
+          }
+        ]
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

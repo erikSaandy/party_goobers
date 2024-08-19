@@ -53,6 +53,8 @@ public sealed class LevelDataComponent : Component
 		Scene.Camera.ZFar = CameraReference.ZFar;
 		Scene.Camera.ZNear = CameraReference.ZNear;
 		Scene.Camera.BackgroundColor = CameraReference.BackgroundColor;
+		Scene.Camera.Orthographic = CameraReference.Orthographic;
+		Scene.Camera.OrthographicHeight = CameraReference.OrthographicHeight;
 		CameraReference.Enabled = false;
 
 		//CameraReference.GameObject.Destroy();

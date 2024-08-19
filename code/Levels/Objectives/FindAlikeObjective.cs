@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 public class FindAlikeObjective : LevelObjective
 {
 
+	public override bool Disabled { get; set; } = false;
+	public override int Weight => 100;
+
+
 	public override int MaxSelectedNPCs => NumberOfAlike;
 
 	[Property][Range(1, 5)] public int NumberOfAlike { get; private set; } = 2;
@@ -57,7 +61,9 @@ public class FindAlikeObjective : LevelObjective
 		
 		if(IsProxy) { return; }
 
-		if(AlikeNPCIds == null || AlikeNPCIds.Count == 0 || TargetNPCId == default ) { return; }
+		if ( !PartyFacesManager.DEBUG ) { return; }
+
+		if ( AlikeNPCIds == null || AlikeNPCIds.Count == 0 || TargetNPCId == default ) { return; }
 
 		Gizmo.Draw.LineSphere( Scene.Directory.FindByGuid( TargetNPCId ).Transform.Position + Vector3.Up * 16, 16 );
 
@@ -74,9 +80,9 @@ public class FindAlikeObjective : LevelObjective
 
 	}
 
-	protected override void OnCompletedObjective( Guid player )
+	protected override void CompletedObjective( Guid player )
 	{
-		base.OnCompletedObjective( player );
+		base.CompletedObjective( player );
 
 		if(IsProxy) { return; }
 
@@ -88,8 +94,6 @@ public class FindAlikeObjective : LevelObjective
 		base.OnDestroy();
 		
 		if(AlikeNPCIds == null) { return; }
-
-		if ( !PartyFacesManager.DEBUG ) { return; }
 
 		// randomize alike npcs on level unload.
 		foreach ( Guid id in AlikeNPCIds )

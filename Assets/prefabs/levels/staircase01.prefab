@@ -57,24 +57,36 @@
           "Nodes": [
             {
               "Id": 0,
-              "Type": "input"
-            },
-            {
-              "Id": 2,
-              "Type": "scene.ref",
+              "Type": "input",
               "UserData": {
-                "Position": "80,112"
+                "Position": "176,64"
               }
             },
             {
-              "Id": 3,
+              "Id": 5,
+              "Type": "scene.ref",
+              "Properties": {
+                "component": {
+                  "_type": "component",
+                  "component_id": "72fe3533-689d-4b76-9cbb-a98952318d49",
+                  "go": "80b6f339-2c74-4112-8bbc-29b1a399294a",
+                  "component_type": "ConfusionSpell"
+                }
+              },
+              "UserData": {
+                "Position": "96,176"
+              }
+            },
+            {
+              "Id": 6,
               "Type": "call",
               "Properties": {
+                "_type": "ConfusionSpell",
                 "_isStatic": false,
                 "_name": "OnInitiated"
               },
               "UserData": {
-                "Position": "368,96"
+                "Position": "416,176"
               }
             }
           ],
@@ -82,16 +94,24 @@
             {
               "SrcId": 0,
               "SrcName": "_signal",
-              "DstId": 3,
+              "DstId": 6,
               "DstName": "_signal"
             },
             {
-              "SrcId": 2,
+              "SrcId": 5,
               "SrcName": "_result",
-              "DstId": 3,
+              "DstId": 6,
               "DstName": "_target"
             }
-          ]
+          ],
+          "Defaults": {
+            "$5.component": {
+              "_type": "component",
+              "component_id": "72fe3533-689d-4b76-9cbb-a98952318d49",
+              "go": "80b6f339-2c74-4112-8bbc-29b1a399294a",
+              "component_type": "ConfusionSpell"
+            }
+          }
         },
         "OverrideLookAt": false
       },
@@ -127,7 +147,14 @@
         "Flags": 0,
         "Name": "Confusion",
         "Enabled": true,
-        "NetworkMode": 1
+        "NetworkMode": 1,
+        "Components": [
+          {
+            "__type": "ConfusionSpell",
+            "__guid": "72fe3533-689d-4b76-9cbb-a98952318d49",
+            "TriggerChance": 0.2
+          }
+        ]
       },
       {
         "__guid": "e658e87d-967d-4c6b-baff-290edef68384",

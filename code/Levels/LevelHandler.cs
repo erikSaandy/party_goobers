@@ -18,7 +18,7 @@ public class LevelHandler : SingletonComponent<LevelHandler>
 	[ResourceType( "prefab" )]
 	[Property] public string[] LevelPrefabs { get; set; }
 
-	public async void LoadRandomLevel()
+	public async Task LoadRandomLevel()
 	{
 		if(IsProxy) { return; }
 
@@ -26,17 +26,17 @@ public class LevelHandler : SingletonComponent<LevelHandler>
 
 		string level = LevelPrefabs.GetRandom();
 
-		if(PartyFacesManager.DEBUG )
-		{
-			for (int i = 1; i <= 10; i++ )
-			{
-				if(Input.Down($"Slot{i}"))
-				{
-					level = LevelPrefabs[(int)MathF.Min(i-1, LevelPrefabs.Count())];
-					break;
-				}
-			}
-		}
+		//if(PartyFacesManager.DEBUG )
+		//{
+		//	for (int i = 1; i <= 10; i++ )
+		//	{
+		//		if(Input.Down($"Slot{i}"))
+		//		{
+		//			level = LevelPrefabs[(int)MathF.Min(i-1, LevelPrefabs.Count())];
+		//			break;
+		//		}
+		//	}
+		//}
 
 		GameObject levelObject = SceneUtility.GetPrefabScene( ResourceLibrary.Get<PrefabFile>( level ) ).Clone( Vector3.Zero );
 
@@ -46,7 +46,7 @@ public class LevelHandler : SingletonComponent<LevelHandler>
 
 		await NPCBuffer.Instance.PlaceNPCs();
 
-		await Task.Delay( 200 );
+		await Task.Delay( 500 );
 
 		CurrentLevelData.OnInitiated?.Invoke();
 

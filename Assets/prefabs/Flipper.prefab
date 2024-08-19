@@ -1,0 +1,109 @@
+{
+  "RootObject": {
+    "__guid": "9081c621-1ce5-4a50-a400-567fda109aa9",
+    "Flags": 0,
+    "Name": "flipper",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "Children": [
+      {
+        "__guid": "2d739a1c-8b9a-4c77-85ba-fa4ad6abcd83",
+        "Flags": 0,
+        "Name": "flipper",
+        "Position": "0,0,37.13428",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "Components": [
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "ca787e84-01af-4d83-bf01-2b9ad14ebbfe",
+            "AnimationGraph": "models/flipper/flipper.vanmgrph",
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": false,
+            "Model": "models/flipper/flipper.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          },
+          {
+            "__type": "FlipperComponent",
+            "__guid": "2bc46011-32ff-469e-bcc1-8e69e4187812",
+            "Renderer": {
+              "_type": "component",
+              "component_id": "ca787e84-01af-4d83-bf01-2b9ad14ebbfe",
+              "go": "2d739a1c-8b9a-4c77-85ba-fa4ad6abcd83",
+              "component_type": "SkinnedModelRenderer"
+            }
+          },
+          {
+            "__type": "Sandbox.ModelHitboxes",
+            "__guid": "d74940ee-64ff-41e3-9477-3faad136e702",
+            "Renderer": {
+              "_type": "component",
+              "component_id": "ca787e84-01af-4d83-bf01-2b9ad14ebbfe",
+              "go": "2d739a1c-8b9a-4c77-85ba-fa4ad6abcd83",
+              "component_type": "SkinnedModelRenderer"
+            }
+          },
+          {
+            "__type": "Sandbox.ModelPhysics",
+            "__guid": "9c91b094-5a2a-42fb-8895-b5a50f275378",
+            "Locking": {},
+            "Model": "models/flipper/flipper.vmdl",
+            "MotionEnabled": false,
+            "Renderer": {
+              "_type": "component",
+              "component_id": "ca787e84-01af-4d83-bf01-2b9ad14ebbfe",
+              "go": "2d739a1c-8b9a-4c77-85ba-fa4ad6abcd83",
+              "component_type": "SkinnedModelRenderer"
+            },
+            "RigidbodyFlags": 0
+          }
+        ]
+      },
+      {
+        "__guid": "7155df76-b1df-4316-a979-bfd2ab38b5be",
+        "Flags": 0,
+        "Name": "Cube",
+        "Position": "0,-38.31226,17.93026",
+        "Scale": "0.4993922,0.3917212,0.7901103",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "6fb43c3f-4454-4e78-9afc-337259c23447",
+            "BodyGroups": 18446744073709551615,
+            "Model": "models/dev/box.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "f6190440-8305-4bf8-b9c2-5d2a9fc3fd73",
+        "Flags": 0,
+        "Name": "Cube (1)",
+        "Position": "0,36.52465,17.93026",
+        "Scale": "0.4993922,0.3917212,0.7901103",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "e8ee73ba-8125-4619-b2f9-479547f90c3f",
+            "BodyGroups": 18446744073709551615,
+            "Model": "models/dev/box.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

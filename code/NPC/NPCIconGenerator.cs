@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sandbox;
+using System;
 
 public class NPCIconGenerator : SingletonComponent<NPCIconGenerator>
 {
@@ -7,7 +8,7 @@ public class NPCIconGenerator : SingletonComponent<NPCIconGenerator>
 	public static Texture RenderTexture { get; private set; } = null;
 	[Property] private CameraComponent Camera { get; set; }
 
-	[Property] public NPC DisplayNPC { get; private set; }	
+	[Property] public NPC DisplayNPC { get; private set; }
 
 	protected override void OnAwake()
 	{
@@ -32,23 +33,35 @@ public class NPCIconGenerator : SingletonComponent<NPCIconGenerator>
 	{
 	}
 
-	[Broadcast]
 	public void RequestNPCHeadshot( Guid npcGuid )
 	{
-		RequestNPCHeadshotAsync( npcGuid );
+		NPC npc = Scene.Directory.FindByGuid( npcGuid ).Components.Get<NPC>( true );
+		DisplayNPC.CopyFrom( npc.GameObject.Id );
+		DisplayNPC.GameObject.Enabled = true;
+
+		NPCBuffer.OnNPCsGenerated -= delegate { TakeNPCHeadshotAsync( npcGuid ); };
+		NPCBuffer.OnNPCsGenerated += delegate { TakeNPCHeadshotAsync( npcGuid ); };
+		//TakeNPCHeadshotAsync( npcGuid );
+
+		Log.Info( "requested headshot" );
+
 	}
 
-	private async void RequestNPCHeadshotAsync(Guid npcGuid)
+	[Broadcast]
+	private async void TakeNPCHeadshotAsync(Guid npcGuid)
 	{
-		await Task.Delay( 100 );
+
+		await Task.Delay( 200 );
+
+		DisplayNPC.GameObject.Enabled = true;
+		//NPC npc = Scene.Directory.FindByGuid( npcGuid ).Components.Get<NPC>( true );
+		//DisplayNPC.ClientCopyFrom( npc.GameObject.Id );
+		//DisplayNPC.GameObject.Enabled = true;
+
+		await Task.Delay( 500 );
 
 		await Task.RunInThreadAsync( () =>
 		{
-
-			NPC npc = Scene.Directory.FindByGuid( npcGuid ).Components.Get<NPC>( true );
-
-			DisplayNPC.CopyFrom( npc.GameObject.Id );
-			DisplayNPC.GameObject.Enabled = true;
 
 			Camera.BackgroundColor = BG_COLOR;
 			Camera.OrthographicHeight = 35;
@@ -56,12 +69,15 @@ public class NPCIconGenerator : SingletonComponent<NPCIconGenerator>
 			Camera.ZNear = 32;
 			Camera.Transform.Rotation = Vector3.VectorAngle( DisplayNPC.ForwardReference.Value.Rotation.Backward );
 			Camera.Transform.Position = DisplayNPC.Face.Transform.Position - DisplayNPC.ForwardReference.Value.Rotation.Backward * 64;
-
+				
 		} );
 
 		await Task.Delay( 250 );
 
 		Camera.RenderToTexture( RenderTexture );
+		Log.Info( "took headshot" );
+
+		LevelHandler.Instance.CurrentLevelData.OnInitiated -= delegate { TakeNPCHeadshotAsync( npcGuid ); };
 
 	}
 

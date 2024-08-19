@@ -53,6 +53,18 @@ public class NPC : Component, IInteractable
 		Face.Mouth.SetTextureID( npc.Face.Mouth.TextureId );
 	}
 
+	public void ClientCopyFrom( Guid other )
+	{
+		NPC npc = Scene.Directory.FindByGuid( other ).Components.Get<NPC>( true );
+
+		SetColor( npc.Color.RgbaInt );
+		Face.Eyebrows.Renderer.Texture = npc.Face.Eyebrows.Texture;
+		Face.Eyes.Renderer.Texture = npc.Face.Eyes.Texture;
+		Face.Nose.Renderer.Texture = npc.Face.Nose.Texture;
+		Face.Mouth.Renderer.Texture = npc.Face.Mouth.Texture;
+
+	}
+
 	public bool IsAlike( Guid other )
 	{
 		NPC npc = Scene.Directory.FindByGuid( other ).Components.Get<NPC>( true );
@@ -112,7 +124,7 @@ public class NPC : Component, IInteractable
 		List<int> i = new();
 	}
 
-	public void OnInteract( Guid playerId )
+	public void OnInteract( Guid playerId , SceneTraceResult traceResult )
 	{
 		LevelHandler.Instance.CurrentLevelData.ClientClickedOnNPC( playerId, this );
 
@@ -170,6 +182,9 @@ public class NPC : Component, IInteractable
 	[Broadcast]
 	public void Crouch(bool crouch = true)
 	{
+		// Don't crouch if waving or cheering
+		if(Renderer.GetInt("e_behaviour") != 0 ) { return; }
+
 		Renderer.Set( "b_crouching", crouch );
 	}
 
@@ -247,8 +262,19 @@ public class NPC : Component, IInteractable
 
 		if (LookAtObject != null) {
 
-			Vector3 from = ForwardReference?.Position ?? 0;
-			Vector3 dir = ( LookAtObject.Transform.Position - from);
+			Vector3 dir = 0;
+
+			// If look object is orthographic camera, look parallel to camera
+			if( LookAtObject == Scene?.Camera?.GameObject && Scene.Camera.Orthographic )
+			{
+				dir = Scene.Camera.Transform.Rotation.Backward;
+			}
+			else
+			{
+				Vector3 from = ForwardReference?.Position ?? 0;
+				dir = (LookAtObject.Transform.Position - from);
+			}
+
 			Renderer.SetLookDirection( "aim_head", dir );
 
 		}

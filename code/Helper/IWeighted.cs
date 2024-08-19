@@ -8,6 +8,6 @@ using System.Threading.Tasks;
 public interface IWeighted
 {
 	public bool Disabled { get; set; }
-	[Range( 0, 100 )] public int Weight { get; set; }
+	[Range( 0, 100 )] public int Weight { get; }
 
 }

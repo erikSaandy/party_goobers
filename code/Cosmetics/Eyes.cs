@@ -16,6 +16,8 @@ public class Eyes : FaceFeature
 
 	public async void Blink()
 	{
+		if(Owner.Owner.Tags.Has("npcdisplay")) { return; }
+
 		Renderer.Texture = FaceData.Instance.EyeBlinkTexture;
 
 		await Task.Delay( 100 );

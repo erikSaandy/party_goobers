@@ -81,13 +81,7 @@ public class LobbyComponent : Component, Component.INetworkListener
 	{
 		base.OnDestroy();
 
-		IEnumerable<NPC> npcs = Scene.GetAllComponents<NPC>();
-
-		foreach ( NPC npc in npcs )
-		{
-			npc.ConnectionId = default;
-			PartyFacesManager.EnableGameobject( npc.GameObject.Id, false );
-		}
+		NPCBuffer.Instance.HideNPCs();
 	}
 
 }

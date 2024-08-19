@@ -199,7 +199,7 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 
 		OnRoundEnter?.Invoke();
 
-		LevelHandler.Instance.LoadRandomLevel();
+		await LevelHandler.Instance.LoadRandomLevel();
 
 		await Task.Delay( 1000 );
 

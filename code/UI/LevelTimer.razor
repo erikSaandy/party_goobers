@@ -13,58 +13,63 @@
 
 @code
 {
-	public const int ROUND_TIME = 15;
+    public const int ROUND_TIME = 15;
 
-	[Sync] public static bool IsRunning { get; private set; } = false;
+    [Sync] public static bool IsRunning { get; private set; } = false;
 
-	[Sync] private static float TimeSinceStarted { get; set; } = 0;
+    [Sync] private static float TimeSinceStarted { get; set; } = 0;
 
-	[Sync] private static float TargetTime { get; set; } = 0;
+    [Sync] private static float TargetTime { get; set; } = 0;
 
-	public static float TimeNow => (TargetTime - TimeSinceStarted);
-	private static string TimeNowDisplay => (MathF.Max(TimeNow, 0f) + 0.4f).ToString("0");
+    public static float TimeNow => (TargetTime - TimeSinceStarted);
+    private static string TimeNowDisplay => (MathF.Max(TimeNow, 0f) + 0.4f).ToString("0");
 
-	public static Action OnTimerDepleted { get; set; }
-	public static Action OnTimerStarted { get; set; }
+    public static Action OnTimerDepleted { get; set; }
+    public static Action OnTimerStarted { get; set; }
+    public static Action OnTimerStopped { get; set; }
 
-	public LevelTimer() { }
+    public LevelTimer() { }
 
-	protected override void OnUpdate()
-	{
-		base.OnUpdate();
+    protected override void OnUpdate()
+    {
+        base.OnUpdate();
 
-		if(IsRunning)
-		{
-			TimeSinceStarted += Time.Delta;
+        if(IsRunning)
+        {
+            TimeSinceStarted += Time.Delta;
 
-			if (IsProxy) { return; }
+            if (IsProxy) { return; }
 
-			if(TimeNow <= -1f)
-			{
-				OnTimerDepleted?.Invoke();
-				IsRunning = false;
-			}
-		}
+            if(TimeNow <= -1f)
+            {
+                OnTimerDepleted?.Invoke();
+                OnTimerStopped?.Invoke();
+                IsRunning = false;
+            }
+        }
 
-	}
+    }
 
-	[Broadcast]
-	public static void Start()
-	{
+    [Broadcast]
+    public static void Start()
+    {
 
-		TargetTime = ROUND_TIME;
-		TimeSinceStarted = 0;
-		IsRunning = true;
+        TargetTime = ROUND_TIME;
+        TimeSinceStarted = 0;
+        IsRunning = true;
 
-		OnTimerStarted?.Invoke();
+        OnTimerStarted?.Invoke();
 
-	}
+    }
 
-	[Broadcast]
-	public static void Stop()
-	{
-		IsRunning = false;
-	}
+    [Broadcast]
+    public static void Stop()
+    {
+        if(!IsRunning) { return; }
+
+        IsRunning = false;
+        OnTimerStopped?.Invoke();
+    }
 
 	protected override void OnDestroy()
 	{

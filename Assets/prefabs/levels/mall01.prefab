@@ -33,7 +33,8 @@
           "component_id": "92d31fbb-4186-4794-9131-3a047194d4e8",
           "go": "c7bb348a-bce8-4e8e-a5b7-d2c5e08a5362",
           "component_type": "LevelObjectiveHandler"
-        }
+        },
+        "OverrideLookAt": false
       },
       {
         "__type": "LevelObjectiveHandler",
@@ -53,6 +54,12 @@
         "__type": "FindAlikeObjective",
         "__guid": "b7f06bbc-adf3-4e05-889d-3cbfc6435e76",
         "NumberOfAlike": 3
+      },
+      {
+        "__type": "FindOddObjective",
+        "__guid": "1fd477e8-8582-404d-90b4-8e96a9d20eb5",
+        "MaxTargetNPCs": 5,
+        "OddityMask": "OddRunner"
       }
     ],
     "Children": [

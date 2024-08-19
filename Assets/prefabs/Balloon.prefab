@@ -1,0 +1,76 @@
+{
+  "RootObject": {
+    "__guid": "6f4fbc3e-0fe2-4c7e-9648-4f5f2174e9a1",
+    "Flags": 0,
+    "Name": "balloon",
+    "Enabled": true,
+    "NetworkMode": 0,
+    "Components": [
+      {
+        "__type": "Sandbox.Rigidbody",
+        "__guid": "628a5d15-c727-40fa-b9ee-86dc0003aaa9",
+        "AngularDamping": 500,
+        "Gravity": false,
+        "LinearDamping": 500,
+        "Locking": {
+          "Yaw": true
+        },
+        "MassCenterOverride": "0,0,0",
+        "MassOverride": 0,
+        "MotionEnabled": true,
+        "OverrideMassCenter": false,
+        "RigidbodyFlags": "DisableCollisionSounds",
+        "StartAsleep": false
+      },
+      {
+        "__type": "Sandbox.ModelCollider",
+        "__guid": "f789f4f0-3ed9-487a-a039-a4df7d79623d",
+        "IsTrigger": false,
+        "Model": "models/balloon/balloon.vmdl",
+        "Static": false
+      },
+      {
+        "__type": "Sandbox.ModelRenderer",
+        "__guid": "bdac8d03-2df4-4e2d-bc1d-f493f93baac5",
+        "BodyGroups": 18446744073709551615,
+        "Model": "models/balloon/balloon.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "Sandbox.ManualHitbox",
+        "__guid": "f4f30602-d390-4a2c-8364-2b550c999933",
+        "CenterA": "0,0,0",
+        "CenterB": "0,0,0",
+        "HitboxTags": "",
+        "Radius": 21.499989,
+        "Shape": "Sphere"
+      },
+      {
+        "__type": "BalloonComponent",
+        "__guid": "9fb1566a-402f-4acd-937c-c67aef07ed78",
+        "Body": {
+          "_type": "component",
+          "component_id": "628a5d15-c727-40fa-b9ee-86dc0003aaa9",
+          "go": "6f4fbc3e-0fe2-4c7e-9648-4f5f2174e9a1",
+          "component_type": "Rigidbody"
+        },
+        "Renderer": {
+          "_type": "component",
+          "component_id": "bdac8d03-2df4-4e2d-bc1d-f493f93baac5",
+          "go": "6f4fbc3e-0fe2-4c7e-9648-4f5f2174e9a1",
+          "component_type": "ModelRenderer"
+        },
+        "Speed": 650
+      }
+    ],
+    "Children": [],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

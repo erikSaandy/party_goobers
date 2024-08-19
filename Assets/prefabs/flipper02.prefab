@@ -1,0 +1,71 @@
+{
+  "RootObject": {
+    "__guid": "a927ed9d-3ba8-4ce0-ad28-98fdb69953f3",
+    "Flags": 0,
+    "Name": "flipper02",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "Components": [
+      {
+        "__type": "Sandbox.SkinnedModelRenderer",
+        "__guid": "3a886bfa-23a9-430c-9355-7c61c8e9d75f",
+        "AnimationGraph": "models/flipper02/flipper02.vanmgrph",
+        "BodyGroups": 18446744073709551615,
+        "CreateBoneObjects": false,
+        "Model": "models/flipper02/flipper02.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1",
+        "UseAnimGraph": true
+      },
+      {
+        "__type": "FlipperComponent",
+        "__guid": "1a424222-3e21-4157-84c0-edfbd90067ff",
+        "Renderer": {
+          "_type": "component",
+          "component_id": "3a886bfa-23a9-430c-9355-7c61c8e9d75f",
+          "go": "a927ed9d-3ba8-4ce0-ad28-98fdb69953f3",
+          "component_type": "SkinnedModelRenderer"
+        }
+      },
+      {
+        "__type": "Sandbox.ModelHitboxes",
+        "__guid": "254711ee-7971-44a7-8dc3-e20e8319c93b",
+        "Renderer": {
+          "_type": "component",
+          "component_id": "3a886bfa-23a9-430c-9355-7c61c8e9d75f",
+          "go": "a927ed9d-3ba8-4ce0-ad28-98fdb69953f3",
+          "component_type": "SkinnedModelRenderer"
+        }
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "8d8adae5-6977-4444-94f8-0e2699a59b73",
+        "Flags": 0,
+        "Name": "Point Light",
+        "Position": "-54.51256,0,6.075884",
+        "Tags": "light_point,light",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.PointLight",
+            "__guid": "035fb5a1-e1c0-4438-840b-af23ce6d5b9d",
+            "Attenuation": 0.22,
+            "FogMode": "Enabled",
+            "FogStrength": 0.43,
+            "LightColor": "0.91373,0.98039,1,1",
+            "Radius": 200,
+            "Shadows": false
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}
