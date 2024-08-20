@@ -62,8 +62,8 @@
               "Id": 5,
               "Type": "call",
               "Properties": {
-                "_isStatic": false,
                 "_type": "WhackamoleComponent",
+                "_isStatic": false,
                 "_name": "OnInitiated"
               },
               "UserData": {
@@ -121,7 +121,6 @@
         "__guid": "9a84fa88-cb04-4bfd-8409-54d5a01f828e",
         "Flags": 0,
         "Name": "Map Instance",
-        "Position": "-134.7281,0,0",
         "Enabled": true,
         "Components": [
           {
@@ -140,8 +139,8 @@
         "__guid": "b02a6fa4-cc65-43d9-aca5-9b68519c9a9f",
         "Flags": 0,
         "Name": "Camera",
-        "Position": "-144.3506,-641.6282,718.1169",
-        "Rotation": "-0.09229587,0.09229593,0.7010574,0.7010574",
+        "Position": "-0.002625014,-1027.111,853.1211",
+        "Rotation": "-0.08497174,0.0849718,0.7019827,0.7019827",
         "Scale": "-1.058358,1,1",
         "Enabled": true,
         "Components": [
@@ -150,7 +149,7 @@
             "__guid": "a959c83c-1da2-4d22-b5a8-7ce197eb9c81",
             "BackgroundColor": "0.33333,0.46275,0.52157,1",
             "ClearFlags": "All",
-            "FieldOfView": 55.61,
+            "FieldOfView": 36,
             "IsMainCamera": false,
             "Orthographic": false,
             "OrthographicHeight": 1204,
@@ -173,6 +172,52 @@
           {
             "__type": "WhackamoleComponent",
             "__guid": "dd35c3d7-b699-417b-8817-002df78e1048"
+          }
+        ]
+      },
+      {
+        "__guid": "25261166-a80c-4b73-81e3-04b18cfa2146",
+        "Flags": 0,
+        "Name": "display_top",
+        "Position": "0.00004349258,243.2281,751.6318",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.TextRenderer",
+            "__guid": "9820a76f-65b5-4925-82cf-83f478a5ead3",
+            "Color": "0,1,0.08333,1",
+            "FontFamily": "DisplayOTF",
+            "FontSize": 69.12,
+            "FontWeight": 800,
+            "Scale": 0.57,
+            "Text": "02319",
+            "TextAlignment": "Center"
+          }
+        ]
+      },
+      {
+        "__guid": "f6816ab4-2c76-4c1a-acea-8969cc95014c",
+        "Flags": 0,
+        "Name": "display_bottom",
+        "Position": "0.00004123745,230.6165,625.5015",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.TextRenderer",
+            "__guid": "406c7dc4-1211-4bac-a96e-c1c35444493f",
+            "Color": "0,1,0.08333,1",
+            "FontFamily": "DisplayOTF",
+            "FontSize": 69.12,
+            "FontWeight": 800,
+            "Scale": 0.35,
+            "Text": "0000",
+            "TextAlignment": "Center"
+          },
+          {
+            "__type": "WorldLevelTimer",
+            "__guid": "85ed54da-e575-4d82-8f4d-fb9af6b848a3"
           }
         ]
       }

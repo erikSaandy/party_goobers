@@ -146,7 +146,7 @@
           {
             "__type": "ConfusionSpell",
             "__guid": "d020f07c-8bc5-4ef7-8b13-fe353cd00361",
-            "TriggerChance": 0.2
+            "TriggerChance": 0.1
           }
         ]
       },

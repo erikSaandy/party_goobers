@@ -24,7 +24,12 @@
         "facepunch.waterbase_sign#33713",
         "facepunch.floor_wood_laminated#18686",
         "facepunch.carpet_a#18621",
-        "facepunch.cardboard_box#33592"
+        "facepunch.cardboard_box#33592",
+        "saandy.bucket01_open#17243",
+        "saandy.fluorescent_ceiling_light01#36033",
+        "saandy.weird_chair#19944",
+        "saandy.vent_01#38453",
+        "facepunch.ceiling_plaster_01#33577"
       ],
       "Metadata": {
         "SingleAssetSource": "maps/map01.vmap"

@@ -1,15 +1,15 @@
 {
-  "Title": "Party Face",
+  "Title": "Party Goobers",
   "Type": "game",
   "Org": "saandy",
-  "Ident": "party_face",
+  "Ident": "party_goobers",
   "Schema": 1,
   "IncludeSourceFiles": false,
-  "Resources": "\ntextures/icons/cursor.png\ntextures/icons/playericon_default.png\ntextures/icons/spyglass.png",
+  "Resources": "\ntextures/icons/cursor.png\ntextures/icons/playericon_default.png\ntextures/icons/spyglass.png\nfonts/DisplayOTF.otf",
   "PackageReferences": [],
   "EditorReferences": null,
   "Metadata": {
-    "MaxPlayers": 50,
+    "MaxPlayers": 24,
     "MinPlayers": 1,
     "TickRate": 50,
     "GameNetworkType": "Multiplayer",
@@ -22,6 +22,6 @@
     "LeaderboardType": "None",
     "CsProjName": "",
     "StartupScene": "scenes/minimal.scene",
-    "LaunchMode": "Normal"
+    "LaunchMode": "QuickPlay"
   }
 }

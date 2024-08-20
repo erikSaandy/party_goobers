@@ -106,7 +106,7 @@
 		]
 		model_archetype = ""
 		primary_associated_entity = ""
-		anim_graph_name = "models/target02/target02.vanmgrph"
+		anim_graph_name = "models/flipper02/flipper02.vanmgrph"
 		base_model_name = ""
 	}
 }

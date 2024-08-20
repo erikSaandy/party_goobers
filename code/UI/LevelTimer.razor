@@ -21,6 +21,7 @@
 
     [Sync] private static float TargetTime { get; set; } = 0;
 
+    public static float TimePrevious { get; private set; }
     public static float TimeNow => (TargetTime - TimeSinceStarted);
     private static string TimeNowDisplay => (MathF.Max(TimeNow, 0f) + 0.4f).ToString("0");
 
@@ -36,16 +37,41 @@
 
         if(IsRunning)
         {
+            TimePrevious = TimeNow;
             TimeSinceStarted += Time.Delta;
+
+            if ((int)TimePrevious != (int)TimeNow)
+            {
+                SecondChange( (int)TimeNow );
+            }
 
             if (IsProxy) { return; }
 
-            if(TimeNow <= -1f)
+            if(TimeNow <= 0f)
             {
                 OnTimerDepleted?.Invoke();
                 OnTimerStopped?.Invoke();
                 IsRunning = false;
             }
+
+        }
+
+    }
+
+    private void SecondChange(int newSecond)
+    {
+
+        switch(newSecond)
+        {
+            case 2:
+                Sound.Play("sounds/countdown_3.sound");
+                return;
+            case 1: 
+                Sound.Play("sounds/countdown_2.sound");
+                return;
+            case 0:
+                Sound.Play("sounds/countdown_1.sound");
+                return;
         }
 
     }
@@ -57,6 +83,8 @@
         TargetTime = ROUND_TIME;
         TimeSinceStarted = 0;
         IsRunning = true;
+
+        Sound.Play("sounds/timer_start.sound");
 
         OnTimerStarted?.Invoke();
 

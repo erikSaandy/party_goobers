@@ -55,7 +55,9 @@
 
     private LevelObjective GetObjective()
     {
-        if(LevelHandler.Instance.CurrentLevelData?.Objective == null)
+        if (LevelHandler.Instance.CurrentLevelData == null) { return null; }
+
+        if(LevelHandler.Instance.CurrentLevelData.Objective == null)
         {
             return null;
         }

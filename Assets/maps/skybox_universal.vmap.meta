@@ -1,0 +1,19 @@
+{
+  "publish": {
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "skybox_universal",
+      "Type": "map",
+      "Org": "local",
+      "Ident": "skybox_universal",
+      "Schema": 0,
+      "IncludeSourceFiles": false,
+      "Resources": null,
+      "PackageReferences": [],
+      "EditorReferences": [],
+      "Metadata": {
+        "SingleAssetSource": "maps/skybox_universal.vmap"
+      }
+    }
+  }
+}

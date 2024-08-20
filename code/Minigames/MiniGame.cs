@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 
 public class MiniGame : SingletonComponent<MiniGame>
 {
-	public const int DEPTH = 100;
+
+	public const int DEPTH = 60;
 
 	public static CameraComponent Camera { get; private set; }
 
@@ -15,6 +16,7 @@ public class MiniGame : SingletonComponent<MiniGame>
 
 	[Property] public PrefabFile TargetObject { get; private set; }
 	[Property] public PrefabFile BalloonObject { get; private set; }
+	[Property] public PrefabFile CanObject { get; private set; }
 	[Property] public DistractionComponent Distraction { get; private set; }
 
 	[Property] public float Margin { get; private set; } = 0.5f;
@@ -36,10 +38,11 @@ public class MiniGame : SingletonComponent<MiniGame>
 	{
 		new TargetPracticeEvent(),
 		new BalloonEvent(),
-		new DistractionEvent()
+		new DistractionEvent(),
+		new CanEvent()
 	};
 
-	public static Vector3 GetRandomPosition()
+	public static Vector3 GetRandomPositionOnScreen()
 	{
 		Vector3 hori = Vector3.Lerp( BottomLeft, BottomRight, Game.Random.Float( 0f, 1f ) );
 		Vector3 vert = Vector3.Lerp( BottomLeft, TopLeft, Game.Random.Float( 0f, 1f ) );
@@ -56,6 +59,17 @@ public class MiniGame : SingletonComponent<MiniGame>
 
 	}
 
+	public static Vector3 GetPositionBesideScreen( bool right = false )
+	{
+
+		return Instance.Transform.Position + (right ? (BottomRight.WithZ(0) + Vector3.Right * 50) : (BottomLeft.WithZ(0) + Vector3.Left * 50));
+	}
+
+	[Broadcast]
+	public void SpawnClientPrefabs( Vector3 position, PrefabFile prefab )
+	{
+		GameObject obj = SceneUtility.GetPrefabScene( prefab ).Clone( GetRandomPositionBelowScreen() );
+	}
 
 	protected override void OnAwake()
 	{
@@ -132,7 +146,7 @@ public class MiniGame : SingletonComponent<MiniGame>
 
 			for ( int i = 0; i < count; i++ )
 			{
-				GameObject target = SceneUtility.GetPrefabScene( MiniGame.Instance.TargetObject ).Clone( GetRandomPosition() );
+				GameObject target = SceneUtility.GetPrefabScene( MiniGame.Instance.TargetObject ).Clone( GetRandomPositionOnScreen() );
 				target.Transform.Rotation = Rotation.FromRoll( 90 );
 				target.NetworkSpawn();
 
@@ -144,7 +158,7 @@ public class MiniGame : SingletonComponent<MiniGame>
 
 	private class DistractionEvent : MiniEvent
 	{
-		public override int Weight => 120;
+		public override int Weight => 80;
 
 		public override void Invoke()
 		{
@@ -167,6 +181,21 @@ public class MiniGame : SingletonComponent<MiniGame>
 				GameObject balloon = SceneUtility.GetPrefabScene( MiniGame.Instance.BalloonObject ).Clone( GetRandomPositionBelowScreen() );
 				balloon.NetworkSpawn();
 			}
+
+		}
+
+	}
+
+	private class CanEvent : MiniEvent
+	{
+		public override int Weight => 300;
+
+		public override void Invoke()
+		{
+			bool right = Game.Random.Int( 0, 1 ) == 1;
+
+			Vector3 pos = MiniGame.GetPositionBesideScreen( right );
+			MiniGame.Instance.SpawnClientPrefabs( pos, MiniGame.Instance.CanObject );
 
 		}
 

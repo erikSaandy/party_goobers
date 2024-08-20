@@ -8,7 +8,7 @@ public sealed class TargetComponent : Component, IInteractable
 	const float GOLD_CHANCE = 0.2f;
 
 	[Property] private Prop Prop { get; set; }
-	
+
 	private bool IsHit { get; set; } = false;
 
 	[Sync] private bool IsGold { get; set; } = false;
@@ -28,9 +28,9 @@ public sealed class TargetComponent : Component, IInteractable
 
 		Prop.Tint = Red;
 
-		if (IsProxy) { return; }
+		if ( IsProxy ) { return; }
 
-		if( Game.Random.Float( 0f, 1f ) < GOLD_CHANCE ) { MakeGold(); }
+		if ( Game.Random.Float( 0f, 1f ) < GOLD_CHANCE ) { MakeGold(); }
 
 	}
 
@@ -41,9 +41,9 @@ public sealed class TargetComponent : Component, IInteractable
 		Prop.Tint = Gold;
 	}
 
-	protected override async void OnUpdate()
+	protected override void OnUpdate()
 	{
-		if(IsProxy) { return; }
+		if ( IsProxy ) { return; }
 
 		if ( TimeSinceSpawn > 8f )
 		{
@@ -53,14 +53,16 @@ public sealed class TargetComponent : Component, IInteractable
 	}
 
 	[Broadcast]
-	private async void Despawn()
+	private void Despawn() { DespawnAsync(); }
+
+	private async void DespawnAsync()
 	{
 		Components.Get<SkinnedModelRenderer>().Set( "b_despawn", true );
 
-		if(IsProxy) { return; }
+		if ( IsProxy ) { return; }
 
 		await Task.Delay( 2500 );
-		Destroy();
+		GameObject.Destroy();
 	}
 
 	public void OnInteract( Guid playerId, SceneTraceResult traceResult )
@@ -68,19 +70,32 @@ public sealed class TargetComponent : Component, IInteractable
 		Hit( playerId );
 	}
 
-	[Broadcast]
-	private void Hit(Guid playerId)
+	[Authority]
+	private void Hit( Guid playerId )
 	{
-		if(IsProxy) { return; }
-		if(IsHit) { return; }
+		if ( IsHit ) { return; }
 
+		Sound.Play( "sounds/gun_shot.sound" );
+		Sound.Play( "sounds/target_shatter.sound" );
 		IsHit = true;
 
-		List<Gib> gibs = Prop.CreateGibs();
+		if ( IsProxy ) { return; }
 
 		int score = IsGold ? GOLD_HIT_SCORE : HIT_SCORE;
 		PartyFacesManager.Instance.LabelHandler.SpawnLabel( $"+{score}", MiniGame.Camera.PointToScreenNormal( Transform.Position ), Vector2.Up * 50, false, isPositive: true );
 		Scene.Directory.FindByGuid( playerId ).Components.Get<Player>().AddScore( score );
+
+		SpawnGibs();
+
+		GameObject.Destroy();
+
+	}
+
+
+	[Broadcast]
+	private void SpawnGibs()
+	{
+		List<Gib> gibs = Prop.CreateGibs();
 
 		foreach ( Gib gib in gibs )
 		{
@@ -91,10 +106,8 @@ public sealed class TargetComponent : Component, IInteractable
 			rb.Velocity = (dir * 50) + (Vector3.Up * 150);
 			rb.AngularVelocity = Vector3.One * Game.Random.Float( -4, 4 );
 		}
-
-		GameObject.Destroy();
-
 	}
+
 
 	protected override void OnDestroy()
 	{

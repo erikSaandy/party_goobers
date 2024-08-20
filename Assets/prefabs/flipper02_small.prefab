@@ -1,0 +1,81 @@
+{
+  "RootObject": {
+    "__guid": "a927ed9d-3ba8-4ce0-ad28-98fdb69953f3",
+    "Flags": 0,
+    "Name": "flipper02_small",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "Components": [
+      {
+        "__type": "Sandbox.SkinnedModelRenderer",
+        "__guid": "3a886bfa-23a9-430c-9355-7c61c8e9d75f",
+        "AnimationGraph": "models/flipper02/flipper02.vanmgrph",
+        "BodyGroups": 18446744073709551615,
+        "CreateBoneObjects": false,
+        "Model": "models/flipper02/flipper02_small.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1",
+        "UseAnimGraph": true
+      },
+      {
+        "__type": "Sandbox.ModelHitboxes",
+        "__guid": "254711ee-7971-44a7-8dc3-e20e8319c93b",
+        "Renderer": {
+          "_type": "component",
+          "component_id": "3a886bfa-23a9-430c-9355-7c61c8e9d75f",
+          "go": "a927ed9d-3ba8-4ce0-ad28-98fdb69953f3",
+          "component_type": "SkinnedModelRenderer"
+        }
+      },
+      {
+        "__type": "FlipperComponent",
+        "__guid": "477ab61d-667c-413a-b9c7-ec59bb65198d",
+        "Renderer": {
+          "_type": "component",
+          "component_id": "3a886bfa-23a9-430c-9355-7c61c8e9d75f",
+          "go": "a927ed9d-3ba8-4ce0-ad28-98fdb69953f3",
+          "component_type": "SkinnedModelRenderer"
+        }
+      },
+      {
+        "__type": "FlipperComponent",
+        "__guid": "3817e582-b05a-4dbf-9880-da1bbc614c57",
+        "Renderer": {
+          "_type": "component",
+          "component_id": "3a886bfa-23a9-430c-9355-7c61c8e9d75f",
+          "go": "a927ed9d-3ba8-4ce0-ad28-98fdb69953f3",
+          "component_type": "SkinnedModelRenderer"
+        }
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "8d8adae5-6977-4444-94f8-0e2699a59b73",
+        "Flags": 0,
+        "Name": "Point Light",
+        "Position": "-47.50729,0,6.075884",
+        "Tags": "light_point,light",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.PointLight",
+            "__guid": "035fb5a1-e1c0-4438-840b-af23ce6d5b9d",
+            "Attenuation": 0.22,
+            "FogMode": "Enabled",
+            "FogStrength": 0.38,
+            "LightColor": "0.91373,0.98039,1,1",
+            "Radius": 119.79991,
+            "Shadows": false
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

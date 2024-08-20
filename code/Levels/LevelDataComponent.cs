@@ -35,6 +35,7 @@ public sealed class LevelDataComponent : Component
 		if(MapInstance != null)
 		{
 			SpawnPoints = Components.GetAll<SpawnPoint>( FindMode.InDescendants ).ToList();
+			Log.Info( "Map loaded: " + MapInstance.IsLoaded );
 		}
 		else
 		{
@@ -55,7 +56,10 @@ public sealed class LevelDataComponent : Component
 		Scene.Camera.BackgroundColor = CameraReference.BackgroundColor;
 		Scene.Camera.Orthographic = CameraReference.Orthographic;
 		Scene.Camera.OrthographicHeight = CameraReference.OrthographicHeight;
+
 		CameraReference.Enabled = false;
+
+		//if(IsProxy) { return; }
 
 		//CameraReference.GameObject.Destroy();
 

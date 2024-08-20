@@ -36,13 +36,13 @@ public class FindSpecificObjective : LevelObjective
 		
 		if(IsProxy) { return; }
 
-		if(!PartyFacesManager.DEBUG) { return; }
-
+#if DEBUG
 		if( TargetNPCId != default)
 		{
 			Gizmo.Draw.Color = Color.Green;
 			Gizmo.Draw.LineSphere( Scene.Directory.FindByGuid( TargetNPCId ).Transform.Position + Vector3.Up * 16, 16 );
 		}
+#endif
 
 	}
 

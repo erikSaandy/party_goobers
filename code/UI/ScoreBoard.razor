@@ -47,106 +47,108 @@
 
 @code
 {
-	const int MAX_DISPLAYED_ENTRIES = 10;
+    const int MAX_DISPLAYED_ENTRIES = 10;
 
-	public static bool Visible { get; set; } = false;
+    public static bool Visible { get; set; } = false;
 
-	private static List<ScoreBoardEntry> OldEntries { get; set; }
-	public static List<ScoreBoardEntry> Entries { get; private set; }
+    private static List<ScoreBoardEntry> OldEntries { get; set; }
+    public static List<ScoreBoardEntry> Entries { get; private set; }
 
-	float ClientIconRotate => MathF.Sin(Time.Now * 10) * 5;
+    float ClientIconRotate => MathF.Sin(Time.Now * 10) * 5;
 
-	private int DisplayedEntryCount => (int)MathF.Min(Entries.Count, MAX_DISPLAYED_ENTRIES);
+    private int DisplayedEntryCount => (int)MathF.Min(Entries.Count, MAX_DISPLAYED_ENTRIES);
 
-	private string HeartEmoji( int i, int lives )
-	{
-		return i >= lives ? "🖤" : "❤️";
-	}
+    private string HeartEmoji( int i, int lives )
+    {
+        return i >= lives ? "🖤" : "❤️";
+    }
 
-	private string MedalEmoji(int place)
-	{
-		switch(place)
-		{
-			case 0:
-				return "🥇";
-			case 1:
-				return "🥈";
-			case 2: return "🥉";
-			default: return "";
-		}
-	}
+    private string MedalEmoji(int place)
+    {
+        switch(place)
+        {
+            case 0:
+                return "🥇";
+            case 1:
+                return "🥈";
+            case 2: return "🥉";
+            default: return "";
+        }
+    }
 
-	public static int GetPositioning(Player player)
-	{
-		if(Entries?.Count() == 0) { return 99; }
+    public static int GetPositioning(Player player)
+    {
+        if(Entries?.Count() == 0) { return 99; }
 
-		string name = player.Network.OwnerConnection.DisplayName;
+        string name = player.Network.OwnerConnection.DisplayName;
 
-		if (!ScoreBoard.Entries.Exists(x => x.PlayerName == name))
-		{
-			return 99;
-		}
+        if (!ScoreBoard.Entries.Exists(x => x.PlayerName == name))
+        {
+            return 99;
+        }
 
-		IEnumerable<ScoreBoardEntry> ent = Entries.TakeWhile(x => x.PlayerName != name);
+        IEnumerable<ScoreBoardEntry> ent = Entries.TakeWhile(x => x.PlayerName != name);
 
-		return ent.Count();
+        return ent.Count();
 
-	}
+    }
 
-	public ScoreBoard() {
-		OldEntries = new();
-		Entries = new();
-	}
+    public ScoreBoard() {
+        OldEntries = new();
+        Entries = new();
+    }
 
-	private string DeltaColor(int delta)
-	{
-		if (delta < 0) { return Color.Red.Hex; }
-		else if (delta == 0) { return Color.Yellow.Hex; }
-		else { return Color.Green.Hex; }
-	}
+    private string DeltaColor(int delta)
+    {
+        if (delta < 0) { return Color.Red.Hex; }
+        else if (delta == 0) { return Color.Yellow.Hex; }
+        else { return Color.Green.Hex; }
+    }
 
-	private string GetDeltaPositionIcon( int place, string playerName, out string color )
-	{
-		int oldPlace = place; 
+    private string GetDeltaPositionIcon( int place, string playerName, out string color )
+    {
+        int oldPlace = place; 
 
-		if(OldEntries.Count > 0) {
-			oldPlace = OldEntries.TakeWhile(x => x.PlayerName != playerName).Count();
-		}
+        if(OldEntries.Count > 0) {
+            oldPlace = OldEntries.TakeWhile(x => x.PlayerName != playerName).Count();
+        }
 
-		int deltaPlace = oldPlace - place;
+        int deltaPlace = oldPlace - place;
 
-		string result = deltaPlace + " ▲";
+        string result = deltaPlace + " ▲";
 
-		if(deltaPlace == 0) {
-			result = "-";
-		}
-		else if(deltaPlace < 0) {
-			result = MathF.Abs(deltaPlace) + " ▼";
-		}
+        if(deltaPlace == 0) {
+            result = "-";
+        }
+        else if(deltaPlace < 0) {
+            result = MathF.Abs(deltaPlace) + " ▼";
+        }
 
-		color = DeltaColor(deltaPlace);
-		return result;
-	}
+        color = DeltaColor(deltaPlace);
+        return result;
+    }
 
 
-	protected override void OnStart()
-	{
-	}
+    protected override void OnStart()
+    {
+    }
 
-	protected override void OnUpdate()
-	{
-	}
+    protected override void OnUpdate()
+    {
+    }
 
-	[Broadcast]
-	public static void Show()
-	{
-		Visible = true;
-	}
+    [Broadcast]
+    public static void Show()
+    {
+        Visible = true;
+        Sound.Play("ui.navigate.forward");
+    }
 
 	[Broadcast]
 	public static void Hide()
 	{
 		Visible = false;
+        Sound.Play("ui.navigate.back");
 	}
 
 	protected override int BuildHash()

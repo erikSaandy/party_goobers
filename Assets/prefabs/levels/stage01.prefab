@@ -270,7 +270,7 @@
         ]
       },
       {
-        "__guid": "a9d77962-2c01-4264-8c91-726d7d36468d",
+        "__guid": "db3e0eaa-f55c-4481-bc73-b68b328dd192",
         "Flags": 0,
         "Name": "Flipper Group",
         "Position": "0,-17.8013,0",
@@ -279,49 +279,86 @@
         "Components": [
           {
             "__type": "VariationGroup",
-            "__guid": "6c443fd4-c2e4-4175-831b-1c64467a73ea",
+            "__guid": "e4deb272-832e-4a37-b070-aa0cdbb32e2e",
             "TriggerChance": 0.15
           }
         ],
         "Children": [
           {
-            "__guid": "975772bb-8e1c-4e7f-ab2a-540a834d85d2",
+            "__guid": "4286f6e3-9b87-4c11-8fe4-5f6ac7b1ffae",
             "Flags": 0,
-            "Name": "Flipper (3)",
-            "Position": "188.651,-143.9043,0",
-            "Rotation": "0,0,-0.7071071,-0.7071067",
+            "Name": "flipper02_small (6)",
+            "Position": "62.61723,-132.2761,48.48415",
+            "Rotation": "0,0,0.7071067,0.7071068",
+            "Enabled": true,
             "NetworkMode": 1,
-            "__Prefab": "prefabs/flipper.prefab",
+            "__Prefab": "prefabs/flipper02_small.prefab",
             "__PrefabVariables": {}
           },
           {
-            "__guid": "ea8df0e3-bbc6-4555-ba82-a6a4b38c2f33",
+            "__guid": "8c3a1da2-67a4-4cef-a600-7ef31688fdc5",
             "Flags": 0,
-            "Name": "Flipper (2)",
-            "Position": "68.88401,-146.5976,0",
-            "Rotation": "0,0,-0.7071071,-0.7071067",
+            "Name": "flipper02_small (5)",
+            "Position": "128,-132.2761,48.48415",
+            "Rotation": "0,0,0.7071067,0.7071068",
+            "Enabled": true,
             "NetworkMode": 1,
-            "__Prefab": "prefabs/flipper.prefab",
+            "__Prefab": "prefabs/flipper02_small.prefab",
             "__PrefabVariables": {}
           },
           {
-            "__guid": "52949c6a-e7e5-44d3-847f-ebb5700006c5",
+            "__guid": "fd962a24-4824-4eb3-b55d-860fc0d51ef7",
             "Flags": 0,
-            "Name": "Flipper (1)",
-            "Position": "-65.00124,-146.5978,0",
-            "Rotation": "0,0,-0.7071071,-0.7071067",
+            "Name": "flipper02_small (7)",
+            "Position": "192,-132.276,48.48415",
+            "Rotation": "0,0,0.7071067,0.7071068",
+            "Enabled": true,
             "NetworkMode": 1,
-            "__Prefab": "prefabs/flipper.prefab",
+            "__Prefab": "prefabs/flipper02_small.prefab",
             "__PrefabVariables": {}
           },
           {
-            "__guid": "9cbf232a-d33f-49de-93c1-87f2f8055a0a",
+            "__guid": "94e3bf57-b7d9-43c7-ada4-a87472b9fb18",
             "Flags": 0,
-            "Name": "Flipper",
-            "Position": "-195.4286,-141.4726,0",
-            "Rotation": "0,0,-0.7071071,-0.7071067",
+            "Name": "flipper02_small (1)",
+            "Position": "-0.00002843739,-132.276,48.48415",
+            "Rotation": "0,0,0.7071067,0.7071068",
+            "Enabled": true,
             "NetworkMode": 1,
-            "__Prefab": "prefabs/flipper.prefab",
+            "__Prefab": "prefabs/flipper02_small.prefab",
+            "__PrefabVariables": {}
+          },
+          {
+            "__guid": "680769a5-f039-461f-a813-19dd70dbdd81",
+            "Flags": 0,
+            "Name": "flipper02_small (2)",
+            "Position": "-64.00002,-132.276,48.48415",
+            "Rotation": "0,0,0.7071067,0.7071068",
+            "Enabled": true,
+            "NetworkMode": 1,
+            "__Prefab": "prefabs/flipper02_small.prefab",
+            "__PrefabVariables": {}
+          },
+          {
+            "__guid": "a9125142-2a3d-4f4c-8f14-e7b5e666da2a",
+            "Flags": 0,
+            "Name": "flipper02_small (3)",
+            "Position": "-128,-132.2759,48.48415",
+            "Rotation": "0,0,0.7071067,0.7071068",
+            "Enabled": true,
+            "NetworkMode": 1,
+            "__Prefab": "prefabs/flipper02_small.prefab",
+            "__PrefabVariables": {}
+          },
+          {
+            "__guid": "afede337-4a6b-4db8-a8c2-92f74874072b",
+            "Flags": 0,
+            "Name": "flipper02_small (4)",
+            "Position": "-192,-132.2758,48.48415",
+            "Rotation": "0,0,0.7071067,0.7071068",
+            "Enabled": true,
+            "NetworkMode": 1,
+            "__Prefab": "prefabs/flipper02_small.prefab",
             "__PrefabVariables": {}
           }
         ]

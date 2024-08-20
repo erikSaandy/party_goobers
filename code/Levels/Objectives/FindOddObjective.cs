@@ -94,13 +94,13 @@ public class FindOddObjective : LevelObjective
 
 		if ( IsProxy ) { return; }
 
-		if ( !PartyFacesManager.DEBUG ) { return; }
-
+#if DEBUG
 		foreach(Guid target in TargetNPCIds)
 		{
 			Gizmo.Draw.Color = Color.Green;
 			Gizmo.Draw.LineSphere( Scene.Directory.FindByGuid( target ).Transform.Position + Vector3.Up * 16, 16 );
 		}
+#endif
 
 	}
 

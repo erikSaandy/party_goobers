@@ -11,7 +11,8 @@
       "Resources": null,
       "PackageReferences": [],
       "EditorReferences": [
-        "facepunch.plastic_glossy_a_hs#28966"
+        "facepunch.plastic_glossy_a_hs#28966",
+        "facepunch.plaster_hs_01#33578"
       ],
       "Metadata": {
         "SingleAssetSource": "maps/map10.vmap"

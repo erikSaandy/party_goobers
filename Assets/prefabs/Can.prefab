@@ -1,0 +1,69 @@
+{
+  "RootObject": {
+    "__guid": "97084ccc-22ed-42bc-b580-04d06e81660d",
+    "Flags": 0,
+    "Name": "can",
+    "Enabled": true,
+    "NetworkMode": 0,
+    "Components": [
+      {
+        "__type": "Sandbox.ModelRenderer",
+        "__guid": "1be29bd7-51f2-442a-a88f-922a2948344a",
+        "BodyGroups": 18446744073709551615,
+        "Model": "models/can/can_opened.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "Sandbox.Rigidbody",
+        "__guid": "05a00bd2-3c2d-4998-9dc0-ec8b7312a2b3",
+        "AngularDamping": 0,
+        "Gravity": false,
+        "LinearDamping": 0.7,
+        "Locking": {
+          "Y": true
+        },
+        "MassCenterOverride": "0,0,0",
+        "MassOverride": 0,
+        "MotionEnabled": true,
+        "OverrideMassCenter": true,
+        "RigidbodyFlags": 0,
+        "StartAsleep": false
+      },
+      {
+        "__type": "Sandbox.ManualHitbox",
+        "__guid": "3b21640c-1b98-4325-ad59-7a44beb8892d",
+        "CenterA": "0,0,3",
+        "CenterB": "0,0,0",
+        "HitboxTags": "",
+        "Radius": 36,
+        "Shape": "Sphere"
+      },
+      {
+        "__type": "CanComponent",
+        "__guid": "5d0d68c3-7a5b-4b3c-887e-4dfe12154377",
+        "Body": {
+          "_type": "component",
+          "component_id": "05a00bd2-3c2d-4998-9dc0-ec8b7312a2b3",
+          "go": "97084ccc-22ed-42bc-b580-04d06e81660d",
+          "component_type": "Rigidbody"
+        },
+        "CanCrumpled": "models/can/can_crumpled.vmdl",
+        "Renderer": {
+          "_type": "component",
+          "component_id": "1be29bd7-51f2-442a-a88f-922a2948344a",
+          "go": "97084ccc-22ed-42bc-b580-04d06e81660d",
+          "component_type": "ModelRenderer"
+        }
+      }
+    ],
+    "Children": [],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

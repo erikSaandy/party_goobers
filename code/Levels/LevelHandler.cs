@@ -26,23 +26,18 @@ public class LevelHandler : SingletonComponent<LevelHandler>
 
 		string level = LevelPrefabs.GetRandom();
 
-		//if(PartyFacesManager.DEBUG )
-		//{
-		//	for (int i = 1; i <= 10; i++ )
-		//	{
-		//		if(Input.Down($"Slot{i}"))
-		//		{
-		//			level = LevelPrefabs[(int)MathF.Min(i-1, LevelPrefabs.Count())];
-		//			break;
-		//		}
-		//	}
-		//}
+#if DEBUG
+		for ( int i = 1; i <= 10; i++ )
+		{
+			if ( Input.Down( $"Slot{i}" ) )
+			{
+				level = LevelPrefabs[(int)MathF.Min( i - 1, LevelPrefabs.Count() )];
+				break;
+			}
+		}
+#endif
 
-		GameObject levelObject = SceneUtility.GetPrefabScene( ResourceLibrary.Get<PrefabFile>( level ) ).Clone( Vector3.Zero );
-
-		levelObject.BreakFromPrefab();
-		levelObject.NetworkSpawn();
-		CurrentLevelDataId = levelObject.Id;
+		LoadLevel( level );
 
 		await NPCBuffer.Instance.PlaceNPCs();
 
@@ -54,20 +49,25 @@ public class LevelHandler : SingletonComponent<LevelHandler>
 
 	}
 
-	[Authority]
 	public void LoadLobbyLevel()
 	{
 		if ( IsProxy ) { return; }
 
 		UnloadCurrentLevel();
 
-		GameObject lobbyObj = SceneUtility.GetPrefabScene( ResourceLibrary.Get<PrefabFile>( LobbyPrefab ) ).Clone( Vector3.Zero );
-		lobbyObj.BreakFromPrefab();
-		lobbyObj.NetworkSpawn();
-
-		CurrentLevelDataId = lobbyObj.Id;
+		LoadLevel( LobbyPrefab );
 
 		Instance.LevelIsLoaded = true;
+
+	}
+
+	private void LoadLevel(string level)
+	{
+		GameObject levelObject = SceneUtility.GetPrefabScene( ResourceLibrary.Get<PrefabFile>( level ) ).Clone( Vector3.Zero );
+
+		levelObject.BreakFromPrefab();
+		levelObject.NetworkSpawn();
+		CurrentLevelDataId = levelObject.Id;
 
 	}
 

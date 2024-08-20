@@ -1,6 +1,7 @@
 ﻿public abstract class SingletonComponent<T> : Component, IHotloadManaged
 	where T : SingletonComponent<T>
 {
+
 	public static T Instance { get; private set; }
 
 	protected override void OnAwake()

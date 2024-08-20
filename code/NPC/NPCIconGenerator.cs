@@ -39,8 +39,8 @@ public class NPCIconGenerator : SingletonComponent<NPCIconGenerator>
 		DisplayNPC.CopyFrom( npc.GameObject.Id );
 		DisplayNPC.GameObject.Enabled = true;
 
-		NPCBuffer.OnNPCsGenerated -= delegate { TakeNPCHeadshotAsync( npcGuid ); };
-		NPCBuffer.OnNPCsGenerated += delegate { TakeNPCHeadshotAsync( npcGuid ); };
+		NPCBuffer.OnNPCsGenerated -= delegate { TakeNPCHeadshot( npcGuid ); };
+		NPCBuffer.OnNPCsGenerated += delegate { TakeNPCHeadshot( npcGuid ); };
 		//TakeNPCHeadshotAsync( npcGuid );
 
 		Log.Info( "requested headshot" );
@@ -48,6 +48,11 @@ public class NPCIconGenerator : SingletonComponent<NPCIconGenerator>
 	}
 
 	[Broadcast]
+	private void TakeNPCHeadshot(Guid npcGuid)
+	{
+		TakeNPCHeadshotAsync( npcGuid );
+	}
+
 	private async void TakeNPCHeadshotAsync(Guid npcGuid)
 	{
 
@@ -75,9 +80,8 @@ public class NPCIconGenerator : SingletonComponent<NPCIconGenerator>
 		await Task.Delay( 250 );
 
 		Camera.RenderToTexture( RenderTexture );
-		Log.Info( "took headshot" );
 
-		NPCBuffer.OnNPCsGenerated -= delegate { TakeNPCHeadshotAsync( npcGuid ); };
+		NPCBuffer.OnNPCsGenerated -= delegate { TakeNPCHeadshot( npcGuid ); };
 
 	}
 

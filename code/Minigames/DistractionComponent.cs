@@ -9,10 +9,18 @@ public sealed class DistractionComponent : Component, IInteractable
 
 	public void OnInteract( Guid playerId, SceneTraceResult traceResult ) { Log.Info( "player clicked on distraction." ); }
 
-	[Broadcast]
+	[Broadcast][Button("Activate")]
 	public void Distract()
 	{
 		Renderer.Set( "b_distract", true );
+	}
+
+	protected override  void OnStart()
+	{
+		base.OnStart();
+
+		Renderer.Tint = Color.White;
+
 	}
 
 }

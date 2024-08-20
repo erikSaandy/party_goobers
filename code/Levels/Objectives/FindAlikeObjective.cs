@@ -61,8 +61,7 @@ public class FindAlikeObjective : LevelObjective
 		
 		if(IsProxy) { return; }
 
-		if ( !PartyFacesManager.DEBUG ) { return; }
-
+#if DEBUG
 		if ( AlikeNPCIds == null || AlikeNPCIds.Count == 0 || TargetNPCId == default ) { return; }
 
 		Gizmo.Draw.LineSphere( Scene.Directory.FindByGuid( TargetNPCId ).Transform.Position + Vector3.Up * 16, 16 );
@@ -72,6 +71,7 @@ public class FindAlikeObjective : LevelObjective
 			//Gizmo.Draw.Color = Color.Green;
 			Gizmo.Draw.LineSphere( Scene.Directory.FindByGuid( id ).Transform.Position + Vector3.Up * 16, 16 );
 		}
+#endif
 
 	}
 

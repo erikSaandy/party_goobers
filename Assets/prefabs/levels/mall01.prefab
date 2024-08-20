@@ -178,7 +178,7 @@
         "NetworkMode": 1,
         "__Prefab": "prefabs/spotlight_cursor.prefab",
         "__PrefabVariables": {
-          "Visible Chance": 0.2
+          "Visible Chance": 0.1
         }
       }
     ],

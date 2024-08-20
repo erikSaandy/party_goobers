@@ -80,7 +80,6 @@ public class NodePathComponent : Component
 
 	}
 
-	[Broadcast]
 	private void SpawnNodeTriggers()
 	{
 		foreach ( GameObject ch in GameObject.Children )

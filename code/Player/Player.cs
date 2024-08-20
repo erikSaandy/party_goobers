@@ -189,7 +189,7 @@ public class Player : Component
 			}
 			else
 			{
-				Log.Info( $"Hovering over {hit}!" );
+				//Log.Info( $"Hovering over {hit}!" );
 				hit.OnMouseHover( GameObject.Id );
 			}
 
@@ -209,21 +209,27 @@ public class Player : Component
 	{
 		interactable = null;
 		trace = default;
+		Ray ray = default;
 
 		// Minigame trace first
 
-		Ray ray = MiniGame.Camera.ScreenPixelToRay( Mouse.Position );
 
-		trace = Scene.Trace.Ray( ray, 2000 )
-		.WithoutTags( "player" )
-		.UseHitboxes()
-		.Run();
+		if(MiniGame.Camera != null)
+		{
+			ray = MiniGame.Camera.ScreenPixelToRay( Mouse.Position );
 
-		if ( trace.GameObject != null ) {
+			trace = Scene.Trace.Ray( ray, 2000 )
+			.WithoutTags( "player" )
+			.UseHitboxes()
+			.Run();
 
-			interactable = trace.GameObject.Components.GetInAncestorsOrSelf<IInteractable>();
+			if ( trace.GameObject != null )
+			{
 
-			if ( interactable != null ) { return true; }
+				interactable = trace.GameObject.Components.GetInAncestorsOrSelf<IInteractable>();
+
+				if ( interactable != null ) { return true; }
+			}
 		}
 
 		// Check game scene

@@ -51,7 +51,7 @@ public sealed class BalloonComponent : Component, IInteractable
 		Renderer.Tint = color;
 	}
 
-	protected override async void OnUpdate()
+	protected override void OnUpdate()
 	{
 		if(IsProxy) { return; }
 
@@ -84,8 +84,12 @@ public sealed class BalloonComponent : Component, IInteractable
 	[Broadcast]
 	private void Hit( Guid playerId )
 	{
-		if ( IsProxy ) { return; }
 		if ( IsHit ) { return; }
+		
+		Sound.Play( "sounds/gun_shot.sound" );
+		
+		if ( IsProxy ) { return; }
+
 
 		IsHit = true;
 

@@ -77,8 +77,8 @@
       "__guid": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a",
       "Flags": 0,
       "Name": "Camera",
-      "Position": "0.0003116217,-672.5332,499.1384",
-      "Rotation": "-0.1830127,0.1830127,0.6830127,0.6830127",
+      "Position": "0,1172.796,563.4419",
+      "Rotation": "0.1530459,0.1530459,-0.6903455,0.6903455",
       "Tags": "maincamera",
       "Enabled": true,
       "Components": [
@@ -326,7 +326,7 @@
           "__guid": "0a0db736-dc04-4292-97c4-68873f3a4244",
           "BackgroundColor": "0.33333,0.46196,0.52157,0",
           "ClearFlags": "All",
-          "FieldOfView": 60,
+          "FieldOfView": 59.57,
           "IsMainCamera": false,
           "Orthographic": true,
           "OrthographicHeight": 50,
@@ -860,6 +860,7 @@
           "__type": "MiniGame",
           "__guid": "fa4a3310-c103-44d2-963c-ce46374a78f3",
           "BalloonObject": "prefabs/balloon.prefab",
+          "CanObject": "prefabs/can.prefab",
           "Distraction": {
             "_type": "component",
             "component_id": "8cda3746-1c55-4ff7-a7eb-d9438360b28c",
@@ -934,8 +935,9 @@
       "__guid": "b849d886-6f57-4867-a222-87a528fc0454",
       "Flags": 0,
       "Name": "Distraction",
-      "Position": "-4989.538,654.0936,-287.6639",
+      "Position": "-4989.538,654.0963,-339.0958",
       "Rotation": "0,0,-0.7071068,0.7071068",
+      "Scale": "1.369778,1.369778,1.369778",
       "Enabled": true,
       "NetworkMode": 1,
       "Components": [
@@ -947,7 +949,7 @@
           "CreateBoneObjects": false,
           "Model": "models/npc_distraction/distraction01.vmdl",
           "RenderType": "On",
-          "Tint": "1,1,1,1",
+          "Tint": "1,1,1,0",
           "UseAnimGraph": true
         },
         {
