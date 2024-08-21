@@ -70,7 +70,7 @@ public sealed class TargetComponent : Component, IInteractable
 		Hit( playerId );
 	}
 
-	[Authority]
+	[Broadcast]
 	private void Hit( Guid playerId )
 	{
 		if ( IsHit ) { return; }

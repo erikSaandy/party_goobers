@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -186,6 +187,13 @@ public class NPC : Component, IInteractable
 		if(Renderer.GetInt("e_behaviour") != 0 ) { return; }
 
 		Renderer.Set( "b_crouching", crouch );
+	}
+
+	[Broadcast]
+	public void Speak(string sound)
+	{
+		SoundHandle handle = Sound.Play( sound );
+		handle.Position = Transform.Position + ( Vector3.Up * 50 );
 	}
 
 

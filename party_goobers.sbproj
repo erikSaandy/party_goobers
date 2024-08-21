@@ -8,6 +8,7 @@
   "Resources": "\ntextures/icons/cursor.png\ntextures/icons/playericon_default.png\ntextures/icons/spyglass.png\nfonts/DisplayOTF.otf",
   "PackageReferences": [],
   "EditorReferences": null,
+  "IsWhitelistDisabled": false,
   "Metadata": {
     "MaxPlayers": 25,
     "MinPlayers": 1,

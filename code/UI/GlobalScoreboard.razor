@@ -9,17 +9,32 @@
 
 <root class="leaderboard-panel">
 
-    <h2>@Board.DisplayName</h2>
+    @if (Loading)
+    { 
 
-    @foreach (var entry in Board?.Entries)
+        <div class="loading" style=" transform: rotate(@(LoadingRot)deg) " />
+        @*<div class="loading" style="background: url(@img); transform: rotate(@(rot)deg)" />*@
+
+        //style="transform: rotate(@(Tilt)deg);
+        //style="background-image: url( avatar:@e.SteamId ); transform: rotate(@(e.IsLocal ? ClientIconRotate : 0))
+
+    }
+    else
     {
-        var c = entry.Me ? "me" : "";
 
-        <div class="entry @c">
-            <div class="rank">@entry.Rank</div>
-            <div class="name">@entry.DisplayName</div>
-            <div class="value">@entry.Value.ToString("n0")</div>
-        </div>
+        <h2>@Board.DisplayName</h2>
+
+        @foreach (var entry in Board?.Entries)
+        {
+            var c = entry.Me ? "me" : "";
+
+            <div class="entry @c">
+                <div class="rank">@entry.Rank</div>
+                <div class="name">@entry.DisplayName</div>
+                <div class="value">@entry.Value.ToString("n0")</div>
+            </div>
+        }
+
     }
 
 </root>
@@ -28,6 +43,10 @@
 {
     public string BoardName { get; set; }
     public string Group { get; set; }
+
+    private bool Loading => Board.TotalEntries <= 0;
+    private float LoadingRot => ((Time.Now * 3) % MathF.Tau) * Saandy.Math2d.Rad2Deg;
+
 
     Sandbox.Services.Leaderboards.Board Board;
 
@@ -60,7 +79,7 @@
 
     protected override int BuildHash()
     {
-        return System.HashCode.Combine(Board?.Entries);
+        return System.HashCode.Combine(Board?.Entries, Loading ? LoadingRot : 0f);
     }
 
 }

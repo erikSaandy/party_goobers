@@ -79,20 +79,10 @@ public sealed class CanComponent : Component, IInteractable
 	}
 
 
-	[Broadcast]
-	private void Hit( Guid playerId )
+	private async void Despawn()
 	{
+		await Task.Delay( 1500 );
 
-		PartyFacesManager.Instance.LabelHandler.SpawnLabel( $"+{HIT_SCORE}", MiniGame.Camera.PointToScreenNormal( Transform.Position ), Vector2.Up * 50, false, isPositive: true );
-		Scene.Directory.FindByGuid( playerId ).Components.Get<Player>().AddScore( HIT_SCORE );
-
-		GameObject.Destroy();
-
-	}
-
-
-	private void Despawn()
-	{
 		GameObject.Destroy();
 		PartyFacesManager.Instance.OnRoundExit -= Despawn;
 

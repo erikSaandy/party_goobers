@@ -45,7 +45,8 @@
             "prefabs/levels/stage01.prefab",
             "prefabs/levels/staircase01.prefab",
             "prefabs/levels/street01.prefab",
-            "prefabs/levels/tennis01.prefab"
+            "prefabs/levels/tennis01.prefab",
+            "prefabs/levels/carousell01.prefab"
           ],
           "LobbyPrefab": "prefabs/lobby.prefab"
         }
@@ -81,6 +82,7 @@
       "Rotation": "0.1530459,0.1530459,-0.6903455,0.6903455",
       "Tags": "maincamera",
       "Enabled": true,
+      "NetworkMode": 1,
       "Components": [
         {
           "__type": "Sandbox.CameraComponent",

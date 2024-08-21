@@ -1,0 +1,122 @@
+{
+  "RootObject": {
+    "__guid": "595ee593-ab51-4b99-a537-ff0076f17400",
+    "Flags": 0,
+    "Name": "carousell01",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "LevelDataComponent",
+        "__guid": "2c4bcfc8-47fb-42c5-8661-15c5da4cfc71",
+        "CameraReference": {
+          "_type": "component",
+          "component_id": "660b8fa6-3bce-44dd-be85-af3f42430736",
+          "go": "99b4ad96-2dd1-49bd-8fd6-2e8f5bcac61f",
+          "component_type": "CameraComponent"
+        },
+        "MapInstance": {
+          "_type": "component",
+          "component_id": "7f7e010a-95b4-467d-881d-a0d8b96940a6",
+          "go": "80735957-d45c-43f5-ace4-4d6f062286d4",
+          "component_type": "MapInstance"
+        },
+        "MinSpawnCount": 8,
+        "NodePaths": [],
+        "ObjectiveHandler": {
+          "_type": "component",
+          "component_id": "03d12213-44ad-4656-9c4d-5a9bc33b1de0",
+          "go": "595ee593-ab51-4b99-a537-ff0076f17400",
+          "component_type": "LevelObjectiveHandler"
+        },
+        "OverrideLookAt": false
+      },
+      {
+        "__type": "LevelObjectiveHandler",
+        "__guid": "03d12213-44ad-4656-9c4d-5a9bc33b1de0",
+        "ObjectiveId": 0
+      },
+      {
+        "__type": "FindSpecificObjective",
+        "__guid": "b7775e41-ffe3-4d2b-972f-46d9e26394fb"
+      },
+      {
+        "__type": "FindAlikeObjective",
+        "__guid": "cbacdaa1-39ee-4baf-b382-3619463ae842",
+        "NumberOfAlike": 2
+      },
+      {
+        "__type": "FindAlikeObjective",
+        "__guid": "2776673e-9b69-4e3d-a140-5636cc4852ab",
+        "NumberOfAlike": 3
+      },
+      {
+        "__type": "FindOddObjective",
+        "__guid": "fcf429aa-2726-4339-9eda-54d25f1743ac",
+        "MaxTargetNPCs": 2,
+        "OddityMask": "OddSleeper"
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "80735957-d45c-43f5-ace4-4d6f062286d4",
+        "Flags": 0,
+        "Name": "Map Instance",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.MapInstance",
+            "__guid": "7f7e010a-95b4-467d-881d-a0d8b96940a6",
+            "__version": 1,
+            "EnableCollision": true,
+            "MapName": "maps/map10.vmap",
+            "NoOrigin": false,
+            "UseMapFromLaunch": false
+          }
+        ],
+        "Children": []
+      },
+      {
+        "__guid": "99b4ad96-2dd1-49bd-8fd6-2e8f5bcac61f",
+        "Flags": 0,
+        "Name": "Camera",
+        "Position": "-0.0001110236,-126.8311,92.42484",
+        "Rotation": "-0.04271445,0.04271445,0.7058155,0.7058155",
+        "Scale": "-1.058358,1,1",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.CameraComponent",
+            "__guid": "660b8fa6-3bce-44dd-be85-af3f42430736",
+            "BackgroundColor": "1,1,1,1",
+            "ClearFlags": "All",
+            "FieldOfView": 90,
+            "IsMainCamera": false,
+            "Orthographic": false,
+            "OrthographicHeight": 1204,
+            "Priority": 1,
+            "RenderExcludeTags": "",
+            "RenderTags": "",
+            "TargetEye": "None",
+            "Viewport": "0,0,1,1",
+            "ZFar": 10000,
+            "ZNear": 10
+          }
+        ]
+      },
+      {
+        "__guid": "84045602-0ddd-4c22-8581-e8012d62c8bb",
+        "Flags": 0,
+        "Name": "CarouselBehaviour",
+        "Position": "0,-127.8233,93",
+        "Enabled": true
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

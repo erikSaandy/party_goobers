@@ -157,6 +157,8 @@ public class NPCBuffer : SingletonComponent<NPCBuffer>
 		npc.Spawn( sp.Transform.World );
 		npc.SetOwner( playerId );
 
+		npc.Speak( "sounds/npc_hello.sound" );
+
 		return npc;
 
 	}

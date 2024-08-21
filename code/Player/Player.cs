@@ -241,10 +241,11 @@ public class Player : Component
 		trace = default;
 		Ray ray = default;
 
+		if ( FadeScreen.Visible || LifeState != PlayerLifeState.Alive || !LevelTimer.IsRunning ) { return false; }
+
 		// Minigame trace first
 
-
-		if(MiniGame.Camera != null)
+		if (MiniGame.Camera != null)
 		{
 			ray = MiniGame.Camera.ScreenPixelToRay( Mouse.Position );
 
@@ -263,8 +264,6 @@ public class Player : Component
 		}
 
 		// Check game scene
-
-		if ( FadeScreen.Visible || LifeState != PlayerLifeState.Alive || !LevelTimer.IsRunning ) { return false; }
 
 		ray = Scene.Camera.ScreenPixelToRay( Mouse.Position );
 
