@@ -128,6 +128,13 @@
         return result;
     }
 
+    [Broadcast]
+    public static void Clear()
+    {
+        OldEntries.Clear();
+        Entries.Clear();
+    }
+
 
     protected override void OnStart()
     {
@@ -144,48 +151,58 @@
         Sound.Play("ui.navigate.forward");
     }
 
-	[Broadcast]
-	public static void Hide()
-	{
-		Visible = false;
+    [Broadcast]
+    public static void Hide()
+    {
+        Visible = false;
         Sound.Play("ui.navigate.back");
-	}
+    }
 
-	protected override int BuildHash()
-	{
-		return System.HashCode.Combine( Time.Now );
-	}
+    protected override int BuildHash()
+    {
+        return System.HashCode.Combine( Time.Now );
+    }
 
-	[Broadcast]
-	public static void Refresh()
-	{
-		OldEntries = new( Entries );
-		Entries.Clear();
+    [Broadcast]
+    public static void Refresh()
+    {
+        OldEntries = new( Entries );
+        Entries.Clear();
 
-		IEnumerable<Player> players = PartyFacesManager.Players;
-		int playerCount = players.Count();
+        IEnumerable<Player> players = PartyFacesManager.Players;
+        int playerCount = players.Count();
 
-		for (int i = 0; i < playerCount; i++)
-		{
-			Player p = players.ElementAt(i);
-			Connection con = p.Network.OwnerConnection;
+        for (int i = 0; i < playerCount; i++)
+        {
+            Player p = players.ElementAt(i);
+            Connection con = p.Network.OwnerConnection;
 
-			ScoreBoardEntry entryOld = OldEntries.FirstOrDefault(x => x.PlayerName == con.DisplayName);
-			int oldScore = entryOld.PlayerName == string.Empty ? 0 : entryOld.Score;
+            ScoreBoardEntry entryOld = OldEntries.FirstOrDefault(x => x.PlayerName == con.DisplayName);
+            int oldScore = entryOld.PlayerName == string.Empty ? 0 : entryOld.Score;
 
-			Entries.Add(new ScoreBoardEntry(con.DisplayName, con.SteamId, p.Score, oldScore, p.Lives, !p.IsProxy));
+            Entries.Add(new ScoreBoardEntry(con.DisplayName, con.SteamId, p.Score, oldScore, p.Lives, !p.IsProxy));
 
-			//ClientAddEntry( con.DisplayName, con.SteamId, p.Score, oldScore );
+            //ClientAddEntry( con.DisplayName, con.SteamId, p.Score, oldScore );
 
-		}
-
-
-		Entries = Entries.OrderBy(x => -x.Score).ToList();
+        }
 
 
-		Show();
+        Entries = Entries.OrderBy(x => -x.Score).ToList();
 
-	}
+
+        Show();
+
+    }
+
+    public static Player GetLeadingPlayer()
+    {
+        if(Entries?.Count == 0) { return null; }
+
+        ScoreBoardEntry leaderEntry = Entries.MaxBy(x => x.Score);
+
+        return PartyFacesManager.Players.FirstOrDefault(x => x.Network.OwnerConnection.SteamId == leaderEntry.SteamId, null);
+
+    }
 
 	protected override void OnDestroy()
 	{

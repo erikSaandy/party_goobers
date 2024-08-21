@@ -10,6 +10,7 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 	public static IEnumerable<Player> Players => Instance.Scene.GetAllComponents<Player>();
 	public static IEnumerable<Player> PlayersAlive => Players.Where( x => x.LifeState == Player.PlayerLifeState.Alive );
 	public static IEnumerable<Player> PlayersSafe => Players.Where( x => x.LifeState == Player.PlayerLifeState.Safe );
+	public static IEnumerable<Player> PlayersDead => Players.Where( x => x.LifeState == Player.PlayerLifeState.Dead );
 	public static IEnumerable<Player> PlayersNotDead => Players.Where( x => x.LifeState != Player.PlayerLifeState.Dead );
 
 	public static TimeSince TimeSinceRoundStart { get; private set; } = new TimeSince();
@@ -17,6 +18,7 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 	public List<DeathInstance> RoundDeaths { get; private set; } = new();
 
 	public Action OnGameStart { get; set; }
+	public Action OnGameEnd { get; set; }
 	public Action OnRoundEnter { get; set; }
 	public Action OnRoundExit { get; set; }
 
@@ -136,6 +138,7 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 
 		GameIsOn = true;
 
+		ScoreBoard.Clear();
 		RoundNumber = 0;
 
 		OnGameStart?.Invoke();
@@ -255,8 +258,14 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 
 		GameIsOn = false;
 
+		OnGameEnd?.Invoke();
+
 		ScoreBoard.Refresh();
 		ScoreBoard.Show();
+
+		Player winner = ScoreBoard.GetLeadingPlayer();
+		winner?.OnWonGame();
+
 
 		await Task.Delay( 3500 );
 	

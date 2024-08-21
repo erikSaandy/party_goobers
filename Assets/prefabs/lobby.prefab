@@ -156,7 +156,7 @@
             "__guid": "46edf104-965a-4138-a25a-201065e5a4f3",
             "BackgroundColor": "0.40694,0.40045,0.49767,1",
             "ClearFlags": "All",
-            "FieldOfView": 37,
+            "FieldOfView": 29.95,
             "IsMainCamera": false,
             "Orthographic": false,
             "OrthographicHeight": 1204,
@@ -174,8 +174,8 @@
         "__guid": "7cb17e71-e016-4c05-a330-a9edfeeaafe9",
         "Flags": 0,
         "Name": "Spawn",
-        "Position": "233.4737,204.9495,0.0000440629",
-        "Rotation": "0,0,0.7933533,0.6087615",
+        "Position": "110.8471,142.0803,0.00004425959",
+        "Rotation": "0,0,0.7719837,0.6356425",
         "Enabled": true,
         "Components": [
           {
@@ -199,8 +199,8 @@
         "__guid": "4e58369c-1c49-49e6-bbcf-b292eb924851",
         "Flags": 0,
         "Name": "Spawn",
-        "Position": "39.96376,212.1123,0.00004644109",
-        "Rotation": "0,0,0.7933533,0.6087615",
+        "Position": "-81.715,162.5068,0.00004663778",
+        "Rotation": "0,0,0.7719837,0.6356425",
         "Enabled": true,
         "Components": [
           {
@@ -224,8 +224,8 @@
         "__guid": "ee158a2d-ac25-4832-b9a8-b8a1832f3d7d",
         "Flags": 0,
         "Name": "Spawn",
-        "Position": "268.253,158.4178,0.00007422367",
-        "Rotation": "0,0,0.7933533,0.6087615",
+        "Position": "10.21033,12.77967,0.00006654416",
+        "Rotation": "0,0,0.7719837,0.6356425",
         "Enabled": true,
         "Components": [
           {
@@ -249,8 +249,8 @@
         "__guid": "92d3540d-e25a-4955-89fa-af77ac579209",
         "Flags": 0,
         "Name": "Spawn",
-        "Position": "74.74306,165.5806,0.00007660186",
-        "Rotation": "0,0,0.7933533,0.6087615",
+        "Position": "-50.21118,113.6979,0.00007679855",
+        "Rotation": "0,0,0.7719837,0.6356425",
         "Enabled": true,
         "Components": [
           {
@@ -274,8 +274,8 @@
         "__guid": "09496dc3-6b98-48aa-9123-d691d26b15e4",
         "Flags": 0,
         "Name": "Spawn",
-        "Position": "217.3758,144.3799,0.0000739454",
-        "Rotation": "0,0,0.7933533,0.6087615",
+        "Position": "90.63025,82.75836,0.00007414207",
+        "Rotation": "0,0,0.7719837,0.6356425",
         "Enabled": true,
         "Components": [
           {
@@ -299,8 +299,8 @@
         "__guid": "0ae81914-587d-41c9-b132-946383370843",
         "Flags": 0,
         "Name": "Spawn",
-        "Position": "23.86586,151.5427,0.00007632359",
-        "Rotation": "0,0,0.7933533,0.6087615",
+        "Position": "-101.9318,103.1848,0.00007652026",
+        "Rotation": "0,0,0.7719837,0.6356425",
         "Enabled": true,
         "Components": [
           {
@@ -324,8 +324,8 @@
         "__guid": "8149cfc3-17df-4880-85e6-0a0ed1b6038f",
         "Flags": 0,
         "Name": "Spawn",
-        "Position": "181.9111,190.3404,0.0001769626",
-        "Rotation": "0,0,0.7933533,0.6087615",
+        "Position": "58.40345,131.0444,0.0001771593",
+        "Rotation": "0,0,0.7719837,0.6356425",
         "Enabled": true,
         "Components": [
           {
@@ -349,8 +349,8 @@
         "__guid": "f5cf0210-74c5-4a24-83b8-6e9f11348823",
         "Flags": 0,
         "Name": "Spawn",
-        "Position": "-11.59883,197.5032,0.0001793408",
-        "Rotation": "0,0,0.7933533,0.6087615",
+        "Position": "-134.1586,151.4709,0.0001795375",
+        "Rotation": "0,0,0.7719837,0.6356425",
         "Enabled": true,
         "Components": [
           {
@@ -374,8 +374,8 @@
         "__guid": "237d4c16-720f-47a0-8568-eb79031d1214",
         "Flags": 0,
         "Name": "Spawn",
-        "Position": "165.527,129.9634,-0.0000381548",
-        "Rotation": "0,0,0.7933533,0.6087615",
+        "Position": "37.9143,71.93423,-0.00003795812",
+        "Rotation": "0,0,0.7719837,0.6356425",
         "Enabled": true,
         "Components": [
           {
@@ -399,8 +399,8 @@
         "__guid": "25492f94-dfaf-495a-bc49-591172b975dd",
         "Flags": 0,
         "Name": "Spawn",
-        "Position": "-27.98294,137.1262,-0.00003577661",
-        "Rotation": "0,0,0.7933533,0.6087615",
+        "Position": "-154.6478,92.36072,-0.00003557993",
+        "Rotation": "0,0,0.7719837,0.6356425",
         "Enabled": true,
         "Components": [
           {
@@ -424,8 +424,8 @@
         "__guid": "ffb8772c-11d0-4eac-9298-36bcaf76a593",
         "Flags": 0,
         "Name": "Spawn",
-        "Position": "156.1982,299.6036,-0.0004271857",
-        "Rotation": "0,0,0.7933533,0.6087615",
+        "Position": "40.24989,241.8147,-0.000426989",
+        "Rotation": "0,0,0.7719837,0.6356425",
         "Enabled": true,
         "Components": [
           {
@@ -449,8 +449,8 @@
         "__guid": "66b625e5-0ec1-45a2-a8b5-3d6f6c66e1a5",
         "Flags": 0,
         "Name": "Spawn",
-        "Position": "63.18358,104.7681,-0.0003618712",
-        "Rotation": "0,0,0.7933533,0.6087615",
+        "Position": "-65.91696,53.82216,-0.0003616745",
+        "Rotation": "0,0,0.7719837,0.6356425",
         "Enabled": true,
         "Components": [
           {
@@ -474,8 +474,8 @@
         "__guid": "ba4b202d-51f5-42a6-8f0d-fd7fe76f78b1",
         "Flags": 0,
         "Name": "Spawn",
-        "Position": "104.8675,283.2793,-0.0003541127",
-        "Rotation": "0,0,0.7933533,0.6087615",
+        "Position": "-12.08011,229.0517,-0.000353916",
+        "Rotation": "0,0,0.7719837,0.6356425",
         "Enabled": true,
         "Components": [
           {
@@ -499,8 +499,8 @@
         "__guid": "af3974c0-94b8-42f6-9534-db667e203608",
         "Flags": 0,
         "Name": "Spawn",
-        "Position": "11.85286,88.44384,-0.0002887982",
-        "Rotation": "0,0,0.7933533,0.6087615",
+        "Position": "-118.247,41.05921,-0.0002886015",
+        "Rotation": "0,0,0.7719837,0.6356425",
         "Enabled": true,
         "Components": [
           {
@@ -524,8 +524,8 @@
         "__guid": "8f03d9ec-513f-4c8a-8f43-8f83a0f1155d",
         "Flags": 0,
         "Name": "Spawn",
-        "Position": "207.0634,312.0324,-0.0004558046",
-        "Rotation": "0,0,0.7933533,0.6087615",
+        "Position": "91.84814,250.7233,-0.0004556079",
+        "Rotation": "0,0,0.7719837,0.6356425",
         "Enabled": true,
         "Components": [
           {
@@ -549,8 +549,8 @@
         "__guid": "7efaba85-254f-4b2b-bc72-22f8b146e07a",
         "Flags": 0,
         "Name": "Spawn",
-        "Position": "114.0488,117.1969,-0.0003904901",
-        "Rotation": "0,0,0.7933533,0.6087615",
+        "Position": "-14.31868,62.73078,-0.0003902934",
+        "Rotation": "0,0,0.7719837,0.6356425",
         "Enabled": true,
         "Components": [
           {
@@ -574,8 +574,8 @@
         "__guid": "4a44c16b-8a66-4af5-bac3-1de1dc2cc9c1",
         "Flags": 0,
         "Name": "Spawn",
-        "Position": "320.2077,169.7563,-0.0003910537",
-        "Rotation": "0,0,0.7933533,0.6087615",
+        "Position": "-95.08855,-9.294115,-0.0004081453",
+        "Rotation": "0,0,0.7719837,0.6356425",
         "Enabled": true,
         "Components": [
           {
@@ -599,8 +599,8 @@
         "__guid": "f64a54c8-d2b7-4880-b58e-f4af53d9db6b",
         "Flags": 0,
         "Name": "Spawn",
-        "Position": "126.6978,176.9191,-0.0003886755",
-        "Rotation": "0,0,0.7933533,0.6087615",
+        "Position": "2.399223,121.4441,-0.0003884788",
+        "Rotation": "0,0,0.7719837,0.6356425",
         "Enabled": true,
         "Components": [
           {
@@ -624,8 +624,8 @@
         "__guid": "392ce8ed-ade9-44b6-9392-014b0ed5c6d5",
         "Flags": 0,
         "Name": "Spawn",
-        "Position": "285.0699,217.6443,-0.0002009786",
-        "Rotation": "0,0,0.7933533,0.6087615",
+        "Position": "-42.21898,1.468109,-0.0002130254",
+        "Rotation": "0,0,0.7719837,0.6356425",
         "Enabled": true,
         "Components": [
           {
@@ -649,8 +649,8 @@
         "__guid": "49d1d246-a887-4395-a4bd-4fc184511dea",
         "Flags": 0,
         "Name": "Spawn",
-        "Position": "91.55995,224.8071,-0.0001986004",
-        "Rotation": "0,0,0.7933533,0.6087615",
+        "Position": "-29.36922,171.6307,-0.0001984037",
+        "Rotation": "0,0,0.7719837,0.6356425",
         "Enabled": true,
         "Components": [
           {
@@ -674,8 +674,8 @@
         "__guid": "ac90924f-3ef3-4504-b177-0307bf4a7bcb",
         "Flags": 0,
         "Name": "Spawn",
-        "Position": "244.689,263.5767,-0.0003772361",
-        "Rotation": "0,0,0.7933533,0.6087615",
+        "Position": "126.0595,199.7996,-0.0003770394",
+        "Rotation": "0,0,0.7719837,0.6356425",
         "Enabled": true,
         "Components": [
           {
@@ -699,8 +699,8 @@
         "__guid": "2e052f1d-4912-4117-aa09-37f7f089f5ca",
         "Flags": 0,
         "Name": "Spawn",
-        "Position": "51.17906,270.7395,-0.0003748579",
-        "Rotation": "0,0,0.7933533,0.6087615",
+        "Position": "-66.50256,220.2261,-0.0003746612",
+        "Rotation": "0,0,0.7719837,0.6356425",
         "Enabled": true,
         "Components": [
           {
@@ -724,8 +724,8 @@
         "__guid": "4cefb577-efbb-4c30-8467-f767e1ad555b",
         "Flags": 0,
         "Name": "Spawn",
-        "Position": "191.5815,250.1535,-0.0005272853",
-        "Rotation": "0,0,0.7933533,0.6087615",
+        "Position": "72.15601,190.0528,-0.0005270886",
+        "Rotation": "0,0,0.7719837,0.6356425",
         "Enabled": true,
         "Components": [
           {
@@ -749,8 +749,8 @@
         "__guid": "3077d3c1-c96c-4428-b694-1568faa1be8d",
         "Flags": 0,
         "Name": "Spawn",
-        "Position": "141.7116,236.184,-0.0005528924",
-        "Rotation": "0,0,0.7933533,0.6087615",
+        "Position": "21.44496,179.5388,-0.0005526957",
+        "Rotation": "0,0,0.7719837,0.6356425",
         "Enabled": true,
         "Components": [
           {
@@ -774,8 +774,8 @@
         "__guid": "8b992463-8400-4074-9369-5475fec586fb",
         "Flags": 0,
         "Name": "Spawn",
-        "Position": "-1.928436,257.3163,-0.0005249071",
-        "Rotation": "0,0,0.7933533,0.6087615",
+        "Position": "-120.4061,210.4793,-0.0005247104",
+        "Rotation": "0,0,0.7719837,0.6356425",
         "Enabled": true,
         "Components": [
           {
@@ -792,6 +792,26 @@
             "RenderType": "On",
             "Tint": "1,1,1,1",
             "UseAnimGraph": true
+          }
+        ]
+      },
+      {
+        "__guid": "e7b313ed-f204-478b-b064-9707b94032d5",
+        "Flags": 0,
+        "Name": "Cube",
+        "Position": "52.22094,-1596.01,-647.2181",
+        "Rotation": "-0.3535534,0.3535534,0.6123724,0.6123724",
+        "Scale": "16.27745,17.97591,12",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "5d1acabc-4576-4fab-b5f1-fff243ad5ec9",
+            "BodyGroups": 18446744073709551615,
+            "MaterialOverride": "textures/lobby_background.vmat",
+            "Model": "models/dev/plane.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
           }
         ]
       }

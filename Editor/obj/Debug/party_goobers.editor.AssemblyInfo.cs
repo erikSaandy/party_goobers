@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("party_goobers.editor")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b8b2e9474f3da0b75857625906b78608eb9afef5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+609727361ea623638a12291db1c6b44f97b94227")]
 [assembly: System.Reflection.AssemblyProductAttribute("party_goobers.editor")]
 [assembly: System.Reflection.AssemblyTitleAttribute("party_goobers.editor")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

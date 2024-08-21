@@ -25,6 +25,9 @@
 	<div class="startbutton @(CanStartGame ? "" : "locked")" onclick="@OnClickedStartButton">
 		Start Game
 		</div>
+
+    <GlobalScoreboard BoardName="highscore" Group="global"></GlobalScoreboard>
+
 </root>
 
 @code

@@ -7,7 +7,7 @@ public sealed class WorldLevelTimer : Component
 	protected override void OnUpdate()
 	{
 		if( Renderer == null ) { return; }
-			
-		Renderer.Text = LevelTimer.TimeNow.ToString( "0000" );
+				
+		Renderer.Text = LevelTimer.TimeNowDisplay.ToString("0000");
 	}
 }

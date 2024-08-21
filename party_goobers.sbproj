@@ -9,7 +9,7 @@
   "PackageReferences": [],
   "EditorReferences": null,
   "Metadata": {
-    "MaxPlayers": 24,
+    "MaxPlayers": 25,
     "MinPlayers": 1,
     "TickRate": 50,
     "GameNetworkType": "Multiplayer",
@@ -22,6 +22,19 @@
     "LeaderboardType": "None",
     "CsProjName": "",
     "StartupScene": "scenes/minimal.scene",
-    "LaunchMode": "QuickPlay"
+    "LaunchMode": "QuickPlay",
+    "Compiler": {
+      "RootNamespace": "Sandbox",
+      "DefineConstants": "SANDBOX;ADDON;DEBUG",
+      "NoWarn": "1701;1702;1591;",
+      "WarningsAsErrors": "",
+      "Whitelist": true,
+      "AssemblyReferences": [],
+      "IgnoreFolders": [
+        "editor",
+        "unittest"
+      ],
+      "DistinctAssemblyReferences": []
+    }
   }
 }

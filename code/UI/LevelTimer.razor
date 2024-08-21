@@ -7,7 +7,7 @@
 <root>
 
 	<div class="icon">@("⏰")</div>
-	<div class="timer">@(TimeNowDisplay)</div>
+    <div class="timer">@(TimeNowDisplay.ToString("0"))</div>
 
 </root>
 
@@ -23,7 +23,7 @@
 
     public static float TimePrevious { get; private set; }
     public static float TimeNow => (TargetTime - TimeSinceStarted);
-    private static string TimeNowDisplay => (MathF.Max(TimeNow, 0f) + 0.4f).ToString("0");
+    public static float TimeNowDisplay => (MathF.Max(TimeNow, 0f) + 0.4f);
 
     public static Action OnTimerDepleted { get; set; }
     public static Action OnTimerStarted { get; set; }

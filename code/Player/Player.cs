@@ -62,12 +62,25 @@ public class Player : Component
 	[Authority]
 	public void AddScore(int score) {
 		this.Score += score;
+
+		if(IsProxy) { return; }
+
+		Sandbox.Services.Stats.SetValue( "score", this.Score );
+
 	}
 
-	public Player()
+	[Broadcast]
+	public void OnWonGame()
 	{
+		Log.Info( $"Winner is {Network.OwnerConnection.DisplayName}!" );
+
+		if(IsProxy) { return; }
+
+		Sandbox.Services.Stats.Increment( "gameswon", 1);
 
 	}
+
+	public Player() { }
 
 	protected override void OnStart()
 	{
@@ -77,6 +90,7 @@ public class Player : Component
 		PartyFacesManager.Instance.OnRoundExit += OnRoundExit;
 
 		PartyFacesManager.Instance.OnGameStart += OnGameStart;
+		PartyFacesManager.Instance.OnGameEnd += OnGameEnd;
 
 		LevelTimer.OnTimerDepleted += OnTimerDepleted;
 
@@ -111,6 +125,20 @@ public class Player : Component
 		Score = 0;
 		Lives = MAX_HEALTH;
 		LifeState = PlayerLifeState.Safe;
+
+		Sandbox.Services.Stats.Increment( "gamesplayed", 1 );
+
+	}
+
+	[Broadcast]
+	void OnGameEnd()
+	{
+		if(IsProxy) { return; }
+
+		LifeState = PlayerLifeState.Safe;
+
+		Sandbox.Services.Stats.SetValue( "gamelevelcount", PartyFacesManager.Instance.RoundNumber );
+
 	}
 
 	[Broadcast]
@@ -130,6 +158,7 @@ public class Player : Component
 			Log.Info( Network.OwnerConnection.DisplayName + " entered round!" );
 			LifeState = PlayerLifeState.Alive;
 		}
+
 	}
 
 	[Broadcast]
@@ -162,6 +191,7 @@ public class Player : Component
 		PartyFacesManager.Instance.OnRoundExit -= OnRoundExit;
 
 		PartyFacesManager.Instance.OnGameStart -= OnGameStart;
+		PartyFacesManager.Instance.OnGameEnd -= OnGameEnd;
 
 		LevelTimer.OnTimerDepleted -= OnTimerDepleted;
 
