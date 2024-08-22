@@ -13,7 +13,7 @@
         "Health": 0,
         "IsStatic": false,
         "Model": "models/target02/target.vmdl",
-        "Tint": "1,1,1,1"
+        "Tint": "0.93,0.07,0.07,1"
       },
       {
         "__type": "Sandbox.ManualHitbox",
@@ -23,16 +23,6 @@
         "HitboxTags": "",
         "Radius": 16.000006,
         "Shape": "Sphere"
-      },
-      {
-        "__type": "TargetComponent",
-        "__guid": "68690965-197f-461a-a22e-79217b4ba2f6",
-        "Prop": {
-          "_type": "component",
-          "component_id": "ceefe179-c489-4a93-8084-da17ee5ad4b2",
-          "go": "d6c7701c-ecd0-43ee-8196-ad64e126cc7f",
-          "component_type": "Prop"
-        }
       }
     ],
     "Children": [],

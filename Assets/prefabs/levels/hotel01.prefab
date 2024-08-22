@@ -160,6 +160,67 @@
             "Type": "Box"
           }
         ]
+      },
+      {
+        "__guid": "517d25c3-1827-4403-bff0-7b25c7230d23",
+        "Flags": 0,
+        "Name": "Flipper Group (1)",
+        "Position": "32,128,7.546042",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "Components": [
+          {
+            "__type": "VariationGroup",
+            "__guid": "a9969780-b9fe-4408-9a47-0af4e301f06d",
+            "TriggerChance": 1
+          }
+        ],
+        "Children": [
+          {
+            "__guid": "7a6099aa-e37c-4b7a-9cd5-c3c509240c8b",
+            "Flags": 0,
+            "Name": "flipper02_small (6)",
+            "Position": "62.61723,-132.2761,48.48415",
+            "Rotation": "0,0,0.7071067,0.7071068",
+            "Enabled": true,
+            "NetworkMode": 1,
+            "__Prefab": "prefabs/flipper02_small.prefab",
+            "__PrefabVariables": {}
+          },
+          {
+            "__guid": "ae3f3f8f-fe23-4a95-933f-9197ce6625ba",
+            "Flags": 0,
+            "Name": "flipper02_small (1)",
+            "Position": "-0.00002843739,-132.276,48.48415",
+            "Rotation": "0,0,0.7071067,0.7071068",
+            "Enabled": true,
+            "NetworkMode": 1,
+            "__Prefab": "prefabs/flipper02_small.prefab",
+            "__PrefabVariables": {}
+          },
+          {
+            "__guid": "eaddfb7e-1226-4ed8-a482-4b8f67ecc3a3",
+            "Flags": 0,
+            "Name": "flipper02_small (2)",
+            "Position": "-64.00002,-132.276,48.48415",
+            "Rotation": "0,0,0.7071067,0.7071068",
+            "Enabled": true,
+            "NetworkMode": 1,
+            "__Prefab": "prefabs/flipper02_small.prefab",
+            "__PrefabVariables": {}
+          },
+          {
+            "__guid": "0e644116-a66e-448d-a861-da285c34cdeb",
+            "Flags": 0,
+            "Name": "flipper02_small (3)",
+            "Position": "-128,-132.2759,48.48415",
+            "Rotation": "0,0,0.7071067,0.7071068",
+            "Enabled": true,
+            "NetworkMode": 1,
+            "__Prefab": "prefabs/flipper02_small.prefab",
+            "__PrefabVariables": {}
+          }
+        ]
       }
     ],
     "__variables": []

@@ -17,7 +17,8 @@ public class WhackamoleComponent : Component
 
 		foreach(NPC npc in NPCs )
 		{
-			npc.Crouch();
+			bool crouch = Game.Random.Int( 0, 1 ) == 1;
+			npc.Crouch( crouch );
 		}
 
 		TimeSinceUpdate = 0;
@@ -30,7 +31,9 @@ public class WhackamoleComponent : Component
 
 		if( IsProxy ) { return; }
 
-		if(TimeSinceUpdate > 3)
+		if( !LevelTimer.IsRunning ) { return; }
+
+		if(TimeSinceUpdate > 1.6f)
 		{
 			foreach ( NPC npc in NPCs )
 			{

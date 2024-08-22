@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 public class FindSpecificObjective : LevelObjective
 {
 	public override bool Disabled { get; set; } = false;
-	public override int Weight => 220;
+	public override int Weight => 111111220;
 
 	public override int MaxSelectedNPCs => 1;
 

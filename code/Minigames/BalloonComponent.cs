@@ -67,11 +67,16 @@ public sealed class BalloonComponent : Component, IInteractable
 	}
 
 	[Authority]
-	private async void Despawn()
+	private void Despawn()
 	{
-		await Task.Delay( 1500 );
+		DespawnAsync();
 
-		GameObject.Destroy();
+		async void DespawnAsync()
+		{
+			await Task.Delay( 1500 );
+
+			GameObject.Destroy();
+		}
 	}
 
 	public void OnInteract( Guid playerId, SceneTraceResult traceResult )

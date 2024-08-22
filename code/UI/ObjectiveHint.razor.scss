@@ -31,7 +31,7 @@ $size: 135px;
     }
 
     &.visible {
-        opacity: 1;
+        opacity: .7;
         transition: opacity .7s linear;
     }
 }

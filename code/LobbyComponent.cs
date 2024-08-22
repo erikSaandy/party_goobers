@@ -53,6 +53,9 @@ public class LobbyComponent : Component, Component.INetworkListener
 		NPC npc = NPCBuffer.Instance.PlaceLobbyNPC( channel.Id );
 		NPCs.Add( npc.GameObject.Id );
 
+		npc.Speak( "sounds/npc_hello.sound" );
+		npc.Wave();
+
 		//npc.SetAnimationBehaviour( NPC.AnimationBehaviour.Cheer );
 
 	}

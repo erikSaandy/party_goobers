@@ -58,12 +58,9 @@ public class NPCIconGenerator : SingletonComponent<NPCIconGenerator>
 
 		await Task.Delay( 200 );
 
-		DisplayNPC.GameObject.Enabled = true;
 		//NPC npc = Scene.Directory.FindByGuid( npcGuid ).Components.Get<NPC>( true );
 		//DisplayNPC.ClientCopyFrom( npc.GameObject.Id );
 		//DisplayNPC.GameObject.Enabled = true;
-
-		await Task.Delay( 500 );
 
 		await Task.RunInThreadAsync( () =>
 		{

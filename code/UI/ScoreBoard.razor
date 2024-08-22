@@ -80,14 +80,15 @@
     {
         if(Entries?.Count() == 0) { return 99; }
 
-        string name = player.Network.OwnerConnection.DisplayName;
+        Connection con = player.Network.OwnerConnection;
+        ulong id = con.SteamId;
 
-        if (!ScoreBoard.Entries.Exists(x => x.PlayerName == name))
+        if (!ScoreBoard.Entries.Exists(x => x.SteamId == id))
         {
             return 99;
         }
 
-        IEnumerable<ScoreBoardEntry> ent = Entries.TakeWhile(x => x.PlayerName != name);
+        IEnumerable<ScoreBoardEntry> ent = Entries.TakeWhile(x => x.SteamId != id);
 
         return ent.Count();
 

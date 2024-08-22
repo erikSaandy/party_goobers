@@ -85,7 +85,7 @@ public class MiniGame : SingletonComponent<MiniGame>
 	{
 		if( Instance.IsProxy ) { return; }
 
-		float chance = 1;// InitChance( RoundNumber );
+		float chance = InitChance( RoundNumber );
 		Log.Info( "chance for minigame: " + chance );
 		if ( Game.Random.Float( 0f, 1f ) > chance) { return; }
 
@@ -174,7 +174,7 @@ public class MiniGame : SingletonComponent<MiniGame>
 
 	private class BalloonEvent : MiniEvent
 	{
-		public override int Weight => 1111300;
+		public override int Weight => 300;
 
 		public override async void Invoke()
 		{

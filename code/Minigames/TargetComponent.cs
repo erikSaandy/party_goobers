@@ -20,15 +20,15 @@ public sealed class TargetComponent : Component, IInteractable
 
 	public TimeSince TimeSinceSpawn { get; private set; } = 0;
 
+
 	protected override void OnAwake()
 	{
 		base.OnAwake();
 
 		PartyFacesManager.Instance.OnRoundExit += Despawn;
 
-		Prop.Tint = Red;
-
 		if ( IsProxy ) { return; }
+
 
 		if ( Game.Random.Float( 0f, 1f ) < GOLD_CHANCE ) { MakeGold(); }
 
@@ -53,16 +53,24 @@ public sealed class TargetComponent : Component, IInteractable
 	}
 
 	[Broadcast]
-	private void Despawn() { DespawnAsync(); }
+	private void Despawn() {
 
-	private async void DespawnAsync()
-	{
-		Components.Get<SkinnedModelRenderer>().Set( "b_despawn", true );
+		DespawnAsync();
 
-		if ( IsProxy ) { return; }
+		async void DespawnAsync()
+		{
+			Components.Get<SkinnedModelRenderer>().Set( "b_despawn", true );
 
-		await Task.Delay( 2500 );
-		GameObject.Destroy();
+			// Give some leway for late hits, then set IsHit to block hitting while despawning.
+			await Task.Delay( 200 );
+			IsHit = true;
+
+			if ( IsProxy ) { return; }
+
+			await Task.Delay( 2500 );
+			GameObject.Destroy();
+		}
+
 	}
 
 	public void OnInteract( Guid playerId, SceneTraceResult traceResult )
