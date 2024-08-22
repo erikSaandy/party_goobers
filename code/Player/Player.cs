@@ -241,8 +241,6 @@ public class Player : Component
 		trace = default;
 		Ray ray = default;
 
-		if ( FadeScreen.Visible || LifeState != PlayerLifeState.Alive || !LevelTimer.IsRunning ) { return false; }
-
 		// Minigame trace first
 
 		if (MiniGame.Camera != null)
@@ -262,6 +260,8 @@ public class Player : Component
 				if ( interactable != null ) { return true; }
 			}
 		}
+
+		if ( FadeScreen.Visible || LifeState != PlayerLifeState.Alive || !LevelTimer.IsRunning ) { return false; }
 
 		// Check game scene
 

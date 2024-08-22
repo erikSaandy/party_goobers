@@ -23,8 +23,6 @@ public sealed class BalloonComponent : Component, IInteractable
 
 	public TimeSince TimeSinceSpawn { get; private set; } = 0;
 
-	float angularOffset = 0;
-
 	protected override void OnAwake()
 	{
 		base.OnAwake();
@@ -35,7 +33,7 @@ public sealed class BalloonComponent : Component, IInteractable
 
 		SetColor( Colors.GetRandom() );
 
-		angularOffset = Game.Random.Float( 0f, 10f );
+		Speed = Game.Random.Int( 350, 650 );
 
 	}
 
@@ -63,15 +61,15 @@ public sealed class BalloonComponent : Component, IInteractable
 			
 		Body.Velocity = Vector3.Up * Speed;
 
-		float angular = MathF.Sin( Time.Now + angularOffset );
+		float angular = MathF.Sin( Time.Now );
 		Body.AngularVelocity = new Vector3(0, angular, 0 );
 
 	}
 
-	[Broadcast]
-	private void Despawn()
+	[Authority]
+	private async void Despawn()
 	{
-		if ( IsProxy ) { return; }
+		await Task.Delay( 1500 );
 
 		GameObject.Destroy();
 	}

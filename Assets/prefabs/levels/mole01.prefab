@@ -220,6 +220,23 @@
             "__guid": "85ed54da-e575-4d82-8f4d-fb9af6b848a3"
           }
         ]
+      },
+      {
+        "__guid": "b2d42ce8-b766-486e-be84-8f03d0fe8435",
+        "Flags": 0,
+        "Name": "Soundscape",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SoundscapeTrigger",
+            "__guid": "c3693cd4-2557-43af-b5d2-17507c624787",
+            "BoxSize": "5000,5000,5000",
+            "Radius": 500,
+            "Soundscape": "soundscapes/arcade.sndscape",
+            "StayActiveOnExit": false,
+            "Type": "Box"
+          }
+        ]
       }
     ],
     "__variables": []

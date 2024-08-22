@@ -61,6 +61,7 @@ public sealed class AudienceComponent : Component
 
 	private void Cheer()
 	{
+		Sound.Play( "sounds/applause.sound" );
 		Renderer.MaterialOverride = CheerMaterial;
 		jumpTime = 0.3f;
 	}

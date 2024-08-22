@@ -1,0 +1,16 @@
+{
+  "MasterVolume": "0.5",
+  "LoopedSounds": [
+    {
+      "SoundFile": "soundscapes/amb_int_walla01.vsnd",
+      "Volume": "0.4"
+    },
+    {
+      "SoundFile": "soundscapes/amb_int_festival.vsnd",
+      "Volume": "0.55"
+    }
+  ],
+  "StingSounds": [],
+  "__references": [],
+  "__version": 0
+}

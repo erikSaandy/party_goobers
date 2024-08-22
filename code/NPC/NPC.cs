@@ -196,6 +196,25 @@ public class NPC : Component, IInteractable
 		handle.Position = Transform.Position + ( Vector3.Up * 50 );
 	}
 
+	[Broadcast]
+	public void Wave(float seconds = 2)
+	{
+		WaveAsync();
+
+		async void WaveAsync()
+		{
+
+			Renderer.Set( "e_behaviour", (int)AnimationBehaviour.Wave );
+			await Task.Delay( (int)(seconds * 1000) );
+
+			if(Renderer.GetInt("e_behaviour") == (int)AnimationBehaviour.Wave )
+			{
+				Renderer.Set( "e_behaviour", (int)AnimationBehaviour.Default );
+			}
+
+		}
+	}
+
 
 	[Broadcast]
 	public void Jog( bool jog = true)

@@ -70,7 +70,7 @@ public abstract class FaceFeature : Component
 	}
 
 	[Broadcast]
-	public void SetColor(Color color)
+	public virtual void SetColor(Color color)
 	{
 		if ( Renderer == null ) { return; }
 

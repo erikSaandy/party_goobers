@@ -165,6 +165,8 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 		RoundIsOn = true;
 		RoundNumber++;
 
+		Log.Info( "Entering round " + RoundNumber );
+
 		RoundDeaths?.Clear();
 		EnterRoundAsync();
 	}

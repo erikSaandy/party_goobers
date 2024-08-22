@@ -108,7 +108,13 @@
         "Flags": 0,
         "Name": "CarouselBehaviour",
         "Position": "0,-127.8233,93",
-        "Enabled": true
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.CarousellBehaviour",
+            "__guid": "67070b08-6ee3-4fea-ab24-23060af0306b"
+          }
+        ]
       }
     ],
     "__variables": []

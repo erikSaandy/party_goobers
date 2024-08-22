@@ -1,0 +1,12 @@
+{
+  "MasterVolume": "0.5",
+  "LoopedSounds": [
+    {
+      "SoundFile": "sound/36734__sagetyrtle__citystreet3.vsnd",
+      "Volume": "0.2"
+    }
+  ],
+  "StingSounds": [],
+  "__references": [],
+  "__version": 0
+}

@@ -36,7 +36,7 @@
         "CenterA": "0,0,3",
         "CenterB": "0,0,0",
         "HitboxTags": "",
-        "Radius": 36,
+        "Radius": 30,
         "Shape": "Sphere"
       },
       {

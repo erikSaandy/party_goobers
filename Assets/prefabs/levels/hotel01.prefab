@@ -143,6 +143,23 @@
             "TriggerChance": 1
           }
         ]
+      },
+      {
+        "__guid": "becab569-548d-449d-a9fe-486d14cb73db",
+        "Flags": 0,
+        "Name": "Soundscape",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SoundscapeTrigger",
+            "__guid": "74d532bb-f5a8-4ab0-81aa-b19c05abcf2f",
+            "BoxSize": "5000,5000,5000",
+            "Radius": 500,
+            "Soundscape": "soundscapes/int_loading_bay.sndscape",
+            "StayActiveOnExit": false,
+            "Type": "Box"
+          }
+        ]
       }
     ],
     "__variables": []

@@ -362,6 +362,23 @@
             "__PrefabVariables": {}
           }
         ]
+      },
+      {
+        "__guid": "a5349cbc-4a7b-4625-9726-531e80d030db",
+        "Flags": 0,
+        "Name": "Soundscape",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SoundscapeTrigger",
+            "__guid": "ba822259-4d79-4f32-bdf2-d6b913f637ff",
+            "BoxSize": "5000,5000,5000",
+            "Radius": 500,
+            "Soundscape": "soundscapes/stage.sndscape",
+            "StayActiveOnExit": false,
+            "Type": "Box"
+          }
+        ]
       }
     ],
     "__variables": []

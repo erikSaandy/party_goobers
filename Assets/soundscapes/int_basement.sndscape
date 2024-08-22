@@ -1,0 +1,16 @@
+{
+  "MasterVolume": "0.5",
+  "LoopedSounds": [
+    {
+      "SoundFile": "soundscapes/amb_int_festival.vsnd",
+      "Volume": "0.61"
+    },
+    {
+      "SoundFile": "soundscapes/570015__sheyvan__ambience-empty-office-hallway-stereo.vsnd",
+      "Volume": "0.9"
+    }
+  ],
+  "StingSounds": [],
+  "__references": [],
+  "__version": 0
+}

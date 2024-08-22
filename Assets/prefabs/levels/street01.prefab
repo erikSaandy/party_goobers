@@ -132,7 +132,7 @@
         "__guid": "6f141ace-5f13-400e-adf7-1239e3e0afa1",
         "Flags": 0,
         "Name": "Node Path",
-        "Position": "-603.0063,-106.4056,0.9902239",
+        "Position": "-574.7932,-106.4056,0.9902239",
         "Enabled": true,
         "Components": [
           {
@@ -146,7 +146,7 @@
                 "Position": "379.1003,32.80002,0"
               },
               {
-                "Position": "447.5004,-31.40001,0"
+                "Position": "368.2005,-31.40001,0"
               }
             ]
           }
@@ -156,7 +156,7 @@
         "__guid": "f29a890b-0ab1-4580-a5a1-fd1c516b00ff",
         "Flags": 0,
         "Name": "Node Path (1)",
-        "Position": "-565.233,110.9732,0.9902239",
+        "Position": "-525.3148,110.9732,0.9902239",
         "Enabled": true,
         "Components": [
           {
@@ -167,7 +167,7 @@
             "Targets": [
               {},
               {
-                "Position": "373.7011,10.50002,0"
+                "Position": "298.2007,10.50002,0"
               },
               {
                 "Position": "348.0003,-10.99996,0"
@@ -180,7 +180,7 @@
         "__guid": "15be88f1-fd51-4d41-a078-e49bd035df01",
         "Flags": 0,
         "Name": "Node Path (2)",
-        "Position": "176.9205,-42.50291,0.9902239",
+        "Position": "162.4256,-42.50291,0.9902239",
         "Enabled": true,
         "Components": [
           {
@@ -204,7 +204,7 @@
         "__guid": "9e314c88-0f38-4894-b41a-23fb16aac808",
         "Flags": 0,
         "Name": "Node Path (3)",
-        "Position": "176.5397,175.152,2.439575",
+        "Position": "96.16063,175.152,2.439575",
         "Enabled": true,
         "Components": [
           {
@@ -218,7 +218,7 @@
                 "Position": "-270.7004,8.30002,0"
               },
               {
-                "Position": "-443.2003,6.800003,0"
+                "Position": "-356.9002,6.800003,0"
               }
             ]
           }
@@ -525,6 +525,23 @@
             "__type": "Sandbox.SpawnPoint",
             "__guid": "896cfb4f-a8c2-4d0c-87d3-aa2ba00f33f0",
             "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "16800589-74d4-4815-9e4c-0296c60ce0c6",
+        "Flags": 0,
+        "Name": "Soundscape",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SoundscapeTrigger",
+            "__guid": "82c439df-f815-4d58-a1cd-8f2e4a8d2ca7",
+            "BoxSize": "5000,5000,5000",
+            "Radius": 500,
+            "Soundscape": "soundscapes/city_street.sndscape",
+            "StayActiveOnExit": false,
+            "Type": "Box"
           }
         ]
       }

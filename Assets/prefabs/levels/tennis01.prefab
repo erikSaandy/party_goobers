@@ -274,6 +274,23 @@
         "Name": "Ball Point C",
         "Position": "0,-543.9998,576",
         "Enabled": true
+      },
+      {
+        "__guid": "6872b288-f9ee-4f3c-aa1d-7a3c96d27d61",
+        "Flags": 0,
+        "Name": "Soundscape",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SoundscapeTrigger",
+            "__guid": "832de957-7920-4702-8487-1dd39ceca093",
+            "BoxSize": "5000,5000,5000",
+            "Radius": 500,
+            "Soundscape": "soundscapes/tennis.sndscape",
+            "StayActiveOnExit": false,
+            "Type": "Box"
+          }
+        ]
       }
     ],
     "__variables": []

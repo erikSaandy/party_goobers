@@ -1,0 +1,12 @@
+{
+  "MasterVolume": "0.7",
+  "LoopedSounds": [
+    {
+      "SoundFile": "soundscapes/489344-ccc_-theatre_crowd_foyeur_02-003.vsnd",
+      "Volume": "0.2"
+    }
+  ],
+  "StingSounds": [],
+  "__references": [],
+  "__version": 0
+}

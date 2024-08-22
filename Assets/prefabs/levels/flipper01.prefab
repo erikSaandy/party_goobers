@@ -471,6 +471,23 @@
             "Shadows": true
           }
         ]
+      },
+      {
+        "__guid": "fa96529b-86f0-4f54-9abd-71a9201708a3",
+        "Flags": 0,
+        "Name": "Soundscape",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SoundscapeTrigger",
+            "__guid": "7649301b-51b7-4367-9dc8-bf86e20e112a",
+            "BoxSize": "5000,5000,5000",
+            "Radius": 500,
+            "Soundscape": "soundscapes/stage.sndscape",
+            "StayActiveOnExit": false,
+            "Type": "Box"
+          }
+        ]
       }
     ],
     "__variables": []

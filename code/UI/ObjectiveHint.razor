@@ -1,0 +1,46 @@
+@using System;
+@using Sandbox;
+@using Sandbox.UI;
+@attribute [StyleSheet]
+@inherits PanelComponent
+
+<root class="container @(Visible ? "visible" : "")">
+	<div class= "npcicon">
+		<Image class="npctexture" Texture=@NPCIconGenerator.RenderTexture/>	
+	</div>
+</root>
+
+@code {
+
+    public ObjectiveHint(){}
+
+    private static LevelObjective Objective => GetObjective();
+
+    public static bool Visible => (Objective is FindSpecificObjective) && LevelTimer.IsRunning && ( LevelTimer.TimeNow < 8f );
+
+    //https://gist.github.com/CarsonKompon/be43451a518293356feca8095352614f
+    //<Image class="texture" Texture=@NPCIconGenerator.RenderTexture/>
+
+    private static LevelObjective GetObjective()
+    {
+        if (LevelHandler.Instance.CurrentLevelData == null) { return null; }
+
+        if (LevelHandler.Instance.CurrentLevelData.Objective == null)
+        {
+            return null;
+        }
+
+        return LevelHandler.Instance.CurrentLevelData.Objective;
+    }
+
+    protected override void OnUpdate()
+    {
+        base.OnUpdate();
+    }
+
+    protected override int BuildHash()
+    {
+        return System.HashCode.Combine(Time.Now);
+    }
+
+}

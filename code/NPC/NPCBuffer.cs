@@ -158,6 +158,7 @@ public class NPCBuffer : SingletonComponent<NPCBuffer>
 		npc.SetOwner( playerId );
 
 		npc.Speak( "sounds/npc_hello.sound" );
+		npc.Wave();
 
 		return npc;
 

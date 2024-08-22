@@ -14,45 +14,51 @@
 @code
 {
 
-	public Panel FadePanel { get; set; }
+    public Panel FadePanel { get; set; }
 
-	public static bool Visible { get; set; } = true;
+    public static bool Visible { get; set; } = true;
 
-	private static float CircleFade = 1;
+    private static float CircleFade = 1;
 
-	public FadeScreen()
-	{
-		FadePanel = new Panel();
-		CircleFade = Visible ? 0 : 1;
-	}
+    public FadeScreen()
+    {
+        FadePanel = new Panel();
+        CircleFade = Visible ? 0 : 1;
+    }
 
-	public override void Tick()
-	{
-		base.Tick();
+    public override void Tick()
+    {
+        base.Tick();
 
-		if (Visible && CircleFade > 0f)
-		{
-			CircleFade = MathX.Lerp(CircleFade, -0.4f, Time.Delta * 2.5f);
-		}
-		else if(!Visible && CircleFade < 1f)
-		{
-			CircleFade = MathX.Lerp(CircleFade, 1.2f, Time.Delta * 2.5f);
-		}
+        if (Visible && CircleFade > 0f)
+        {
+            CircleFade = MathX.Lerp(CircleFade, -0.4f, Time.Delta * 2.5f);
+        }
+        else if(!Visible && CircleFade < 1f)
+        {
+            CircleFade = MathX.Lerp(CircleFade, 1.2f, Time.Delta * 2.5f);
+        }
 
-		FadePanel.Style.Width = Length.ViewMax( CircleFade * 140 );
-		FadePanel.Style.Height = Length.ViewMax( CircleFade * 140 );
+        FadePanel.Style.Width = Length.ViewMax( CircleFade * 140 );
+        FadePanel.Style.Height = Length.ViewMax( CircleFade * 140 );
 
-	}
+    }
 
-	[Broadcast]
-	public static void Show()
-	{
-		Visible = true;
+    [Broadcast]
+    public static void Show()
+    {
+        if(Visible) { return; }
+
+        Sound.Play("sounds/fade_in.sound");
+        Visible = true;
 	}
 
 	[Broadcast]
 	public static void Hide()
 	{
+        if (!Visible) { return; }
+
+        Sound.Play("sounds/fade_out.sound");
 		Visible = false;
 	}
 

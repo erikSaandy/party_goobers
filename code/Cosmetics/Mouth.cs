@@ -14,4 +14,13 @@ public class Mouth : FaceFeature
 
 	public Mouth() : base() { }
 
+	[Broadcast]
+	public override void SetColor( Color color )
+	{
+		if ( Renderer == null ) { return; }
+
+		Renderer.Color = Color.White * 2;
+	}
+
+
 }

@@ -31,8 +31,8 @@ public class MiniGame : SingletonComponent<MiniGame>
 	public static Vector3 BottomLeft => Min;
 	public static Vector3 BottomRight => Min + ( Instance.Transform.Rotation.Right * ScreenSizeWithMargin.x );
 
-	public int RoundNumber => PartyFacesManager.Instance.RoundNumber;
-	public float InitChance( int round ) { return Math2d.Clamp01( (round / 6f) * 0.5f ); }
+	private static int RoundNumber => PartyFacesManager.Instance.RoundNumber;
+	public float InitChance( int round ) { return Math2d.Clamp01( (round / 4f) * 0.5f ); }
 
 	private static List<MiniEvent> Events = new List<MiniEvent>()
 	{
@@ -85,9 +85,14 @@ public class MiniGame : SingletonComponent<MiniGame>
 	{
 		if( Instance.IsProxy ) { return; }
 
+		float chance = 1;// InitChance( RoundNumber );
+		Log.Info( "chance for minigame: " + chance );
+		if ( Game.Random.Float( 0f, 1f ) > chance) { return; }
+
 		AwaitingMinigame = true;
 		TimeSinceTimerStarted = 0;
-		MinigameTime = Game.Random.Float( 1, 5 );
+		MinigameTime = 1;
+		Log.Info( "awaiting minigame..." );
 
 	}
 
@@ -141,7 +146,7 @@ public class MiniGame : SingletonComponent<MiniGame>
 
 		public override async void Invoke()
 		{
-			int minCount = (int)(MiniGame.Instance.RoundNumber / 4f) + 1;
+			int minCount = (int)(MiniGame.RoundNumber * 0.2f) + 1;
 			int count = Game.Random.Int( minCount, minCount + 1 );
 
 			for ( int i = 0; i < count; i++ )
@@ -169,17 +174,19 @@ public class MiniGame : SingletonComponent<MiniGame>
 
 	private class BalloonEvent : MiniEvent
 	{
-		public override int Weight => 300;
+		public override int Weight => 1111300;
 
-		public override void Invoke()
+		public override async void Invoke()
 		{
-			int minCount = (int)(MiniGame.Instance.RoundNumber / 4f) + 1;
+			int minCount = (int)(MiniGame.RoundNumber * 0.15f) + 1;
 			int count = Game.Random.Int( minCount, minCount + 1 );
 
 			for ( int i = 0; i < count; i++ )
 			{
 				GameObject balloon = SceneUtility.GetPrefabScene( MiniGame.Instance.BalloonObject ).Clone( GetRandomPositionBelowScreen() );
 				balloon.NetworkSpawn();
+
+				await MiniGame.Instance.Task.Delay( 600 );
 			}
 
 		}

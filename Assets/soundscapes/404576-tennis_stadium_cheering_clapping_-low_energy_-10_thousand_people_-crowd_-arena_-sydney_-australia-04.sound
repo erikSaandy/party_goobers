@@ -1,11 +1,11 @@
 {
-  "UI": false,
-  "Volume": "2",
-  "Pitch": "0.8 1.2",
+  "UI": true,
+  "Volume": "1",
+  "Pitch": "1",
   "Decibels": 70,
-  "SelectionMode": "Random",
+  "SelectionMode": "Forward",
   "Sounds": [
-    "sounds/npc_hello.vsnd"
+    "soundscapes/404576-tennis_stadium_cheering_clapping_-low_energy_-10_thousand_people_-crowd_-arena_-sydney_-australia-04.vsnd"
   ],
   "Occlusion": false,
   "AirAbsorption": false,

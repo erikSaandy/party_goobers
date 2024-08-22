@@ -1,0 +1,12 @@
+{
+  "MasterVolume": "0.15",
+  "LoopedSounds": [
+    {
+      "SoundFile": "soundscapes/arcade-ambience-2-17112.vsnd",
+      "Volume": "0.4"
+    }
+  ],
+  "StingSounds": [],
+  "__references": [],
+  "__version": 0
+}

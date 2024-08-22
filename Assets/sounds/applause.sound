@@ -1,11 +1,11 @@
 {
-  "UI": true,
-  "Volume": "1",
+  "UI": false,
+  "Volume": "3",
   "Pitch": "1",
   "Decibels": 70,
   "SelectionMode": "Random",
   "Sounds": [
-    "sounds/label_fall02.vsnd"
+    "sounds/applause.vsnd"
   ],
   "Occlusion": true,
   "AirAbsorption": true,

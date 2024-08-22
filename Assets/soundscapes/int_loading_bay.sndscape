@@ -1,0 +1,16 @@
+{
+  "MasterVolume": "0.3",
+  "LoopedSounds": [
+    {
+      "SoundFile": "soundscapes/149428__conleec__amb_int_roomtone_traffic_001.vsnd",
+      "Volume": "0.75"
+    },
+    {
+      "SoundFile": "soundscapes/amb_int_festival.vsnd",
+      "Volume": "0.51"
+    }
+  ],
+  "StingSounds": [],
+  "__references": [],
+  "__version": 0
+}

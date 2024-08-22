@@ -82,8 +82,8 @@
               "Type": "call",
               "Properties": {
                 "_type": "ConfusionSpell",
-                "_isStatic": false,
-                "_name": "OnInitiated"
+                "_name": "OnInitiated",
+                "_isStatic": false
               },
               "UserData": {
                 "Position": "416,176"
@@ -190,7 +190,7 @@
         "__guid": "8bce7055-31ee-4570-aeb4-ef3b3197bf8a",
         "Flags": 0,
         "Name": "Camera",
-        "Position": "-0.002406628,-1682.71,685.6573",
+        "Position": "-0.004915643,-1181.735,460.0388",
         "Rotation": "0.1447334,-0.1447334,-0.6921361,-0.6921357",
         "Scale": "-1.058358,1,1",
         "Enabled": true,
@@ -200,7 +200,7 @@
             "__guid": "aa605ca0-3b2a-4f0f-8d05-442286267a29",
             "BackgroundColor": "0.33333,0.46275,0.52157,1",
             "ClearFlags": "All",
-            "FieldOfView": 24.58,
+            "FieldOfView": 40,
             "IsMainCamera": false,
             "Orthographic": false,
             "OrthographicHeight": 1204,
@@ -562,6 +562,23 @@
             "__type": "Sandbox.SpawnPoint",
             "__guid": "1d210cd1-e14e-4aa0-b082-f2cb5dced90c",
             "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "__guid": "77574c66-7102-4a1b-9b2e-32c3a066b904",
+        "Flags": 0,
+        "Name": "Soundscape",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SoundscapeTrigger",
+            "__guid": "2ad9de59-22b3-4a07-95ad-c8991e224a25",
+            "BoxSize": "5000,5000,5000",
+            "Radius": 500,
+            "Soundscape": "soundscapes/int_basement.sndscape",
+            "StayActiveOnExit": false,
+            "Type": "Box"
           }
         ]
       }

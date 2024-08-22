@@ -51,7 +51,7 @@ public class NPCFootsteps : Component
 		if ( sound is null ) return;
 
 		var handle = Sound.Play( sound, trace.HitPosition + trace.Normal * 5f );
-		handle.Volume *= e.Volume * 8;
+		handle.Volume *= e.Volume * 22;
 
 	}
 

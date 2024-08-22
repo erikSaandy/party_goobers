@@ -1,0 +1,12 @@
+{
+  "MasterVolume": "0.5",
+  "LoopedSounds": [
+    {
+      "SoundFile": "soundscapes/404567-tennis_stadium_-inbetween_games_-room_tone_-air_-ambience_-background_-light_crowd_-arena_-sydney_-australia.vsnd",
+      "Volume": "0.5"
+    }
+  ],
+  "StingSounds": [],
+  "__references": [],
+  "__version": 0
+}

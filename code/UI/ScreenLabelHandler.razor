@@ -88,7 +88,9 @@
         Sound.Play("sounds/balloon_pop.sound");
 
         Vector2 pos = startPosNormal * Screen.Size;
+
         Labels.Add(new ScreenLabel(text, pos, velocity, useGravity, life, isPositive, handle));
+
     }
 
     protected override int BuildHash()
