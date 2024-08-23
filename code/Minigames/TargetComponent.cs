@@ -85,6 +85,7 @@ public sealed class TargetComponent : Component, IInteractable
 
 		Sound.Play( "sounds/gun_shot.sound" );
 		Sound.Play( "sounds/target_shatter.sound" );
+		PartyFacesManager.SpawnStarParticlesClient( Transform.Position );
 		IsHit = true;
 
 		if ( IsProxy ) { return; }

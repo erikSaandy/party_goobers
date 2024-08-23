@@ -30,6 +30,7 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 	[Property] public ScreenLabelHandler LabelHandler { get; private set; }
 
 	[Property] public GameObject ConfettiParticles { get; private set; }
+	[Property] public GameObject StarParticles { get; private set; }
 
 	[ResourceType("vmdl")]
 	[Property] public string CrownModel { get; set; }
@@ -42,6 +43,14 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 		GameObject conf = ConfettiParticles.Clone( pos, Vector3.VectorAngle( Scene.Camera.Transform.Rotation.Up ) );
 		conf.Enabled = true;
 		Sound.Play( "sounds/confetti_throw.sound" );
+	}
+
+	public static void SpawnStarParticlesClient( Vector3 position )
+	{
+		GameObject stars = Instance.StarParticles.Clone();
+		stars.Enabled = true;
+		stars.Transform.Position = position;
+		stars.Transform.Rotation = Rotation.FromRoll( Instance.Scene.Camera.Transform.Rotation.Pitch() - 15 );
 	}
 
 	protected override void OnStart()

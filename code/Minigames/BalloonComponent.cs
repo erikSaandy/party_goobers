@@ -1,5 +1,6 @@
 using Sandbox;
 using System;
+using static Sandbox.VertexLayout;
 
 public sealed class BalloonComponent : Component, IInteractable
 {
@@ -88,7 +89,8 @@ public sealed class BalloonComponent : Component, IInteractable
 	private void Hit( Guid playerId )
 	{
 		if ( IsHit ) { return; }
-		
+
+		PartyFacesManager.SpawnStarParticlesClient( Transform.Position );
 		Sound.Play( "sounds/gun_shot.sound" );
 		
 		if ( IsProxy ) { return; }

@@ -64,8 +64,8 @@
               "Type": "call",
               "Properties": {
                 "_type": "ConfusionSpell",
-                "_isStatic": false,
-                "_name": "OnInitiated"
+                "_name": "OnInitiated",
+                "_isStatic": false
               },
               "UserData": {
                 "Position": "384,176"
@@ -124,18 +124,6 @@
       }
     ],
     "Children": [
-      {
-        "__guid": "f4164dfb-62f2-4375-9a31-3cc3901a0e53",
-        "Flags": 0,
-        "Name": "Spotlight Cursor",
-        "Rotation": "0,0.7071068,0,0.7071068",
-        "Enabled": true,
-        "NetworkMode": 1,
-        "__Prefab": "prefabs/spotlight_cursor.prefab",
-        "__PrefabVariables": {
-          "Visible Chance": 0.05
-        }
-      },
       {
         "__guid": "076c8b0b-38fa-4b80-bbed-d355f5268007",
         "Flags": 0,

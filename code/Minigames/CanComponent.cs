@@ -5,7 +5,7 @@ using static Sandbox.Gizmo;
 
 public sealed class CanComponent : Component, IInteractable
 {
-	const int HIT_SCORE = 1500;
+	const int HIT_SCORE = 500;
 
 	[RequireComponent][Property] private ModelRenderer Renderer { get; set; }
 	[RequireComponent][Property] private Rigidbody Body { get; set; }
@@ -13,6 +13,7 @@ public sealed class CanComponent : Component, IInteractable
 	[Property] private Model CanCrumpled { get; set; }
 
 	TimeSince TimeSinceHit = 0;
+	int hitCount = 0;
 
 	public bool IsInteractableBy( Player player ) => true;
 
@@ -56,13 +57,15 @@ public sealed class CanComponent : Component, IInteractable
 	public void OnInteract( Guid playerId, SceneTraceResult traceResult )
 	{
 
-		if ( TimeSinceHit < 0.2f ) { return; }
+		if ( TimeSinceHit < 0.3f ) { return; }
 		TimeSinceHit = 0;
+		hitCount++;
 
 		Sound.Play( "sounds/gun_shot.sound" );
 
-		PartyFacesManager.Instance.LabelHandler.SpawnLabel( $"+{HIT_SCORE}", MiniGame.Camera.PointToScreenNormal( Transform.Position ), Vector2.Up * 50, false, isPositive: true );
-		Scene.Directory.FindByGuid( playerId ).Components.Get<Player>().AddScore( HIT_SCORE );
+		int score = HIT_SCORE * hitCount;
+		PartyFacesManager.Instance.LabelHandler.SpawnLabel( $"+{score}", MiniGame.Camera.PointToScreenNormal( Transform.Position ), Vector2.Up * 50, false, isPositive: true );
+		Scene.Directory.FindByGuid( playerId ).Components.Get<Player>().AddScore( score );
 
 		//Vector3 off = MiniGame.Camera.Transform.World.PointToLocal(traceResult.HitPosition) - MiniGame.Camera.Transform.World.PointToLocal(Body.PhysicsBody.MassCenter);
 

@@ -23,6 +23,16 @@
         "HitboxTags": "",
         "Radius": 16.000006,
         "Shape": "Sphere"
+      },
+      {
+        "__type": "TargetComponent",
+        "__guid": "91b7805b-e0a0-4fc5-af62-97d3935077df",
+        "Prop": {
+          "_type": "component",
+          "component_id": "ceefe179-c489-4a93-8084-da17ee5ad4b2",
+          "go": "d6c7701c-ecd0-43ee-8196-ad64e126cc7f",
+          "component_type": "Prop"
+        }
       }
     ],
     "Children": [],

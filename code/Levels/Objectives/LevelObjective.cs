@@ -208,6 +208,7 @@ public abstract class LevelObjective : Component, IWeighted
 
 		foreach ( NPC npc in SelectedNPCs ) {
 
+			PartyFacesManager.SpawnStarParticlesClient( npc.Transform.Position + Vector3.Up * 55 );
 			npc.SetClientAnimationBehaviour( player, NPC.AnimationBehaviour.Cheer );
 
 		}
