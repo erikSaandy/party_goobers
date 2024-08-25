@@ -5,6 +5,9 @@
 @inherits PanelComponent
 
 <root>
+
+    <div class="randomisebutton @(FreezeInput)" onclick="@OnClickedRandomise" />
+
 	<div class="header">@(Lobby.PlayersInLobby)/25 waiting@(Dots())</div>
 
 	@*Nametags*@
@@ -22,7 +25,7 @@
 	}
 
 	@*Start Button*@
-	<div class="startbutton @(CanStartGame ? "" : "locked")" onclick="@OnClickedStartButton">
+    <div class="startbutton @(FreezeInput)" onclick="@OnClickedStartButton">
 		Start Game
 		</div>
 
@@ -32,48 +35,68 @@
 
 @code
 {
-	[Property] public LobbyComponent Lobby { get; set; }
+    [Property] public LobbyComponent Lobby { get; set; }
 
-	[Property] public GameObject Emote { get; private set; }
+    [Property] public GameObject Emote { get; private set; }
 
-	private TimeSince TimeAlive { get; set; }
-	bool CanStartGame => TimeAlive > 2f;
+    private TimeSince TimeAlive { get; set; }
+    bool CanStartGame => TimeAlive > 2f;
+    string FreezeInput => (CanStartGame? "" : "locked");
 
-	private Vector2 NametagPosition(GameObject npc)
-	{
-		return Scene.Camera.PointToScreenNormal(npc.Transform.Position + Vector3.Up * 112);
-	}
+    private Vector2 NametagPosition(GameObject npc)
+    {
+        return Scene.Camera.PointToScreenNormal(npc.Transform.Position + Vector3.Up * 112);
+    }
 
-	private string Dots()
-	{
-		int nr = (int)(((Time.Now * 1.5f)) % 3 );
+    private string Dots()
+    {
+        int nr = (int)(((Time.Now * 1.5f)) % 3 );
 
-		string s = ".";
-		for(int i = 0; i < nr; i++) { s += "."; }
+        string s = ".";
+        for(int i = 0; i < nr; i++) { s += "."; }
 
-		return s;
-	}
+        return s;
+    }
 
-	protected override void OnAwake()
-	{
-		base.OnAwake();
+    protected override void OnAwake()
+    {
+        base.OnAwake();
 
-		TimeAlive = 0;
-	}
+        TimeAlive = 0;
+    }
 
-	private void OnClickedStartButton()
-	{
+    private void OnClickedStartButton()
+    {
 
-		if(IsProxy) {
+        if(IsProxy) {
 
-			SpawnEmoji(new Vector2(Mouse.Position.x / Screen.Width, Mouse.Position.y / Screen.Height));
+            SpawnEmoji(new Vector2(Mouse.Position.x / Screen.Width, Mouse.Position.y / Screen.Height));
 
-			return;
-		}
+            return;
+        }
 
-		PartyFacesManager.Instance.StartGame();
+        PartyFacesManager.Instance.StartGame();
 
-	}
+    }
+
+    const float RANDOMISE_DELAY = 0.6f;
+    TimeSince timeSinceRandomize = 0;
+    private async void OnClickedRandomise()
+    {
+        if(timeSinceRandomize < RANDOMISE_DELAY) { return; }
+        timeSinceRandomize = 0;
+
+        NPC npc = Scene.Components.GetAll<NPC>().First(x => x.ConnectionId == Connection.Local.Id);
+
+        if(npc == null) { Log.Info("Connection does not have an NPC."); }
+
+        npc.Randomize();
+
+        await Task.Delay(500);
+
+        npc.Save();
+
+    }
 
 	[Authority]
 	private void SpawnEmoji( Vector2 screenPosNormal )

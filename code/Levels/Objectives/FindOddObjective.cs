@@ -133,13 +133,13 @@ public class FindOddObjective : LevelObjective
 	{
 		base.OnDestroy();
 
-		if( TargetNPCIds == null) { return; }
+		if ( IsProxy ) { return; }
+
+		if ( TargetNPCIds == null) { return; }
 
 		foreach ( Guid npcId in TargetNPCIds )
 		{
-			NPC npc = Scene.Directory.FindByGuid( npcId ).Components.Get<NPC>(true);
-
-			if(npc == null) { continue; }
+			if(!Scene.Directory.FindByGuid( npcId ).Components.TryGet<NPC>( out NPC npc, FindMode.EverythingInSelf )) { continue; }
 
 			npc.Jog( false );
 		}

@@ -136,26 +136,29 @@ public class NPCBuffer : SingletonComponent<NPCBuffer>
 
 			await Task.Yield();
 
-			OnNPCsGenerated?.Invoke();
-
 		}
+
+
+		OnNPCsGenerated?.Invoke();
 
 	}
 
-	public NPC PlaceLobbyNPC( Guid playerId )
+	public NPC PlaceLobbyNPC( Guid connectionId )
 	{
+		Connection con = Connection.Find( connectionId );
+		Log.Info( "placing " + con.DisplayName + " lobby npc..." );
+
 		NPC npc = NPCs.Where( x => x.Enabled == true ).GetRandom();
 		npc.StopMoving();
 		npc.LookAt( Scene.Camera.GameObject.Id );
 		PartyFacesManager.EnableGameobject( npc.GameObject.Id, true );
 
-		Log.Info( "place lobby" );
-
 		SpawnPoint sp = LevelHandler.Instance.CurrentLevelData.SpawnPoints.Where( x => !x.Tags.Contains( "taken" ) ).GetRandom();
 		sp.Tags.Add( "taken" );
 		// Place NPC on a spawnpoint in lobby that is not taken.
 		npc.Spawn( sp.Transform.World );
-		npc.SetOwner( playerId );
+		npc.SetOwner( con.Id );
+		npc.LoadFromConnection( connectionId );
 
 		return npc;
 
@@ -169,6 +172,7 @@ public class NPCBuffer : SingletonComponent<NPCBuffer>
 	{
 		foreach(NPC npc in NPCs)
 		{
+			if( !npc.IsValid || npc.Tags == null ) { continue; } // Still getting errors when looking at tags, so trying something new.
 			if(npc.Tags.Has( "npcdisplay" ) ) { continue; }
 
 			if(npc.GameObject.Enabled)

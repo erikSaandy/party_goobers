@@ -55,7 +55,7 @@
     protected override async Task OnParametersSetAsync()
     {
         Board = Sandbox.Services.Leaderboards.Get(BoardName);
-        Board.MaxEntries = 6;
+        Board.MaxEntries = 20;
         Board.Group = Group;
 
         await UpdateScores();

@@ -5,7 +5,7 @@
   "Ident": "party_goobers",
   "Schema": 1,
   "IncludeSourceFiles": false,
-  "Resources": "\ntextures/icons/cursor.png\ntextures/icons/playericon_default.png\ntextures/icons/spyglass.png\nfonts/DisplayOTF.otf\ntextures/icons/loading.png",
+  "Resources": "\ntextures/icons/cursor.png\ntextures/icons/playericon_default.png\ntextures/icons/spyglass.png\nfonts/DisplayOTF.otf\ntextures/icons/loading.png\ntextures/icons/randomize.png",
   "PackageReferences": [],
   "EditorReferences": null,
   "IsWhitelistDisabled": false,
@@ -26,10 +26,11 @@
     "LaunchMode": "QuickPlay",
     "Compiler": {
       "RootNamespace": "Sandbox",
-      "DefineConstants": "SANDBOX;DEBUG",
+      "DefineConstants": "SANDBOX",
       "NoWarn": "1701;1702;1591;",
       "WarningsAsErrors": "",
       "Whitelist": true,
+      "ReleaseMode": "Release",
       "AssemblyReferences": [],
       "IgnoreFolders": [
         "editor",

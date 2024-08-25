@@ -20,6 +20,8 @@ public class NPCIconGenerator : SingletonComponent<NPCIconGenerator>
 			.WithFormat( ImageFormat.RGBA32323232F )
 			.Create( "icon_texture" );
 
+		if(IsProxy) { return; }
+
 	}
 
 	protected override void OnStart()
@@ -33,17 +35,20 @@ public class NPCIconGenerator : SingletonComponent<NPCIconGenerator>
 	{
 	}
 
+
+
+	Action _headshotDelegate = null;
 	public void RequestNPCHeadshot( Guid npcGuid )
 	{
 		NPC npc = Scene.Directory.FindByGuid( npcGuid ).Components.Get<NPC>( true );
 		DisplayNPC.CopyFrom( npc.GameObject.Id );
 		DisplayNPC.GameObject.Enabled = true;
 
-		NPCBuffer.OnNPCsGenerated -= delegate { TakeNPCHeadshot( npcGuid ); };
-		NPCBuffer.OnNPCsGenerated += delegate { TakeNPCHeadshot( npcGuid ); };
+		_headshotDelegate = delegate { TakeNPCHeadshot( npcGuid ); };
+		NPCBuffer.OnNPCsGenerated += _headshotDelegate;
 		//TakeNPCHeadshotAsync( npcGuid );
 
-		Log.Info( "requested headshot" );
+		Log.Info( "> requested headshot" );
 
 	}
 
@@ -78,7 +83,9 @@ public class NPCIconGenerator : SingletonComponent<NPCIconGenerator>
 
 		Camera.RenderToTexture( RenderTexture );
 
-		NPCBuffer.OnNPCsGenerated -= delegate { TakeNPCHeadshot( npcGuid ); };
+		NPCBuffer.OnNPCsGenerated -= _headshotDelegate;
+
+		Log.Info( "> took headshot" );
 
 	}
 

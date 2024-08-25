@@ -4,6 +4,7 @@ using Sandbox.Network;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
@@ -11,6 +12,8 @@ using System.Threading.Tasks;
 
 public class NPC : Component, IInteractable
 {
+	public const string FILE_PATH = "Data/";
+	const string FILE_NAME = "Me.color";
 
 	public enum AnimationBehaviour
 	{
@@ -150,6 +153,53 @@ public class NPC : Component, IInteractable
 		// Math2d.Map(WalkSpeed, MIN_WALKSPEED, MAX_WALKSPEED, 0.75f, 1.4f )
 		//Renderer.Set( "f_walk_speed", 0.9f );
 
+	}
+
+	[Broadcast]
+	public void LoadFromConnection(Guid connectionId)
+	{
+		if ( Connection.Local.Id != connectionId ) { return; }
+
+		if (Face == null) { return; }
+
+		if(!Load())
+		{
+			Save();
+		}
+	}
+
+	public void Save()
+	{
+		string fullPath = Path.Combine( FILE_PATH, FILE_NAME );
+
+
+		Sandbox.FileSystem.Data.CreateDirectory( FILE_PATH );
+		Sandbox.FileSystem.Data.WriteJson( fullPath, Color.RgbaInt );
+
+		Face.Save();
+
+		Log.Info( "Saved goober." );
+
+	}
+
+	public bool Load()
+	{
+		string fullPath = Path.Combine( FILE_PATH, FILE_NAME );
+
+		if ( !Sandbox.FileSystem.Data.FileExists( fullPath ) ) { return false; }
+
+		uint data = Sandbox.FileSystem.Data.ReadJson<uint>( fullPath );
+
+		SetColor( data );
+
+		if(!Face.Load())
+		{
+			Face.Save();
+		}
+
+		Log.Info( "Loaded goober." );
+
+		return true;
 	}
 
 

@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 public class Face : Component, Component.INetworkListener
 {
 
-	const string FILE_PATH = "Data/";
 	const string FILE_NAME = "Me.face";
 
 	[Property] public NPC Owner { get; set; } = null;
@@ -85,7 +84,7 @@ public class Face : Component, Component.INetworkListener
 	public void Save()
 	{
 
-		string fullPath = Path.Combine( FILE_PATH, FILE_NAME );
+		string fullPath = Path.Combine( NPC.FILE_PATH, FILE_NAME );
 
 		List<FaceFeature.FaceFeatureData> data = new List<FaceFeature.FaceFeatureData>()
 		{
@@ -95,16 +94,14 @@ public class Face : Component, Component.INetworkListener
 			Mouth.Data,
 		};
 
-		Sandbox.FileSystem.Data.CreateDirectory( FILE_PATH );
+		Sandbox.FileSystem.Data.CreateDirectory( NPC.FILE_PATH );
 		Sandbox.FileSystem.Data.WriteJson( fullPath, data );
-
-		Log.Info( "Saved face." );
 
 	}
 
 	public bool Load()
 	{
-		string fullPath = Path.Combine( FILE_PATH, FILE_NAME );
+		string fullPath = Path.Combine( NPC.FILE_PATH, FILE_NAME );
 
 
 		if ( !Sandbox.FileSystem.Data.FileExists( fullPath ) ) { return false; }
@@ -115,8 +112,6 @@ public class Face : Component, Component.INetworkListener
 		Eyes.SetTextureID( data[1].ID );
 		Nose.SetTextureID( data[2].ID );
 		Mouth.SetTextureID( data[3].ID );
-
-		Log.Info( "Loaded face." );
 
 		return true;
 	}

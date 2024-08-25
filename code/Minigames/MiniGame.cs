@@ -85,7 +85,7 @@ public class MiniGame : SingletonComponent<MiniGame>
 	{
 		if( Instance.IsProxy ) { return; }
 
-		float chance = 11;// InitChance( RoundNumber );
+		float chance = InitChance( RoundNumber );
 		Log.Info( "chance for minigame: " + chance );
 		if ( Game.Random.Float( 0f, 1f ) > chance) { return; }
 

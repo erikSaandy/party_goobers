@@ -93,12 +93,15 @@ public class FindAlikeObjective : LevelObjective
 	{
 		base.OnDestroy();
 		
+		if(IsProxy) { return; }
+
 		if(AlikeNPCIds == null) { return; }
 
 		// randomize alike npcs on level unload.
-		foreach ( Guid id in AlikeNPCIds )
+		foreach ( Guid npcId in AlikeNPCIds )
 		{
-			NPC npc = Scene.Directory.FindByGuid( id ).Components.Get<NPC>( true );
+			if ( !Scene.Directory.FindByGuid( npcId ).Components.TryGet<NPC>( out NPC npc, FindMode.EverythingInSelf ) ) { continue; }
+
 			npc.Randomize();
 		}
 

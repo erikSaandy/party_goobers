@@ -40,7 +40,6 @@
         "Name": "Lobby HUD",
         "Position": "8.571518,100.332,174.6182",
         "Enabled": true,
-        "NetworkMode": 1,
         "Components": [
           {
             "__type": "Sandbox.ScreenPanel",

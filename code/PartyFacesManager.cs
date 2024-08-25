@@ -191,7 +191,7 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 
 		await LevelHandler.Instance.LoadRandomLevel();
 
-		await Task.Delay( 1000 );
+		await Task.Delay( 600 );
 
 		ObjectiveDisplay.Show();
 
@@ -292,6 +292,8 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 	public static void EnableGameobject( Guid gameObjectId, bool enabled )
 	{
 		var gameObject = Game.ActiveScene.Directory.FindByGuid( gameObjectId );
+		if(gameObject == null) { return; }
+
 		gameObject.Enabled = enabled;
 	}
 

@@ -132,7 +132,7 @@
         "__guid": "6f141ace-5f13-400e-adf7-1239e3e0afa1",
         "Flags": 0,
         "Name": "Node Path",
-        "Position": "-574.7932,-106.4056,0.9902239",
+        "Position": "-574.7932,-134.9983,0.9902239",
         "Enabled": true,
         "Components": [
           {
@@ -156,7 +156,7 @@
         "__guid": "f29a890b-0ab1-4580-a5a1-fd1c516b00ff",
         "Flags": 0,
         "Name": "Node Path (1)",
-        "Position": "-525.3148,110.9732,0.9902239",
+        "Position": "-525.3148,100.2465,0.9902239",
         "Enabled": true,
         "Components": [
           {
@@ -180,7 +180,7 @@
         "__guid": "15be88f1-fd51-4d41-a078-e49bd035df01",
         "Flags": 0,
         "Name": "Node Path (2)",
-        "Position": "162.4256,-42.50291,0.9902239",
+        "Position": "162.4256,-30.80964,0.9902239",
         "Enabled": true,
         "Components": [
           {
@@ -204,7 +204,7 @@
         "__guid": "9e314c88-0f38-4894-b41a-23fb16aac808",
         "Flags": 0,
         "Name": "Node Path (3)",
-        "Position": "96.16063,175.152,2.439575",
+        "Position": "96.16063,198.6207,2.439575",
         "Enabled": true,
         "Components": [
           {
@@ -228,7 +228,7 @@
         "__guid": "c9abd793-5b35-4945-b08a-101e743f8d9b",
         "Flags": 0,
         "Name": "Spawnpoint (8)",
-        "Position": "-293.2135,-19.76383,-11.12138",
+        "Position": "-293.2135,-17.99964,0",
         "Rotation": "0,0,1,0.0000001947072",
         "Enabled": true,
         "Components": [
@@ -243,7 +243,7 @@
         "__guid": "57dc04bb-6b0c-41db-bb77-cb79266e1024",
         "Flags": 0,
         "Name": "Spawnpoint (19)",
-        "Position": "-146.4196,103.3833,-11.12138",
+        "Position": "-146.4196,103.3833,0",
         "Enabled": true,
         "Components": [
           {
@@ -257,7 +257,7 @@
         "__guid": "061b0fdb-5222-4d2d-89a7-163bf48a9b70",
         "Flags": 0,
         "Name": "Spawnpoint (10)",
-        "Position": "-153.843,-19.0163,-11.12138",
+        "Position": "-153.843,-19.0163,0",
         "Rotation": "0,0,1,0.0000001947072",
         "Enabled": true,
         "Components": [
@@ -272,7 +272,7 @@
         "__guid": "5cd2a98d-c6b1-4aeb-b6d1-8b82c286ebb9",
         "Flags": 0,
         "Name": "Spawnpoint (14)",
-        "Position": "-149.2125,205.023,-11.12138",
+        "Position": "-149.2125,205.023,0",
         "Rotation": "0,0,1,0.0000001947072",
         "Enabled": true,
         "Components": [
@@ -287,7 +287,7 @@
         "__guid": "c7702095-a724-4908-b80b-fbba45f6492c",
         "Flags": 0,
         "Name": "Spawnpoint (20)",
-        "Position": "-268.4771,100.1658,-11.12138",
+        "Position": "-268.4771,100.1658,0",
         "Enabled": true,
         "Components": [
           {
@@ -301,7 +301,7 @@
         "__guid": "948efb8b-e1dc-4c75-9b2c-362a8a2761ff",
         "Flags": 0,
         "Name": "Spawnpoint (11)",
-        "Position": "-24.9387,-18.05696,-11.12138",
+        "Position": "-24.9387,-18.05696,0",
         "Rotation": "0,0,1,0.0000001947072",
         "Enabled": true,
         "Components": [
@@ -316,7 +316,7 @@
         "__guid": "e7e05260-0687-491c-a14f-5dd85b9d79a7",
         "Flags": 0,
         "Name": "Spawnpoint (15)",
-        "Position": "-9.349529,205.4521,-11.12138",
+        "Position": "-9.349529,205.4521,0",
         "Rotation": "0,0,1,0.0000001947072",
         "Enabled": true,
         "Components": [
@@ -331,7 +331,7 @@
         "__guid": "7b542780-aba1-4b22-88ce-a19c4afc3cc5",
         "Flags": 0,
         "Name": "Spawnpoint (21)",
-        "Position": "-387.3947,91.37383,-11.12138",
+        "Position": "-387.3947,91.37383,0",
         "Enabled": true,
         "Components": [
           {
@@ -345,7 +345,7 @@
         "__guid": "fdeb9a7c-8e50-4d0f-990d-f4604a924660",
         "Flags": 0,
         "Name": "Spawnpoint (12)",
-        "Position": "94.12221,-19.96072,-11.12138",
+        "Position": "94.12221,-19.96072,0",
         "Rotation": "0,0,1,0.0000001947072",
         "Enabled": true,
         "Components": [
@@ -360,7 +360,7 @@
         "__guid": "03037cca-a03a-46f6-a5a3-19eab2643d33",
         "Flags": 0,
         "Name": "Spawnpoint (16)",
-        "Position": "107.1647,203.5955,-11.12138",
+        "Position": "107.1647,203.5955,0",
         "Rotation": "0,0,1,0.0000001947072",
         "Enabled": true,
         "Components": [
@@ -375,7 +375,7 @@
         "__guid": "3ff69abd-1c6d-4e08-821b-b42db5847c99",
         "Flags": 0,
         "Name": "Spawnpoint (22)",
-        "Position": "-519.5344,91.37383,-11.12138",
+        "Position": "-519.5344,91.37383,0",
         "Enabled": true,
         "Components": [
           {
@@ -389,7 +389,7 @@
         "__guid": "6ab29dbc-9952-4c92-b6c6-49ef7f405e75",
         "Flags": 0,
         "Name": "Spawnpoint (18)",
-        "Position": "-445.2217,204.6049,-11.12138",
+        "Position": "-445.2217,204.6049,0",
         "Rotation": "0,0,1,0.0000001947072",
         "Enabled": true,
         "Components": [
@@ -404,7 +404,7 @@
         "__guid": "5ef1b57b-5901-4514-9635-cf3e51468c86",
         "Flags": 0,
         "Name": "Spawnpoint (24)",
-        "Position": "148.7498,91.37374,-11.12138",
+        "Position": "148.7498,91.37374,0",
         "Enabled": true,
         "Components": [
           {
@@ -418,7 +418,7 @@
         "__guid": "4bbe1d2a-5621-4c38-aba2-462e122cfefb",
         "Flags": 0,
         "Name": "Spawnpoint (9)",
-        "Position": "-422.1088,-26.05025,-11.12138",
+        "Position": "-422.1088,-26.05025,0",
         "Rotation": "0,0,1,0.0000001947072",
         "Enabled": true,
         "Components": [
@@ -433,7 +433,7 @@
         "__guid": "44b5968a-ef2e-48c8-a1a0-0dd39e632cd8",
         "Flags": 0,
         "Name": "Spawnpoint (17)",
-        "Position": "-302.0308,204.8838,-11.12138",
+        "Position": "-302.0308,204.8838,0",
         "Rotation": "0,0,1,0.0000001947072",
         "Enabled": true,
         "Components": [
@@ -448,7 +448,7 @@
         "__guid": "124f202e-c48a-4046-aae7-7e5b396e7d70",
         "Flags": 0,
         "Name": "Spawnpoint (23)",
-        "Position": "-12.30736,91.37365,-11.12138",
+        "Position": "-12.30736,91.37365,0",
         "Enabled": true,
         "Components": [
           {
@@ -462,7 +462,7 @@
         "__guid": "cecb49f4-3a1a-49e0-9e8c-f9734db1c242",
         "Flags": 0,
         "Name": "Spawnpoint (1)",
-        "Position": "-493.3922,-115.1431,-11.12137",
+        "Position": "-493.3922,-115.1431,0",
         "Enabled": true,
         "Components": [
           {
@@ -490,7 +490,7 @@
         "__guid": "177cfa08-6a7c-4978-b595-ba5fffdd356f",
         "Flags": 0,
         "Name": "Spawnpoint (3)",
-        "Position": "-210.2268,-104.3075,-11.12136",
+        "Position": "-210.2268,-104.3075,0",
         "Enabled": true,
         "Components": [
           {
@@ -518,7 +518,7 @@
         "__guid": "5691376e-c090-46d0-b057-8cf3007e8b5c",
         "Flags": 0,
         "Name": "Spawnpoint (6)",
-        "Position": "95.46236,-115.5866,-11.12135",
+        "Position": "95.46236,-115.5866,0",
         "Enabled": true,
         "Components": [
           {
