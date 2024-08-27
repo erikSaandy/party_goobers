@@ -66,15 +66,20 @@ public class LobbyComponent : Component, Component.INetworkListener
 
 		PlayersInLobby--;
 
+		if(NPCs == null) { return; }
+
 		for(int i = 0; i < NPCs.Count; i++ )
 		{
+
 			NPC npc = Scene.Directory.FindByGuid( NPCs[i] ).Components.Get<NPC>();
+
+			if ( npc == null ) { continue; }
 
 			if ( npc.ConnectionId == channel.Id )
 			{
 				npc.ConnectionId = default;
 				PartyFacesManager.EnableGameobject( npc.GameObject.Id, false );
-				NPCs.RemoveAt( i );
+				NPCs?.RemoveAt( i );
 				break;
 			}
 		}
