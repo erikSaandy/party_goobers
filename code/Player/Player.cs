@@ -61,9 +61,10 @@ public class Player : Component
 
 	[Authority]
 	public void AddScore(int score) {
-		this.Score += score;
 
 		if(IsProxy) { return; }
+
+		this.Score += score;
 
 		Sandbox.Services.Stats.SetValue( "score", this.Score );
 

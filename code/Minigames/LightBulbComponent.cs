@@ -23,7 +23,6 @@ public class LightBulbComponent : Component
 
 	protected override void OnAwake()
 	{
-		if(IsProxy) { return; }
 
 		if(StartOn)
 		{
@@ -40,7 +39,6 @@ public class LightBulbComponent : Component
 	{
 		base.OnUpdate();
 
-		if(IsProxy) { return; }
 		if(!BlinkInterval.HasValue) { return; }
 
 		if(TimeSinceBlink >= BlinkInterval)
@@ -51,7 +49,6 @@ public class LightBulbComponent : Component
 
 	}
 
-	[Broadcast]
 	public void TurnOn()
 	{
 		Renderer.MaterialGroup = MaterialGroupOn;
@@ -63,7 +60,6 @@ public class LightBulbComponent : Component
 
 	}
 
-	[Broadcast]
 	public void TurnOff()
 	{
 		Renderer.MaterialGroup = MaterialGroupOff;

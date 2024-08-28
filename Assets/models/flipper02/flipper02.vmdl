@@ -67,7 +67,7 @@
 								translation_only = false
 								tags = ""
 								hitbox_mins = [ -45.908852, -7.103378, -3.353333 ]
-								hitbox_maxs = [ 45.994987, 71.495911, 3.429538 ]
+								hitbox_maxs = [ 45.994987, 87.561737, 3.429538 ]
 							},
 						]
 					},

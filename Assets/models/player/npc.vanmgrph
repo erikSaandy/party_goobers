@@ -739,7 +739,7 @@
 					m_intParamMaxValue = 2
 					m_blendDuration = 0.2
 					m_tagBehavior = "SelectorTagBehavior_OffWhenFinished"
-					m_bResetOnChange = false
+					m_bResetOnChange = true
 					m_bSyncCyclesOnChange = false
 					m_blendCurve = 
 					{

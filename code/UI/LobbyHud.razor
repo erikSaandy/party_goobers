@@ -8,13 +8,18 @@
 
     <div class="randomisebutton @(FreezeInput)" onclick="@OnClickedRandomise" />
 
-	<div class="header">@(Lobby.PlayersInLobby)/25 waiting@(Dots())</div>
+	<div class="header">@(Lobby.PlayersInLobby)/16 waiting@(Dots())</div>
 
 	@*Nametags*@
 	@for (int i = 0; i < Lobby.NPCs?.Count; i++)
 	{
 		GameObject npc = Scene.Directory.FindByGuid(Lobby.NPCs[i]);
-		Connection con = npc.Network.OwnerConnection;
+        
+        if(npc == null) { continue; }
+
+        Connection con = Connection.Find(npc.Components.Get<NPC>().ConnectionId);
+
+        if(con == null) { continue; }
 
 		Vector2 pos = NametagPosition(npc);
 

@@ -50,22 +50,24 @@
 		}
 	}
 
-	protected override void OnUpdate()
+	protected override void OnPreRender()
 	{
 		base.OnUpdate();
+
+        if(!IsProxy)
+        {
+            CursorPosition = Mouse.Position / Screen.Size;
+
+            Tilt = -Mouse.Velocity.x * 2;
+            Tilt = MathX.Clamp(Tilt, -20, 20);
+
+        }
 
 		if (Visible)
 		{
 			CursorPanel.Style.Left = Length.Fraction(CursorPosition.x);
 			CursorPanel.Style.Top = Length.Fraction(CursorPosition.y);
 		}
-
-		if(IsProxy) { return; }
-
-		CursorPosition = Mouse.Position / Screen.Size;
-
-		Tilt = -Mouse.Velocity.x * 2;
-		Tilt = MathX.Clamp(Tilt, -20, 20);
 
 	}
 

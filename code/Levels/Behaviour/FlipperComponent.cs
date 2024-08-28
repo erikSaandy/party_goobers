@@ -10,7 +10,7 @@ public class FlipperComponent : Component, IInteractable
 
 	public bool IsInteractableBy( Player player ) => true;
 
-	[Sync] public TimeSince TimeSinceHit { get; set; } = 0;
+	public TimeSince TimeSinceHit { get; set; } = 0;
 
 	protected override void OnAwake()
 	{

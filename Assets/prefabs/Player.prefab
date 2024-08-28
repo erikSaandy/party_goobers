@@ -9,6 +9,8 @@
       {
         "__type": "Player",
         "__guid": "b864fe8c-c607-442e-8273-88ee1b484ac7",
+        "LifeState": "Safe",
+        "Lives": 3,
         "NPCId": "00000000-0000-0000-0000-000000000000"
       }
     ],
@@ -22,22 +24,23 @@
         "NetworkMode": 1,
         "Components": [
           {
+            "__type": "Sandbox.ScreenPanel",
+            "__guid": "f624d0f2-2ca8-4bcf-a8e1-1f3f19b4d5b3",
+            "AutoScreenScale": true,
+            "Opacity": 1,
+            "Scale": 1,
+            "ScaleStrategy": "ConsistentHeight",
+            "ZIndex": 500
+          },
+          {
             "__type": "Cursor",
-            "__guid": "32f7e4ec-98f1-439f-9712-e29c2734605e",
+            "__guid": "0777d948-d104-4b54-850f-2321224bc47c",
             "Owner": {
               "_type": "component",
               "component_id": "b864fe8c-c607-442e-8273-88ee1b484ac7",
               "go": "cbbfcc15-bf66-4507-b14d-0cb8c45ebb90",
               "component_type": "Player"
             }
-          },
-          {
-            "__type": "Sandbox.ScreenPanel",
-            "__guid": "f624d0f2-2ca8-4bcf-a8e1-1f3f19b4d5b3",
-            "AutoScreenScale": true,
-            "Opacity": 1,
-            "Scale": 1,
-            "ZIndex": 500
           }
         ]
       },
@@ -54,6 +57,7 @@
             "AutoScreenScale": true,
             "Opacity": 1,
             "Scale": 1,
+            "ScaleStrategy": "ConsistentHeight",
             "ZIndex": 100
           },
           {

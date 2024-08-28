@@ -20,7 +20,7 @@ public abstract class FaceFeature : Component
 
  	[JsonIgnore] public abstract List<Texture> TextureCollection { get; }
 	[JsonIgnore] public int TextureId => Data.ID;
-	[JsonIgnore] public Texture Texture => TextureCollection[Data.ID];
+	[JsonIgnore] public Texture Texture => (TextureCollection == null || TextureCollection.Count < Data.ID + 1) ? null : TextureCollection[Data.ID];
 
 	[JsonIgnore] public bool IsSpawned { get; private set; } = false;
 
@@ -36,9 +36,9 @@ public abstract class FaceFeature : Component
 
 		Owner = Components.GetInParentOrSelf<Face>( true );
 
-		Data = new();
-
 		if ( IsProxy ) { return; }
+
+		Data = new();
 
 		GameObject.Name = GetType().Name;
 		GameObject.Parent = Owner.GameObject;
@@ -54,9 +54,11 @@ public abstract class FaceFeature : Component
 
 	protected override void OnUpdate()
 	{
+		if(Data == null) { return; }
+
 		// Apply offsets relative to camera.
 		Vector3 off = (BaseOffset + Data.Offset);
-
+			
 		//Vector3 dir = Owner.Transform.Position - Owner.Owner.LookAtObject.Transform.Position;
 
 		Rotation rot = Owner.Owner.ForwardReference.Value.Rotation;

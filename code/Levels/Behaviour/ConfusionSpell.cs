@@ -42,7 +42,7 @@ public sealed class ConfusionSpell : Component
 	NPC npc = null;
 	GameObject look = null;
 	Transform fwd;
-	float focalDst = 32;
+	float focalDst = 128;
 	float evenA = 0;
 	float oddA = MathF.PI;
 	float speed = 3;

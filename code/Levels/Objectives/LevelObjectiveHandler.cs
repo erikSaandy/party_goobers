@@ -40,13 +40,12 @@ public class LevelObjectiveHandler : Component
 
 		if (player == null) { Log.Error( "Player that completed objective is null? fuck off." ); return; }
 
-		float time = MathF.Max( LevelTimer.TimeNow + 1, 0 );
-
-		player.AddScore( (int)(time * 1000) );
-
 		Log.Info( player.Network.OwnerConnection.DisplayName + " completed objective.");
 
 		if (IsProxy) { return; }
+
+		float time = MathF.Max( LevelTimer.TimeNow + 1, 0 );
+		player.AddScore( (int)(time * 1000) );
 
 		// TODO: bandaid fix because player life state won't update in time?
 		int aliveCount = PartyFacesManager.PlayersAlive.Count();
