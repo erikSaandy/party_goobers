@@ -54,6 +54,10 @@
         "__guid": "e580a83a-6a5a-4f6a-9d1b-400ad881aa7e",
         "MaxTargetNPCs": 2,
         "OddityMask": "OddSleeper"
+      },
+      {
+        "__type": "FindYourselfObjective",
+        "__guid": "10374923-7e65-46ce-b42c-b96495d505a8"
       }
     ],
     "Children": [
@@ -126,7 +130,7 @@
         "NetworkMode": 1,
         "__Prefab": "prefabs/spotlight_cursor.prefab",
         "__PrefabVariables": {
-          "Visible Chance": 0.4
+          "Visible Chance": 0.25
         }
       },
       {

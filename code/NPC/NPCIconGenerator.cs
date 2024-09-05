@@ -38,14 +38,28 @@ public class NPCIconGenerator : SingletonComponent<NPCIconGenerator>
 
 
 	Action _headshotDelegate = null;
+	/// <summary>
+	/// Requests a snapshot of NPC on all clients.
+	/// </summary>
+	/// <param name="npcGuid"></param>
 	public void RequestNPCHeadshot( Guid npcGuid )
 	{
-		NPC npc = Scene.Directory.FindByGuid( npcGuid ).Components.Get<NPC>( true );
-		DisplayNPC.CopyFrom( npc.GameObject.Id );
-		DisplayNPC.GameObject.Enabled = true;
+		LoadDisplayNPC( npcGuid );
 
 		_headshotDelegate = delegate { TakeNPCHeadshot( npcGuid ); };
-		NPCBuffer.OnNPCsGenerated += _headshotDelegate;
+		NPCBuffer.OnNPCsPlaced += _headshotDelegate;
+		//TakeNPCHeadshotAsync( npcGuid );
+
+		Log.Info( "> requested headshot" );
+
+	}
+
+	public void RequestNPCHeadshotLocal( Guid npcGuid )
+	{
+		LoadDisplayNPCLocal( npcGuid );
+
+		_headshotDelegate = delegate { TakeNPCHeadshotLocal( npcGuid ); };
+		NPCBuffer.OnNPCsPlaced += _headshotDelegate;
 		//TakeNPCHeadshotAsync( npcGuid );
 
 		Log.Info( "> requested headshot" );
@@ -53,7 +67,21 @@ public class NPCIconGenerator : SingletonComponent<NPCIconGenerator>
 	}
 
 	[Broadcast]
+	private void LoadDisplayNPC(Guid npcFrom) { LoadDisplayNPCLocal( npcFrom ); }
+
+	private void LoadDisplayNPCLocal( Guid npcFrom )
+	{
+		DisplayNPC.ClientCopyFrom( npcFrom );
+		DisplayNPC.GameObject.Enabled = true;
+	}
+
+	[Broadcast]
 	private void TakeNPCHeadshot(Guid npcGuid)
+	{
+		TakeNPCHeadshotAsync( npcGuid );
+	}
+
+	private void TakeNPCHeadshotLocal( Guid npcGuid )
 	{
 		TakeNPCHeadshotAsync( npcGuid );
 	}
@@ -83,7 +111,7 @@ public class NPCIconGenerator : SingletonComponent<NPCIconGenerator>
 
 		Camera.RenderToTexture( RenderTexture );
 
-		NPCBuffer.OnNPCsGenerated -= _headshotDelegate;
+		NPCBuffer.OnNPCsPlaced -= _headshotDelegate;
 
 		Log.Info( "> took headshot" );
 
@@ -93,7 +121,7 @@ public class NPCIconGenerator : SingletonComponent<NPCIconGenerator>
 	{
 		base.OnDestroy();
 
-		RenderTexture.Dispose();
+		RenderTexture?.Dispose();
 	}
 
 }

@@ -17,7 +17,7 @@ public static class ICollectionExtension
 
 	}
 
-	public static int GetRandomIdWeighted<T>( this ICollection<T> pool ) where T : IWeighted
+	public static int GetRandomIdWeighted<T>( this ICollection<T> pool, bool considerDisabled = false ) where T : IWeighted
 	{
 		if ( pool == null || pool.Count == 0 ) { Log.Error( $"weighted pool can not be empty." ); }
 
@@ -28,7 +28,29 @@ public static class ICollectionExtension
 
 		int rnd = Game.Random.Next( totalWeight );
 
-		return pool.TakeWhile( x => (rnd -= x.Weight) >= 0 ).Count();
+		int i = pool.TakeWhile( x => (rnd -= x.Weight) >= 0 ).Count();
+
+		Log.Info( pool.ElementAt( i ).Disabled );
+
+		if(!pool.ElementAt(i).Disabled || !considerDisabled)
+		{
+			return i;
+		}
+
+		int n = 0;
+
+		int j = i;
+		do
+		{
+			j++;
+			j %= pool.Count;
+
+			if ( !pool.ElementAt( j ).Disabled ) { return j; }
+
+		} while ( n < 10 );
+
+		// Can't find enabled.
+		return i;
 
 	}
 

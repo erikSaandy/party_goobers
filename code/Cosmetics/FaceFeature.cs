@@ -79,6 +79,14 @@ public abstract class FaceFeature : Component
 		Renderer.Color = color;
 	}
 
+	public virtual void ClientSetColor( Color color )
+	{
+		if ( Renderer == null ) { return; }
+
+		Renderer.Color = color;
+	}
+
+
 	[Authority]
 	public void Randomize()
 	{

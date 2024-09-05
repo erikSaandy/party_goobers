@@ -23,6 +23,41 @@ public static class IEnumerableExtension
 
 	}
 
+	public static int GetRandomIdWeighted<T>( this IEnumerable<T> pool, bool considerDisabled = false ) where T : IWeighted
+	{
+		if ( pool == null || pool.Count() == 0 ) { Log.Error( $"weighted pool can not be empty." ); }
+
+		// Only one item in list? select it.
+		if ( pool.Count() == 1 ) { return 0; }
+
+		int totalWeight = pool.Sum( x => x.Weight );
+
+		int rnd = Game.Random.Next( totalWeight );
+
+		int i = pool.TakeWhile( x => (rnd -= x.Weight) >= 0 ).Count();
+
+		if ( !pool.ElementAt( i ).Disabled || !considerDisabled )
+		{
+			return i;
+		}
+
+		int n = 0;
+
+		int j = i;
+		do
+		{
+			j++;
+			j %= pool.Count();
+
+			if ( !pool.ElementAt( j ).Disabled ) { return i; }
+
+		} while ( n < 10 );
+
+		// Can't find enabled.
+		return i;
+
+	}
+
 	public static IEnumerable<T> Shuffle<T>( this IEnumerable<T> source )
 	{
 		return source.Shuffle( new Random() );

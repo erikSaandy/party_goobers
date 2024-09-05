@@ -62,9 +62,9 @@
               "Id": 5,
               "Type": "call",
               "Properties": {
-                "_type": "WhackamoleComponent",
                 "_isStatic": false,
-                "_name": "OnInitiated"
+                "_name": "OnInitiated",
+                "_type": "WhackamoleComponent"
               },
               "UserData": {
                 "Position": "624,64"
@@ -114,6 +114,10 @@
         "__type": "FindAlikeObjective",
         "__guid": "a2d47cdd-12a0-4a1f-b484-08e15c649c60",
         "NumberOfAlike": 3
+      },
+      {
+        "__type": "FindYourselfObjective",
+        "__guid": "70063b2e-32ea-4d77-89e1-05b31c62b9ac"
       }
     ],
     "Children": [

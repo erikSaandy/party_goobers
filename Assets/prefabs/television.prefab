@@ -1,0 +1,64 @@
+{
+  "RootObject": {
+    "__guid": "f49118b7-f7c4-450a-9453-842fd098ef15",
+    "Flags": 0,
+    "Name": "television",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "Components": [
+      {
+        "__type": "Sandbox.SkinnedModelRenderer",
+        "__guid": "3583e34d-dd5b-4b19-95f6-351172ae916a",
+        "BodyGroups": 11,
+        "CreateBoneObjects": false,
+        "Model": "models/television/television.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1",
+        "UseAnimGraph": true
+      },
+      {
+        "__type": "Sandbox.ManualHitbox",
+        "__guid": "1e11fa51-60a7-40df-9b30-c18d265bc210",
+        "CenterA": "0,0,0",
+        "CenterB": "15.89999,104.6,75.19995",
+        "HitboxTags": "",
+        "Radius": 67.69994,
+        "Shape": "Box"
+      },
+      {
+        "__type": "Sandbox.TelevisionComponent",
+        "__guid": "3fa449af-bd8a-4646-a783-575bd0ef559f",
+        "ExplosionParticle": {
+          "_type": "gameobject",
+          "go": "b1b4222c-011b-430b-af28-ea9d0fef3e29"
+        },
+        "IsBroken": false,
+        "Renderer": {
+          "_type": "component",
+          "component_id": "3583e34d-dd5b-4b19-95f6-351172ae916a",
+          "go": "f49118b7-f7c4-450a-9453-842fd098ef15",
+          "component_type": "SkinnedModelRenderer"
+        },
+        "ScreenDisplay": 0
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "b1b4222c-011b-430b-af28-ea9d0fef3e29",
+        "Flags": 0,
+        "Name": "Explosion Particle",
+        "Position": "-17.56994,0,0",
+        "Tags": "particles",
+        "__Prefab": "prefabs/explosion_particle.prefab",
+        "__PrefabVariables": {}
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

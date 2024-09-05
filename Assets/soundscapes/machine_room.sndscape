@@ -1,0 +1,12 @@
+{
+  "MasterVolume": "0.7",
+  "LoopedSounds": [
+    {
+      "SoundFile": "soundscapes/machine-room-55632.vsnd",
+      "Volume": "1"
+    }
+  ],
+  "StingSounds": [],
+  "__references": [],
+  "__version": 0
+}

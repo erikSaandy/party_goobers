@@ -36,24 +36,33 @@
         "ObjectiveId": 0
       },
       {
+        "__type": "FindYourselfObjective",
+        "__guid": "156895e8-56c9-4f99-a57d-86ef72016cf5"
+      },
+      {
+        "__type": "FindOddObjective",
+        "__guid": "f60a38f8-b809-4cec-8ebb-2eba60be4491",
+        "MaxTargetNPCs": 3,
+        "OddityMask": "OddSleeper"
+      },
+      {
         "__type": "FindSpecificObjective",
-        "__guid": "b7775e41-ffe3-4d2b-972f-46d9e26394fb"
+        "__guid": "e36eec31-89f0-4b2c-8d5a-6c39da19052b"
       },
       {
         "__type": "FindAlikeObjective",
-        "__guid": "cbacdaa1-39ee-4baf-b382-3619463ae842",
+        "__guid": "df25b73c-114d-441b-8e7e-791766a7ac2d",
         "NumberOfAlike": 2
       },
       {
         "__type": "FindAlikeObjective",
-        "__guid": "2776673e-9b69-4e3d-a140-5636cc4852ab",
+        "__guid": "9b63d60b-b3ad-413d-9fbc-a53fbc52aa77",
         "NumberOfAlike": 3
       },
       {
-        "__type": "FindOddObjective",
-        "__guid": "fcf429aa-2726-4339-9eda-54d25f1743ac",
-        "MaxTargetNPCs": 2,
-        "OddityMask": "OddSleeper"
+        "__type": "FindAlikeObjective",
+        "__guid": "11ff1f3f-791a-4697-b4c7-085b3e977dc8",
+        "NumberOfAlike": 4
       }
     ],
     "Children": [
@@ -70,6 +79,8 @@
             "EnableCollision": true,
             "MapName": "maps/map10.vmap",
             "NoOrigin": false,
+            "OnMapLoaded": null,
+            "OnMapUnloaded": null,
             "UseMapFromLaunch": false
           }
         ],
@@ -79,15 +90,15 @@
         "__guid": "99b4ad96-2dd1-49bd-8fd6-2e8f5bcac61f",
         "Flags": 0,
         "Name": "Camera",
-        "Position": "-0.0001110236,-126.8311,92.42484",
-        "Rotation": "-0.04271445,0.04271445,0.7058155,0.7058155",
+        "Position": "-213.488,0,180.8413",
+        "Rotation": "0,0.2419219,0,0.9702957",
         "Scale": "-1.058358,1,1",
         "Enabled": true,
         "Components": [
           {
             "__type": "Sandbox.CameraComponent",
             "__guid": "660b8fa6-3bce-44dd-be85-af3f42430736",
-            "BackgroundColor": "1,1,1,1",
+            "BackgroundColor": "0.11448,0.12419,0.16744,1",
             "ClearFlags": "All",
             "FieldOfView": 90,
             "IsMainCamera": false,
@@ -101,18 +112,38 @@
             "ZFar": 10000,
             "ZNear": 10
           }
+        ],
+        "Children": [
+          {
+            "__guid": "84045602-0ddd-4c22-8581-e8012d62c8bb",
+            "Flags": 0,
+            "Name": "CarouselBehaviour",
+            "Position": "0,0,0",
+            "Scale": "-0.9448599,1,1",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "Sandbox.CarousellBehaviour",
+                "__guid": "3c1d8731-3d12-4052-b932-f1e182c02382"
+              }
+            ]
+          }
         ]
       },
       {
-        "__guid": "84045602-0ddd-4c22-8581-e8012d62c8bb",
+        "__guid": "a24aa218-83bf-4235-9333-db4baed2bf3e",
         "Flags": 0,
-        "Name": "CarouselBehaviour",
-        "Position": "0,-127.8233,93",
+        "Name": "Soundscape",
         "Enabled": true,
         "Components": [
           {
-            "__type": "Sandbox.CarousellBehaviour",
-            "__guid": "67070b08-6ee3-4fea-ab24-23060af0306b"
+            "__type": "Sandbox.SoundscapeTrigger",
+            "__guid": "ee4020c1-daf6-4e2b-91b9-1e3d0014261d",
+            "BoxSize": "5000,5000,5000",
+            "Radius": 500,
+            "Soundscape": "soundscapes/arcade.sndscape",
+            "StayActiveOnExit": false,
+            "Type": "Box"
           }
         ]
       }

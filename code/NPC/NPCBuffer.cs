@@ -15,7 +15,7 @@ public class NPCBuffer : SingletonComponent<NPCBuffer>
 	// HOST ONLY
 	[Property] public List<NPC> NPCs { get; private set; }
 
-	public static Action OnNPCsGenerated { get; set; }
+	public static Action OnNPCsPlaced { get; set; }
 
 	protected override void OnStart()
 	{
@@ -79,7 +79,7 @@ public class NPCBuffer : SingletonComponent<NPCBuffer>
 			return;
 		}
 
-		IEnumerable<NPC> pool = level.Objective.GetNPCPool( NPCs, level );
+		IEnumerable<NPC> pool = level.ObjectiveHandler.GetNPCPool( NPCs, level );
 
 		for ( int i = 0; i < pool.Count(); i++ ) 
 		{
@@ -134,13 +134,20 @@ public class NPCBuffer : SingletonComponent<NPCBuffer>
 				npc.StopMoving();
 			}
 
+			LevelHandler.Instance.CurrentLevelData.NPCSpawned( npc.GameObject.Id );
+
 			await Task.Yield();
 
 		}
 
+		PostNPCsPlaced();
 
-		OnNPCsGenerated?.Invoke();
+	}
 
+	[Broadcast]
+	private void PostNPCsPlaced()
+	{
+		OnNPCsPlaced?.Invoke();
 	}
 
 	public NPC PlaceLobbyNPC( Guid connectionId )
@@ -157,7 +164,7 @@ public class NPCBuffer : SingletonComponent<NPCBuffer>
 		sp.Tags.Add( "taken" );
 		// Place NPC on a spawnpoint in lobby that is not taken.
 		npc.Spawn( sp.Transform.World );
-		npc.SetOwner( con.Id );
+		npc.SetOwner( connectionId );
 		npc.LoadFromConnection( connectionId );
 
 		return npc;
@@ -186,7 +193,7 @@ public class NPCBuffer : SingletonComponent<NPCBuffer>
 	{
 		base.OnDestroy();
 
-		OnNPCsGenerated = null;
+		OnNPCsPlaced = null;
 
 	}
 

@@ -20,8 +20,10 @@
         "facepunch.floor_wood_laminated#18686",
         "facepunch.plaster_hs_01#33578",
         "facepunch.concrete_c_painted_hs#28942",
-        "facepunch.plywood_hs#33583"
+        "facepunch.plywood_hs#33583",
+        "facepunch.step_ladder_01#47579"
       ],
+      "IsWhitelistDisabled": false,
       "Metadata": {
         "SingleAssetSource": "maps/map_template.vmap"
       }

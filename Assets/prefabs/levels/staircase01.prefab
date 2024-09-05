@@ -81,9 +81,9 @@
               "Id": 6,
               "Type": "call",
               "Properties": {
-                "_type": "ConfusionSpell",
+                "_isStatic": false,
                 "_name": "OnInitiated",
-                "_isStatic": false
+                "_type": "ConfusionSpell"
               },
               "UserData": {
                 "Position": "416,176"
@@ -139,6 +139,10 @@
         "__guid": "da0a1968-1a39-4b89-9eb5-566622e21813",
         "MaxTargetNPCs": 3,
         "OddityMask": "OddRunner, OddSleeper"
+      },
+      {
+        "__type": "FindYourselfObjective",
+        "__guid": "9e6866c7-b205-4f67-9165-4d8319f71ebc"
       }
     ],
     "Children": [

@@ -20,6 +20,7 @@
           "go": "3c056c33-1485-4021-9d06-fdb1706698ef",
           "component_type": "MapInstance"
         },
+        "MinSpawnCount": 16,
         "NodePaths": [
           {
             "_type": "component",
@@ -78,6 +79,10 @@
         "__guid": "45b133dd-c358-4916-b42f-469cadf4dca2",
         "MaxTargetNPCs": 4,
         "OddityMask": "OddRunner"
+      },
+      {
+        "__type": "FindYourselfObjective",
+        "__guid": "6fda8e91-dc95-4b87-9277-8aaa97a40950"
       }
     ],
     "Children": [

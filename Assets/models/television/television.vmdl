@@ -1,0 +1,382 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:modeldoc29:version{3cec427c-1b0e-4d48-a90a-0436f33a6041} -->
+{
+	rootNode = 
+	{
+		_class = "RootNode"
+		children = 
+		[
+			{
+				_class = "MaterialGroupList"
+				children = 
+				[
+					{
+						_class = "DefaultMaterialGroup"
+						remaps = 
+						[
+							{
+								from = "m_television.vmat"
+								to = "models/television/material/television.vmat"
+							},
+							{
+								from = "m_television_glare.vmat"
+								to = "models/television/material/television_glare.vmat"
+							},
+							{
+								from = "m_scroll_sputnik.vmat"
+								to = "models/television/material/sputnik_news.vmat"
+							},
+							{
+								from = "m_screen_call.vmat"
+								to = "models/television/material/ad_call.vmat"
+							},
+							{
+								from = "m_screen_fort.vmat"
+								to = "models/television/material/ad_fort.vmat"
+							},
+							{
+								from = "m_screen_pills.vmat"
+								to = "models/television/material/ad_goo_pills.vmat"
+							},
+							{
+								from = "m_screen_wgwe.vmat"
+								to = "models/television/material/ad_wgwe.vmat"
+							},
+							{
+								from = "m_screen_off.vmat"
+								to = "models/television/material/screen_off.vmat"
+							},
+							{
+								from = "m_screen_broken.vmat"
+								to = "models/television/material/screen_broken.vmat"
+							},
+						]
+						use_global_default = false
+						global_default_material = "materials/default.vmat"
+					},
+				]
+			},
+			{
+				_class = "RenderMeshList"
+				children = 
+				[
+					{
+						_class = "RenderMeshFile"
+						name = "base"
+						filename = "models/television/television.fbx"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"screen",
+								"screen_news",
+								"screen_glare",
+								"monitor_low",
+							]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
+						name = "scroll_sputnik"
+						filename = "models/television/scroll_sputnik.fbx"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"screen",
+								"screen_news",
+								"screen_glare",
+								"monitor_low",
+								"scroll_sputnik",
+							]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
+						name = "screen_off"
+						filename = "models/television/screen_off.fbx"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"screen",
+								"screen_news",
+								"screen_glare",
+								"monitor_low",
+								"scroll_sputnik",
+							]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
+						name = "screen_broken"
+						filename = "models/television/screen_broken.fbx"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"screen",
+								"screen_news",
+								"screen_glare",
+								"monitor_low",
+								"scroll_sputnik",
+							]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
+						name = "screen_pills"
+						filename = "models/television/screen_pills.fbx"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"screen",
+								"screen_news",
+								"screen_glare",
+								"monitor_low",
+								"scroll_sputnik",
+							]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
+						name = "screen_call"
+						filename = "models/television/screen_call.fbx"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"screen",
+								"screen_news",
+								"screen_glare",
+								"monitor_low",
+								"scroll_sputnik",
+							]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
+						name = "screen_fort"
+						filename = "models/television/screen_fort.fbx"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"screen",
+								"screen_news",
+								"screen_glare",
+								"monitor_low",
+								"scroll_sputnik",
+							]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
+						name = "screen_wgwe"
+						filename = "models/television/screen_wgwe.fbx"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"screen",
+								"screen_news",
+								"screen_glare",
+								"monitor_low",
+								"scroll_sputnik",
+							]
+						}
+					},
+				]
+			},
+			{
+				_class = "BodyGroupList"
+				children = 
+				[
+					{
+						_class = "BodyGroup"
+						name = "body"
+						children = 
+						[
+							{
+								_class = "BodyGroupChoice"
+								name = "television"
+								meshes = 
+								[
+									"base",
+								]
+							},
+						]
+						hidden_in_tools = false
+					},
+					{
+						_class = "BodyGroup"
+						name = "scroll"
+						children = 
+						[
+							{
+								_class = "BodyGroupChoice"
+								name = "empty"
+								meshes = [  ]
+							},
+							{
+								_class = "BodyGroupChoice"
+								name = "sputnik"
+								meshes = 
+								[
+									"scroll_sputnik",
+								]
+							},
+						]
+						hidden_in_tools = false
+					},
+					{
+						_class = "BodyGroup"
+						name = "screen"
+						children = 
+						[
+							{
+								_class = "BodyGroupChoice"
+								name = "off"
+								meshes = 
+								[
+									"screen_off",
+								]
+							},
+							{
+								_class = "BodyGroupChoice"
+								name = "broken"
+								meshes = 
+								[
+									"screen_broken",
+								]
+							},
+							{
+								_class = "BodyGroupChoice"
+								name = "pills"
+								meshes = 
+								[
+									"screen_pills",
+								]
+							},
+							{
+								_class = "BodyGroupChoice"
+								name = "call"
+								meshes = 
+								[
+									"screen_call",
+								]
+							},
+							{
+								_class = "BodyGroupChoice"
+								name = "fort"
+								meshes = 
+								[
+									"screen_fort",
+								]
+							},
+							{
+								_class = "BodyGroupChoice"
+								name = "wgwe"
+								meshes = 
+								[
+									"screen_wgwe",
+								]
+							},
+						]
+						hidden_in_tools = false
+					},
+				]
+			},
+			{
+				_class = "HitboxSetList"
+				children = 
+				[
+					{
+						_class = "HitboxSet"
+						name = "hitbox"
+						children = 
+						[
+							{
+								_class = "Hitbox"
+								parent_bone = ""
+								surface_property = ""
+								translation_only = false
+								tags = ""
+								hitbox_mins = [ -2.733284, -48.924004, -34.588905 ]
+								hitbox_maxs = [ 6.9217, 48.804794, 34.924355 ]
+							},
+						]
+					},
+				]
+			},
+		]
+		model_archetype = ""
+		primary_associated_entity = ""
+		anim_graph_name = ""
+		base_model_name = ""
+	}
+}

@@ -16,7 +16,9 @@ public class FindOddObjective : LevelObjective
 	}
 
 	public override bool Disabled { get; set; } = false;
-	public override int Weight => 140;
+	public override int Weight => TargetNPCCount;
+
+	public override int RequiredSpawnCount => MaxTargetNPCs;
 
 	public override int MaxSelectedNPCs => TargetNPCCount;
 

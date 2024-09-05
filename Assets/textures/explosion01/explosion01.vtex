@@ -1,0 +1,16 @@
+{
+  "Sequences": [
+    {
+      "Source": "textures/explosion01/explosion01.png",
+      "IsLooping": true,
+      "FlipBook": true,
+      "Columns": 4,
+      "Rows": 4,
+      "Frames": 16
+    }
+  ],
+  "InputColorSpace": "SRGB",
+  "OutputFormat": "RGBA16161616",
+  "OutputColorSpace": "SRGB",
+  "OutputTypeString": "2D"
+}

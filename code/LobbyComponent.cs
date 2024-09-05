@@ -9,7 +9,7 @@ public class LobbyComponent : Component, Component.INetworkListener
 
 	[Sync] public int PlayersInLobby { get; set; } = 0;
 
-	[Sync] public List<Guid> NPCs { get; set; }
+	[Sync] public NetList<Guid> NPCs { get; set; } = new();
 
 	protected override void OnAwake()
 	{
@@ -23,7 +23,8 @@ public class LobbyComponent : Component, Component.INetworkListener
 
 		if(IsProxy) { return; }
 
-		NPCs = new();
+		NPCs.Clear();
+		PlayersInLobby = 0;
 
 		IEnumerable<Player> players = PartyFacesManager.Players;
 
@@ -89,7 +90,15 @@ public class LobbyComponent : Component, Component.INetworkListener
 	{
 		base.OnDestroy();
 
-		NPCBuffer.Instance.HideNPCs();
+		if(IsProxy) { return; }
+
+		foreach ( Guid npcId in NPCs )
+		{
+			NPC npc = Scene.Directory.FindByGuid( npcId ).Components.Get<NPC>(true);
+			npc?.Randomize();
+		}
+
+		NPCBuffer.Instance?.HideNPCs();
 	}
 
 }

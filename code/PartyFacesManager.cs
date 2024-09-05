@@ -143,7 +143,7 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 	{
 		if(IsProxy) { Log.Warning( "Only the host can start a game." ); return; }
 
-		if(GameIsOn) { Log.Warning( "Can't start game as the game is already going on." ); return; }
+		if (GameIsOn) { Log.Warning( "Can't start game as the game is already going on." ); return; }
 
 		GameIsOn = true;
 
@@ -306,6 +306,13 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 
 		LevelTimer.OnTimerDepleted = null;
 		LevelTimer.OnTimerStarted = null;
+
+		OnGameEnd?.Invoke();
+
+		OnGameEnd = null;
+		OnGameStart = null;
+		OnRoundEnter = null;
+		OnRoundExit = null;
 
 	}
 

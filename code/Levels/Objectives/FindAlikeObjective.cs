@@ -11,6 +11,8 @@ public class FindAlikeObjective : LevelObjective
 	public override int Weight => 100;
 
 
+	public override int RequiredSpawnCount => NumberOfAlike;
+
 	public override int MaxSelectedNPCs => NumberOfAlike;
 
 	[Property][Range(1, 5)] public int NumberOfAlike { get; private set; } = 2;

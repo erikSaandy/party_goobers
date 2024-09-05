@@ -40,6 +40,7 @@
         "Name": "Lobby HUD",
         "Position": "8.571518,100.332,174.6182",
         "Enabled": true,
+        "NetworkMode": 1,
         "Components": [
           {
             "__type": "Sandbox.ScreenPanel",
@@ -47,11 +48,12 @@
             "AutoScreenScale": true,
             "Opacity": 1,
             "Scale": 1,
+            "ScaleStrategy": "ConsistentHeight",
             "ZIndex": 55
           },
           {
             "__type": "LobbyHud",
-            "__guid": "d4febc20-042d-4ecd-ac2e-de21212ed787",
+            "__guid": "eb31b4df-c2dc-4133-8120-9bb1c2baa82e",
             "Emote": {
               "_type": "gameobject",
               "go": "e143ee6f-79c7-435f-80da-5ce8208d3c71"
@@ -101,7 +103,7 @@
             "MaterialOverride": "materials/effects/gradient_circle.vmat",
             "Model": "models/dev/plane.vmdl",
             "RenderType": "Off",
-            "Tint": "0.38337,0.37815,0.53488,1"
+            "Tint": "0.27803,0.27399,0.39535,0.83"
           }
         ]
       },

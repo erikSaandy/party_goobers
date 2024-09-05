@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 public class Face : Component, Component.INetworkListener
 {
 
-	const string FILE_NAME = "Me.face";
+	public const string FILE_NAME = "Me.face";
 
 	[Property] public NPC Owner { get; set; } = null;
 
@@ -40,6 +40,16 @@ public class Face : Component, Component.INetworkListener
 		Eyes.SetColor( col );
 		Nose.SetColor( col );
 		Mouth.SetColor( col );
+	}
+
+	public void ClientSetColor( uint rgba )
+	{
+		Color col = Color.FromRgba( rgba );
+		col = col * 2;
+		Eyebrows.ClientSetColor( col );
+		Eyes.ClientSetColor( col );
+		Nose.ClientSetColor( col );
+		Mouth.ClientSetColor( col );
 	}
 
 	[Broadcast]

@@ -20,6 +20,7 @@
           "go": "99211ecc-93f7-4bbc-8995-6acf0bdd9231",
           "component_type": "MapInstance"
         },
+        "MinSpawnCount": 10,
         "NodePaths": [
           {
             "_type": "component",
@@ -60,6 +61,10 @@
         "__guid": "1fd477e8-8582-404d-90b4-8e96a9d20eb5",
         "MaxTargetNPCs": 5,
         "OddityMask": "OddRunner"
+      },
+      {
+        "__type": "FindYourselfObjective",
+        "__guid": "1242538f-8711-49d6-947d-9a16e36b8ba2"
       }
     ],
     "Children": [
@@ -197,6 +202,17 @@
             "Type": "Box"
           }
         ]
+      },
+      {
+        "__guid": "f49118b7-f7c4-450a-9453-842fd098ef15",
+        "Flags": 0,
+        "Name": "television",
+        "Position": "-0.1597047,-11.07176,206.9704",
+        "Rotation": "-0.03228676,0.03228677,-0.7063692,-0.706369",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "__Prefab": "prefabs/television.prefab",
+        "__PrefabVariables": {}
       }
     ],
     "__variables": []

@@ -28,6 +28,12 @@ public class Eyes : FaceFeature
 
 	[Broadcast]
 	public override void SetColor( Color color ) {
+
+		ClientSetColor( color );
+	}
+
+	public override void ClientSetColor( Color color )
+	{
 		if ( Renderer == null ) { return; }
 
 		Renderer.Color = Color.White * 2;

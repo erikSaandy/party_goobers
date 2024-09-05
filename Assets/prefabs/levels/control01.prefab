@@ -1,0 +1,402 @@
+{
+  "RootObject": {
+    "__guid": "cd5da770-f5c0-444a-b064-73d6040e6749",
+    "Flags": 0,
+    "Name": "control01",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "LevelDataComponent",
+        "__guid": "71b3e98b-324c-4fc9-a284-70fda7d96b4d",
+        "CameraReference": {
+          "_type": "component",
+          "component_id": "0c21ec72-f31f-4b50-ab4d-2606f4d5731a",
+          "go": "1248d049-4c09-4840-a04f-9b6d2a01d6a0",
+          "component_type": "CameraComponent"
+        },
+        "MapInstance": {
+          "_type": "component",
+          "component_id": "3aada2de-66dc-49c0-a955-72c18108b58b",
+          "go": "a72b93be-0f33-42f3-81dd-1787ca59e200",
+          "component_type": "MapInstance"
+        },
+        "MinSpawnCount": 9,
+        "NodePaths": [],
+        "ObjectiveHandler": {
+          "_type": "component",
+          "component_id": "28763513-d756-4892-9b68-d6be795c1364",
+          "go": "cd5da770-f5c0-444a-b064-73d6040e6749",
+          "component_type": "LevelObjectiveHandler"
+        },
+        "OverrideLookAt": false
+      },
+      {
+        "__type": "LevelObjectiveHandler",
+        "__guid": "28763513-d756-4892-9b68-d6be795c1364",
+        "ObjectiveId": 0
+      },
+      {
+        "__type": "FindSpecificObjective",
+        "__guid": "10ebddb2-45e7-45ce-8ee5-a9f5e9a853f1"
+      },
+      {
+        "__type": "FindAlikeObjective",
+        "__guid": "ca017989-4d48-48c1-875b-74c3bd34b284",
+        "NumberOfAlike": 2
+      },
+      {
+        "__type": "FindAlikeObjective",
+        "__guid": "9bdb6b4c-db06-44a1-b5f6-dfd75c16edd6",
+        "NumberOfAlike": 3
+      },
+      {
+        "__type": "FindOddObjective",
+        "__guid": "328a94ea-e373-4f40-ba4d-c3c3b0f62d45",
+        "MaxTargetNPCs": 2,
+        "OddityMask": "OddSleeper"
+      },
+      {
+        "__type": "FindYourselfObjective",
+        "__guid": "2e880ff0-e2ab-4f26-9bd1-4412f2ed739f"
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "29a17141-340c-4094-bf3f-6b5ff129baf1",
+        "Flags": 0,
+        "Name": "Confusion",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "Components": [
+          {
+            "__type": "ConfusionSpell",
+            "__guid": "44623b94-6727-44ed-a486-94b1b7af6e75",
+            "TriggerChance": 0.1
+          }
+        ]
+      },
+      {
+        "__guid": "d2ddc8ff-f3d6-4586-bd01-31ccc729f1eb",
+        "Flags": 0,
+        "Name": "Spotlight Cursor",
+        "Rotation": "0,0.7071068,0,0.7071068",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "__Prefab": "prefabs/spotlight_cursor.prefab",
+        "__PrefabVariables": {
+          "Visible Chance": 0.05
+        }
+      },
+      {
+        "__guid": "a72b93be-0f33-42f3-81dd-1787ca59e200",
+        "Flags": 0,
+        "Name": "Map Instance",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.MapInstance",
+            "__guid": "3aada2de-66dc-49c0-a955-72c18108b58b",
+            "__version": 1,
+            "EnableCollision": true,
+            "MapName": "maps/map_13.vmap",
+            "NoOrigin": false,
+            "OnMapLoaded": null,
+            "OnMapUnloaded": null,
+            "UseMapFromLaunch": false
+          }
+        ],
+        "Children": []
+      },
+      {
+        "__guid": "1248d049-4c09-4840-a04f-9b6d2a01d6a0",
+        "Flags": 0,
+        "Name": "Camera",
+        "Position": "-0.000005061712,-688.1591,130.9774",
+        "Rotation": "-0.001576565,0.001576565,0.707105,0.707105",
+        "Scale": "-1.058358,1,1",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.CameraComponent",
+            "__guid": "0c21ec72-f31f-4b50-ab4d-2606f4d5731a",
+            "BackgroundColor": "0.33333,0.46275,0.52157,1",
+            "ClearFlags": "All",
+            "FieldOfView": 38.02,
+            "IsMainCamera": false,
+            "Orthographic": false,
+            "OrthographicHeight": 1204,
+            "Priority": 1,
+            "RenderExcludeTags": "",
+            "RenderTags": "",
+            "TargetEye": "None",
+            "Viewport": "0,0,1,1",
+            "ZFar": 9881,
+            "ZNear": 10
+          }
+        ]
+      },
+      {
+        "__guid": "8b427f26-d1d4-4715-a3ca-07c81c61dd50",
+        "Flags": 0,
+        "Name": "Soundscape",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SoundscapeTrigger",
+            "__guid": "b98ccaf4-1d11-48fc-ac43-e46296de00c7",
+            "BoxSize": "5000,5000,5000",
+            "Radius": 500,
+            "Soundscape": "soundscapes/machine_room.sndscape",
+            "StayActiveOnExit": false,
+            "Type": "Box"
+          }
+        ]
+      },
+      {
+        "__guid": "0450f56f-969a-48f1-bf7f-9db85496b0f8",
+        "Flags": 0,
+        "Name": "television BIG",
+        "Position": "-0.00009549523,348.8434,171.5416",
+        "Rotation": "0.0000001078764,0.0000001674811,0.7071066,0.7071066",
+        "Scale": "2.666,2.666,2.666",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "Components": [
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "63a11047-2106-477f-9605-585bad6ce59c",
+            "BodyGroups": 11,
+            "CreateBoneObjects": false,
+            "Model": "models/television/television.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          },
+          {
+            "__type": "Sandbox.ManualHitbox",
+            "__guid": "07315ec9-5ed3-4544-ba07-c79b94aac83b",
+            "CenterA": "0,0,0",
+            "CenterB": "11.39998,91.30009,67.00002",
+            "HitboxTags": "",
+            "Radius": 67.69994,
+            "Shape": "Box"
+          },
+          {
+            "__type": "Sandbox.TelevisionComponent",
+            "__guid": "62844cb8-23d1-4cd2-8bc2-eb7bf560d94f",
+            "ExplosionParticle": {
+              "_type": "gameobject",
+              "go": "7f0a0cee-53a0-4701-bd23-ef1e94f3020e"
+            },
+            "IsBroken": false,
+            "Renderer": {
+              "_type": "component",
+              "component_id": "63a11047-2106-477f-9605-585bad6ce59c",
+              "go": "0450f56f-969a-48f1-bf7f-9db85496b0f8",
+              "component_type": "SkinnedModelRenderer"
+            },
+            "ScreenDisplay": 0
+          }
+        ],
+        "Children": [
+          {
+            "__guid": "7f0a0cee-53a0-4701-bd23-ef1e94f3020e",
+            "Flags": 0,
+            "Name": "Explosion Particle",
+            "Position": "-17.56994,0,0",
+            "Tags": "particles",
+            "__Prefab": "prefabs/explosion_particle.prefab",
+            "__PrefabVariables": {}
+          }
+        ]
+      },
+      {
+        "__guid": "0c4477d4-e1c2-4283-b924-c287fcb42c1b",
+        "Flags": 0,
+        "Name": "television (1)",
+        "Position": "-177.0221,309.6863,182.6782",
+        "Rotation": "0.00000005540051,0.0000001913584,0.8770387,0.4804191",
+        "Scale": "1.226942,1.226942,1.226942",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "__Prefab": "prefabs/television.prefab",
+        "__PrefabVariables": {}
+      },
+      {
+        "__guid": "3f8d8ad4-6bc4-4822-b61a-41d61935f819",
+        "Flags": 0,
+        "Name": "television (2)",
+        "Position": "-275.9647,245.8709,163.085",
+        "Rotation": "0.00000005540051,0.0000001913584,0.8770387,0.4804191",
+        "Scale": "1.226942,1.226942,1.226942",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "__Prefab": "prefabs/television.prefab",
+        "__PrefabVariables": {}
+      },
+      {
+        "__guid": "df302bb4-a586-4449-8a01-581a520d105e",
+        "Flags": 0,
+        "Name": "television (4)",
+        "Position": "178.7661,313.0012,198.5093",
+        "Rotation": "-0.0000001497128,-0.0000001314283,-0.4804151,-0.8770412",
+        "Scale": "1.226942,1.226942,1.226942",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "__Prefab": "prefabs/television.prefab",
+        "__PrefabVariables": {}
+      },
+      {
+        "__guid": "f63183fd-7c11-4a79-91e3-a5d6f78a15b4",
+        "Flags": 0,
+        "Name": "television (3)",
+        "Position": "278.9968,248.9631,132.8666",
+        "Rotation": "-0.0000001497128,-0.0000001314283,-0.4804151,-0.8770412",
+        "Scale": "1.226942,1.226942,1.226942",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "__Prefab": "prefabs/television.prefab",
+        "__PrefabVariables": {}
+      },
+      {
+        "__guid": "b42fae28-fd14-45c7-be46-b639121f21dc",
+        "Flags": 0,
+        "Name": "SYDNEY",
+        "Position": "-269.9305,238.0598,277.8461",
+        "Rotation": "0.1721534,-0.09323838,0.8622994,0.4670219",
+        "Scale": "0.6604932,0.6604932,0.6604932",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.TextRenderer",
+            "__guid": "7981c905-8be6-4072-a20c-5f86aabe9739",
+            "Color": "0.06667,1,0,1",
+            "FontFamily": "DisplayOTF",
+            "FontSize": 32,
+            "FontWeight": 800,
+            "Scale": 0.79,
+            "Text": "SYDNEY",
+            "TextAlignment": "Center"
+          }
+        ]
+      },
+      {
+        "__guid": "3f5a36a7-0588-4f02-8227-42a680880e3e",
+        "Flags": 0,
+        "Name": "STOCKHOLM",
+        "Position": "-171.8763,302.0295,277.8461",
+        "Rotation": "0.1721534,-0.09323838,0.8622994,0.4670219",
+        "Scale": "0.6604932,0.6604932,0.6604932",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.TextRenderer",
+            "__guid": "9df7314e-233d-4ce5-92f8-7faf917bd530",
+            "Color": "0.06667,1,0,1",
+            "FontFamily": "DisplayOTF",
+            "FontSize": 32,
+            "FontWeight": 800,
+            "Scale": 0.73,
+            "Text": "STOCKHOLM",
+            "TextAlignment": "Center"
+          }
+        ]
+      },
+      {
+        "__guid": "df9440ae-17bc-4ee7-a5b1-420cd3768015",
+        "Flags": 0,
+        "Name": "AMSTERDAM",
+        "Position": "-60.03107,332.1231,276.6011",
+        "Rotation": "0.1830127,-0.1830127,0.6830126,0.6830128",
+        "Scale": "0.6604932,0.6604932,0.6604932",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.TextRenderer",
+            "__guid": "0b7ac418-8e25-47c8-8761-4bf88a7e62a7",
+            "Color": "0.06667,1,0,1",
+            "FontFamily": "DisplayOTF",
+            "FontSize": 32,
+            "FontWeight": 800,
+            "Scale": 0.7,
+            "Text": "AMSTERDAM",
+            "TextAlignment": "Center"
+          }
+        ]
+      },
+      {
+        "__guid": "bc8f23e9-6cde-4a7f-a6a4-86852361e1b7",
+        "Flags": 0,
+        "Name": "CONSTRUCT",
+        "Position": "63.39504,333.3943,276.5107",
+        "Rotation": "0.1830127,-0.1830127,0.6830126,0.6830128",
+        "Scale": "0.6604932,0.6604932,0.6604932",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.TextRenderer",
+            "__guid": "5a1f1b69-ddfd-4b1c-92b5-145c4391473f",
+            "Color": "0.06667,1,0,1",
+            "FontFamily": "DisplayOTF",
+            "FontSize": 32,
+            "FontWeight": 800,
+            "Scale": 0.7,
+            "Text": "CONSTRUCT",
+            "TextAlignment": "Center"
+          }
+        ]
+      },
+      {
+        "__guid": "4a3e10b8-0f79-4bac-94da-386910355afc",
+        "Flags": 0,
+        "Name": "NEW YORK",
+        "Position": "174.8044,298.5364,276.8853",
+        "Rotation": "0.09883092,-0.1790035,0.4731289,0.8569359",
+        "Scale": "0.6604932,0.6604932,0.6604932",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.TextRenderer",
+            "__guid": "42afbf0d-54b7-430e-9d8c-e8100d2470b7",
+            "Color": "0.06667,1,0,1",
+            "FontFamily": "DisplayOTF",
+            "FontSize": 32,
+            "FontWeight": 800,
+            "Scale": 0.7,
+            "Text": "NEW YORK",
+            "TextAlignment": "Center"
+          }
+        ]
+      },
+      {
+        "__guid": "9d3a3067-dea8-4064-a810-653516dfce14",
+        "Flags": 0,
+        "Name": "LONDON",
+        "Position": "274.291,235.9051,276.8852",
+        "Rotation": "0.09883092,-0.1790035,0.4731289,0.8569359",
+        "Scale": "0.6604932,0.6604932,0.6604932",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.TextRenderer",
+            "__guid": "be7466bc-f133-4f72-9837-c5d62add8c66",
+            "Color": "0.06667,1,0,1",
+            "FontFamily": "DisplayOTF",
+            "FontSize": 32,
+            "FontWeight": 800,
+            "Scale": 0.7,
+            "Text": "LONDON",
+            "TextAlignment": "Center"
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

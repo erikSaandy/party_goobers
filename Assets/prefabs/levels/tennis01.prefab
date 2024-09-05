@@ -20,6 +20,7 @@
           "go": "668989d0-c260-43a7-a59c-900852f32110",
           "component_type": "MapInstance"
         },
+        "MinSpawnCount": 30,
         "NodePaths": [],
         "NpcLookAtOverride": {
           "_type": "gameobject",
@@ -121,6 +122,10 @@
         "__guid": "56152675-96c5-4553-83c2-b00050e81012",
         "MaxTargetNPCs": 3,
         "OddityMask": "OddSleeper, OddTennis"
+      },
+      {
+        "__type": "FindYourselfObjective",
+        "__guid": "c2680cbf-f371-4064-83e2-999dfe0a13be"
       }
     ],
     "Children": [
@@ -134,7 +139,7 @@
           {
             "__type": "ConfusionSpell",
             "__guid": "d020f07c-8bc5-4ef7-8b13-fe353cd00361",
-            "TriggerChance": 0.1
+            "TriggerChance": 0.025
           }
         ]
       },
@@ -151,6 +156,8 @@
             "EnableCollision": true,
             "MapName": "maps/map02.vmap",
             "NoOrigin": false,
+            "OnMapLoaded": null,
+            "OnMapUnloaded": null,
             "UseMapFromLaunch": false
           }
         ],

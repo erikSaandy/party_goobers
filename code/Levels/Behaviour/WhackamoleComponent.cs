@@ -2,9 +2,7 @@ using Sandbox;
 using System;
 
 public class WhackamoleComponent : Component
-{
-
-	 
+{	 
 	IEnumerable<NPC> NPCs => LevelHandler.Instance.CurrentLevelData.Objective.NPCs;
 
 	private TimeSince TimeSinceUpdate { get; set; }

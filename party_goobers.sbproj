@@ -5,7 +5,7 @@
   "Ident": "party_goobers",
   "Schema": 1,
   "IncludeSourceFiles": false,
-  "Resources": "\ntextures/icons/cursor.png\ntextures/icons/playericon_default.png\ntextures/icons/spyglass.png\nfonts/DisplayOTF.otf\ntextures/icons/loading.png\ntextures/icons/randomize.png\ntextures/lobby_background_mask.png\ntextures/lobby_background.png",
+  "Resources": "\ntextures/icons/cursor.png\ntextures/icons/playericon_default.png\ntextures/icons/spyglass.png\nfonts/DisplayOTF.otf\ntextures/icons/loading.png\ntextures/icons/randomize.png\ntextures/lobby_background_mask.png\ntextures/lobby_background.png\ntextures/star01.png\ntextures/earth.png\nfonts/DisplayOTF.otf",
   "PackageReferences": [],
   "EditorReferences": null,
   "IsWhitelistDisabled": false,

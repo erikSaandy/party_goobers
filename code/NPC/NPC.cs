@@ -26,7 +26,7 @@ public class NPC : Component, IInteractable
 	const float MIN_WALKSPEED = 40f;
 	const float MAX_WALKSPEED = 70f;
 	[Property] float WalkSpeed { get; set; } = 50f;
-
+	[Sync][Property] bool UseGravity { get; set; } = true;
 	[Sync][Property] public Guid ConnectionId { get; set; } = default;
 
 	[Broadcast]
@@ -61,7 +61,7 @@ public class NPC : Component, IInteractable
 	{
 		NPC npc = Scene.Directory.FindByGuid( other ).Components.Get<NPC>( true );
 
-		SetColor( npc.Color.RgbaInt );
+		ClientSetColor( npc.Color.RgbaInt );
 		Face.Eyebrows.Renderer.Texture = npc.Face.Eyebrows.Texture;
 		Face.Eyes.Renderer.Texture = npc.Face.Eyes.Texture;
 		Face.Nose.Renderer.Texture = npc.Face.Nose.Texture;
@@ -172,7 +172,6 @@ public class NPC : Component, IInteractable
 	{
 		string fullPath = Path.Combine( FILE_PATH, FILE_NAME );
 
-
 		Sandbox.FileSystem.Data.CreateDirectory( FILE_PATH );
 		Sandbox.FileSystem.Data.WriteJson( fullPath, Color.RgbaInt );
 
@@ -202,6 +201,21 @@ public class NPC : Component, IInteractable
 		return true;
 	}
 
+	/// <summary>
+	/// Make sure that client has NPC data.
+	/// </summary>
+	public static void AssureClientData()
+	{
+		IEnumerable<NPC> npcs = PartyFacesManager.Instance.Scene.Components.GetAll<NPC>( FindMode.EverythingInSelfAndChildren );
+		if(npcs.Count() == 0) { Log.Error( "Can't assure client data because there's no dummy NPC in scene." ); return; }
+
+		NPC npc = npcs.GetRandom();
+
+		if (!npc.Load())
+		{
+			npc.Save();
+		}
+	}
 
 	[Broadcast]
 	public void SetClientAnimationBehaviour( Guid player, AnimationBehaviour behaviour )
@@ -211,7 +225,8 @@ public class NPC : Component, IInteractable
 		Renderer.Set( "b_crouching", false );
 		Renderer.Set( "e_behaviour", (int)behaviour );
 
-		if(behaviour == AnimationBehaviour.Cheer)
+
+		if (behaviour == AnimationBehaviour.Cheer)
 		{
 			Sound.Play( "sounds/npc_cheer.sound" );
 		}
@@ -237,6 +252,19 @@ public class NPC : Component, IInteractable
 		if(Renderer.GetInt("e_behaviour") != 0 ) { return; }
 
 		Renderer.Set( "b_crouching", crouch );
+	}
+
+	[Broadcast]
+	public void Float( bool enable = true )
+	{
+		Renderer.Set( "b_falling", enable );
+		UseGravity = !enable;	
+
+		if (enable)
+		{
+			Renderer.Set( "b_crouching", false );
+		}
+		
 	}
 
 	[Broadcast]
@@ -311,6 +339,10 @@ public class NPC : Component, IInteractable
 		Teleport( spawnTransform.Position );
 		Transform.Rotation = spawnTransform.Rotation;
 
+		Float( false );
+		Controller.Velocity = 0;
+		UseGravity = true;
+
 	}
 
 	[Authority]
@@ -331,6 +363,13 @@ public class NPC : Component, IInteractable
 	{
 		Color col = Color.FromRgba( rgba );
 		Face.SetColor( rgba );
+		Renderer.Tint = col;
+	}
+
+	public void ClientSetColor( uint rgba )
+	{
+		Color col = Color.FromRgba( rgba );
+		Face.ClientSetColor( rgba );
 		Renderer.Tint = col;
 	}
 
@@ -396,7 +435,7 @@ public class NPC : Component, IInteractable
 
 		}
 		
-		if ( !Controller.IsOnGround )
+		if ( !Controller.IsOnGround && UseGravity )
 		{
 			Controller.Velocity += Scene.PhysicsWorld.Gravity * Time.Delta;
 		}

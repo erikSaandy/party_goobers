@@ -9,6 +9,8 @@ public class FindSpecificObjective : LevelObjective
 	public override bool Disabled { get; set; } = false;
 	public override int Weight => 220;
 
+	public override int RequiredSpawnCount => 1;
+
 	public override int MaxSelectedNPCs => 1;
 
 	[Sync] public Guid TargetNPCId { get; private set; }

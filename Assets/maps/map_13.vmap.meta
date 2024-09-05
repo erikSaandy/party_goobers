@@ -1,0 +1,25 @@
+{
+  "publish": {
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "map_13",
+      "Type": "map",
+      "Org": "local",
+      "Ident": "map_13",
+      "Schema": 0,
+      "IncludeSourceFiles": false,
+      "Resources": null,
+      "PackageReferences": [],
+      "EditorReferences": [
+        "facepunch.plastic_glossy_a_hs#28966",
+        "facepunch.peg_board_hs_02a#9583",
+        "facepunch.floor_wood_laminated#18686",
+        "facepunch.wood_painted_a_hs#28972"
+      ],
+      "IsWhitelistDisabled": false,
+      "Metadata": {
+        "SingleAssetSource": "maps/map_13.vmap"
+      }
+    }
+  }
+}

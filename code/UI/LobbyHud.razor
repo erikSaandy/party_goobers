@@ -11,13 +11,14 @@
 	<div class="header">@(Lobby.PlayersInLobby)/16 waiting@(Dots())</div>
 
 	@*Nametags*@
+
 	@for (int i = 0; i < Lobby.NPCs?.Count; i++)
 	{
 		GameObject npc = Scene.Directory.FindByGuid(Lobby.NPCs[i]);
         
         if(npc == null) { continue; }
 
-        Connection con = Connection.Find(npc.Components.Get<NPC>().ConnectionId);
+        Connection con = Connection.Find(npc.Components.Get<NPC>().ConnectionId );
 
         if(con == null) { continue; }
 
@@ -68,6 +69,14 @@
         base.OnAwake();
 
         TimeAlive = 0;
+    }
+
+    protected override void OnStart()
+    {
+        base.OnStart();
+
+        Log.Info(Lobby);
+
     }
 
     private void OnClickedStartButton()

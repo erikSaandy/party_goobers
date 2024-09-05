@@ -16,10 +16,17 @@
 
     private static LevelObjective Objective => GetObjective();
 
-    public static bool Visible => (Objective is FindSpecificObjective) && LevelTimer.IsRunning && ( LevelTimer.TimeNow < 8f );
+    public static bool Visible => GetVisible();
 
     //https://gist.github.com/CarsonKompon/be43451a518293356feca8095352614f
     //<Image class="texture" Texture=@NPCIconGenerator.RenderTexture/>
+
+    private static bool GetVisible()
+    {
+        if (((Objective is FindSpecificObjective) || (Objective is FindYourselfObjective)) && LevelTimer.IsRunning && (LevelTimer.TimeNow < 8f)) { return true; }
+
+        return false;
+    }
 
     private static LevelObjective GetObjective()
     {

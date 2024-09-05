@@ -99,10 +99,12 @@ public class Player : Component
 
 		//NPCBuffer.Instance.PossessFreeNPC( GameObject.Id );
 
-
-		if( PartyFacesManager.Instance.RoundIsOn )
+		if( PartyFacesManager.Instance.GameIsOn )
 		{
+			NPC.AssureClientData();
 			ClientInfo.Show( "Hold on, \nThe round has already started!", new Func<bool>( () => !PartyFacesManager.Instance.RoundIsOn ) );
+			Lives = 1;
+			LifeState = PlayerLifeState.Safe;
 		}
 
 	}

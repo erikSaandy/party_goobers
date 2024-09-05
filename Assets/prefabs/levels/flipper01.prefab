@@ -51,8 +51,12 @@
       {
         "__type": "FindOddObjective",
         "__guid": "a520e8cd-4cde-4d20-b14d-5e11505afb51",
-        "MaxTargetNPCs": 5,
+        "MaxTargetNPCs": 3,
         "OddityMask": "OddSleeper"
+      },
+      {
+        "__type": "FindYourselfObjective",
+        "__guid": "3f565478-e00f-47b7-ab27-2a3fad3c016f"
       }
     ],
     "Children": [

@@ -16,7 +16,7 @@
 			{
 				case FindSpecificObjective : 
 			
-				<div class="title">Find this goober!</div>
+				<div class="title">Find this Goober!</div>
 				<div class ="npcicon">
 					<Image class="npctexture" Texture=@NPCIconGenerator.RenderTexture/>	
 				</div>
@@ -32,9 +32,15 @@
                 case FindOddObjective :
 
                     string suffix = (Objective as FindOddObjective).TargetNPCCount == 1 ? "" : "s";
-                    <div class="title">Find @((Objective as FindOddObjective).TargetNPCCount.ToEnglish()) odd goober@(suffix)!</div>
+                    <div class="title">Find @((Objective as FindOddObjective).TargetNPCCount.ToEnglish()) odd-behaved Goober@(suffix)!</div>
 
 				return;
+
+                case FindYourselfObjective:
+
+                    <div class="title">Find your Goober!</div>
+
+                    return;
 
 				default : return;
 			}

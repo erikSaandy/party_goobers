@@ -1,5 +1,5 @@
 {
-  "__guid": "957b26f8-02da-4ab3-934d-2455d26596d2",
+  "__guid": "513afcb6-e1c3-4428-84c1-05c65364ced0",
   "GameObjects": [
     {
       "__guid": "fc2d98ed-64ef-487e-92a6-69517a8ba18c",
@@ -43,13 +43,17 @@
           "__guid": "51bdbcaf-87b0-4571-b6eb-559b224332c1",
           "LevelPrefabs": [
             "prefabs/levels/flipper01.prefab",
-            "prefabs/levels/hotel01.prefab",
+            "prefabs/levels/control01.prefab",
             "prefabs/levels/mall01.prefab",
             "prefabs/levels/mole01.prefab",
             "prefabs/levels/stage01.prefab",
             "prefabs/levels/staircase01.prefab",
             "prefabs/levels/street01.prefab",
-            "prefabs/levels/tennis01.prefab"
+            "prefabs/levels/space01.prefab",
+            "prefabs/levels/carousell01.prefab",
+            "prefabs/levels/tennis01.prefab",
+            "prefabs/levels/hole01.prefab",
+            "prefabs/levels/hotel01.prefab"
           ],
           "LobbyPrefab": "prefabs/lobby.prefab"
         }
@@ -108,7 +112,6 @@
       "Rotation": "0.1530459,0.1530459,-0.6903455,0.6903455",
       "Tags": "maincamera",
       "Enabled": true,
-      "NetworkMode": 1,
       "Components": [
         {
           "__type": "Sandbox.CameraComponent",
@@ -120,7 +123,7 @@
           "Orthographic": false,
           "OrthographicHeight": 150,
           "Priority": 2,
-          "RenderExcludeTags": "",
+          "RenderExcludeTags": "nodraw_main",
           "RenderTags": "",
           "TargetEye": "None",
           "Viewport": "0,0,1,1",
@@ -438,9 +441,8 @@
       "Flags": 0,
       "Name": "Display NPC",
       "Position": "0,0,-5000",
-      "Tags": "npcdisplay",
+      "Tags": "npcdisplay,nodraw_main",
       "Enabled": true,
-      "NetworkMode": 1,
       "Components": [
         {
           "__type": "NPC",
@@ -459,6 +461,7 @@
             "go": "05bcac61-026d-41d7-bb13-a274806b228e",
             "component_type": "SkinnedModelRenderer"
           },
+          "UseGravity": true,
           "WalkSpeed": 50
         },
         {
@@ -679,6 +682,7 @@
       "Name": "Minigame",
       "Position": "-5000,0,0",
       "Rotation": "0,0,0.7071068,0.7071068",
+      "Tags": "nodraw_main",
       "Enabled": true,
       "NetworkMode": 1,
       "Components": [
@@ -764,6 +768,7 @@
       "Position": "-4989.538,654.0963,-339.0958",
       "Rotation": "0,0,-0.7071068,0.7071068",
       "Scale": "1.369778,1.369778,1.369778",
+      "Tags": "nodraw_main",
       "Enabled": true,
       "NetworkMode": 1,
       "Components": [
@@ -811,6 +816,7 @@
         {
           "__type": "Sandbox.ParticleEffect",
           "__guid": "8fb58ee5-a11f-4b5a-95bb-2413e60fc3b1",
+          "__version": 1,
           "Alpha": {
             "Type": "Curve",
             "CurveA": [
@@ -823,6 +829,7 @@
             ],
             "Constants": "1,0,0,0"
           },
+          "ApplyAlpha": true,
           "ApplyColor": true,
           "ApplyRotation": true,
           "ApplyShape": true,
@@ -1076,6 +1083,7 @@
         {
           "__type": "Sandbox.ParticleEffect",
           "__guid": "d363e8a8-5a92-4cbb-b70c-830234be0c9d",
+          "__version": 1,
           "Alpha": {
             "Type": "Curve",
             "CurveA": [
@@ -1088,6 +1096,7 @@
             ],
             "Constants": "1,0,0,0"
           },
+          "ApplyAlpha": true,
           "ApplyColor": true,
           "ApplyRotation": true,
           "ApplyShape": false,
@@ -1290,6 +1299,7 @@
             {
               "__type": "Sandbox.ParticleEffect",
               "__guid": "4b7746fd-e79a-43a8-866b-6c6e088a9b90",
+              "__version": 1,
               "Alpha": {
                 "Type": "Curve",
                 "CurveA": [
@@ -1305,6 +1315,7 @@
                 ],
                 "Constants": "1,0,0,0"
               },
+              "ApplyAlpha": true,
               "ApplyColor": true,
               "ApplyRotation": false,
               "ApplyShape": true,

@@ -12,26 +12,57 @@ public class LevelObjectiveHandler : Component
 	[Sync][Property] public int ObjectiveId { get; set; } = 0;
 	public LevelObjective CurrentObjective => Objectives[ObjectiveId];
 
-	protected override void OnAwake()
+	protected override void OnStart()
 	{
-		base.OnAwake();
-
-		Objectives = GameObject.Components.GetAll<LevelObjective>( FindMode.InSelf ).ToList();
+		base.OnStart();
 
 		if (IsProxy) { return; }
 
-		//ObjectiveId = Objectives.TakeWhile( x => (x is not FindOddObjective) ).Count();
-		ObjectiveId = Objectives.GetRandomIdWeighted<LevelObjective>();
+	}
 
-		foreach(LevelObjective objective in Objectives)
+	public IEnumerable<NPC> GetNPCPool( List<NPC> set, LevelDataComponent level )
+	{
+		GetObjectives();
+
+		int spawnCount = level.SpawnPoints.Count();
+		if(level.MinSpawnCount.HasValue) { spawnCount = level.MinSpawnCount.Value; }
+
+		foreach(LevelObjective obj in Objectives)
 		{
-			if(objective == CurrentObjective) { continue; }
+			// If there isn't enough spawners, disable objective.
+			if ( obj.RequiredSpawnCount > spawnCount )
+			{
+
+				if ( Objectives.Find( x => x is FindYourselfObjective ) != null )
+				{
+					int fyobj = Objectives.TakeWhile( x => (x is not FindYourselfObjective) ).Count();
+					Objectives[fyobj].Disabled = true;
+					Log.Info( "Disabled FindYourselfObjective." );
+				}
+
+			}
+		}
+
+		ObjectiveId = Objectives.GetRandomIdWeighted( considerDisabled: true );
+
+		foreach ( LevelObjective objective in Objectives )
+		{
+			if ( objective == CurrentObjective ) { continue; }
 			objective.Enabled = false;
 		}
 
 		Log.Info( $"Selected Objective: {CurrentObjective.GetType()}." );
 
+		return CurrentObjective.GetNPCPool( set, level );
+
 	}
+
+	[Broadcast]
+	private void GetObjectives()
+	{
+		Objectives = GameObject.Components.GetAll<LevelObjective>( FindMode.InSelf ).ToList();
+	}
+
 
 	[Broadcast]
 	public void OnPlayerCompletedObjective( Guid playerId )

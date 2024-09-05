@@ -20,6 +20,8 @@ public abstract class LevelObjective : Component, IWeighted
 
 	public LevelDataComponent LevelData => LevelHandler.Instance.CurrentLevelData;
 
+	public virtual int RequiredSpawnCount { get; } = 0;
+
 	public IEnumerable<NPC> NPCs { get; set; } = null;
 
 	public static Action OnCompletedObjective { get; set; }
@@ -208,7 +210,7 @@ public abstract class LevelObjective : Component, IWeighted
 
 		foreach ( NPC npc in SelectedNPCs ) {
 
-			PartyFacesManager.SpawnStarParticlesClient( npc.Transform.Position + Vector3.Up * 55 );
+			PartyFacesManager.SpawnStarParticlesClient( npc.Transform.Position + npc.Transform.Rotation.Up * 55 );
 			npc.SetClientAnimationBehaviour( player, NPC.AnimationBehaviour.Cheer );
 
 		}

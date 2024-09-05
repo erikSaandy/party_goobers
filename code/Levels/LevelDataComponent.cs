@@ -1,7 +1,7 @@
 using Sandbox;
 using System;
 
-public sealed class LevelDataComponent : Component
+public sealed class LevelDataComponent : Component	
 {
 
 	// If nodepath is null, NPCs stand still. 
@@ -27,6 +27,12 @@ public sealed class LevelDataComponent : Component
 
 	[Property] public Action OnInitiated { get; set; }
 
+	[Property] private Action<Guid> OnNPCSpawned { get; set; }
+
+	public void NPCSpawned(Guid npcId)
+	{
+		OnNPCSpawned?.Invoke( npcId );
+	}
 
 	protected override void OnAwake()
 	{
@@ -47,6 +53,12 @@ public sealed class LevelDataComponent : Component
 	protected override void OnStart()
 	{
 		base.OnStart();
+
+		if(CameraReference == null)
+		{
+			Log.Warning( "Map has no camera reference." );
+			return;
+		}
 
 		Scene.Camera.Transform.Position = CameraReference.Transform.Position;
 		Scene.Camera.Transform.Rotation = CameraReference.Transform.Rotation;

@@ -12,7 +12,12 @@
       "PackageReferences": [],
       "EditorReferences": [
         "facepunch.plastic_glossy_a_hs#28966",
-        "facepunch.plaster_hs_01#33578"
+        "facepunch.plaster_hs_01#33578",
+        "facepunch.metal_painted_red_b_hs#28961",
+        "saandy.aluminum_slip_pattern_001#23863",
+        "facepunch.wire_cage_a#60978",
+        "facepunch.carpet_a_blend#18622",
+        "facepunch.plastic_glossy_yellow_a_hs#28965"
       ],
       "IsWhitelistDisabled": false,
       "Metadata": {

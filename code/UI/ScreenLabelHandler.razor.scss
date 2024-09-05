@@ -12,10 +12,12 @@ ScreenLabelHandler {
         transition: opacity 0.5s linear;
         justify-content: center;
         align-items: center;
-        font-size: 25px;
+        font-size: 32px;
         text-shadow: 0px, 0px, 8px, black;
         color: rgb(240,35,35);
-        font-weight: 600;
+        font-weight: 800;
+        font-family: DisplayOTF;
+        text-stroke: 8px #000000CC;
 
         &.alive {
             opacity: 1;

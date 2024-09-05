@@ -42,6 +42,7 @@
           "go": "7e4da760-5759-4095-9556-43a5192c7a5c",
           "component_type": "SkinnedModelRenderer"
         },
+        "UseGravity": true,
         "WalkSpeed": 50
       },
       {
@@ -115,7 +116,7 @@
         "__guid": "9e94cd7c-264c-4807-a284-e595fc62b34d",
         "Flags": 0,
         "Name": "sad_lookat",
-        "Position": "75.38583,0.0001818183,43.95772",
+        "Position": "93.25162,0.0001828832,18.994",
         "Scale": "9,9,9",
         "Enabled": true
       },
