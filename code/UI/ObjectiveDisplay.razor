@@ -62,9 +62,9 @@
 
     private LevelObjective GetObjective()
     {
-        if (LevelHandler.Instance.CurrentLevelData == null) { return null; }
+        if (!LevelHandler.Instance.CurrentLevelData.IsValid()) { return null; }
 
-        if(LevelHandler.Instance.CurrentLevelData.Objective == null)
+        if(!LevelHandler.Instance.CurrentLevelData.Objective.IsValid())
         {
             return null;
         }
@@ -77,14 +77,14 @@
         base.OnUpdate();
     }
 
-    [Broadcast]
+    [Rpc.Broadcast]
     public static void Show()
     {
         Visible = true;
         Sound.Play("sounds/round_start.sound");
     }
 
-    [Broadcast]
+    [Rpc.Broadcast]
     public static void Hide()
     {
         Visible = false;

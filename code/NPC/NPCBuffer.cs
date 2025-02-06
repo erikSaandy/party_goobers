@@ -74,7 +74,7 @@ public class NPCBuffer : SingletonComponent<NPCBuffer>
 
 		LevelDataComponent level = LevelHandler.Instance.CurrentLevelData;
 
-		if(level == null) {
+		if(!level.IsValid()) {
 			Log.Error( "Can't spawn NPCs because there is no level loaded." );
 			return;
 		}
@@ -107,9 +107,9 @@ public class NPCBuffer : SingletonComponent<NPCBuffer>
 
 				foreach(NodePathComponent pPath in level.NodePaths)
 				{
-					Vector3 pointOnPath = pPath.ClosestPointOnPath( npc.Transform.Position );
+					Vector3 pointOnPath = pPath.ClosestPointOnPath( npc.WorldPosition );
 
-					float dst = Vector3.DistanceBetweenSquared( npc.Transform.Position, pointOnPath );
+					float dst = Vector3.DistanceBetweenSquared( npc.WorldPosition, pointOnPath );
 
 					if ( dst < dstClosest )
 					{
@@ -125,7 +125,7 @@ public class NPCBuffer : SingletonComponent<NPCBuffer>
 				Vector3 nextTargetPos = path.GetTargetPosition( nextTargetId );
 				Vector3 dirToNext = (nextTargetPos - closestPathPoint).Normal;
 
-				npc.Transform.Position = closestPathPoint;
+				npc.WorldPosition = closestPathPoint;
 				npc.MoveTowards( nextTargetPos );
 
 			}
@@ -144,7 +144,7 @@ public class NPCBuffer : SingletonComponent<NPCBuffer>
 
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	private void PostNPCsPlaced()
 	{
 		OnNPCsPlaced?.Invoke();
@@ -174,12 +174,12 @@ public class NPCBuffer : SingletonComponent<NPCBuffer>
 	/// <summary>
 	/// Hide all NPCs.
 	/// </summary>
-	[Authority]
+	[Rpc.Owner]
 	public void HideNPCs()
 	{
 		foreach(NPC npc in NPCs)
 		{
-			if( !npc.IsValid || npc.Tags == null ) { continue; } // Still getting errors when looking at tags, so trying something new.
+			if( !npc.IsValid() || npc.Tags == null ) { continue; }
 			if(npc.Tags.Has( "npcdisplay" ) ) { continue; }
 
 			if(npc.GameObject.Enabled)

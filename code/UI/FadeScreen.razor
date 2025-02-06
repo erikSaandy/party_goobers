@@ -44,7 +44,7 @@
 
     }
 
-    [Broadcast]
+    [Rpc.Broadcast]
     public static void Show()
     {
         if(Visible) { return; }
@@ -53,7 +53,7 @@
         Visible = true;
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public static void Hide()
 	{
         if (!Visible) { return; }

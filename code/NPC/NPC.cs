@@ -29,7 +29,7 @@ public class NPC : Component, IInteractable
 	[Sync][Property] bool UseGravity { get; set; } = true;
 	[Sync][Property] public Guid ConnectionId { get; set; } = default;
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void SetOwner( Guid connectionId )
 	{
 		if(IsProxy) { return; }
@@ -37,7 +37,7 @@ public class NPC : Component, IInteractable
 		this.ConnectionId = connectionId;
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void ClearOwner()
 	{
 		if ( IsProxy ) { return; }
@@ -45,7 +45,7 @@ public class NPC : Component, IInteractable
 		this.ConnectionId = default;
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void CopyFrom(Guid other)
 	{
 		NPC npc = Scene.Directory.FindByGuid( other ).Components.Get<NPC>(true);
@@ -97,16 +97,16 @@ public class NPC : Component, IInteractable
 
 	[Property] public CharacterController Controller { get; set; }
 	[Property] public Vector3? WantedPosition { get; private set; }
-	public float DistanceToWantedPosition => (WantedPosition.Value -Transform.Position).Length;
+	public float DistanceToWantedPosition => (WantedPosition.Value -WorldPosition).Length;
 
 	[Property] public Face Face { get; set; }
 
-	public Color Color => Renderer == null ? Color.White : Renderer.Tint;
+	public Color Color => !Renderer.IsValid() ? Color.White : Renderer.Tint;
 
 	public GameObject LookAtObject => Scene.Directory.FindByGuid( LookAtObjectId );
 	[Property][Sync] public Guid LookAtObjectId { get; private set; }
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void LookAt(Guid obj)
 	{
 		LookAtObjectId = obj;
@@ -155,12 +155,12 @@ public class NPC : Component, IInteractable
 
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void LoadFromConnection(Guid connectionId)
 	{
 		if ( Connection.Local.Id != connectionId ) { return; }
 
-		if (Face == null) { return; }
+		if (!Face.IsValid()) { return; }
 
 		if(!Load())
 		{
@@ -217,7 +217,7 @@ public class NPC : Component, IInteractable
 		}
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void SetClientAnimationBehaviour( Guid player, AnimationBehaviour behaviour )
 	{
 		if ( Scene.Directory.FindByGuid( player ).IsProxy ) { return; }
@@ -233,7 +233,7 @@ public class NPC : Component, IInteractable
 
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void SetAnimationBehaviour( AnimationBehaviour behaviour )
 	{
 		Renderer.Set( "b_crouching", false );
@@ -245,7 +245,7 @@ public class NPC : Component, IInteractable
 		}
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void Crouch(bool crouch = true)
 	{
 		// Don't crouch if waving or cheering
@@ -254,7 +254,7 @@ public class NPC : Component, IInteractable
 		Renderer.Set( "b_crouching", crouch );
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void Float( bool enable = true )
 	{
 		Renderer.Set( "b_falling", enable );
@@ -267,14 +267,14 @@ public class NPC : Component, IInteractable
 		
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void Speak(string sound)
 	{
 		SoundHandle handle = Sound.Play( sound );
-		handle.Position = Transform.Position + ( Vector3.Up * 50 );
+		handle.Position = WorldPosition + ( Vector3.Up * 50 );
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void Wave(float seconds = 2)
 	{
 		WaveAsync();
@@ -294,13 +294,13 @@ public class NPC : Component, IInteractable
 	}
 
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void Jog( bool jog = true)
 	{
 		Renderer.Set( "f_walk_speed", jog ? 1.1f : 0.9f );
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void ToggleCrouch()
 	{
 		if(IsProxy) { return; }
@@ -319,7 +319,7 @@ public class NPC : Component, IInteractable
 		if(IsProxy) { return; }
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void Randomize()
 	{
 		if(IsProxy) { return; }
@@ -328,7 +328,7 @@ public class NPC : Component, IInteractable
 		SetRandomColor();
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void Spawn( Transform spawnTransform )
 	{
 		Renderer.Set( "e_behaviour", (int)NPC.AnimationBehaviour.Default );
@@ -337,7 +337,7 @@ public class NPC : Component, IInteractable
 		if ( IsProxy ) { return; }
 
 		Teleport( spawnTransform.Position );
-		Transform.Rotation = spawnTransform.Rotation;
+		WorldRotation = spawnTransform.Rotation;
 
 		Float( false );
 		Controller.Velocity = 0;
@@ -345,20 +345,20 @@ public class NPC : Component, IInteractable
 
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void Teleport(Vector3 to)
 	{
-		Transform.Position = to;
+		WorldPosition = to;
 		Transform.ClearInterpolation();
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void SetRandomColor()
 	{
 		SetColor( ColorX.MiiColors.GetRandom().RgbaInt );
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void SetColor( uint rgba )
 	{
 		Color col = Color.FromRgba( rgba );
@@ -383,12 +383,12 @@ public class NPC : Component, IInteractable
 			// If look object is orthographic camera, look parallel to camera
 			if( LookAtObject == Scene?.Camera?.GameObject && Scene.Camera.Orthographic )
 			{
-				dir = Scene.Camera.Transform.Rotation.Backward;
+				dir = Scene.Camera.WorldRotation.Backward;
 			}
 			else
 			{
 				Vector3 from = ForwardReference?.Position ?? 0;
-				dir = (LookAtObject.Transform.Position - from);
+				dir = (LookAtObject.WorldPosition - from);
 			}
 
 			Renderer.SetLookDirection( "aim_head", dir );
@@ -411,7 +411,7 @@ public class NPC : Component, IInteractable
 
 		if(IsProxy) { return; }
 
-		if(Controller == null ) { return; }
+		if( !Controller.IsValid() ) { return; }
 
 		if (Controller.IsOnGround )
 		{
@@ -421,12 +421,12 @@ public class NPC : Component, IInteractable
 		if ( WantedPosition != null )
 		{
 
-			Vector3 wantedDir = (WantedPosition.Value - Transform.Position).Normal;
+			Vector3 wantedDir = (WantedPosition.Value - WorldPosition).Normal;
 			//Gizmo.Draw.Color = Color.Red;
 			//Gizmo.Draw.Line( Transform.Position, Transform.Position + wantedDir * WalkSpeed );
-			float angle = Transform.Rotation.Yaw();
-			Transform.Rotation = Rotation.Lerp( Rotation.FromYaw( angle ), Vector3.VectorAngle( wantedDir ).WithPitch( 0 ).WithRoll( 0 ), Time.Delta * 2 );
-			Controller.Accelerate( Transform.Rotation.Forward * 60 );
+			float angle = WorldRotation.Yaw();
+			WorldRotation = Rotation.Lerp( Rotation.FromYaw( angle ), Vector3.VectorAngle( wantedDir ).WithPitch( 0 ).WithRoll( 0 ), Time.Delta * 2 );
+			Controller.Accelerate( WorldRotation.Forward * 60 );
 
 			if ( !Controller.IsOnGround )
 			{
@@ -444,7 +444,7 @@ public class NPC : Component, IInteractable
 		Controller?.Move();
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void MoveTowards(Vector3 wantedPosition)
 	{
 
@@ -457,7 +457,7 @@ public class NPC : Component, IInteractable
 
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void StopMoving()
 	{
 
@@ -479,7 +479,7 @@ public class NPC : Component, IInteractable
 
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void Describe()
 	{
 		Log.Warning( "- - - - - - - - - - -" );

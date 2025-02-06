@@ -9,7 +9,7 @@ public sealed class DistractionComponent : Component, IInteractable
 
 	public void OnInteract( Guid playerId, SceneTraceResult traceResult ) { Log.Info( "player clicked on distraction." ); }
 
-	[Broadcast][Button("Activate")]
+	[Rpc.Broadcast][Button("Activate")]
 	public void Distract()
 	{
 		Renderer.Set( "b_distract", true );

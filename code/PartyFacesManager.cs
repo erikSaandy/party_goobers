@@ -39,8 +39,8 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 
 	public void ThrowConfettiClient()
 	{
-		Vector3 pos = Scene.Camera.Transform.Position + Scene.Camera.Transform.Rotation.Down * 150 + Scene.Camera.Transform.Rotation.Forward * 600;
-		GameObject conf = ConfettiParticles.Clone( pos, Vector3.VectorAngle( Scene.Camera.Transform.Rotation.Up ) );
+		Vector3 pos = Scene.Camera.Transform.Position + Scene.Camera.WorldRotation.Down * 150 + Scene.Camera.WorldRotation.Forward * 600;
+		GameObject conf = ConfettiParticles.Clone( pos, Vector3.VectorAngle( Scene.Camera.WorldRotation.Up ) );
 		conf.Enabled = true;
 		Sound.Play( "sounds/confetti_throw.sound" );
 	}
@@ -50,7 +50,7 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 		GameObject stars = Instance.StarParticles.Clone();
 		stars.Enabled = true;
 		stars.Transform.Position = position;
-		stars.Transform.Rotation = Rotation.FromRoll( Instance.Scene.Camera.Transform.Rotation.Pitch() - 15 );
+		stars.WorldRotation = Rotation.FromRoll( Instance.Scene.Camera.WorldRotation.Pitch() - 15 );
 	}
 
 	protected override void OnStart()
@@ -80,7 +80,7 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void KillAllPlayers()
 	{
 		IEnumerable<Player> players = Players;
@@ -119,7 +119,7 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void OnPlayerDeath( Guid player, string source )
 	{
 		RoundDeaths.Add( new DeathInstance( player, source ) );
@@ -288,11 +288,11 @@ public class PartyFacesManager : SingletonComponent<PartyFacesManager>
 
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public static void EnableGameobject( Guid gameObjectId, bool enabled )
 	{
 		var gameObject = Game.ActiveScene.Directory.FindByGuid( gameObjectId );
-		if(gameObject == null) { return; }
+		if(!gameObject.IsValid()) { return; }
 
 		gameObject.Enabled = enabled;
 	}

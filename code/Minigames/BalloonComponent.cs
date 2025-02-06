@@ -44,7 +44,7 @@ public sealed class BalloonComponent : Component, IInteractable
 
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	private void SetColor( Color color )
 	{
 		Renderer.Tint = color;
@@ -67,7 +67,7 @@ public sealed class BalloonComponent : Component, IInteractable
 
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	private void Despawn()
 	{
 		DespawnAsync();
@@ -85,12 +85,12 @@ public sealed class BalloonComponent : Component, IInteractable
 		Hit( playerId );
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	private void Hit( Guid playerId )
 	{
 		if ( IsHit ) { return; }
 
-		PartyFacesManager.SpawnStarParticlesClient( Transform.Position );
+		PartyFacesManager.SpawnStarParticlesClient( WorldPosition );
 		Sound.Play( "sounds/gun_shot.sound" );
 		
 		if ( IsProxy ) { return; }
@@ -98,7 +98,7 @@ public sealed class BalloonComponent : Component, IInteractable
 
 		IsHit = true;
 
-		PartyFacesManager.Instance.LabelHandler.SpawnLabel( $"+{HIT_SCORE}", MiniGame.Camera.PointToScreenNormal( Transform.Position ), Vector2.Up * 50, false, isPositive: true );
+		PartyFacesManager.Instance.LabelHandler.SpawnLabel( $"+{HIT_SCORE}", MiniGame.Camera.PointToScreenNormal( WorldPosition ), Vector2.Up * 50, false, isPositive: true );
 		Scene.Directory.FindByGuid( playerId ).Components.Get<Player>().AddScore( HIT_SCORE );
 
 		GameObject.Destroy();

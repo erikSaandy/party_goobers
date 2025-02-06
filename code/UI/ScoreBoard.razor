@@ -129,7 +129,7 @@
         return result;
     }
 
-    [Broadcast]
+    [Rpc.Broadcast]
     public static void Clear()
     {
         OldEntries.Clear();
@@ -145,14 +145,14 @@
     {
     }
 
-    [Broadcast]
+    [Rpc.Broadcast]
     public static void Show()
     {
         Visible = true;
         Sound.Play("ui.navigate.forward");
     }
 
-    [Broadcast]
+    [Rpc.Broadcast]
     public static void Hide()
     {
         Visible = false;
@@ -164,7 +164,7 @@
         return System.HashCode.Combine( Time.Now );
     }
 
-    [Broadcast]
+    [Rpc.Broadcast]
     public static void Refresh()
     {
         OldEntries = new( Entries );

@@ -41,7 +41,7 @@ public class CarousellBehaviour : Component
 
 		Scene.Camera.Transform.Position = (dir * radius).WithZ( z );
 
-		Scene.Camera.Transform.Rotation = Scene.Transform.Rotation.RotateAroundAxis( Vector3.Up, rad * Math2d.Rad2Deg ) * Transform.Rotation;
+		Scene.Camera.WorldRotation = Scene.WorldRotation.RotateAroundAxis( Vector3.Up, rad * Math2d.Rad2Deg ) * WorldRotation;
 
 		//matrix *= Matrix4x4.CreateTranslation( Vector3.One );
 		//Transform.Position += (Vector3)matrix.Translation;

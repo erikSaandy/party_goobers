@@ -58,8 +58,8 @@ public class NodePathComponent : Component
 
 		Vector3 ToGizmoSpace( Vector3 pos )
 		{
-			pos -= Transform.Position;
-			pos *= 1 / Transform.Scale;
+			pos -= WorldPosition;
+			pos *= 1 / WorldScale;
 
 			return pos;
 		}
@@ -94,7 +94,7 @@ public class NodePathComponent : Component
 			SphereCollider col = g.Components.Create<SphereCollider>();
 			col.Radius = 16;
 			col.GameObject.Parent = GameObject;
-			col.Transform.Position = GetTargetPosition( i ) + Vector3.Up * col.Radius;
+			col.WorldPosition = GetTargetPosition( i ) + Vector3.Up * col.Radius;
 			col.IsTrigger = true;
 			col.OnTriggerEnter += OnTriggerEnter;
 
@@ -116,12 +116,12 @@ public class NodePathComponent : Component
 	{
 		if ( IsProxy ) { return; }
 
-		if ( npc == null ) { return; }
+		if ( !npc.IsValid() ) { return; }
 
 		// Don't start moving if not already moving.
 		if(!npc.WantedPosition.HasValue) { return; }
 
-		int nextTargetId = GetNextTargetFromPos( npc.Transform.Position );
+		int nextTargetId = GetNextTargetFromPos( npc.WorldPosition );
 
 		if( MoveType == MoveTypes.Straight && nextTargetId == 0 )
 		{
@@ -200,7 +200,7 @@ public class NodePathComponent : Component
 		id = id % Targets.Count;
 
 		if ( id < 0 ) { id += Targets.Count; }
-		else if (id == 0) { return GameObject.Transform.Position + Targets[id].Position; }
+		else if (id == 0) { return GameObject.WorldPosition + Targets[id].Position; }
 
 		return GetTargetPosition(id-1) + Targets[id].Position;
 	}

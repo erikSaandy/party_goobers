@@ -19,14 +19,14 @@ public sealed class SputnikComponent : Component, IInteractable
 	{
 		if(IsHit) { return; }
 
-		PartyFacesManager.Instance.LabelHandler.SpawnLabel( $"+{HIT_SCORE}", MiniGame.Camera.PointToScreenNormal( Transform.Position ), Vector2.Up * 50, false, isPositive: true );
+		PartyFacesManager.Instance.LabelHandler.SpawnLabel( $"+{HIT_SCORE}", MiniGame.Camera.PointToScreenNormal( WorldPosition ), Vector2.Up * 50, false, isPositive: true );
 		Scene.Directory.FindByGuid( playerId ).Components.Get<Player>().AddScore( HIT_SCORE );
 
 		OnHit();
 
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	private void OnHit()
 	{
 		if ( IsHit ) { return; }
@@ -38,7 +38,7 @@ public sealed class SputnikComponent : Component, IInteractable
 
 		GameObject expl = ExplosionParticle.Clone();
 		expl.Enabled = true;
-		expl.Transform.Position = Transform.Position + Scene.Camera.Transform.Rotation.Backward * 12;
+		expl.WorldPosition = WorldPosition + Scene.Camera.WorldRotation.Backward * 12;
 
 		if (IsProxy) { return; }
 
@@ -64,7 +64,7 @@ public sealed class SputnikComponent : Component, IInteractable
 
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	static void OnGameEnd()
 	{
 		// Rest IsHit when game ends.

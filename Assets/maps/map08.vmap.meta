@@ -11,19 +11,21 @@
       "Resources": null,
       "PackageReferences": [],
       "EditorReferences": [
-        "facepunch.waterbase_sign#33713",
-        "facepunch.plaster_hs_01#33578",
-        "facepunch.plaster_a#18740",
-        "facepunch.concrete_c_painted_hs#28942",
-        "facepunch.cinderblocks_01_hs#28856",
-        "saandy.caged_light01_wall#35996",
-        "facepunch.plastic_glossy_a_hs#28966",
-        "facepunch.concretebarrier_damaged#58325",
         "facepunch.binbag_a1#17181",
-        "facepunch.tyre#35766"
+        "facepunch.cinderblocks_01_hs#28856",
+        "facepunch.concrete_c_painted_hs#28942",
+        "facepunch.concretebarrier_damaged#58325",
+        "facepunch.plaster_a#18740",
+        "facepunch.plaster_hs_01#33578",
+        "facepunch.plastic_glossy_a_hs#28966",
+        "facepunch.tyre#35766",
+        "facepunch.waterbase_sign#33713",
+        "saandy.caged_light01_wall#35996"
       ],
+      "IsWhitelistDisabled": false,
       "Metadata": {
-        "SingleAssetSource": "maps/map08.vmap"
+        "SingleAssetSource": "maps/map08.vmap",
+        "ParentPackage": "saandy.party_goobers"
       }
     }
   }

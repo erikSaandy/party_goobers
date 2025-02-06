@@ -36,7 +36,7 @@ public class Player : Component
 
 	[Sync][Property] public int Lives { get; private set; } = MAX_HEALTH;
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void TakeLife()
 	{
 		if(IsProxy) { return; }
@@ -59,7 +59,7 @@ public class Player : Component
 
 	[Sync] public int Score { get; set; } = 0;
 
-	[Authority]
+	[Rpc.Owner]
 	public void AddScore(int score) {
 
 		if(IsProxy) { return; }
@@ -70,10 +70,10 @@ public class Player : Component
 
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void OnWonGame()
 	{
-		Log.Info( $"Winner is {Network.OwnerConnection.DisplayName}!" );
+		Log.Info( $"Winner is {Network.Owner.DisplayName}!" );
 
 		if(IsProxy) { return; }
 
@@ -109,7 +109,7 @@ public class Player : Component
 
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	void OnTimerDepleted()
 	{
 		if(IsProxy) { return; }
@@ -120,7 +120,7 @@ public class Player : Component
 		}
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	void OnGameStart()
 	{
 		if(IsProxy) { return; }
@@ -133,7 +133,7 @@ public class Player : Component
 
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	void OnGameEnd()
 	{
 		if(IsProxy) { return; }
@@ -144,27 +144,27 @@ public class Player : Component
 
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	void OnRoundExit()
 	{
 		if ( IsProxy ) { return; }
 
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	void OnRoundEnter()
 	{
 		if(IsProxy) { return; }
 
 		if(LifeState == PlayerLifeState.Safe )
 		{
-			Log.Info( Network.OwnerConnection.DisplayName + " entered round!" );
+			Log.Info( Network?.Owner?.DisplayName + " entered round!" );
 			LifeState = PlayerLifeState.Alive;
 		}
 
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void Kill( string source = "" )
 	{
 		if( LifeState == PlayerLifeState.Dead ) { return; }
@@ -178,7 +178,7 @@ public class Player : Component
 
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void MarkAsSafe()
 	{
 		LifeState = PlayerLifeState.Safe;
@@ -280,7 +280,7 @@ public class Player : Component
 		Gizmo.Draw.Color = Color.Red;
 		Gizmo.Draw.Line( ray.Position, ray.Forward * 100000 );
 
-		if ( trace.GameObject == null ) { return false; }
+		if ( !trace.GameObject.IsValid() ) { return false; }
 		interactable = trace.GameObject.Components.GetInAncestorsOrSelf<IInteractable>();
 		if ( interactable == null ) { return false; }
 

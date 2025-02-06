@@ -11,20 +11,22 @@
       "Resources": null,
       "PackageReferences": [],
       "EditorReferences": [
-        "facepunch.plaster_hs_03#33581",
-        "facepunch.waterbase_sign#33713",
-        "facepunch.floor_wood_laminated#18686",
         "facepunch.carpet_a_blend#18622",
-        "facepunch.wood_varnished_a_hs#28977",
-        "facepunch.doorframe_metal_a#33591",
         "facepunch.ceiling_plaster_01#33577",
-        "facepunch.plaster_trim_01#43491",
-        "saandy.wallpaper03_hs#17235",
         "facepunch.door_handle_a#33664",
-        "facepunch.wooden_door_01d#43543"
+        "facepunch.doorframe_metal_a#33591",
+        "facepunch.floor_wood_laminated#18686",
+        "facepunch.plaster_hs_03#33581",
+        "facepunch.plaster_trim_01#43491",
+        "facepunch.waterbase_sign#33713",
+        "facepunch.wood_varnished_a_hs#28977",
+        "facepunch.wooden_door_01d#43543",
+        "saandy.wallpaper03_hs#17235"
       ],
+      "IsWhitelistDisabled": false,
       "Metadata": {
-        "SingleAssetSource": "maps/map03.vmap"
+        "SingleAssetSource": "maps/map03.vmap",
+        "ParentPackage": "saandy.party_goobers"
       }
     }
   }

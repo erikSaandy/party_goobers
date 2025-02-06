@@ -32,7 +32,7 @@ public sealed class TelevisionComponent : Component, IInteractable
 
 	public bool IsInteractableBy( Player player ) => !IsBroken;
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void OnInteract( Guid playerId, SceneTraceResult traceResult )
 	{
 		if(IsProxy) { return; }
@@ -58,7 +58,7 @@ public sealed class TelevisionComponent : Component, IInteractable
 		TimeSinceScreenUpdate = Game.Random.Float( 0f, displayTime );
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	private void OnHit( Guid playerId )
 	{
 
@@ -97,7 +97,7 @@ public sealed class TelevisionComponent : Component, IInteractable
 
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	void UpdateScreenDisplay(int id)
 	{
 

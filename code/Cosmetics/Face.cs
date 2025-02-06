@@ -31,7 +31,7 @@ public class Face : Component, Component.INetworkListener
 
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void SetColor(uint rgba)
 	{
 		Color col = Color.FromRgba( rgba );
@@ -52,7 +52,7 @@ public class Face : Component, Component.INetworkListener
 		Mouth.ClientSetColor( col );
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void Hide()
 	{
 		Eyebrows.Renderer.Enabled = false;
@@ -61,7 +61,7 @@ public class Face : Component, Component.INetworkListener
 		Mouth.Renderer.Enabled = false;
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void Show()
 	{
 		Eyebrows.Renderer.Enabled = true;
@@ -76,7 +76,7 @@ public class Face : Component, Component.INetworkListener
 		base.OnStart(); 
 
 		GameObject.Name = "Face";
-		GameObject.Transform.Scale = 9;
+		GameObject.WorldScale = 9;
 
 		if ( IsProxy ) { return; }
 
@@ -128,16 +128,16 @@ public class Face : Component, Component.INetworkListener
 
 	protected override void OnUpdate()
 	{
-		if ( Nose.Renderer != null )
+		if ( !Nose.Renderer.IsValid() )
 		{
-			Nose.Renderer.FlipHorizontal = Nose.Transform.Position.x < Transform.Parent.Transform.Position.x; //Nose.Transform.Rotation.Yaw() < 0;
+			Nose.Renderer.FlipHorizontal = Nose.WorldPosition.x < Transform.Parent.WorldPosition.x; //Nose.WorldRotation.Yaw() < 0;
 		}
 
-		if(!Owner.Enabled ) { GameObject.Transform.LocalPosition = 0; return; }
+		if(!Owner.Enabled ) { GameObject.LocalPosition = 0; return; }
 
 		float sin = MathF.Sin( Time.Now * 2 );
 		float a = sin * 20;
-		GameObject.Transform.Rotation = Rotation.FromYaw( a );
+		GameObject.WorldRotation = Rotation.FromYaw( a );
 
 		Transform _ref = Owner.ForwardReference.Value;
 		Gizmo.Draw.Color = Color.Green;

@@ -12,7 +12,7 @@ public class TestCamera : Component
 
 		if (Input.Down("Jump"))
 		{
-			Transform.Position += Transform.Rotation.Forward * Time.Delta * -30 * TimeSinceSpace * TimeSinceSpace;
+			Transform.Position += WorldRotation.Forward * Time.Delta * -30 * TimeSinceSpace * TimeSinceSpace;
 		}
 
 	}

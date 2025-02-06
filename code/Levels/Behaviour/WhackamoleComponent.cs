@@ -7,7 +7,7 @@ public class WhackamoleComponent : Component
 
 	private TimeSince TimeSinceUpdate { get; set; }
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void OnInitiated()
 	{
 

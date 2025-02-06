@@ -66,7 +66,7 @@ public class NPCIconGenerator : SingletonComponent<NPCIconGenerator>
 
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	private void LoadDisplayNPC(Guid npcFrom) { LoadDisplayNPCLocal( npcFrom ); }
 
 	private void LoadDisplayNPCLocal( Guid npcFrom )
@@ -75,7 +75,7 @@ public class NPCIconGenerator : SingletonComponent<NPCIconGenerator>
 		DisplayNPC.GameObject.Enabled = true;
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	private void TakeNPCHeadshot(Guid npcGuid)
 	{
 		TakeNPCHeadshotAsync( npcGuid );
@@ -102,8 +102,8 @@ public class NPCIconGenerator : SingletonComponent<NPCIconGenerator>
 			Camera.OrthographicHeight = 35;
 			Camera.ZFar = 128;
 			Camera.ZNear = 32;
-			Camera.Transform.Rotation = Vector3.VectorAngle( DisplayNPC.ForwardReference.Value.Rotation.Backward );
-			Camera.Transform.Position = DisplayNPC.Face.Transform.Position - DisplayNPC.ForwardReference.Value.Rotation.Backward * 64;
+			Camera.WorldRotation = Vector3.VectorAngle( DisplayNPC.ForwardReference.Value.Rotation.Backward );
+			Camera.WorldPosition = DisplayNPC.Face.WorldPosition - DisplayNPC.ForwardReference.Value.Rotation.Backward * 64;
 				
 		} );
 

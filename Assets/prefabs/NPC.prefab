@@ -52,6 +52,13 @@
         "BodyGroups": 18446744073709551615,
         "CreateBoneObjects": false,
         "Model": "models/player/player.vmdl",
+        "Morphs": {},
+        "RenderOptions": {
+          "GameLayer": true,
+          "OverlayLayer": false,
+          "BloomLayer": false,
+          "AfterUILayer": false
+        },
         "RenderType": "On",
         "Tint": "1,1,1,1",
         "UseAnimGraph": true
@@ -93,15 +100,6 @@
         "UseCollisionRules": false
       },
       {
-        "__type": "Sandbox.CapsuleCollider",
-        "__guid": "ee083046-b2bf-4d21-8629-2077086b27f6",
-        "End": "0,0,55.64987",
-        "IsTrigger": false,
-        "Radius": 8,
-        "Start": "0,0,11.47886",
-        "Static": false
-      },
-      {
         "__type": "Sandbox.HighlightOutline",
         "__guid": "9b799f5a-b20b-424c-b366-f6071b9c274b",
         "Color": "0,0,0,1",
@@ -109,6 +107,15 @@
         "InsideObscuredColor": "0,0,0,0",
         "ObscuredColor": "0,0,0,0",
         "Width": 0.25
+      },
+      {
+        "__type": "Sandbox.CapsuleCollider",
+        "__guid": "ee083046-b2bf-4d21-8629-2077086b27f6",
+        "End": "0,0,55.64987",
+        "IsTrigger": false,
+        "Radius": 8,
+        "Start": "0,0,11.47886",
+        "Static": false
       }
     ],
     "Children": [
@@ -181,6 +188,12 @@
                 "FogStrength": 1,
                 "Lighting": false,
                 "Opaque": true,
+                "RenderOptions": {
+                  "GameLayer": true,
+                  "OverlayLayer": false,
+                  "BloomLayer": false,
+                  "AfterUILayer": false
+                },
                 "Size": "1,1",
                 "Texture": "textures/faces/eyebrows05.vtex"
               },
@@ -208,6 +221,12 @@
                 "FogStrength": 1,
                 "Lighting": false,
                 "Opaque": true,
+                "RenderOptions": {
+                  "GameLayer": true,
+                  "OverlayLayer": false,
+                  "BloomLayer": false,
+                  "AfterUILayer": false
+                },
                 "Size": "1,1",
                 "Texture": "textures/faces/eyes01.vtex"
               },
@@ -235,6 +254,12 @@
                 "FogStrength": 1,
                 "Lighting": false,
                 "Opaque": true,
+                "RenderOptions": {
+                  "GameLayer": true,
+                  "OverlayLayer": false,
+                  "BloomLayer": false,
+                  "AfterUILayer": false
+                },
                 "Size": "1,1",
                 "Texture": "textures/faces/nose03.vtex"
               },
@@ -262,6 +287,12 @@
                 "FogStrength": 1,
                 "Lighting": false,
                 "Opaque": true,
+                "RenderOptions": {
+                  "GameLayer": true,
+                  "OverlayLayer": false,
+                  "BloomLayer": false,
+                  "AfterUILayer": false
+                },
                 "Size": "1,1",
                 "Texture": "textures/faces/mouth07.vtex"
               },
@@ -279,6 +310,7 @@
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
+  "DontBreakAsTemplate": false,
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1

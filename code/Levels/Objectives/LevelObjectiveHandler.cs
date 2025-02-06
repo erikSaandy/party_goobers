@@ -57,21 +57,21 @@ public class LevelObjectiveHandler : Component
 
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	private void GetObjectives()
 	{
 		Objectives = GameObject.Components.GetAll<LevelObjective>( FindMode.InSelf ).ToList();
 	}
 
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void OnPlayerCompletedObjective( Guid playerId )
 	{
 		Player player = Scene.Directory.FindByGuid( playerId )?.Components.Get<Player>();
 
-		if (player == null) { Log.Error( "Player that completed objective is null? fuck off." ); return; }
+		if (!player.IsValid()) { Log.Error( "Player that completed objective is null? fuck off." ); return; }
 
-		Log.Info( player.Network.OwnerConnection.DisplayName + " completed objective.");
+		Log.Info( player.Network.Owner.DisplayName + " completed objective.");
 
 		if (IsProxy) { return; }
 

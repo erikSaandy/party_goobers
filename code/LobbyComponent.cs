@@ -63,6 +63,7 @@ public class LobbyComponent : Component, Component.INetworkListener
 
 	public void OnDisconnected( Connection channel )
 	{
+		if(channel == null ) { return; }
 		Log.Info( $"Player '{channel.DisplayName}' left lobby." );
 
 		PlayersInLobby--;
@@ -74,7 +75,7 @@ public class LobbyComponent : Component, Component.INetworkListener
 
 			NPC npc = Scene.Directory.FindByGuid( NPCs[i] ).Components.Get<NPC>();
 
-			if ( npc == null ) { continue; }
+			if ( !npc.IsValid() ) { continue; }
 
 			if ( npc.ConnectionId == channel.Id )
 			{

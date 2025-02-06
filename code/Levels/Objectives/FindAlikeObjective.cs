@@ -66,12 +66,12 @@ public class FindAlikeObjective : LevelObjective
 #if DEBUG
 		if ( AlikeNPCIds == null || AlikeNPCIds.Count == 0 || TargetNPCId == default ) { return; }
 
-		Gizmo.Draw.LineSphere( Scene.Directory.FindByGuid( TargetNPCId ).Transform.Position + Vector3.Up * 16, 16 );
+		Gizmo.Draw.LineSphere( Scene.Directory.FindByGuid( TargetNPCId ).WorldPosition + Vector3.Up * 16, 16 );
 
 		foreach (Guid id in AlikeNPCIds )
 		{
 			//Gizmo.Draw.Color = Color.Green;
-			Gizmo.Draw.LineSphere( Scene.Directory.FindByGuid( id ).Transform.Position + Vector3.Up * 16, 16 );
+			Gizmo.Draw.LineSphere( Scene.Directory.FindByGuid( id ).WorldPosition + Vector3.Up * 16, 16 );
 		}
 #endif
 

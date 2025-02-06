@@ -11,18 +11,20 @@
       "Resources": null,
       "PackageReferences": [],
       "EditorReferences": [
-        "facepunch.plaster_hs_03#33581",
-        "facepunch.waterbase_sign#33713",
-        "facepunch.floor_asphalt_blend#33646",
         "facepunch.decal_street_arrow_marking_a#33802",
-        "facepunch.road_sign_round_complete#28916",
-        "facepunch.traffic_cone#33627",
+        "facepunch.floor_asphalt_blend#33646",
         "facepunch.folding_construction_sign#19200",
+        "facepunch.plaster_hs_03#33581",
+        "facepunch.road_sign_round_complete#28916",
         "facepunch.road_sign_triangle_complete_flip#29202",
-        "facepunch.sign_octagon#28917"
+        "facepunch.sign_octagon#28917",
+        "facepunch.traffic_cone#33627",
+        "facepunch.waterbase_sign#33713"
       ],
+      "IsWhitelistDisabled": false,
       "Metadata": {
-        "SingleAssetSource": "maps/map04.vmap"
+        "SingleAssetSource": "maps/map04.vmap",
+        "ParentPackage": "saandy.party_goobers"
       }
     }
   }

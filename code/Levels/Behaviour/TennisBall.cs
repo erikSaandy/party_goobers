@@ -11,9 +11,9 @@ public class TennisBall : Component
 
 	[Property] public GameObject PointC { get; private set; }
 
-	private Vector3 A => PointA.Transform.Position;
-	private Vector3 B => PointB.Transform.Position;
-	private Vector3 C => PointC.Transform.Position;
+	private Vector3 A => PointA.WorldPosition;
+	private Vector3 B => PointB.WorldPosition;
+	private Vector3 C => PointC.WorldPosition;
 
 	private int Dir = -1;
 
@@ -36,8 +36,8 @@ public class TennisBall : Component
 			Turn();
 		}
 
-		GameObject.Transform.Position = Math2d.QuadraticCurve( A, C, B, t );
-		InvertedBall.Transform.Position = Math2d.QuadraticCurve( A, C, B, 1-t );
+		GameObject.WorldPosition = Math2d.QuadraticCurve( A, C, B, t );
+		InvertedBall.WorldPosition = Math2d.QuadraticCurve( A, C, B, 1-t );
 	}
 
 
@@ -48,7 +48,7 @@ public class TennisBall : Component
 		OnBallHit();
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	private void OnBallHit()
 	{
 		Sound.Play( "sounds/tennis_ball_hit.sound" );
@@ -58,12 +58,12 @@ public class TennisBall : Component
 	{
 		base.DrawGizmos();
 
-		if( PointA == null || PointB == null || PointC == null ) { return; }
+		if( !PointA.IsValid() || !PointB.IsValid() || !PointC.IsValid() ) { return; }
 
 		Gizmo.Draw.Color = Color.Yellow;
-		Vector3 a = A - Transform.Position;
-		Vector3 b = B - Transform.Position;
-		Vector3 c = C - Transform.Position;
+		Vector3 a = A - WorldPosition;
+		Vector3 b = B - WorldPosition;
+		Vector3 c = C - WorldPosition;
 		Gizmo.Draw.Line( a, b );
 		Gizmo.Draw.Line( b, c );
 		Gizmo.Draw.Color = Color.Green;
@@ -75,11 +75,11 @@ public class TennisBall : Component
 
 		float ti = 0;
 		int steps = 10;
-		Vector3 pointOld = A - Transform.Position;
+		Vector3 pointOld = A - WorldPosition;
 		for(int i = 1; i <= steps; i++ )
 		{
 			ti += 1f / steps;
-			Vector3 point = Math2d.QuadraticCurve( A, C, B, ti ) - GameObject.Transform.Position;
+			Vector3 point = Math2d.QuadraticCurve( A, C, B, ti ) - WorldPosition;
 			Gizmo.Draw.Line( pointOld, point );
 			pointOld = point;
 		}

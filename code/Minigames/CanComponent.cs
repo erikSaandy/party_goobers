@@ -71,7 +71,7 @@ public sealed class CanComponent : Component, IInteractable
 
 		Vector3 off = MiniGame.Camera.PointToScreenNormal( traceResult.HitPosition ) - MiniGame.Camera.PointToScreenNormal( Body.PhysicsBody.MassCenter );
 
-		off = (MiniGame.Camera.Transform.Rotation.Up * off.y) + (MiniGame.Camera.Transform.Rotation.Left * off.x) * 200;
+		off = (MiniGame.Camera.WorldRotation.Up * off.y) + (MiniGame.Camera.WorldRotation.Left * off.x) * 200;
 
 		//Log.Info( off * 20 );
 		Body.Velocity = (Vector3.Up * 400) + (off * 20);

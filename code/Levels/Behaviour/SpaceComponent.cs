@@ -11,7 +11,7 @@ public class SpaceComponent : Component
 
 	List<float> Angles = new List<float>();
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void OnNPCSpawned(Guid npcId)
 	{
 		if ( IsProxy ) { return; }
@@ -19,7 +19,7 @@ public class SpaceComponent : Component
 		NPC npc = null;
 		Scene.Directory.FindByGuid( npcId ).Components.TryGet<NPC>( out npc, FindMode.EverythingInSelf);
 
-		if ( npc == null || !npc.IsValid ) { return; }
+		if ( !npc.IsValid() || !npc.IsValid ) { return; }
 
 		npc.Float();
 		Angles.Add( Game.Random.Float( -MathF.PI * 1f, MathF.PI * 1f ) );
@@ -43,7 +43,7 @@ public class SpaceComponent : Component
 
 			float yaw = MathF.Cos( Angles[i] ) * Math2d.Rad2Deg * 0.5f;
 
-			npc.Transform.Rotation = Rotation.FromAxis( Scene.Camera.Transform.Rotation.Forward, yaw );
+			npc.WorldRotation = Rotation.FromAxis( Scene.Camera.WorldRotation.Forward, yaw );
 
 		}
 

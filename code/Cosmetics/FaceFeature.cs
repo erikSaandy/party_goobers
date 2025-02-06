@@ -9,9 +9,9 @@ public abstract class FaceFeature : Component
 
 	[JsonIgnore] public abstract Vector2 BaseOffset { get; }
 
-	[Sync] public FaceFeatureData Data { get; set; } 
+	[Sync] public FaceFeatureData Data { get; set; }
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void SetTextureID(int value)
 	{
 		Data.ID = value % TextureCollection.Count;
@@ -42,7 +42,7 @@ public abstract class FaceFeature : Component
 
 		GameObject.Name = GetType().Name;
 		GameObject.Parent = Owner.GameObject;
-		GameObject.Transform.LocalPosition = 0;
+		GameObject.LocalPosition = 0;
 
 		Data.Offset = 0;
 	}
@@ -62,32 +62,32 @@ public abstract class FaceFeature : Component
 		//Vector3 dir = Owner.Transform.Position - Owner.Owner.LookAtObject.Transform.Position;
 
 		Rotation rot = Owner.Owner.ForwardReference.Value.Rotation;
-		//Rotation rot = Scene.Camera.Transform.Rotation;
+		//Rotation rot = Scene.Camera.WorldRotation;
 
-		Transform.LocalPosition = 
+		LocalPosition = 
 			Vector3.Up * off.y 
 			+ rot.Left * off.x + 
 			rot.Backward * ZDepth;
 		
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public virtual void SetColor(Color color)
 	{
-		if ( Renderer == null ) { return; }
+		if ( !Renderer.IsValid() ) { return; }
 
 		Renderer.Color = color;
 	}
 
 	public virtual void ClientSetColor( Color color )
 	{
-		if ( Renderer == null ) { return; }
+		if ( !Renderer.IsValid() ) { return; }
 
 		Renderer.Color = color;
 	}
 
 
-	[Authority]
+	[Rpc.Owner]
 	public void Randomize()
 	{
 		if(IsProxy) { return; }
@@ -96,7 +96,7 @@ public abstract class FaceFeature : Component
 		SetTextureID( TextureCollection.GetRandomId() );
 	}
 
-	[Broadcast]
+	[Rpc.Owner]
 	private void SetOffset( Vector2 offset )
 	{
 		Data.Offset = offset;

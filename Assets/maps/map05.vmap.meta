@@ -11,18 +11,20 @@
       "Resources": null,
       "PackageReferences": [],
       "EditorReferences": [
-        "facepunch.plastic_glossy_a_hs#28966",
-        "saandy.vent_01#38453",
-        "saandy.bucket01_open#17243",
         "facepunch.ceiling_plaster_01#33577",
-        "saandy.fluorescent_ceiling_light01#36033",
         "facepunch.floor_wood_laminated#18686",
-        "saandy.wallpaper07_hs#17239",
+        "facepunch.plastic_glossy_a_hs#28966",
         "saandy.aluminum_slip_pattern_001#23863",
+        "saandy.bucket01_open#17243",
+        "saandy.fluorescent_ceiling_light01#36033",
+        "saandy.vent_01#38453",
+        "saandy.wallpaper07_hs#17239",
         "saandy.weird_chair#19944"
       ],
+      "IsWhitelistDisabled": false,
       "Metadata": {
-        "SingleAssetSource": "maps/map05.vmap"
+        "SingleAssetSource": "maps/map05.vmap",
+        "ParentPackage": "saandy.party_goobers"
       }
     }
   }

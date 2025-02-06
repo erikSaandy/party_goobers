@@ -14,7 +14,7 @@ public static class CameraExtension
 	{
 		// not looking towards bounds.
 		Vector3 dir = bounds.Center - camera.Transform.Position;
-		float dot = Vector3.Dot( camera.Transform.Rotation.Forward.WithZ(0).Normal, dir.WithZ(0).Normal );
+		float dot = Vector3.Dot( camera.WorldRotation.Forward.WithZ(0).Normal, dir.WithZ(0).Normal );
 
 		if ( dot < 0 ) { return false; }
 

@@ -73,7 +73,7 @@ public class FindOddObjective : LevelObjective
 		else if(flag == OddityFlags.OddTennis)
 		{
 			TennisBall ball = Scene.GetAllComponents<TennisBall>().First();
-			if(ball == null) { Log.Error( "can't find tennis ball, please fix." ); return; }
+			if(!ball.IsValid()) { Log.Error( "can't find tennis ball, Saandy is dumb." ); return; }
 
 			foreach ( Guid npcId in TargetNPCIds )
 			{
@@ -137,7 +137,7 @@ public class FindOddObjective : LevelObjective
 
 		if ( IsProxy ) { return; }
 
-		if ( TargetNPCIds == null) { return; }
+		if ( TargetNPCIds == null ) { return; }
 
 		foreach ( Guid npcId in TargetNPCIds )
 		{

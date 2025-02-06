@@ -16,7 +16,7 @@
 	{
 		base.OnUpdate();
 
-		if(Owner == null) { return; }
+		if(!Owner.IsValid()) { return; }
 
 		if (Owner.IsProxy)
 		{

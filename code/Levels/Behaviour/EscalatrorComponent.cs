@@ -79,7 +79,7 @@ public class EscalatrorComponent : Component
 
 		other.GameObject.Components.TryGet( out NPC npc );
 
-		if(npc == null) { return; }
+		if(!npc.IsValid()) { return; }
 
 		if(!Passengers.Contains( npc ) )
 		{
@@ -94,7 +94,7 @@ public class EscalatrorComponent : Component
 
 		other.GameObject.Components.TryGet( out NPC npc );
 
-		if ( npc == null ) { return; }
+		if ( !npc.IsValid() ) { return; }
 
 		if ( !Passengers.Contains( npc ) ) { return; }
 

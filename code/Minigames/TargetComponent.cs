@@ -34,7 +34,7 @@ public sealed class TargetComponent : Component, IInteractable
 
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	private void MakeGold()
 	{
 		IsGold = true;
@@ -52,7 +52,7 @@ public sealed class TargetComponent : Component, IInteractable
 		}
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	private void Despawn() {
 
 		DespawnAsync();
@@ -78,7 +78,7 @@ public sealed class TargetComponent : Component, IInteractable
 		Hit( playerId );
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	private void Hit( Guid playerId )
 	{
 		if ( IsHit ) { return; }
@@ -101,7 +101,7 @@ public sealed class TargetComponent : Component, IInteractable
 	}
 
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	private void SpawnGibs()
 	{
 		List<Gib> gibs = Prop.CreateGibs();

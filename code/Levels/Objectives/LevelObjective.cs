@@ -165,7 +165,7 @@ public abstract class LevelObjective : Component, IWeighted
 		{
 			PartyFacesManager.EnableGameobject( npc.GameObject.Id, true );
 
-			if(lookAt == null) { continue; }
+			if(!lookAt.IsValid()) { continue; }
 
 			npc.LookAt( lookAt.Id );
 		}
@@ -210,7 +210,7 @@ public abstract class LevelObjective : Component, IWeighted
 
 		foreach ( NPC npc in SelectedNPCs ) {
 
-			PartyFacesManager.SpawnStarParticlesClient( npc.Transform.Position + npc.Transform.Rotation.Up * 55 );
+			PartyFacesManager.SpawnStarParticlesClient( npc.Transform.Position + npc.WorldRotation.Up * 55 );
 			npc.SetClientAnimationBehaviour( player, NPC.AnimationBehaviour.Cheer );
 
 		}

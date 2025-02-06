@@ -37,7 +37,7 @@ public class FlipperComponent : Component, IInteractable
 
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	void HitTarget()
 	{
 		TimeSinceHit = 0;

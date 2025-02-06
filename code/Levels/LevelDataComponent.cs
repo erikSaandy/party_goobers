@@ -54,14 +54,14 @@ public sealed class LevelDataComponent : Component
 	{
 		base.OnStart();
 
-		if(CameraReference == null)
+		if(!CameraReference.IsValid())
 		{
 			Log.Warning( "Map has no camera reference." );
 			return;
 		}
 
-		Scene.Camera.Transform.Position = CameraReference.Transform.Position;
-		Scene.Camera.Transform.Rotation = CameraReference.Transform.Rotation;
+		Scene.Camera.WorldPosition = CameraReference.WorldPosition;
+		Scene.Camera.WorldRotation = CameraReference.WorldRotation;
 		Scene.Camera.FieldOfView = CameraReference.FieldOfView;
 		Scene.Camera.ZFar = CameraReference.ZFar;
 		Scene.Camera.ZNear = CameraReference.ZNear;

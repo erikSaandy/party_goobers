@@ -23,13 +23,13 @@ public class MiniGame : SingletonComponent<MiniGame>
 	public static float Aspect => Screen.Width / Screen.Height;
 	public static Vector2 ScreenSize => new Vector2( Camera.OrthographicHeight * Aspect, Camera.OrthographicHeight );
 	public static Vector2 ScreenSizeWithMargin => ScreenSize - Instance.Margin;
-	public static Vector3 Min => (Instance.Transform.Rotation.Forward * DEPTH) + (ScreenSizeWithMargin.x * 0.5f * Instance.Transform.Rotation.Left) + (ScreenSizeWithMargin.y * 0.5f * Instance.Transform.Rotation.Down);
-	public static Vector3 Max => (Instance.Transform.Rotation.Forward * DEPTH) + (ScreenSizeWithMargin.x * 0.5f * Instance.Transform.Rotation.Right) + (ScreenSizeWithMargin.y * 0.5f * Instance.Transform.Rotation.Up);
+	public static Vector3 Min => (Instance.WorldRotation.Forward * DEPTH) + (ScreenSizeWithMargin.x * 0.5f * Instance.WorldRotation.Left) + (ScreenSizeWithMargin.y * 0.5f * Instance.WorldRotation.Down);
+	public static Vector3 Max => (Instance.WorldRotation.Forward * DEPTH) + (ScreenSizeWithMargin.x * 0.5f * Instance.WorldRotation.Right) + (ScreenSizeWithMargin.y * 0.5f * Instance.WorldRotation.Up);
 
-	public static Vector3 TopLeft => Max + (Instance.Transform.Rotation.Left * ScreenSizeWithMargin.x);
+	public static Vector3 TopLeft => Max + (Instance.WorldRotation.Left * ScreenSizeWithMargin.x);
 	public static Vector3 TopRight => Max;
 	public static Vector3 BottomLeft => Min;
-	public static Vector3 BottomRight => Min + ( Instance.Transform.Rotation.Right * ScreenSizeWithMargin.x );
+	public static Vector3 BottomRight => Min + ( Instance.WorldRotation.Right * ScreenSizeWithMargin.x );
 
 	private static int RoundNumber => PartyFacesManager.Instance.RoundNumber;
 	public float InitChance( int round ) { return Math2d.Clamp01( (round / 4f) * 0.5f ); }
@@ -53,7 +53,7 @@ public class MiniGame : SingletonComponent<MiniGame>
 	public static Vector3 GetRandomPositionBelowScreen()
 	{
 		Vector3 hori = Vector3.Lerp( BottomLeft, BottomRight, Game.Random.Float( 0f, 1f ) );
-		Vector3 vert = Instance.Transform.Rotation.Down * 50;
+		Vector3 vert = Instance.WorldRotation.Down * 50;
 
 		return hori + vert + Instance.Transform.Position;
 
@@ -152,7 +152,7 @@ public class MiniGame : SingletonComponent<MiniGame>
 			for ( int i = 0; i < count; i++ )
 			{
 				GameObject target = SceneUtility.GetPrefabScene( MiniGame.Instance.TargetObject ).Clone( GetRandomPositionOnScreen() );
-				target.Transform.Rotation = Rotation.FromRoll( 90 );
+				target.WorldRotation = Rotation.FromRoll( 90 );
 				target.NetworkSpawn();
 
 				await MiniGame.Instance.Task.Delay( 300 );

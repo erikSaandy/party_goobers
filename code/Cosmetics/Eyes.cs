@@ -26,7 +26,7 @@ public class Eyes : FaceFeature
 
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public override void SetColor( Color color ) {
 
 		ClientSetColor( color );
@@ -34,7 +34,7 @@ public class Eyes : FaceFeature
 
 	public override void ClientSetColor( Color color )
 	{
-		if ( Renderer == null ) { return; }
+		if ( !Renderer.IsValid() ) { return; }
 
 		Renderer.Color = Color.White * 2;
 	}

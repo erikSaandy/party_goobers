@@ -8,7 +8,15 @@ public class LevelHandler : SingletonComponent<LevelHandler>
 {
 
 	[Sync] private Guid CurrentLevelDataId { get; set; } = default;
-	[Property] public LevelDataComponent CurrentLevelData => CurrentLevelDataId == default ? null : Scene.Directory.FindByGuid( CurrentLevelDataId ).Components.Get<LevelDataComponent>();
+	[Property] public LevelDataComponent CurrentLevelData => GetCurrentLevelData();
+	private LevelDataComponent GetCurrentLevelData()
+	{
+		if( !CurrentLevelData.IsValid() ) { return null; }
+		if( CurrentLevelDataId == default ) { return null; }
+
+		Scene.Directory.FindByGuid( CurrentLevelDataId ).Components.TryGet<LevelDataComponent>(out LevelDataComponent level, FindMode.InSelf);
+		return level;
+	}
 
 	[Sync] public bool LevelIsLoaded { get; private set; } = false;
 
@@ -71,7 +79,7 @@ public class LevelHandler : SingletonComponent<LevelHandler>
 
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void UpdateSceneCamera(Vector3 position, Rotation rotation, float fov, float zFar, float zNear )
 	{
 
@@ -83,7 +91,7 @@ public class LevelHandler : SingletonComponent<LevelHandler>
 
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void UnloadCurrentLevel()
 	{
 
@@ -108,7 +116,7 @@ public class LevelHandler : SingletonComponent<LevelHandler>
 		transform = Transform.World;
 
 		LevelDataComponent level = CurrentLevelData;
-		if ( level == null ) { return false; }
+		if ( !level.IsValid() ) { return false; }
 
 		if( level.SpawnPoints?.Count() == 0)
 		{

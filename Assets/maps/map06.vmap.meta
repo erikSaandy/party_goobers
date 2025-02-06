@@ -11,19 +11,21 @@
       "Resources": null,
       "PackageReferences": [],
       "EditorReferences": [
-        "facepunch.wooden_door_01d#43543",
+        "facepunch.brick_corner_32#47559",
         "facepunch.concrete_c_painted_hs#28942",
-        "facepunch.plaster_hs_01#33578",
         "facepunch.floor_wood_laminated#18686",
+        "facepunch.plaster_hs_01#33578",
+        "facepunch.plywood_hs#33583",
+        "facepunch.step_ladder_01#47579",
+        "facepunch.waterbase_sign#33713",
         "facepunch.wood_painted_b_hs#28975",
         "facepunch.wood_trim_03#43511",
-        "facepunch.plywood_hs#33583",
-        "facepunch.brick_corner_32#47559",
-        "facepunch.step_ladder_01#47579",
-        "facepunch.waterbase_sign#33713"
+        "facepunch.wooden_door_01d#43543"
       ],
+      "IsWhitelistDisabled": false,
       "Metadata": {
-        "SingleAssetSource": "maps/map06.vmap"
+        "SingleAssetSource": "maps/map06.vmap",
+        "ParentPackage": "saandy.party_goobers"
       }
     }
   }

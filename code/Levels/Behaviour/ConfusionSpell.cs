@@ -29,7 +29,7 @@ public sealed class ConfusionSpell : Component
 		foreach ( NPC npc in NPCs )
 		{
 			GameObject look = new GameObject( true, $"{npc.GameObject.Name} LookAt temp");
-			look.Transform.Position = npc.Transform.Position + (npc.Transform.Rotation.Forward * 40) + npc.Transform.Rotation.Up * 64; 
+			look.Transform.Position = npc.Transform.Position + (npc.WorldRotation.Forward * 40) + npc.WorldRotation.Up * 64; 
 			LookAt.Add( look );
 			look.NetworkSpawn();
 
@@ -73,7 +73,7 @@ public sealed class ConfusionSpell : Component
 			look = LookAt.ElementAt( i );
 
 			fwd = npc.ForwardReference.Value;
-			Vector3 dir = Math2d.RotateVector3D( npc.Transform.Rotation.Forward, Vector3.Up, (i % 2 == 0) ? evenSin : oddSin );
+			Vector3 dir = Math2d.RotateVector3D( npc.WorldRotation.Forward, Vector3.Up, (i % 2 == 0) ? evenSin : oddSin );
 
 
 			look.Transform.Position = fwd.Position + dir * focalDst + (Vector3.Up*8);

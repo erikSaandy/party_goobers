@@ -16,7 +16,7 @@
 	{
 		GameObject npc = Scene.Directory.FindByGuid(Lobby.NPCs[i]);
         
-        if(npc == null) { continue; }
+        if(!npc.IsValid()) { continue; }
 
         Connection con = Connection.Find(npc.Components.Get<NPC>().ConnectionId );
 
@@ -100,9 +100,9 @@
         if(timeSinceRandomize < RANDOMISE_DELAY) { return; }
         timeSinceRandomize = 0;
 
-        NPC npc = Scene.Components.GetAll<NPC>().First(x => x.ConnectionId == Connection.Local.Id);
+        NPC npc = Scene.Components.GetAll<NPC>().FirstOrDefault(x => x.ConnectionId == Connection.Local.Id);
 
-        if(npc == null) { Log.Info("Connection does not have an NPC."); }
+        if(!npc.IsValid()) { Log.Error("Connection does not have an NPC."); }
 
         npc.Randomize();
 

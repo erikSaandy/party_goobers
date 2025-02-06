@@ -35,13 +35,13 @@ public class FindYourselfObjective : LevelObjective
 
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	private void CreateConnectionNPC( Guid npcId, Guid conId )
 	{
 		if(Connection.Local.Id != conId) { return; }
 
 		NPC npc = Scene.Directory.FindByGuid( npcId ).Components.Get<NPC>( true );
-		if(npc == null) { Log.Error( "Couldn't find NPC for your client. rip." ); }
+		if(!npc.IsValid()) { Log.Error( "Couldn't find NPC for your client. Saandy is moron." ); }
 
 		TargetNPCId = npc.GameObject.Id;
 		npc.LoadFromConnection( Connection.Local.Id );
@@ -76,9 +76,12 @@ public class FindYourselfObjective : LevelObjective
 
 		if( TargetNPCId == default) { return; }
 
+		GameObject npcObj = Scene.Directory.FindByGuid( TargetNPCId );
+		if(!npcObj.IsValid()) { return; }
+
 		if ( !Scene.Directory.FindByGuid( TargetNPCId ).Components.TryGet<NPC>( out NPC npc, FindMode.EverythingInSelf ) ) { return; }
 
-		npc.Randomize();
+		npc?.Randomize();
 
 	}
 
@@ -98,7 +101,7 @@ public class FindYourselfObjective : LevelObjective
 		if(SelectedNPCs.Count == 0) { return false; }
 
 		NPC target = Scene.Directory.FindByGuid( TargetNPCId ).Components.Get<NPC>( true );
-		if(target == null ) { return false; }
+		if( !target.IsValid() ) { return false; }
 
 		return SelectedNPCs[0].IsAlike( target );
 	}
